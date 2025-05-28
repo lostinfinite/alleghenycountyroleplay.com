@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Allegheny County Roleplay</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    footer a {
+      color: #00aaff;
+      text-decoration: none;
+    }
+    body {
+      margin: 0;
+      font-family: 'Inter', 'Open Sans', sans-serif;
+      background-color: #1d1d1d;
+      color: white;
+      overflow-x: hidden; /* Prevent horizontal scrolling */
+      scroll-snap-type: y mandatory; /* Enable vertical scroll snapping */
+      scroll-behavior: smooth; /* Smooth scrolling */
+      background-color: rgba(0, 0, 0, 0.5); /* Add a semi-transparent overlay */
+      background-blend-mode: overlay; /* Blend the background image with the overlay */
+      scrollbar-width: none; /* For Firefox */
+      -ms-overflow-style: none; /* For Internet Explorer and Edge */
+      overflow: hidden; /* Completely disable scrolling via scrollbar */
+    }
+    body::-webkit-scrollbar {
+      display: none !important; /* For Chrome, Safari, and Edge */
+    }
+    section:last-of-type {
+      scroll-snap-align: none; /* Disable snapping for the last section */
+    }
+    header {
+      background: url('https://cdn2.contentltd.net/acrp_ban.png') center/cover no-repeat;
+      height: 100vh; /* Make the hero section full screen */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 0;
+      scroll-snap-align: start; /* Snap to the top of the hero section */
+      transition: transform 0.5s ease-in-out; /* Smooth slide-up transition */
+      position: relative;
+      overflow: hidden;
+    }
+    header img,
+    header h1,
+    header h2,
+    .buttons {
+      opacity: 0; /* Start hidden */
+      transform: translateY(20px); /* Start slightly below */
+      animation: fadeIn 1s ease-out forwards; /* Fade-in animation */
+    }
+    header img {
+      animation-delay: 0.2s;
+    }
+    header h1 {
+      animation-delay: 0.4s;
+    }
+    header h2 {
+      animation-delay: 0.6s;
+    }
+    .buttons {
+      animation-delay: 0.8s;
+    }
+    .buttons a {
+      background: #FFBB00;
+      color: #000;
+      padding: 1rem 2rem;
+      text-decoration: none;
+      margin: 0.5rem;
+      border-radius: 8px;
+      font-weight: bold;
+      display: inline-block;
+      transition: background 0.3s ease, transform 0.3s ease; /* Add hover effect */
+    }
+    .buttons a:hover {
+      background: #e0a800;
+      transform: scale(1.05); /* Slightly enlarge on hover */
+    }
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+    }
+    main {
+      margin-top: 0; /* Remove negative margin */
+      padding-top: 0; /* Remove padding overlap */
+      scroll-snap-align: start; /* Snap to the top of the main content */
+    }
+    section {
+      padding: 25px;
+      height: 100vh; /* Make each section full screen */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      scroll-snap-align: start; /* Snap to the top of each section */
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.8s ease, opacity 0.8s ease; /* Smooth slide-up transition */
+      transform: translateY(100px); /* Start below */
+      opacity: 0; /* Start hidden */
+    }
+    section.in-view {
+      transform: translateY(0); /* Slide into place */
+      opacity: 1; /* Fade in */
+    }
+    section h2,
+    section p,
+    section img,
+    .leadership {
+      opacity: 0; /* Start hidden */
+      transform: translateY(20px); /* Start slightly below */
+      animation: fadeIn 1s ease-out forwards; /* Fade-in animation */
+    }
+    section h2 {
+      animation-delay: 0.2s;
+    }
+    section p {
+      animation-delay: 0.4s;
+    }
+    section img,
+    .leadership {
+      animation-delay: 0.6s;
+    }
+    .section-title {
+      font-size: 2rem;
+      color: #FFF;
+      margin-bottom: 1rem;
+    }
+    .departments ul {
+      list-style: none;
+      padding: 0;
+      display: none; /* Hide the list by default */
+    }
+    .departments li {
+      margin: 0.5rem 0;
+      font-size: 1.1rem;
+    }
+    .leadership {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+    }
+    .leader {
+      max-width: 250px;
+      background: #1e1e1e;
+      padding: 1rem;
+      border-radius: 12px;
+    }
+    .leader img {
+      width: 100%;
+      border-radius: 8px;
+    }
+    .leader h3 {
+      margin: 0.5rem 0 0.2rem;
+      font-size: 1.2rem;
+      color: #00aaff;
+    }
+    .leader p {
+      margin: 0;
+      font-size: 1rem;
+      color: #ccc;
+    }
+    footer {
+      background: #1e1e1e;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #ccc;
+      position: relative; /* Ensure footer is scrollable */
+    }
+    img {
+      user-drag: none; /* Disable dragging */
+      user-select: none; /* Disable selection */
+      pointer-events: none; /* Prevent copying via right-click */
+    }
+ .footer-second-row {
+  position: relative;
+  width: 100%;
+  height: 71px;
+  padding-top: 20px !important;
+  margin-left: -5px !important;
+  margin-right: -5px !important;
+  margin-bottom: -5px !important;
+  display: block;
+}
+
+.footer-second-row::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://cdn2.contentltd.net/footer-pattern-acrp.svg');
+  background-position: left;
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+  pointer-events: none; /* optional: ensure it's non-interactive */
+
+
+}
+
+  .department-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .department img {
+    height: 150px; /* Uniform height for all logos */
+    cursor: pointer; /* Ensure the cursor changes to pointer on hover */
+    transition: transform 0.3s ease;
+  }
+
+  .department img:hover {
+    transform: scale(1.1); /* Slight zoom on hover */
+  }
+
+  #popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8); /* Start slightly smaller */
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    z-index: 10000 !important; /* Ensure it appears above all other elements */
+    text-align: center;
+    max-width: 90%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0; /* Start hidden */
+    visibility: hidden; /* Ensure it's not interactable */
+    transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease; /* Smooth animation */
+  }
+
+  #popup.show {
+    transform: translate(-50%, -50%) scale(1); /* Scale to normal size */
+    opacity: 1; /* Fade in */
+    visibility: visible; /* Make it interactable */
+  }
+  </style>
+  <script>
+    let lastScrollY = 0;
+
+    document.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      const headerHeight = header.offsetHeight;
+      const scrollY = window.scrollY;
+
+      if (scrollY > lastScrollY && scrollY > 0 && scrollY < headerHeight) {
+        // Scrolling down: Snap to the bottom of the hero
+        window.scrollTo({ top: headerHeight, behavior: 'smooth' });
+      }
+
+      lastScrollY = scrollY; // Update the last scroll position
+    });
+
+    // Disable right-click menu
+    document.addEventListener('contextmenu', (event) => {
+      event.preventDefault();
+    });
+
+
+
+    function toggleTextVisibility() {
+      const list = document.querySelector('.departments ul');
+      if (list.style.display === 'none') {
+        list.style.display = 'block'; // Show the list
+      } else {
+        list.style.display = 'none'; // Hide the list
+      }
+    }
+
+    let isScrolling = false; // Prevent multiple scroll events from firing
+
+    document.addEventListener('wheel', (event) => {
+      if (isScrolling) return; // Ignore if already scrolling
+
+      const sections = document.querySelectorAll('section, header');
+      const footer = document.querySelector('footer');
+      const currentScroll = window.scrollY;
+
+      let targetScroll = null;
+
+      if (event.deltaY > 0) {
+        // Scrolling down
+        for (const section of sections) {
+          const sectionTop = section.offsetTop;
+          if (sectionTop > currentScroll + 1) {
+            targetScroll = sectionTop;
+            break;
+          }
+        }
+        if (!targetScroll && footer.offsetTop > currentScroll + 1) {
+          targetScroll = footer.offsetTop; // Scroll to footer if no more sections
+        }
+      } else if (event.deltaY < 0) {
+        // Scrolling up
+        for (let i = sections.length - 1; i >= 0; i--) {
+          const sectionTop = sections[i].offsetTop;
+          if (sectionTop < currentScroll - 1) {
+            targetScroll = sectionTop;
+            break;
+          }
+        }
+      }
+
+      if (targetScroll !== null) {
+        isScrolling = true; // Lock scrolling
+        window.scrollTo({ top: targetScroll, behavior: 'smooth' });
+        setTimeout(() => {
+          isScrolling = false; // Unlock scrolling after animation
+        }, 800); // Match the smooth scroll duration
+        event.preventDefault(); // Prevent default scrolling behavior
+      }
+    });
+
+    // Prevent touchpad scroll from skipping multiple sections
+    document.addEventListener('touchmove', (event) => {
+      event.preventDefault();
+    }, { passive: false });
+
+    // Ensure IntersectionObserver is initialized after DOM content is fully loaded
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view'); // Add class when in view
+          } else {
+            entry.target.classList.remove('in-view'); // Remove class when out of view
+          }
+        });
+      }, { threshold: 0.2 }); // Trigger when 20% of the section is visible
+
+      document.querySelectorAll('section').forEach((section) => {
+        observer.observe(section);
+      });
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const departments = document.querySelectorAll('.department');
+      const popup = document.getElementById('popup');
+      const popupTitle = document.getElementById('popup-title');
+      const popupDescription = document.getElementById('popup-description');
+      const closeButton = popup.querySelector('button');
+
+      // Attach click event to each department
+      departments.forEach(department => {
+        department.addEventListener('click', () => {
+          const title = department.getAttribute('data-title');
+          const description = department.getAttribute('data-description');
+          if (title && description) {
+            showPopup(title, description);
+          }
+        });
+      });
+
+      // Function to show the popup
+      function showPopup(title, description) {
+        popupTitle.textContent = title;
+        popupDescription.textContent = description;
+        popup.style.visibility = 'visible'; // Make the popup visible
+        popup.style.opacity = '1'; // Set opacity to fully visible
+        popup.style.transform = 'translate(-50%, -50%) scale(1)'; // Scale to normal size
+      }
+
+      // Function to close the popup
+      window.closePopup = function () { // Make the function globally accessible
+        popup.style.opacity = '0'; // Fade out
+        popup.style.transform = 'translate(-50%, -50%) scale(0.8)'; // Scale down
+        setTimeout(() => {
+          popup.style.visibility = 'hidden'; // Hide after animation
+        }, 300); // Match the transition duration
+      };
+
+      // Attach closePopup to the close button
+      closeButton.addEventListener('click', closePopup);
+
+      // Fix passive event listener error for touchmove
+      document.addEventListener(
+        'touchmove',
+        (event) => {
+          event.preventDefault();
+        },
+        { passive: false } // Explicitly set passive to false
+      );
+    });
+  </script>
+</head>
+<body>
+  <div id="loading-screen" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: black; display: flex; justify-content: center; align-items: center; z-index: 9999;">
+    <img src="https://cdn2.contentltd.net/acrp%20(2).png" alt="ACRP Logo" style="width: 215px; height: 215px; animation: pulse 1.5s infinite;" />
+  </div>
+  <header>
+    <img src="https://cdn2.contentltd.net/acrp%20(2).png" alt="ACRP Logo" width="120" />
+    <h1>Allegheny County Roleplay</h1>
+    <h2>Roleplaying Done Right!</h2>
+    <div class="buttons">
+      <a href="https://discord.gg/fKrrT7Djgr">Join our Discord</a>
+      <a href="https://sonorancms.com/com/cb987552-05d7-4d4b-a967-9e025a38d964/forms?apply=1">Apply Today</a>
+    </div>
+  </header>
+  <main>
+    <section style="background: url(https://cdn2.contentltd.net/ban2.png) center/cover no-repeat;">
+      <h2 class="section-title">What Sets Us Apart</h2>
+      <p>Founded in 2024 and fully rebranded in 2025, Allegheny County Roleplay has a rich history of professionalism and realism, making it a standout community in the roleplay world.</p>
+    </section>
+
+    <section style="background: url('https://cdn2.contentltd.net/tools-ban.png') center/cover no-repeat;">
+      <h2 class="section-title">Our Tools and Addons</h2>
+      <p>We utilize every available ER:LC addon, including Sonoran CAD, Sonoran CMS, and Sonoran Radio, to ensure our community runs smoothly and provides an immersive experience for all members.</p>
+    </section>
+
+    <section style="background: url('https://cdn2.contentltd.net/com_action.png') center/cover no-repeat;">
+      <h2 class="section-title">Community Action</h2>
+      <p>Every week features scheduled patrols, skill-building trainings, and fun spontaneous events to keep everyone engaged and involved in the action.</p>
+    </section>
+
+    <section class="departments" style="background: url('https://cdn2.contentltd.net/agencies_ban.png') center/cover no-repeat;">
+      <h2 class="section-title">Agencies You Can Join</h2>
+      <div class="department-container">
+        <div class="department" data-title="Allegheny County Sheriff's Office" data-description="The Allegheny County Sheriff's Office is responsible for law enforcement and public safety within the county.">
+          <img src="https://cdn2.contentltd.net/dps/acso.png" alt="Allegheny County Sheriff's Office" />
+        </div>
+        <div class="department" data-title="PennDOT" data-description="PennDOT oversees transportation infrastructure, including roads, bridges, and public safety services.">
+          <img src="https://cdn2.contentltd.net/dps/penndot_emblem.svg" alt="PennDOT" />
+        </div>
+        <div class="department" data-title="Fire and EMS" data-description="Pittsburgh Fire and EMS provide emergency medical services and fire protection for the community.">
+          <img src="https://cdn2.contentltd.net/dps/pfd.png" alt="Fire and EMS" />
+        </div>
+        <div class="department" data-title="Pittsburgh Police Department" data-description="The Pittsburgh Police Department ensures public safety and enforces the law within the city.">
+          <img src="https://cdn2.contentltd.net/dps/ppd.png" alt="Pittsburgh Police Department" />
+        </div>
+        <div class="department" data-title="Pennsylvania State Police" data-description="The Pennsylvania State Police provide statewide law enforcement services and support local agencies.">
+          <img src="https://cdn2.contentltd.net/dps/psp.png" alt="Pennsylvania State Police" />
+        </div>
+      </div>
+    </section>
+
+    <div id="popup" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.8); background: rgba(0, 0, 0, 0.9); color: white; padding: 2rem; border-radius: 8px; z-index: 1000; text-align: center; max-width: 90%; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); opacity: 0; visibility: hidden; transition: transform 0.3s ease, opacity 0.3s ease;">
+      <h3 id="popup-title" style="margin-bottom: 1rem;"></h3>
+      <p id="popup-description" style="margin-bottom: 1.5rem;"></p>
+      <button onclick="closePopup()" style="background: #FFBB00; color: black; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer;">Close</button>
+    </div>
+
+    <section style="background: url(https://cdn2.contentltd.net/plr-res.png) center/cover no-repeat;">
+      <h2 class="section-title" style="margin-top: -2rem; margin-bottom: 1rem;">Player Resources</h2>
+      <p style="margin-top: -1rem;">We offer guides, onboarding assistance, and community mentorship to help new and returning players succeed in roleplay. No matter your skill level, there's a place for you here.</p>
+    </section>
+
+    <section style="background: url(https://cdn2.contentltd.net/ban2.png) center/cover no-repeat;">
+      <h2 class="section-title">Meet the Leadership</h2>
+      <div class="leadership">
+        <div class="leader">
+          <img src="https://cdn2.contentltd.net/content.png" alt="Director">
+          <h3>Director</h3>
+          <p>@ContentLTD</p>
+        </div>
+        <div class="leader">
+          <img src="https://cdn2.contentltd.net/cayden.png" alt="Deputy Director">
+          <h3>Deputy Director</h3>
+          <p>@Cayd_gaming2</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <section style="background: url('https://cdn2.contentltd.net/ban3.png') center/cover no-repeat; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: white; scroll-snap-align: start;">
+    <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Ready to Join Us?</h2>
+    <p style="font-size: 1.2rem; margin-bottom: 2rem;">Become part of Allegheny County Roleplay today and experience immersive, professional roleplay like never before.</p>
+    <div class="buttons">
+      <a href="https://discord.gg/fKrrT7Djgr">Join our Discord</a>
+      <a href="https://sonorancms.com/com/cb987552-05d7-4d4b-a967-9e025a38d964/forms?apply=1">Apply Today</a>
+    </div>
+  </section>
+  <footer style="background: #0d0d0d; color: #f0f0f0; padding: 3rem 1rem; font-size: 0.9rem; position: relative;">
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem; text-align: left;">
+      <div style="flex: 1; min-width: 250px;">
+        <h3 style="color: #FFBB00; margin-bottom: 1rem; font-size: 1.4rem;">Contact Us</h3>
+        <p style="line-height: 1.8; font-size: 1rem;">
+          <a href="mailto:content@alleghenycountyroleplay.org" target="_blank" style="color: #FFBB00; text-decoration: none;">content@alleghenycountyroleplay.org</a>
+        </p>
+      </div>
+      <div style="flex: 1; min-width: 250px;">
+        <h3 style="color: #FFBB00; margin-bottom: 1rem; font-size: 1.4rem;">Share &amp; Connect</h3>
+        <ul style="list-style: none; padding: 0; margin: 0; line-height: 2; font-size: 1rem;">
+          <li><a href="https://discord.com/invite/fKrrT7Djgr" target="_blank" style="color: #FFBB00; text-decoration: none;">Join us on Discord</a></li>
+          <li><a href="https://x.com/contentltd_rblx" target="_blank" style="color: #FFBB00; text-decoration: none;">Follow us on X</a></li>
+        </ul>
+      </div>
+      <div style="flex: 1; min-width: 250px;">
+        <h3 style="color: #FFBB00; margin-bottom: 1rem; font-size: 1.4rem;">Get Involved</h3>
+        <ul style="list-style: none; padding: 0; margin: 0; line-height: 2; font-size: 1rem;">
+          <li><a href="https://alleghenycountyroleplay.com/careers" target="_blank" style="color: #FFBB00; text-decoration: none;">Careers</a></li>
+        </ul>
+      </div>
+    </div>
+    <div style="margin-top: 2rem; border-top: 1px solid #333; padding-top: 1.5rem; text-align: center; font-size: 0.85rem; color: #888;">
+      &copy; 2025 Allegheny County Roleplay. All rights reserved. | Powered by 
+      <a href="https://contentltd.xyz" style="color: #FFBB00; text-decoration: none;">ContentLTD</a>
+    </div>
+    <div style="width: 100%; height: 50px; background: url('https://cdn.itzcontent.com/footer45-pattern-acrp.svg') repeat-x; background-size: auto 100%; margin-top: 1rem;"></div>
+  </footer>
+  <script>
+    window.addEventListener('load', () => {
+      const loadingScreen = document.getElementById('loading-screen');
+      loadingScreen.style.opacity = '0'; // Fade out the loading screen
+      setTimeout(() => {
+        loadingScreen.style.display = 'none'; // Hide the loading screen after fade-out
+      }, 500); // Match the fade-out duration
+    });
+  </script>
+</body>
+</html>
