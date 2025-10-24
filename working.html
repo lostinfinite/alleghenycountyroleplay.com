@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ACRP — Renovation in Progress</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="https://cdn2.contentltd.net/acrp%20(2).png" sizes="any">
+  <link rel="shortcut icon" href="https://cdn2.contentltd.net/acrp%20(2).png" type="image/png">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: url('https://cdn2.contentltd.net/banner9327.jpg') center/cover no-repeat fixed;
+      background-color: rgba(0, 0, 0, 0.8);
+      background-blend-mode: overlay;
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 720px;
+      text-align: center;
+    }
+
+    :root { --logo-size: 120px; }
+    @media (max-width: 600px) { :root { --logo-size: 90px; } }
+
+    .logo-cycle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0;
+      margin-bottom: 2.25rem;
+      opacity: 0;
+      animation: fadeIn 0.8s ease-out forwards;
+      transition: transform 400ms ease, gap 300ms ease;
+    }
+
+    .logo-cycle .acrp-logo {
+      height: var(--logo-size);
+      width: auto;
+    }
+
+    .logo-cycle .x-sep {
+      display: inline-block;
+      font-size: calc(var(--logo-size) * 0.7);
+      line-height: 1;
+      font-weight: 700;
+      opacity: 0;
+      transform: translateX(-14px);
+      transition: opacity 300ms ease, transform 300ms ease;
+      user-select: none;
+      pointer-events: none;
+    }
+    .logo-cycle:not(.active) .x-sep { display: none; }
+
+    .logo-cycle .dept-slot {
+      position: relative;
+      width: 0;
+      height: var(--logo-size);
+      overflow: hidden;
+      opacity: 0;
+      transition: opacity 300ms ease, width 300ms ease;
+    }
+
+  .logo-cycle.active { transform: translateX(-20px); gap: 12px; }
+  .logo-cycle.active .x-sep { opacity: 1; transform: translateX(0); }
+  .logo-cycle.active .dept-slot { opacity: 1; width: var(--logo-size); }
+
+    .logo-cycle .dept-logo {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: contain;
+      transform: translateX(110%);
+      opacity: 0; 
+      transition: transform 500ms ease, opacity 400ms ease;
+    }
+    .logo-cycle .dept-logo.in { transform: translateX(0); opacity: 1; }
+    .logo-cycle .dept-logo.out { transform: translateX(-120%); opacity: 0; }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 300;
+      letter-spacing: -0.5px;
+      margin-bottom: 1rem;
+      opacity: 0;
+      animation: fadeIn 0.8s ease-out 0.2s forwards;
+    }
+
+    .subtitle {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      font-weight: 300;
+      color: #a0a0a0;
+      margin-bottom: 4rem;
+      opacity: 0;
+      animation: fadeIn 0.8s ease-out 0.4s forwards;
+    }
+
+    .cursor {
+      display: inline-block;
+      margin-left: 2px;
+      width: 1ch;
+      color: #ffffff;
+      opacity: 0.9;
+      animation: blink 1s step-start infinite;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    @media (max-width: 768px) {
+      .logo {
+        width: 100px;
+        margin-bottom: 2rem;
+      }
+
+      .subtitle {
+        margin-bottom: 3rem;
+      }
+    }
+  </style>
+</head>
+<script src="https://uptime.betterstack.com/widgets/announcement.js" data-id="227840" async="async" type="text/javascript"></script>
+<body>
+  <div class="container">
+    <div class="logo-cycle" aria-label="ACRP and department logos">
+      <img class="acrp-logo" src="https://cdn2.contentltd.net/acrp%20(2).png" alt="ACRP Logo">
+      <span class="x-sep" aria-hidden="true">×</span>
+      <div class="dept-slot" aria-hidden="true">
+        <img class="dept-logo" alt="Department logo" />
+      </div>
+    </div>
+  <h1><span id="typewriter" aria-live="polite"></span><span class="cursor" aria-hidden="true">|</span></h1>
+  <p class="subtitle">We are making renovations! Check back later</p>
+  </div>
+  <script>
+    (function () {
+      const el = document.getElementById('typewriter');
+      if (!el) return;
+
+      const phrases = [
+        "We'll be right back",
+        "Un momento",
+        "Change is in the works..."
+      ];
+
+      let i = 0;
+      let j = 0;
+      let deleting = false;
+
+      const typeSpeed = 70;
+      const deleteSpeed = 45;
+      const holdAtFull = 1100;
+      const holdAtEmpty = 300;
+
+      function tick() {
+        const current = phrases[i];
+
+        if (!deleting) {
+          el.textContent = current.slice(0, j + 1);
+          j++;
+          if (j === current.length) {
+            deleting = true;
+            return setTimeout(tick, holdAtFull);
+          }
+          return setTimeout(tick, typeSpeed);
+        } else {
+          el.textContent = current.slice(0, j - 1);
+          j--;
+          if (j === 0) {
+            deleting = false;
+            i = (i + 1) % phrases.length;
+            return setTimeout(tick, holdAtEmpty);
+          }
+          return setTimeout(tick, deleteSpeed);
+        }
+      }
+
+      setTimeout(tick, 300);
+    })();
+  </script>
+  <script>
+    (function() {
+      const cycle = document.querySelector('.logo-cycle');
+      const deptImg = document.querySelector('.dept-logo');
+      if (!cycle || !deptImg) return;
+
+      const logos = [
+        'https://cdn2.contentltd.net/dps/psp.png',
+        'https://cdn2.contentltd.net/dps/ppd.png',
+        'https://cdn2.contentltd.net/dps/pfd.png',
+        'https://cdn2.contentltd.net/dps/penndot_emblem.svg',
+        'https://cdn2.contentltd.net/dps/acso.png'
+      ];
+
+      const slideDuration = 500;
+      const showDuration = 1800;
+      const betweenDelay = 450;
+      const recenterDelay = 2500;
+
+      function runCycle() {
+        cycle.classList.add('active');
+        let i = 0;
+
+        function showNext() {
+          const url = logos[i];
+          deptImg.classList.remove('in', 'out');
+          deptImg.src = url;
+          void deptImg.offsetWidth;
+          deptImg.classList.add('in');
+
+          setTimeout(() => {
+            deptImg.classList.remove('in');
+            deptImg.classList.add('out');
+
+            setTimeout(() => {
+              i++;
+              if (i < logos.length) {
+                setTimeout(showNext, betweenDelay);
+              } else {
+                cycle.classList.remove('active');
+                deptImg.classList.remove('out');
+                setTimeout(() => {
+                  runCycle();
+                }, recenterDelay);
+              }
+            }, slideDuration);
+          }, showDuration);
+        }
+
+        setTimeout(showNext, 400);
+      }
+
+      setTimeout(runCycle, 1600);
+    })();
+  </script>
+</body>
+</html>
