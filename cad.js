@@ -98,6 +98,35 @@ function el(tag, attrs = {}, children = []) {
   return e;
 }
 
+// Dynamic label tokens for placeholders like {cta1-acrp-invite}
+const DEFAULT_LABELS = {
+  'cta1-acrp-invite': 'Join ACRP Discord',
+  'secondary-logout': 'Logout',
+};
+
+function getLabel(key) {
+  // 1) URL param override: l.<key>=Value
+  try {
+    const params = new URLSearchParams(INITIAL_SEARCH);
+    const fromUrl = params.get(`l.${key}`);
+    if (fromUrl) return fromUrl;
+  } catch {}
+  // 2) Global override via window.ACRP_LABELS
+  try {
+    if (window.ACRP_LABELS && typeof window.ACRP_LABELS[key] === 'string') return window.ACRP_LABELS[key];
+  } catch {}
+  // 3) Defaults or fall back to key
+  return DEFAULT_LABELS[key] || key;
+}
+
+function resolveToken(s) {
+  if (typeof s === 'string' && s.startsWith('{') && s.endsWith('}')) {
+    const key = s.slice(1, -1);
+    return getLabel(key);
+  }
+  return s;
+}
+
 function copyRow(label, value) {
   const input = el('input', { class: 'copy-input', type: 'text', value: value || '', readonly: 'readonly' });
   const btn = el('button', { class: 'btn', type: 'button' }, 'Copy');
@@ -254,19 +283,44 @@ window.addEventListener('keyup', (e) => {
 
   console.info('[CAD] Setting identity', { uid: String(payload.uid || ''), username: payload.username, departments: payload.departments });
   setIdentity({ uid: String(payload.uid || ''), username: payload.username, avatar: payload.avatar, departments: payload.departments });
-
-  // Fetch department resources from Worker (uses secrets server-side)
+  // Special-case: users with no department (NON) should see invite + logout
   try {
-    console.info('[CAD] Fetching /resources');
-    const data = await fetchResources(token);
-    console.debug('[CAD] /resources response', data);
-    if (deptSections) {
-      deptSections.innerHTML = '';
-      const list = Array.isArray(data.departments) ? data.departments : [];
-      for (const d of list) deptSections.appendChild(deptSection(d));
+    const isNon = !Array.isArray(payload.departments) || payload.departments.length === 0 || (Array.isArray(payload.departments) && payload.departments.includes('NON'));
+    if (isNon) {
+      console.info('[CAD] User is in NON (no department) — rendering invite panel');
+      if (deptSections) {
+        deptSections.innerHTML = '';
+        const card = el('div', { class: 'card' }, []);
+        const heading = el('h1', {}, `Seems like you're not in a department! Please check the ACRP Discord to join one!`);
+        const inviteLink = 'https://discord.gg/bJ8TeDsnth';
+        const inviteBtn = el('a', { class: 'btn primary', href: inviteLink, target: '_blank', rel: 'noopener noreferrer', 'aria-label': getLabel('cta1-acrp-invite') }, resolveToken('{cta1-acrp-invite}'));
+        // secondary logout button - will trigger the same logout behavior
+        const secLogout = el('button', { class: 'btn', type: 'button', 'aria-label': getLabel('secondary-logout') }, resolveToken('{secondary-logout}')); 
+        secLogout.addEventListener('click', () => {
+          try { if (logoutBtn) logoutBtn.click(); else clearIdentity(); } catch { clearIdentity(); }
+        });
+        const wrapper = el('div', {}, [heading, el('div', { style: 'margin-top:12px; display:flex; gap:8px; align-items:center' }, [inviteBtn, secLogout])]);
+        card.appendChild(wrapper);
+        deptSections.appendChild(card);
+      }
+      // Do not fetch department-specific resources for NON users
+    } else {
+      // Fetch department resources from Worker (uses secrets server-side)
+      try {
+        console.info('[CAD] Fetching /resources');
+        const data = await fetchResources(token);
+        console.debug('[CAD] /resources response', data);
+        if (deptSections) {
+          deptSections.innerHTML = '';
+          const list = Array.isArray(data.departments) ? data.departments : [];
+          for (const d of list) deptSections.appendChild(deptSection(d));
+        }
+      } catch (e) {
+        console.error('[CAD] Failed to load /resources', e);
+      }
     }
   } catch (e) {
-    console.error('[CAD] Failed to load /resources', e);
+    console.error('[CAD] Error rendering NON-department panel', e);
   }
 })();
 
