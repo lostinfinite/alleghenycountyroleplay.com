@@ -47,6 +47,59 @@
 			h2 { margin: 18px 0 8px; }
 			.card { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 16px; }
 			.grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+			.layout { display: grid; grid-template-columns: 1fr; gap: 16px; align-items: start; }
+			.sidebar { display: none; }
+			.sidebar.visible { display: flex; flex-direction: column; position: sticky; top: 64px; height: calc(100vh - 64px); }
+			.sidebar .tabs { display: grid; gap: 8px; margin-bottom: 12px; }
+			.sidebar .tab { width: 100%; text-align: left; background: var(--panel); color: var(--text); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; }
+			.sidebar .tab[disabled] { cursor: not-allowed; opacity: 0.8; }
+			.sidebar .tab:not([disabled]) { cursor: pointer; opacity: 1; }
+			.sidebar .tab.active { border-color: var(--accent-border); outline: 1px solid var(--accent-border); }
+			.toast { margin-top: 12px; background: #101834; border: 1px solid var(--border); border-radius: 12px; padding: 12px; }
+			.toast-user { display: grid; grid-template-columns: 48px 1fr; gap: 10px; align-items: center; }
+			.toast-user img { width: 48px; height: 48px; border-radius: 8px; border: 1px solid var(--btn-border); background: var(--bg); }
+			.toast-uid { display: block; }
+			.toast-actions { display: flex; gap: 8px; margin-top: 10px; }
+			.toast-links { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
+			.toast a.toast-link.btn { display: inline-flex; justify-content: center; align-items: center; height: 36px; background: var(--btn); color: var(--text); border: 1px solid var(--btn-border); border-radius: 8px; text-decoration: none; }
+			.toast a.toast-link.btn:hover { filter: brightness(1.05); }
+			.small { font-size: 12px; }
+
+			/* Floating toasts */
+			.toasts { position: fixed; right: 16px; bottom: 16px; display: flex; flex-direction: column; gap: 8px; z-index: 1000; pointer-events: none; }
+			.toast-item { background: #101834; border: 1px solid var(--border); color: var(--text); border-radius: 10px; padding: 10px 12px; box-shadow: 0 6px 20px rgba(0,0,0,.35); display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 10px; pointer-events: auto; }
+			.toast-item.info { border-color: #2d3d6e; }
+			.toast-item.warn { border-color: #6e5d2d; }
+			.toast-item.error { border-color: #6e2d2d; }
+			.toast-item .close { background: transparent; border: 0; color: var(--muted); cursor: pointer; font-size: 16px; line-height: 1; }
+
+			/* Tab content containers */
+			.tab-content { display: none; }
+			.tab-content.active { display: block; }
+
+				/* Spacing between dynamically injected department cards */
+				#deptSections { display: grid; gap: 10px; margin-top: 10px; }
+				#guidesSections { display: grid; gap: 10px; margin-top: 10px; }
+				/* Dropdown cards for Guides */
+				.dropdown-card { padding: 0; overflow: hidden; }
+				.dropdown-card > summary { cursor: pointer; list-style: none; padding: 14px 16px; position: relative; padding-right: 42px; }
+				.dropdown-card > summary::-webkit-details-marker { display: none; }
+				.dropdown-card > summary::after { content: '▸'; position: absolute; right: 14px; top: 50%; transform: translateY(-50%); color: var(--muted); transition: transform .2s ease; }
+				.dropdown-card[open] > summary::after { transform: translateY(-50%) rotate(90deg); }
+				.dropdown-card > .dropdown-body { padding: 12px 16px 16px; border-top: 1px solid var(--border); }
+
+			/* Modal */
+			.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.5); display: none; align-items: center; justify-content: center; z-index: 999; }
+			.modal-overlay.visible { display: flex; }
+			.modal { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 16px; width: min(520px, 92vw); }
+			.modal h3 { margin: 0 0 10px; }
+			.modal .field { display: grid; gap: 6px; margin: 8px 0; }
+			.modal input[type="text"] { width: 100%; background: #0c142b; border: 1px solid var(--btn-border); color: var(--text); border-radius: 6px; padding: 8px 10px; }
+			.modal .actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 12px; }
+			.maincol { display: grid; gap: 16px; }
+			@media (min-width: 980px) {
+				.layout { grid-template-columns: 260px 1fr; }
+			}
 			.table { width: 100%; border-collapse: collapse; }
 			.table td { padding: 6px 8px; border-bottom: 1px solid var(--border); vertical-align: top; }
 			.table td.label { width: 160px; color: var(--muted); }
@@ -65,14 +118,16 @@
 			}
 		</style>
 		<noscript><style>main{display:none}</style><div style="padding:16px;color:#fff;background:#a00">JavaScript required.</div></noscript>
-		<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://cdn.discordapp.com; script-src 'self'; style-src 'self' 'unsafe-inline'; style-src-elem 'self' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https://cadapi.alleghenycountyroleplay.com http://127.0.0.1:8787 http://localhost:8787; base-uri 'self'; form-action 'self'">
+		<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://cdn.discordapp.com https://cdn2.contentltd.net data:; script-src 'self'; style-src 'self' 'unsafe-inline'; style-src-elem 'self' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https://cadapi.alleghenycountyroleplay.com http://127.0.0.1:8787 http://localhost:8787; base-uri 'self'; form-action 'self'">
+		<meta name="referrer" content="no-referrer">
+		<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
 	</head>
 	<body>
 		<header>
 			<div class="nav-left" id="now">--:--</div>
 			<div class="nav-right">
 				<div class="identity" id="identity" aria-live="polite">
-					<img id="avatar" alt="avatar" />
+					<img id="avatar" alt="avatar" loading="lazy" decoding="async" />
 					<span id="username" class="muted"></span>
 					<span class="muted">|</span>
 					<span id="department"></span>
@@ -82,6 +137,18 @@
 			</div>
 		</header>
 		<main id="content">
+			<div id="toasts" class="toasts" aria-live="polite" aria-atomic="true"></div>
+			<!-- Notice banner injected from /public-config -->
+			<section id="noticeBanner" class="card hidden" aria-live="polite" style="border-color:#3a476f;background:#0f1732;margin-bottom:20px;">
+				<div style="display:flex; align-items:center; gap:10px; justify-content:space-between;">
+					<div>
+						<h3 id="noticeHeading" style="margin:0 0 6px 0;">Notice</h3>
+						<div id="noticeText" class="muted"></div>
+					</div>
+					<button id="noticeClose" class="btn" type="button" style="display:none">Dismiss</button>
+				</div>
+				<div id="noticeButtons" class="toast-actions" style="flex-wrap:wrap; margin-top:10px;"></div>
+			</section>
 			<section id="loggedOut" class="card">
 				<h1>You are not logged in! Please login to view department information</h1>
 				<div style="margin-top:12px">
@@ -89,23 +156,98 @@
 				</div>
 			</section>
 
-			<section id="loggedIn" class="grid hidden">
-				<div class="card">
-					<h1>Department Information System</h1>
-					<div class="hr-text">Your Info</div>
-					<div class="profile">
-						<img id="p_avatar" alt="profile" />
-						<table class="table">
-							<tr><td class="label">Username</td><td id="p_username"></td></tr>
-							<tr><td class="label">User ID</td><td id="p_userid"></td></tr>
-							<tr><td class="label">Department(s)</td><td id="p_dept"></td></tr>
-						</table>
-					</div>
-				</div>
+			<section id="loggedIn" class="hidden">
+				<div class="layout">
+					<aside id="sidebar" class="sidebar">
+						<nav class="tabs">
+							<button class="tab active" type="button" data-tab="tabInfo">Info</button>
+							<button class="tab" type="button" data-tab="tabJoin">Joining your Department</button>
+							<button class="tab" type="button" data-tab="tabGuides">Department Handbook's & Guides</button>
+							<button class="tab" type="button" data-tab="tabMisc">Misc.</button>
+								<!-- Admin entry; hidden by default, shown for admin UID via JS -->
+								<a id="adminBtn" class="tab hidden" href="admin.html" style="text-decoration:none; display:none">Admin</a>
+						</nav>
+						<!-- Buttons positioned under user toast (no extra toast wrapper) -->
+						<div class="toast" id="sidebarToast" style="margin-top:auto">
+							<div class="toast-user">
+								<img id="t_avatar" alt="avatar" loading="lazy" decoding="async" />
+								<div>
+									<div id="t_username" class="muted">—</div>
+									<div id="t_uid" class="toast-uid muted small">UID: <span id="t_uid_value">—</span></div>
+								</div>
+							</div>
+							<div class="toast-actions">
+								<button id="t_logout" class="btn" type="button">Logout</button>
+							</div>
+							<div class="toast-links">
+								<a id="t_back" class="toast-link btn" href="index.html">Back to ACRP</a>
+								<a id="t_legal" class="toast-link btn" href="#legal">Legal</a>
+							</div>
+						</div>
+					</aside>
+					<div class="maincol">
+						<!-- Tab content containers (Info is default) -->
+						<div id="tabInfo" class="tab-content active">
+							<div class="card">
+								<h1>Department Info</h1>
+								<div class="hr-text">Your Info:</div>
+								<div class="profile">
+									<img id="p_avatar" alt="profile" loading="lazy" decoding="async" />
+									<table class="table">
+										<tr><td class="label">Username</td><td id="p_username"></td></tr>
+										<tr><td class="label">User ID</td><td id="p_userid"></td></tr>
+										<tr><td class="label">Department(s)</td><td id="p_dept"></td></tr>
+									</table>
+								</div>
+							</div>
+						</div>
 
-				<div id="deptSections" class="grid"></div>
+						<div id="tabJoin" class="tab-content">
+							<div class="card">
+								<h1>Join your Department</h1>
+								<p class="muted">Follow these steps to join your department. Then use your department's section below for the specific join code and server invite.</p>
+								<ol>
+									<li>Open melonly: <a href="https://melonly.xyz/dashboard" target="_blank" rel="noopener noreferrer">https://melonly.xyz/dashboard</a></li>
+									<li>Click "Join" and paste the code shown in your department section below.</li>
+									<li>If needed, join your department's Discord using the invite provided.</li>
+								</ol>
+							</div>
+							<!-- Department-specific sections will be injected here by cad.js -->
+							<div id="deptSections"></div>
+						</div>
+
+						<div id="tabGuides" class="tab-content">
+							<div class="card">
+								<h1>Department Guides &amp; Handbooks</h1>
+								<div class="muted">Only guides for your department(s) will appear below.</div>
+							</div>
+							<div id="guidesSections"></div>
+						</div>
+						<div id="tabMisc" class="tab-content">
+							<div class="card">
+								<h1>Miscellaneous</h1>
+								<div class="toast-actions" style="flex-wrap: wrap">
+									<a class="btn" href="https://discord.com/channels/1365054426724827267/1365056987712196709" target="_blank" rel="noopener noreferrer">Discord Rules</a>
+									<a class="btn" href="https://discord.com/channels/1365054426724827267/1365056733302620160" target="_blank" rel="noopener noreferrer">In-Game Rules</a>
+								</div>
+							</div>
+						</div>
+					</div>
 			</section>
 		</main>
+
+		<!-- Modal Overlay -->
+		<div id="modalOverlay" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+			<div class="modal" role="document">
+				<h3 id="modalTitle">Edit Link</h3>
+				<div class="field"><label for="modalLabel" class="muted">Label</label><input id="modalLabel" type="text" /></div>
+				<div class="field"><label for="modalUrl" class="muted">URL</label><input id="modalUrl" type="text" /></div>
+				<div class="actions">
+					<button id="modalCancel" class="btn" type="button">Cancel</button>
+					<button id="modalSave" class="btn primary" type="button">Save</button>
+				</div>
+			</div>
+		</div>
 		<script src="cad.js?v=1761583400"></script>
 	</body>
 	</html>

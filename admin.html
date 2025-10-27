@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin Panel - Department Information System</title>
+  <link rel="icon" type="image/png" href="https://cdn2.contentltd.net/acrp%20(2).png" sizes="32x32" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https://cdn.discordapp.com https://cdn2.contentltd.net data:; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'self' https://cadapi.alleghenycountyroleplay.com http://127.0.0.1:8787 http://localhost:8787; base-uri 'self'; form-action 'self'">
+  <style>
+    :root { --bg:#0b1020; --panel:#121a33; --border:#243055; --muted:#a9b4d8; --text:#e8eefc; --accent:#2a8242; --btn:#223059; --btn-border:#2d3d6e; }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text)}
+    header{display:flex;gap:12px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--border);background:var(--panel)}
+    main{padding:20px;max-width:980px;margin:0 auto;display:grid;gap:16px}
+    .card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:16px}
+    .muted{color:var(--muted)}
+    .btn{background:var(--btn);color:var(--text);border:1px solid var(--btn-border);border-radius:6px;padding:6px 10px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+    .btn.primary{background:var(--accent)}
+    .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+    input[type=text], textarea{width:100%;background:#0c142b;border:1px solid var(--btn-border);color:var(--text);border-radius:6px;padding:8px 10px}
+    label{display:block;margin:8px 0 4px;color:var(--muted)}
+    .hidden{display:none!important}
+  </style>
+</head>
+<body>
+  <header>
+    <strong>Admin Panel</strong>
+    <span class="muted">| Manage config and maintenance</span>
+    <a class="btn" href="cad.html" style="margin-left:auto">Back to CAD</a>
+  </header>
+  <main>
+    <section id="authFail" class="card hidden">
+      <h2>Access Denied</h2>
+      <p class="muted">You are not authorized to view this page. Redirecting…</p>
+    </section>
+    <section id="adminContent" class="hidden">
+      <div class="card">
+        <h2>Public Notice</h2>
+        <label for="nHeading">Heading</label>
+        <input id="nHeading" type="text" placeholder="Notice heading" />
+        <label for="nContent">Content</label>
+        <textarea id="nContent" rows="3" placeholder="Enter notice content"></textarea>
+        <label for="nColor">Sidebar/Banner Color (CSS color)</label>
+        <input id="nColor" type="text" placeholder="#0f1732 or rgb(...) or any CSS color" />
+  <label for="nTextColor">Text Color (CSS color)</label>
+  <input id="nTextColor" type="text" placeholder="#ffffff or any CSS color" />
+        <div class="row"><label><input type="checkbox" id="nDismissable" /> Dismissable</label></div>
+        <div class="row"><label><input type="checkbox" id="nCtaToggle" /> Enable CTA/Secondary Buttons</label></div>
+        <div id="nButtonsCfg" class="hidden">
+          <div class="row">
+            <label for="nCtaCount"># CTA Buttons</label>
+            <input id="nCtaCount" type="number" min="0" max="4" value="0" style="width:100px" />
+            <label for="nSecCount"># Secondary Buttons</label>
+            <input id="nSecCount" type="number" min="0" max="4" value="0" style="width:100px" />
+          </div>
+          <div id="nCtaList" class="row" style="flex-direction:column;align-items:stretch"></div>
+          <div id="nSecList" class="row" style="flex-direction:column;align-items:stretch"></div>
+        </div>
+        <div class="row" style="margin-top:8px">
+          <button id="saveNotice" class="btn primary" type="button">Save Notice</button>
+        </div>
+        <hr style="border-color:var(--border);margin:16px 0">
+        <h3>Preview</h3>
+        <div id="nPreview" class="card" style="margin-top:8px">
+          <div id="nPreviewBanner" class="banner" style="padding:10px;border:1px solid var(--border);background:#0f1732;border-radius:8px;margin-bottom:8px">
+            <div id="nPreviewHeading" style="font-weight:600;margin-bottom:6px">Notice</div>
+            <div id="nPreviewText" style="margin-bottom:8px;color:#e8eefc">Preview content</div>
+            <div id="nPreviewButtons" class="row"></div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Login Controls</h2>
+        <div class="row">
+          <label><input type="checkbox" id="loginBlocked" /> Block logins</label>
+        </div>
+        <label for="loginMessage">Login blocked message</label>
+        <input id="loginMessage" type="text" placeholder="Shown when login is blocked" />
+        <div class="row" style="margin-top:8px">
+          <button id="saveLoginCfg" class="btn primary" type="button">Save Login Config</button>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Coming Soon</h2>
+        <ul class="muted">
+          <li>KV editor for departments</li>
+          <li>Simulate user membership</li>
+          <li>Mass logout</li>
+          <li>Emit debug logs</li>
+          <li>Restart login system via Cloudflare</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>KV Editor</h2>
+        <div class="row">
+          <label for="kvPrefix">Prefix</label>
+          <input id="kvPrefix" type="text" placeholder="e.g. CFG: or leave empty for all" style="max-width:300px">
+          <button id="kvRefresh" class="btn" type="button">Refresh</button>
+          <button id="kvNew" class="btn" type="button">New</button>
+        </div>
+        <div class="row" style="align-items:flex-start; gap:16px">
+          <div style="flex:1; min-width:220px">
+            <label>Keys</label>
+            <div id="kvList" style="max-height:260px; overflow:auto; border:1px solid var(--border); border-radius:8px; padding:6px"></div>
+            <div class="row" style="margin-top:8px">
+              <button id="kvMore" class="btn" type="button">Load more</button>
+            </div>
+          </div>
+          <div style="flex:2; min-width:320px">
+            <label for="kvKey">Key</label>
+            <input id="kvKey" type="text" placeholder="Key name" />
+            <label for="kvValue">Value</label>
+            <textarea id="kvValue" rows="8" placeholder="Raw value (JSON or text)"></textarea>
+            <div class="row" style="margin-top:8px">
+              <button id="kvSave" class="btn primary" type="button">Save</button>
+              <button id="kvDelete" class="btn" type="button">Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Departments KV <span id="dkvEnv" class="muted" style="font-size:0.9em"></span></h2>
+        <p class="muted">Manage the six fixed keys. Values default to an object: <code>{}</code>. This panel reads from your current environment's KV binding.</p>
+        <div class="row" style="align-items:flex-start; gap:16px; flex-wrap:wrap">
+          <div style="flex:1; min-width:260px">
+            <label for="dkv_pbp">pbp</label>
+            <textarea id="dkv_pbp" rows="4" placeholder="{}"></textarea>
+          </div>
+          <div style="flex:1; min-width:260px">
+            <label for="dkv_pbf">pbf</label>
+            <textarea id="dkv_pbf" rows="4" placeholder="{}"></textarea>
+          </div>
+          <div style="flex:1; min-width:260px">
+            <label for="dkv_psp">psp</label>
+            <textarea id="dkv_psp" rows="4" placeholder="{}"></textarea>
+          </div>
+          <div style="flex:1; min-width:260px">
+            <label for="dkv_acso">acso</label>
+            <textarea id="dkv_acso" rows="4" placeholder="{}"></textarea>
+          </div>
+          <div style="flex:1; min-width:260px">
+            <label for="dkv_dot">dot</label>
+            <textarea id="dkv_dot" rows="4" placeholder="{}"></textarea>
+          </div>
+          <div style="flex:1; min-width:260px">
+            <label for="dkv_staff">staff</label>
+            <textarea id="dkv_staff" rows="4" placeholder="{}"></textarea>
+          </div>
+        </div>
+        <div class="row" style="margin-top:8px">
+          <button id="dkvRefresh" class="btn" type="button">Refresh</button>
+          <button id="dkvSaveAll" class="btn primary" type="button">Save All</button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="toasts.js"></script>
+  <script src="notify.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

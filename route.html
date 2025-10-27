@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Choose Destination</title>
+  <link rel="icon" type="image/png" href="https://cdn2.contentltd.net/acrp%20(2).png" sizes="32x32" />
+  <style>
+    :root { --bg:#0b1020; --panel:#121a33; --border:#243055; --muted:#a9b4d8; --text:#e8eefc; --accent:#2a8242; --btn:#223059; --btn-border:#2d3d6e; }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text)}
+    main{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+    .card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:20px;max-width:560px;width:100%;}
+    h1{margin:0 0 12px 0}
+    p{margin:0 0 16px 0;color:var(--muted)}
+    .row{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{background:var(--btn);color:var(--text);border:1px solid var(--btn-border);border-radius:6px;padding:10px 14px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+    .btn.primary{background:var(--accent)}
+  </style>
+</head>
+<body>
+  <main>
+    <div class="card">
+      <h1>Where do you want to go?</h1>
+      <p>Please choose your destination. You'll be redirected to sign in and then returned to your choice.</p>
+      <div class="row">
+        <a id="goCad" class="btn primary" href="#">Department Information System</a>
+        <a id="goAdmin" class="btn" href="#">Admin Panel</a>
+      </div>
+    </div>
+  </main>
+  <script src="toasts.js"></script>
+  <script src="notify.js"></script>
+  <script>
+    (function(){
+      const isProd = location.hostname === 'alleghenycountyroleplay.com' || location.hostname.endsWith('.alleghenycountyroleplay.com');
+      const API = isProd ? 'https://cadapi.alleghenycountyroleplay.com' : 'http://127.0.0.1:8787';
+      const origin = location.origin;
+      const cad = origin + '/cad.html';
+      const admin = origin + '/admin.html';
+      const goCad = document.getElementById('goCad');
+      const goAdmin = document.getElementById('goAdmin');
+      function nav(ret){
+        try{ location.href = API + '/login?return=' + encodeURIComponent(ret); }catch{ location.href = API + '/login'; }
+      }
+      goCad?.addEventListener('click', (e)=>{ e.preventDefault(); nav(origin); });
+      goAdmin?.addEventListener('click', (e)=>{ e.preventDefault(); nav(admin); });
+    })();
+  </script>
+</body>
+</html>
