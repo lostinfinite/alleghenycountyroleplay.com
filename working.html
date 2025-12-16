@@ -101,7 +101,9 @@
       opacity: 0;
       animation: fadeIn 0.8s ease-out 0.2s forwards;
     }
-
+    #footer-container {
+      display: none !important;
+    }
     .subtitle {
       font-size: clamp(1rem, 2vw, 1.2rem);
       font-weight: 300;
@@ -148,7 +150,9 @@
     </div>
   <h1><span id="typewriter" aria-live="polite"></span><span class="cursor" aria-hidden="true">|</span></h1>
   <p class="subtitle">We are making renovations! Check back later</p>
-  </div>
+  
+  <!-- Live Transit Test Panel -->
+ 
   <script>
     (function () {
       const el = document.getElementById('typewriter');
@@ -250,5 +254,114 @@
       setTimeout(runCycle, 1600);
     })();
   </script>
+  
+  <!-- Transit System Test Script -->
+  <script>
+    let logElement, statusElement, statusText;
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      logElement = document.getElementById('liveData');
+      statusElement = document.getElementById('apiStatus');
+      statusText = document.getElementById('statusText');
+      
+      // Start monitoring
+      monitorTransitSystem();
+      setInterval(monitorTransitSystem, 3000);
+    });
+    
+    function log(message) {
+      if (!logElement) return;
+      const timestamp = new Date().toLocaleTimeString();
+      logElement.textContent += `[${timestamp}] ${message}\n`;
+      logElement.scrollTop = logElement.scrollHeight;
+    }
+    
+    function updateStatus(status, color) {
+      if (!statusElement || !statusText) return;
+      statusText.textContent = status;
+      statusElement.style.background = color;
+    }
+    
+    function monitorTransitSystem() {
+      try {
+        const driverState = localStorage.getItem('PTA_DRIVER_STATE');
+        
+        if (!driverState) {
+          updateStatus('No active transit data', 'rgba(128,128,128,.3)');
+          return;
+        }
+        
+        const state = JSON.parse(driverState);
+        
+        if (state.tripActive && state.route) {
+          updateStatus(`LIVE: Route ${state.route.id} - Bus #${state.busNumber || '0000'}`, 'rgba(34,197,94,.3)');
+          
+          const currentStop = state.route.stops[state.currentStopIndex || 0];
+          const nextStopIndex = ((state.currentStopIndex || 0) + 1) % state.route.stops.length;
+          const nextStop = state.route.stops[nextStopIndex];
+          
+          log(`🔴 LIVE: Route ${state.route.id} | Current: ${currentStop} | Next: ${nextStop}`);
+        } else {
+          updateStatus('Driver interface online but no active trip', 'rgba(245,158,11,.3)');
+        }
+        
+      } catch (error) {
+        updateStatus('Error reading transit data', 'rgba(239,68,68,.3)');
+        log(`❌ Error: ${error.message}`);
+      }
+    }
+    
+    function testAPI() {
+      log('🧪 Testing API integration...');
+      
+      // Test localStorage access
+      try {
+        const testData = { test: 'data', timestamp: Date.now() };
+        localStorage.setItem('PTA_TEST', JSON.stringify(testData));
+        const retrieved = localStorage.getItem('PTA_TEST');
+        localStorage.removeItem('PTA_TEST');
+        
+        if (retrieved) {
+          log('✅ localStorage API access working');
+        } else {
+          log('❌ localStorage API access failed');
+        }
+      } catch (e) {
+        log(`❌ localStorage error: ${e.message}`);
+      }
+      
+      // Test plan.html integration
+      if (typeof loadLiveTransitData === 'function') {
+        log('✅ plan.html API integration available');
+      } else {
+        log('⚠️  plan.html API integration not loaded');
+      }
+      
+      // Test current state
+      const driverState = localStorage.getItem('PTA_DRIVER_STATE');
+      if (driverState) {
+        try {
+          const parsed = JSON.parse(driverState);
+          log(`📊 Current state: ${Object.keys(parsed).join(', ')}`);
+        } catch (e) {
+          log(`❌ State parse error: ${e.message}`);
+        }
+      } else {
+        log('📭 No current driver state found');
+      }
+      
+      log('🧪 API test complete');
+    }
+    
+    function clearLog() {
+      if (logElement) logElement.textContent = '';
+      log('🗑️  Log cleared');
+    }
+  </script>
+  
+  <script src="toasts.js"></script>
+  <script src="notify.js"></script>
+  <script src="snow.js"></script>
+  <script src="master.js"></script>
 </body>
 </html>

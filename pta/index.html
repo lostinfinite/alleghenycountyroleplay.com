@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PTA - Pittsburgh Transit Authority</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto Condensed', system-ui, -apple-system, 'Segoe UI', sans-serif;
+            background: #1a1a1a;
+            color: #e0e0e0;
+        }
+
+        .header {
+            background: #0d1117;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            border-bottom: 1px solid #21262d;
+        }
+
+        .header img {
+            height: 32px;
+        }
+
+        .buslines-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 70vh;
+            padding: 40px 40px 120px 40px; /* Reduced top padding */
+        }
+
+        .buslines-wrapper {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+            max-width: 1200px;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+
+        .busline {
+            background: #21262d;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .busline.collapsed {
+            width: 80px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        .busline.expanded {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            padding: 40px;
+            background: #1a1a1a;
+            z-index: 1000;
+            border: none;
+            border-radius: 0;
+        }
+
+        .route-number {
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            background: #0066cc;
+            border-radius: 8px;
+            width: 60px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: auto;
+            position: relative;
+        }
+
+        .route-number.yellow {
+            background: #ffd700;
+            color: #333;
+        }
+
+        .route-number.purple {
+            background: #663399;
+        }
+
+        .expanded-content {
+            display: none;
+            width: 100%;
+            padding: 20px;
+            position: relative;
+        }
+
+        .busline.expanded .expanded-content {
+            display: flex;
+        }
+
+        .route-info {
+            width: 200px;
+            padding-right: 20px;
+        }
+
+        .route-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: #f0f6fc;
+            margin-bottom: 0;
+        }
+
+        .stops-container {
+            flex: 1;
+            padding-left: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stops-header {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #f0f6fc;
+            flex-shrink: 0;
+        }
+
+        .stops-list {
+            flex: 1;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .stop-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #30363d;
+        }
+
+        .stop-item:last-child {
+            border-bottom: none;
+        }
+
+        .stop-number {
+            background: #0066cc;
+            color: white;
+            border-radius: 4px;
+            padding: 4px 8px;
+            font-size: 12px;
+            font-weight: bold;
+            min-width: 30px;
+            text-align: center;
+            margin-right: 12px;
+        }
+
+        .stop-name {
+            font-size: 14px;
+            color: #e6edf3;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #ff4444;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            width: 30px;
+            height: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-btn:hover {
+            background: #cc0000;
+        }
+
+        .stops-list::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .stops-list::-webkit-scrollbar-track {
+            background: #161b22;
+        }
+
+        .stops-list::-webkit-scrollbar-thumb {
+            background: #30363d;
+        }
+
+        @media (max-width: 1000px) {
+            .buslines-wrapper {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .busline.expanded {
+                padding: 20px;
+            }
+
+            .expanded-content {
+                flex-direction: column;
+            }
+
+            .route-info {
+                width: 100%;
+                padding-right: 0;
+                border-right: none;
+                border-bottom: 1px solid #30363d;
+                padding-bottom: 15px;
+                margin-bottom: 15px;
+            }
+
+            .stops-container {
+                padding-left: 0;
+            }
+
+            .stops-list {
+                flex: 1;
+            }
+        }
+
+        /* Footer styles */
+        footer {
+            background: #0d0d0d;
+            color: #f0f0f0;
+            padding: 3rem 1rem;
+            font-size: 0.9rem;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+        }
+        footer .cols {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+            text-align: left;
+        }
+        footer h3 {
+            color: #FFBB00;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+        footer a {
+            color: #FFBB00;
+            text-decoration: none;
+        }
+        footer .pledge {
+            max-width: 900px;
+            margin: 1rem auto 0;
+            text-align: center;
+            color: #ddd;
+            line-height: 1.6;
+        }
+        footer .copyright {
+            margin-top: 2rem;
+            border-top: 1px solid #333;
+            padding-top: 1.5rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="https://cdn.alleghenycountyroleplay.com/pta127x60.png" alt="PTA Logo" style="height: 48px;">
+    </div>
+
+    <div class="buslines-container">
+        <div class="buslines-wrapper">
+            <!-- Route 1 -->
+            <div class="busline collapsed" data-route="1">
+                <div class="route-number">1</div>
+                <div class="expanded-content">
+                    <div class="route-info">
+                        <div class="route-name">River City</div>
+                    </div>
+                    <div class="stops-container">
+                        <div class="stops-header">All Stops</div>
+                        <div class="stops-list">
+                            <div class="stop-item"><div class="stop-number">1</div><div class="stop-name">Park St</div></div>
+                            <div class="stop-item"><div class="stop-number">2</div><div class="stop-name">Georgia + Cline</div></div>
+                            <div class="stop-item"><div class="stop-number">3</div><div class="stop-name">Main + Southern</div></div>
+                            <div class="stop-item"><div class="stop-number">4</div><div class="stop-name">Durham + Liberty</div></div>
+                            <div class="stop-item"><div class="stop-number">5</div><div class="stop-name">2063 Freedom Ave</div></div>
+                            <div class="stop-item"><div class="stop-number">6</div><div class="stop-name">2161 Sandstone Rd</div></div>
+                            <div class="stop-item"><div class="stop-number">7</div><div class="stop-name">Main + Orchard</div></div>
+                            <div class="stop-item"><div class="stop-number">8</div><div class="stop-name">Cross St</div></div>
+                            <div class="stop-item"><div class="stop-number">9</div><div class="stop-name">Colonial Dr</div></div>
+                            <div class="stop-item"><div class="stop-number">10</div><div class="stop-name">Riverside + Colonial FS</div></div>
+                            <div class="stop-item"><div class="stop-number">11</div><div class="stop-name">Riverside + Fairfax NS</div></div>
+                            <div class="stop-item"><div class="stop-number">12</div><div class="stop-name">Riverside + Independence</div></div>
+                            <div class="stop-item"><div class="stop-number">13</div><div class="stop-name">UPMC Mercy Hospital</div></div>
+                            <div class="stop-item"><div class="stop-number">14</div><div class="stop-name">Independence + Cross</div></div>
+                        </div>
+                    </div>
+                    <button class="close-btn">&times;</button>
+                </div>
+            </div>
+
+            <!-- Route P52 -->
+            <div class="busline collapsed" data-route="P52">
+                <div class="route-number purple">P52</div>
+                <div class="expanded-content">
+                    <div class="route-info">
+                        <div class="route-name">Springfield Flyer</div>
+                    </div>
+                    <div class="stops-container">
+                        <div class="stops-header">All Stops</div>
+                        <div class="stops-list">
+                            <div class="stop-item"><div class="stop-number">1</div><div class="stop-name">Park St</div></div>
+                            <div class="stop-item"><div class="stop-number">2</div><div class="stop-name">Riverside + Fairfax NS</div></div>
+                            <div class="stop-item"><div class="stop-number">3</div><div class="stop-name">Riverside + Colonial NS</div></div>
+                            <div class="stop-item"><div class="stop-number">4</div><div class="stop-name">Riverside + Sprint Creek Rd</div></div>
+                            <div class="stop-item"><div class="stop-number">5</div><div class="stop-name">801 Riverside Dr</div></div>
+                            <div class="stop-item"><div class="stop-number">6</div><div class="stop-name">9081 Maple Street</div></div>
+                            <div class="stop-item"><div class="stop-number">7</div><div class="stop-name">Spring Creek Rd + Iron</div></div>
+                            <div class="stop-item"><div class="stop-number">8</div><div class="stop-name">Iron + Maple</div></div>
+                            <div class="stop-item"><div class="stop-number">9</div><div class="stop-name">Maple + PSP Station</div></div>
+                            <div class="stop-item"><div class="stop-number">10</div><div class="stop-name">Maple + HWY 55 South (FS)</div></div>
+                            <div class="stop-item"><div class="stop-number">11</div><div class="stop-name">Oak Valley + Maple (FS)</div></div>
+                            <div class="stop-item"><div class="stop-number">12</div><div class="stop-name">Oak Valley + Grant</div></div>
+                            <div class="stop-item"><div class="stop-number">13</div><div class="stop-name">1107 Elm St</div></div>
+                            <div class="stop-item"><div class="stop-number">14</div><div class="stop-name">1104 Cedar St</div></div>
+                            <div class="stop-item"><div class="stop-number">15</div><div class="stop-name">Oak Valley + Cedar</div></div>
+                            <div class="stop-item"><div class="stop-number">16</div><div class="stop-name">Cedar St</div></div>
+                            <div class="stop-item"><div class="stop-number">17</div><div class="stop-name">Cedar + Maple</div></div>
+                            <div class="stop-item"><div class="stop-number">18</div><div class="stop-name">Elm + Grant</div></div>
+                            <div class="stop-item"><div class="stop-number">19</div><div class="stop-name">Oak Valley + Terrace</div></div>
+                            <div class="stop-item"><div class="stop-number">20</div><div class="stop-name">Maple + HWY 55 South (NS)</div></div>
+                            <div class="stop-item"><div class="stop-number">21</div><div class="stop-name">Industrial Park Station Stop A (HWY 55 South Busway Stop A)</div></div>
+                            <div class="stop-item"><div class="stop-number">22</div><div class="stop-name">Herron Station Stop A (HWY 55 North Busway Stop A)</div></div>
+                            <div class="stop-item"><div class="stop-number">23</div><div class="stop-name">Herron Station Stop B (HWY 55 North Busway Stop B)</div></div>
+                            <div class="stop-item"><div class="stop-number">24</div><div class="stop-name">Industrial Park Station Stop B (HWY 55 South Busway Off-Ramp / Stop B)</div></div>
+                            <div class="stop-item"><div class="stop-number">25</div><div class="stop-name">311 Freedom Ave</div></div>
+                            <div class="stop-item"><div class="stop-number">26</div><div class="stop-name">PTAX Freedom + Cline FS</div></div>
+                            <div class="stop-item"><div class="stop-number">27</div><div class="stop-name">Freedom + Riverside FS</div></div>
+                            <div class="stop-item"><div class="stop-number">28</div><div class="stop-name">Park + Orchard</div></div>
+                            <div class="stop-item"><div class="stop-number">29</div><div class="stop-name">Park St</div></div>
+                        </div>
+                    </div>
+                    <button class="close-btn">&times;</button>
+                </div>
+            </div>
+
+            <!-- Route P51 -->
+            <div class="busline collapsed" data-route="P51">
+                <div class="route-number purple">P51</div>
+                <div class="expanded-content">
+                    <div class="route-info">
+                        <div class="route-name">Springfield</div>
+                    </div>
+                    <div class="stops-container">
+                        <div class="stops-header">All Stops</div>
+                        <div class="stops-list">
+                            <div class="stop-item"><div class="stop-number">1</div><div class="stop-name">Freedom + Riverside</div></div>
+                            <div class="stop-item"><div class="stop-number">2</div><div class="stop-name">Cross St PTAX Station Stop A</div></div>
+                            <div class="stop-item"><div class="stop-number">3</div><div class="stop-name">Cross St</div></div>
+                            <div class="stop-item"><div class="stop-number">4</div><div class="stop-name">Main + Orchard</div></div>
+                            <div class="stop-item"><div class="stop-number">5</div><div class="stop-name">Park St</div></div>
+                            <div class="stop-item"><div class="stop-number">6</div><div class="stop-name">Freedom + Durham FS</div></div>
+                            <div class="stop-item"><div class="stop-number">7</div><div class="stop-name">Freedom + Liberty</div></div>
+                            <div class="stop-item"><div class="stop-number">8</div><div class="stop-name">2161 Sandstone Rd</div></div>
+                            <div class="stop-item"><div class="stop-number">9</div><div class="stop-name">Independence + Park</div></div>
+                            <div class="stop-item"><div class="stop-number">10</div><div class="stop-name">UPMC Mercy Hospital</div></div>
+                            <div class="stop-item"><div class="stop-number">11</div><div class="stop-name">4031 Independence Prkwy</div></div>
+                            <div class="stop-item"><div class="stop-number">12</div><div class="stop-name">4061 Fairfax Rd</div></div>
+                            <div class="stop-item"><div class="stop-number">13</div><div class="stop-name">Medical Way (Outbound Stop)</div></div>
+                            <div class="stop-item"><div class="stop-number">14</div><div class="stop-name">Medical Way + Fairfax</div></div>
+                            <div class="stop-item"><div class="stop-number">15</div><div class="stop-name">406 Fairfax Rd</div></div>
+                            <div class="stop-item"><div class="stop-number">16</div><div class="stop-name">4061 Fairfax Rd (Outbound Stop)</div></div>
+                            <div class="stop-item"><div class="stop-number">17</div><div class="stop-name">405 Fairfax Rd</div></div>
+                            <div class="stop-item"><div class="stop-number">18</div><div class="stop-name">4052 Fairfax Rd</div></div>
+                            <div class="stop-item"><div class="stop-number">19</div><div class="stop-name">Riverside + Colonial</div></div>
+                            <div class="stop-item"><div class="stop-number">20</div><div class="stop-name">Franklin + Pineview</div></div>
+                            <div class="stop-item"><div class="stop-number">21</div><div class="stop-name">Pineview Cir</div></div>
+                            <div class="stop-item"><div class="stop-number">22</div><div class="stop-name">Pineview + Franklin</div></div>
+                            <div class="stop-item"><div class="stop-number">23</div><div class="stop-name">Franklin Ct</div></div>
+                            <div class="stop-item"><div class="stop-number">24</div><div class="stop-name">Franklin + Joyner</div></div>
+                            <div class="stop-item"><div class="stop-number">25</div><div class="stop-name">7061 Franklin Ct</div></div>
+                            <div class="stop-item"><div class="stop-number">26</div><div class="stop-name">Riverside + Colonial FS</div></div>
+                            <div class="stop-item"><div class="stop-number">27</div><div class="stop-name">Riverside + Fairfax NS</div></div>
+                            <div class="stop-item"><div class="stop-number">28</div><div class="stop-name">4071 Riverside Drive</div></div>
+                            <div class="stop-item"><div class="stop-number">29</div><div class="stop-name">Employee Stop</div></div>
+                            <div class="stop-item"><div class="stop-number">30</div><div class="stop-name">Riverside + Springcreek</div></div>
+                            <div class="stop-item"><div class="stop-number">31</div><div class="stop-name">801 Riverside Dr</div></div>
+                            <div class="stop-item"><div class="stop-number">32</div><div class="stop-name">Industrial Park Station Stop A (HWY 55 South Busway Stop A)</div></div>
+                            <div class="stop-item"><div class="stop-number">33</div><div class="stop-name">Herron Station Stop A (HWY 55 North Busway Stop A)</div></div>
+                            <div class="stop-item"><div class="stop-number">34</div><div class="stop-name">Herron Station Stop B (HWY 55 North Busway Stop B)</div></div>
+                            <div class="stop-item"><div class="stop-number">35</div><div class="stop-name">Maple + HWY 55 South FS</div></div>
+                            <div class="stop-item"><div class="stop-number">36</div><div class="stop-name">Oak Valley + Maple</div></div>
+                            <div class="stop-item"><div class="stop-number">37</div><div class="stop-name">Oak Valley + Grant</div></div>
+                            <div class="stop-item"><div class="stop-number">38</div><div class="stop-name">High Rock State Park NS</div></div>
+                            <div class="stop-item"><div class="stop-number">39</div><div class="stop-name">High Rock State Park FS</div></div>
+                            <div class="stop-item"><div class="stop-number">40</div><div class="stop-name">Oak Valley + Terrace</div></div>
+                            <div class="stop-item"><div class="stop-number">41</div><div class="stop-name">Oak Valley + Cedar</div></div>
+                            <div class="stop-item"><div class="stop-number">42</div><div class="stop-name">Cedar St</div></div>
+                            <div class="stop-item"><div class="stop-number">43</div><div class="stop-name">Cedar + Maple</div></div>
+                            <div class="stop-item"><div class="stop-number">44</div><div class="stop-name">908 Maple St</div></div>
+                            <div class="stop-item"><div class="stop-number">45</div><div class="stop-name">Spring Creek + Iron</div></div>
+                            <div class="stop-item"><div class="stop-number">46</div><div class="stop-name">Iron + Maple</div></div>
+                            <div class="stop-item"><div class="stop-number">47</div><div class="stop-name">903 Spring Creek Rd</div></div>
+                            <div class="stop-item"><div class="stop-number">48</div><div class="stop-name">Riverside + Colonial FS</div></div>
+                            <div class="stop-item"><div class="stop-number">49</div><div class="stop-name">Riverside + Fairfax NS</div></div>
+                            <div class="stop-item"><div class="stop-number">50</div><div class="stop-name">Riverside + Independence</div></div>
+                            <div class="stop-item"><div class="stop-number">51</div><div class="stop-name">Riverside + Orchard</div></div>
+                            <div class="stop-item"><div class="stop-number">52</div><div class="stop-name">Park + Orchard</div></div>
+                            <div class="stop-item"><div class="stop-number">53</div><div class="stop-name">Park St</div></div>
+                            <div class="stop-item"><div class="stop-number">54</div><div class="stop-name">Main + Orchard</div></div>
+                            <div class="stop-item"><div class="stop-number">55</div><div class="stop-name">Main + Grand</div></div>
+                            <div class="stop-item"><div class="stop-number">56</div><div class="stop-name">Main + Freedom</div></div>
+                            <div class="stop-item"><div class="stop-number">57</div><div class="stop-name">2032 Freedom Ave</div></div>
+                            <div class="stop-item"><div class="stop-number">58</div><div class="stop-name">Freedom + Riverside</div></div>
+                        </div>
+                    </div>
+                    <button class="close-btn">&times;</button>
+                </div>
+            </div>
+
+            <!-- Route 3 -->
+            <div class="busline collapsed" data-route="3">
+                <div class="route-number">3</div>
+                <div class="expanded-content">
+                    <div class="route-info">
+                        <div class="route-name">High Rock Park</div>
+                    </div>
+                    <div class="stops-container">
+                        <div class="stops-header">All Stops</div>
+                        <div class="stops-list">
+                            <div class="stop-item"><div class="stop-number">1</div><div class="stop-name">Park St</div></div>
+                            <div class="stop-item"><div class="stop-number">2</div><div class="stop-name">Georgia + Cline</div></div>
+                            <div class="stop-item"><div class="stop-number">3</div><div class="stop-name">Main + Southern</div></div>
+                            <div class="stop-item"><div class="stop-number">4</div><div class="stop-name">Durham + Liberty</div></div>
+                            <div class="stop-item"><div class="stop-number">5</div><div class="stop-name">2063 Freedom Ave</div></div>
+                            <div class="stop-item"><div class="stop-number">6</div><div class="stop-name">2161 Sandstone Rd</div></div>
+                            <div class="stop-item"><div class="stop-number">7</div><div class="stop-name">Main + Orchard</div></div>
+                            <div class="stop-item"><div class="stop-number">8</div><div class="stop-name">Cross St</div></div>
+                            <div class="stop-item"><div class="stop-number">9</div><div class="stop-name">High Rock State Park FS</div></div>
+                            <div class="stop-item"><div class="stop-number">10</div><div class="stop-name">High Rock State Park Gate #2</div></div>
+                            <div class="stop-item"><div class="stop-number">11</div><div class="stop-name">High Rock State Park NS</div></div>
+                            <div class="stop-item"><div class="stop-number">12</div><div class="stop-name">Colonial Dr</div></div>
+                            <div class="stop-item"><div class="stop-number">13</div><div class="stop-name">Riverside + Colonial FS</div></div>
+                            <div class="stop-item"><div class="stop-number">14</div><div class="stop-name">Riverside + Fairfax NS</div></div>
+                            <div class="stop-item"><div class="stop-number">15</div><div class="stop-name">Riverside + Independence</div></div>
+                        </div>
+                    </div>
+                    <button class="close-btn">&times;</button>
+                </div>
+            </div>
+
+            <!-- Route 61A -->
+            <div class="busline collapsed" data-route="61A">
+                <div class="route-number">61A</div>
+                <div class="expanded-content">
+                    <div class="route-info">
+                        <div class="route-name">Uptown Loop</div>
+                    </div>
+                    <div class="stops-container">
+                        <div class="stops-header">All Stops</div>
+                        <div class="stops-list">
+                            <div class="stop-item"><div class="stop-number">1</div><div class="stop-name">Park St</div></div>
+                            <div class="stop-item"><div class="stop-number">2</div><div class="stop-name">PTAX Main + Freedom Station NS</div></div>
+                            <div class="stop-item"><div class="stop-number">3</div><div class="stop-name">PTAX Main + Freedom Station FS</div></div>
+                            <div class="stop-item"><div class="stop-number">4</div><div class="stop-name">PTAX Freedom + Sandstone Station</div></div>
+                            <div class="stop-item"><div class="stop-number">5</div><div class="stop-name">2051 Sandstone</div></div>
+                            <div class="stop-item"><div class="stop-number">6</div><div class="stop-name">PTAX Freedom + Durham Station</div></div>
+                            <div class="stop-item"><div class="stop-number">7</div><div class="stop-name">2032 Freedom Ave</div></div>
+                            <div class="stop-item"><div class="stop-number">8</div><div class="stop-name">Freedom + Riverside</div></div>
+                            <div class="stop-item"><div class="stop-number">9</div><div class="stop-name">PTAX Freedom + Madison Station</div></div>
+                            <div class="stop-item"><div class="stop-number">10</div><div class="stop-name">PTAX Cross + Freedom Station</div></div>
+                            <div class="stop-item"><div class="stop-number">11</div><div class="stop-name">3011 Madison Court</div></div>
+                            <div class="stop-item"><div class="stop-number">12</div><div class="stop-name">PTAX Madison + Freedom Stop</div></div>
+                            <div class="stop-item"><div class="stop-number">13</div><div class="stop-name">Freedom + Cline FS</div></div>
+                            <div class="stop-item"><div class="stop-number">14</div><div class="stop-name">PTA Cross Street Station (Major Depot #2)</div></div>
+                            <div class="stop-item"><div class="stop-number">15</div><div class="stop-name">Cross St</div></div>
+                            <div class="stop-item"><div class="stop-number">16</div><div class="stop-name">Colonial Dr</div></div>
+                            <div class="stop-item"><div class="stop-number">17</div><div class="stop-name">Riverside + Colonial</div></div>
+                            <div class="stop-item"><div class="stop-number">18</div><div class="stop-name">Riverside + Fairfax</div></div>
+                            <div class="stop-item"><div class="stop-number">19</div><div class="stop-name">Riverside + Independence</div></div>
+                            <div class="stop-item"><div class="stop-number">20</div><div class="stop-name">UPMC Mercy Hospital</div></div>
+                            <div class="stop-item"><div class="stop-number">21</div><div class="stop-name">Independence Strip Mall</div></div>
+                            <div class="stop-item"><div class="stop-number">22</div><div class="stop-name">Main + Orchard</div></div>
+                        </div>
+                    </div>
+                    <button class="close-btn">&times;</button>
+                </div>
+            </div>
+
+            <!-- Route Y1 -->
+            <div class="busline collapsed" data-route="Y1">
+                <div class="route-number yellow">Y1</div>
+                <div class="expanded-content">
+                    <div class="route-info">
+                        <div class="route-name">Suburb Connector</div>
+                    </div>
+                    <div class="stops-container">
+                        <div class="stops-header">All Stops</div>
+                        <div class="stops-list">
+                            <div class="stop-item"><div class="stop-number">1</div><div class="stop-name">Freedom + Riverside</div></div>
+                            <div class="stop-item"><div class="stop-number">2</div><div class="stop-name">Riverside + Orchard</div></div>
+                            <div class="stop-item"><div class="stop-number">3</div><div class="stop-name">Park St</div></div>
+                            <div class="stop-item"><div class="stop-number">4</div><div class="stop-name">Independence + Riverside</div></div>
+                            <div class="stop-item"><div class="stop-number">5</div><div class="stop-name">Riverside Drive (Eagle Construction Stop A)</div></div>
+                            <div class="stop-item"><div class="stop-number">6</div><div class="stop-name">4071 Riverside Drive (Eagle Construction Stop B)</div></div>
+                            <div class="stop-item"><div class="stop-number">7</div><div class="stop-name">Riverside + Fairfax</div></div>
+                            <div class="stop-item"><div class="stop-number">8</div><div class="stop-name">Riverside + Colonial NS</div></div>
+                            <div class="stop-item"><div class="stop-number">9</div><div class="stop-name">Franklin + Pineview</div></div>
+                            <div class="stop-item"><div class="stop-number">10</div><div class="stop-name">Franklin + Academy</div></div>
+                            <div class="stop-item"><div class="stop-number">11</div><div class="stop-name">7012 Franklin Court</div></div>
+                            <div class="stop-item"><div class="stop-number">12</div><div class="stop-name">Emerson + Franklin FS</div></div>
+                            <div class="stop-item"><div class="stop-number">13</div><div class="stop-name">Emerson + Franklin</div></div>
+                            <div class="stop-item"><div class="stop-number">14</div><div class="stop-name">7052 Franklin Court</div></div>
+                            <div class="stop-item"><div class="stop-number">15</div><div class="stop-name">Franklin + Joyner</div></div>
+                            <div class="stop-item"><div class="stop-number">16</div><div class="stop-name">Pineview Circle</div></div>
+                            <div class="stop-item"><div class="stop-number">17</div><div class="stop-name">Pineview + Franklin</div></div>
+                            <div class="stop-item"><div class="stop-number">18</div><div class="stop-name">7052 Franklin Court</div></div>
+                            <div class="stop-item"><div class="stop-number">19</div><div class="stop-name">Franklin + Joyner</div></div>
+                            <div class="stop-item"><div class="stop-number">20</div><div class="stop-name">Joyner + Franklin</div></div>
+                            <div class="stop-item"><div class="stop-number">21</div><div class="stop-name">Franklin + Colonial</div></div>
+                            <div class="stop-item"><div class="stop-number">22</div><div class="stop-name">Colonial + Riverside</div></div>
+                            <div class="stop-item"><div class="stop-number">23</div><div class="stop-name">Riverside + Colonial FS</div></div>
+                            <div class="stop-item"><div class="stop-number">24</div><div class="stop-name">Riverside + Fairfax NS</div></div>
+                            <div class="stop-item"><div class="stop-number">25</div><div class="stop-name">406 Fairfax Rd</div></div>
+                            <div class="stop-item"><div class="stop-number">26</div><div class="stop-name">4061 Fairfax Rd (Outbound Stop)</div></div>
+                            <div class="stop-item"><div class="stop-number">27</div><div class="stop-name">Arbor + Valley</div></div>
+                            <div class="stop-item"><div class="stop-number">28</div><div class="stop-name">Arbor + Franklin</div></div>
+                            <div class="stop-item"><div class="stop-number">29</div><div class="stop-name">7022 Franklin Court</div></div>
+                            <div class="stop-item"><div class="stop-number">30</div><div class="stop-name">Colonial + Riverside</div></div>
+                            <div class="stop-item"><div class="stop-number">31</div><div class="stop-name">Riverside + Spring Creek</div></div>
+                            <div class="stop-item"><div class="stop-number">32</div><div class="stop-name">801 Riverside Drive</div></div>
+                            <div class="stop-item"><div class="stop-number">33</div><div class="stop-name">903 Spring Creek Road</div></div>
+                            <div class="stop-item"><div class="stop-number">34</div><div class="stop-name">Spring Creek + Iron</div></div>
+                            <div class="stop-item"><div class="stop-number">35</div><div class="stop-name">Spring Creek + Lakeview</div></div>
+                            <div class="stop-item"><div class="stop-number">36</div><div class="stop-name">Lakeview + Maple</div></div>
+                            <div class="stop-item"><div class="stop-number">37</div><div class="stop-name">9081 Maple St</div></div>
+                            <div class="stop-item"><div class="stop-number">38</div><div class="stop-name">Maple + Iron</div></div>
+                            <div class="stop-item"><div class="stop-number">39</div><div class="stop-name">PSP Station</div></div>
+                            <div class="stop-item"><div class="stop-number">40</div><div class="stop-name">Maple + Spring Creek</div></div>
+                            <div class="stop-item"><div class="stop-number">41</div><div class="stop-name">Riverside + Colonial</div></div>
+                            <div class="stop-item"><div class="stop-number">42</div><div class="stop-name">Riverside + Fairfax NS</div></div>
+                            <div class="stop-item"><div class="stop-number">43</div><div class="stop-name">Riverside + Independence</div></div>
+                            <div class="stop-item"><div class="stop-number">44</div><div class="stop-name">Riverside + Orchard</div></div>
+                            <div class="stop-item"><div class="stop-number">45</div><div class="stop-name">2085 Freedom Ave</div></div>
+                            <div class="stop-item"><div class="stop-number">46</div><div class="stop-name">Freedom + Main FS</div></div>
+                            <div class="stop-item"><div class="stop-number">47</div><div class="stop-name">Durham + Liberty</div></div>
+                            <div class="stop-item"><div class="stop-number">48</div><div class="stop-name">Liberty + Freedom</div></div>
+                            <div class="stop-item"><div class="stop-number">49</div><div class="stop-name">Freedom + Riverside</div></div>
+                        </div>
+                    </div>
+                    <button class="close-btn">&times;</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const buslines = document.querySelectorAll('.busline');
+            
+            buslines.forEach(busline => {
+                busline.addEventListener('click', function(e) {
+                    // Don't trigger if clicking the close button
+                    if (e.target.classList.contains('close-btn')) return;
+                    
+                    // Close all other buslines
+                    buslines.forEach(other => {
+                        if (other !== busline) {
+                            other.classList.remove('expanded');
+                            other.classList.add('collapsed');
+                        }
+                    });
+                    
+                    // Toggle current busline
+                    if (busline.classList.contains('collapsed')) {
+                        busline.classList.remove('collapsed');
+                        busline.classList.add('expanded');
+                    }
+                });
+                
+                // Close button functionality
+                const closeBtn = busline.querySelector('.close-btn');
+                closeBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    busline.classList.remove('expanded');
+                    busline.classList.add('collapsed');
+                });
+            });
+        });
+    </script>
+
+    <footer style="background: #0d0d0d; color: #f0f0f0; padding: 3rem 1rem; font-size: 0.9rem;">
+        <div class="cols">
+            <div style="flex: 1; min-width: 250px;">
+                <h3 style="color: #FFBB00; margin-bottom: 1rem; font-size: 1.4rem;">Contact Us</h3>
+                <p style="line-height: 1.8; font-size: 1rem;">
+                    <a href="mailto:ownership@acrp.work" target="_blank" style="color: #FFBB00; text-decoration: none;">ownership@acrp.work</a>
+                </p>
+            </div>
+            <div style="flex: 1; min-width: 250px;">
+                <h3 style="color: #FFBB00; margin-bottom: 1rem; font-size: 1.4rem;">Share &amp; Connect</h3>
+                <ul style="list-style: none; padding: 0; margin: 0; line-height: 2; font-size: 1rem;">
+                    <li><a href="https://discord.gg/GS5Va3zEep" target="_blank" style="color: #FFBB00; text-decoration: none;">Join us on Discord</a></li>
+                    <li><a href="https://x.com/contentltd_rblx" target="_blank" style="color: #FFBB00; text-decoration: none;">Follow us on X</a></li>
+                </ul>
+            </div>
+            <div style="flex: 1; min-width: 250px;">
+                <h3 style="color: #FFBB00; margin-bottom: 1rem; font-size: 1.4rem;">Get Involved</h3>
+                <ul style="list-style: none; padding: 0; margin: 0; line-height: 2; font-size: 1rem;">
+                    <li><a href="../careers.html" style="color: #FFBB00; text-decoration: none;">Careers</a></li>
+                </ul>
+            </div>
+            <div style="flex: 1; min-width: 250px;">
+                <h3 style="color: #FFBB00; margin-bottom: 1rem; font-size: 1.4rem;">Legal</h3>
+                <ul style="list-style: none; padding: 0; margin: 0; line-height: 2; font-size: 1rem;">
+                    <li><a href="../terms.html" style="color: #FFBB00; text-decoration: none;">Terms of Service</a></li>
+                    <li><a href="../privacy.html" style="color: #FFBB00; text-decoration: none;">Privacy Policy</a></li>
+                    <li><a href="../community-standards.html" style="color: #FFBB00; text-decoration: none;">Community Standards</a></li>
+                </ul>
+            </div>
+        </div>
+        <p class="pledge" style="max-width: 900px; margin: 1rem auto 0; text-align: center; color: #ddd; line-height:1.6;">
+            🔒 We will NEVER under any circumstance sell or merge ACRP into a different community.
+        </p>
+        <div class="copyright">
+            &copy; 2025 Allegheny County Roleplay. All rights reserved. | Powered by
+            <a href="https://contentltd.xyz" style="color: #FFBB00; text-decoration: none;">ContentLTD</a>
+        </div>
+        <div style="width: 100%; height: 50px; background: url('https://cdn.itzcontent.com/footer45-pattern-acrp.svg') repeat-x; background-size: auto 100%; margin-top: 1rem;"></div>
+    </footer>
+    <script src="../snow.js"></script>
+    <script src="../master.js"></script>
+
+</body>
+</html>
