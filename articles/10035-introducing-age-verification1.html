@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>New Age Verification - Allegheny County Roleplay</title>
+
+	<link rel="icon" type="image/png" sizes="32x32" href="https://cdn2.contentltd.net/acrp%20(2).png">
+	<link rel="icon" type="image/png" sizes="16x16" href="https://cdn2.contentltd.net/acrp%20(2).png">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/assets/site.css">
+
+	<style>
+		:root {
+			--brand: #FFBB00;
+			--brand-900: #d69a00;
+			--bg: #0b0b0c;
+			--surface: #121214;
+			--card: #141417;
+			--text: #fff;
+			--muted: #bdbdbd;
+			--border: rgba(255, 255, 255, 0.08);
+			--shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+		}
+
+		body {
+			font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+			background: var(--bg);
+			color: var(--text);
+			line-height: 1.6;
+		}
+
+		a { color: var(--brand); text-decoration: none; }
+		a:hover { text-decoration: underline; }
+
+		.content {
+			max-width: 980px;
+			margin: 0 auto;
+			padding: 18px 20px 44px;
+		}
+
+		.helpbar {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 14px;
+			padding: 12px 16px;
+			border: 1px solid var(--border);
+			background: rgba(255, 255, 255, 0.02);
+			border-radius: 12px;
+		}
+
+		.breadcrumbs {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			display: flex;
+			flex-wrap: wrap;
+			gap: 8px;
+			align-items: center;
+			color: var(--muted);
+			font-size: 12px;
+		}
+
+		.breadcrumbs li { display: inline-flex; gap: 8px; align-items: center; }
+		.breadcrumbs li:not(:last-child)::after { content: '›'; color: var(--muted); }
+		.breadcrumbs a { color: var(--muted); }
+		.breadcrumbs a:hover { color: var(--text); text-decoration: none; }
+		.breadcrumbs [aria-current="page"] { color: var(--text); }
+
+
+		.article-header {
+			padding: 22px 4px 12px;
+		}
+
+		.header-row {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 12px;
+		}
+
+		.article-title {
+			margin: 0;
+			font-size: 30px;
+			font-weight: 600;
+			line-height: 1.15;
+			color: var(--text);
+		}
+
+		.article-updated {
+			margin: 10px 0 0;
+			color: var(--muted);
+			font-size: 12px;
+		}
+
+		.article-subtitle {
+			margin: 12px 0 0;
+			color: var(--muted);
+			font-size: 14px;
+			max-width: 78ch;
+		}
+
+		.rule {
+			height: 1px;
+			background: var(--border);
+			border: none;
+			margin: 16px 0 0;
+		}
+
+		.card {
+			background: var(--card);
+			border: 1px solid var(--border);
+			border-radius: 12px;
+			padding: 28px;
+			box-shadow: var(--shadow);
+		}
+
+		.card + .card { margin-top: 18px; }
+
+		.card h2 {
+			margin: 0 0 10px;
+			font-size: 18px;
+			font-weight: 600;
+			color: var(--text);
+		}
+
+		.card h3 {
+			margin: 18px 0 8px;
+			font-size: 15px;
+			font-weight: 600;
+			color: var(--text);
+		}
+
+		.card p {
+			margin: 0 0 14px;
+			color: var(--muted);
+			font-size: 14px;
+			line-height: 1.9;
+		}
+
+		.card ul {
+			margin: 12px 0 16px;
+			padding-left: 22px;
+			color: var(--muted);
+			font-size: 14px;
+			line-height: 1.9;
+		}
+
+		.card li { margin: 6px 0; }
+
+		.divider {
+			height: 1px;
+			background: var(--border);
+			margin: 18px 0;
+		}
+
+		@media (max-width: 768px) {
+			.article-title { font-size: 22px; }
+			.card { padding: 20px; }
+			.helpbar { padding: 10px 12px; }
+		}
+	</style>
+</head>
+
+<body>
+	<nav class="simple-localnav" aria-label="local" tabindex="-1" style="--progress:0;">
+		<div class="localnav-inner container">
+			<a href="/" class="brand">
+				<img src="https://cdn2.contentltd.net/acrp%20(2).png" alt="ACRP Logo">
+				<span>Allegheny County Roleplay</span>
+			</a>
+			<div class="actions">
+				<a class="btn-outline" href="/">Home</a>
+				<a class="btn" href="https://discord.gg/GS5Va3zEep">Join</a>
+			</div>
+		</div>
+	</nav>
+	<div class="localnav-overlay-background"></div>
+	<script src="/assets/sticky-fallback.js" defer></script>
+
+	<main class="content" id="main">
+		<div class="helpbar" role="region" aria-label="Article navigation">
+			<nav aria-label="Breadcrumb">
+				<ol class="breadcrumbs">
+					<li><a href="/">ACRP</a></li>
+					<li><a href="/articles/">Help Center</a></li>
+					<li><span aria-current="page">New Age Verification</span></li>
+				</ol>
+			</nav>
+		</div>
+
+		<header class="article-header">
+			<div class="header-row">
+				<h1 class="article-title">New Age Verification</h1>
+			
+			</div>
+			<p class="article-updated">Updated: February 9, 2026</p>
+			<p class="article-subtitle">An update on our rollout of age verification checks to help keep our community safe for everyone.</p>
+			<hr class="rule">
+		</header>
+
+		<article class="card" aria-label="Article content">
+			<p>Hey Everyone,</p>
+			<p>We at Allegheny County Roleplay wanted to share some important information on how we're working to keep our community a safe space for all, including teen users. It has always been our goal to provide a realistic and engaging space that roleplayers like yourself can use. We've spent the past few days making systems to help our staff team ensure that users are as old as they say they are.</p>
+			<p>At this point in other industries, AI Age Estimation via Face is becoming a standard, and it only makes sense that Allegheny County Roleplay follows suit to help us ensure that users are old enough to use our services.</p>
+
+			<h3>What's Changing?</h3>
+			<ul>
+				<li><strong>Mandated Age Verification Checks</strong><br>
+					This change will begin rolling out as soon as this article is released. Users will be selected for a random, one-time age check. This age check will ask for your Date of Birth, Country of Residence, and Grade Level. This information will help us ensure that you are not lying about the details you provide.
+				</li>
+			</ul>
+
+			<h3>Why We're Doing This</h3>
+			<p>We're making these changes to help ensure a safe environment for all, minimize risk of users who are under 13 and therefore vulnerable, and to help us ensure that all users are in compliance with Discord's Policies.</p>
+
+			<h3>What Do We Have Planned For The Future?</h3>
+			<p>We are currently developing our very own in-house AI Age Estimation Model that can estimate a user's age group via a face scan. This project will take many months and will not be implemented in the near future.</p>
+
+			<h3>Your Data</h3>
+			<p>We have updated our <a href="/terms.html">Terms of Service</a> and <a href="/privacy.html">Privacy Policy</a> to better reflect these changes.</p>
+			<p>Remember, we are focused on putting you, the user, first and we appreciate your support.</p>
+			<p>Thanks for being part of this community and for continuing to grow with us.</p>
+			<p>Thanks,</p>
+			<p>ContentLTD - Director<br>
+			Bigalb - Deputy Director<br>
+			Devin - Assistant Director</p>
+		</article>
+
+		<section class="card" aria-label="Related links">
+			<h2>Related</h2>
+			<ul>
+				<li><a href="/terms.html">Terms of Service</a></li>
+				<li><a href="/privacy.html">Privacy Policy</a></li>
+				<li><a href="/community-standards.html">Community Standards</a></li>
+			</ul>
+		</section>
+	</main>
+
+	<div id="footer-container"></div>
+	<script src="/master.js"></script>
+</body>
+</html>
