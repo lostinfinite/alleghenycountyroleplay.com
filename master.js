@@ -5,19 +5,8 @@
 
 // Snow script is included directly in pages where needed; no dynamic loader required.
 
-// Global JS error handling: redirect to /rejected.html only for real runtime crashes
+// Global JS error handling: log errors without redirecting
 (function(){
-  function redirectToRejected() {
-    try {
-      if (/\/?rejected(\.html)?$/.test(window.location.pathname)) return;
-      if (sessionStorage.getItem('redirectingToRejected')) return;
-      sessionStorage.setItem('redirectingToRejected','1');
-      window.location.replace('/rejected.html');
-    } catch (e) {
-      console.error('Failed to redirect to /rejected.html', e);
-    }
-  }
-
   function isBlockedResourceError(ev) {
     // Extension or blocker stopped a resource like a script, img, css, font
     if (!ev) return false;
@@ -43,7 +32,7 @@
     // Ignore generic Event-only errors with no message or file
     if (!ev.message && !ev.filename) return;
 
-    redirectToRejected();
+    // Just log, no redirect
   }, true);
 
   window.addEventListener('unhandledrejection', function(ev){
@@ -62,7 +51,7 @@
       return;
     }
 
-    redirectToRejected();
+    // Just log, no redirect
   });
 })();
 
