@@ -5,30 +5,63 @@
 
 // Snow script is included directly in pages where needed; no dynamic loader required.
 
-// Global JS error handling: redirect to /rejected.html on uncaught errors or unhandled promise rejections
+// Global JS error handling: redirect to /rejected.html only for real runtime crashes
 (function(){
   function redirectToRejected() {
     try {
-      // Don't redirect if we're already on the rejected page to avoid loops
       if (/\/?rejected(\.html)?$/.test(window.location.pathname)) return;
-      // Prevent rapid repeat redirects during an error storm
       if (sessionStorage.getItem('redirectingToRejected')) return;
       sessionStorage.setItem('redirectingToRejected','1');
-      // Use replace so the failing page is not left in history
       window.location.replace('/rejected.html');
     } catch (e) {
-      // If redirecting fails, at least log the failure
       console.error('Failed to redirect to /rejected.html', e);
     }
   }
 
+  function isBlockedResourceError(ev) {
+    // Extension or blocker stopped a resource like a script, img, css, font
+    if (!ev) return false;
+
+    const t = ev.target;
+    if (!t) return false;
+
+    const tag = (t.tagName || '').toLowerCase();
+    if (tag === 'script' || tag === 'img' || tag === 'link' || tag === 'iframe') {
+      console.warn('Ignoring blocked resource:', t.src || t.href);
+      return true;
+    }
+
+    return false;
+  }
+
   window.addEventListener('error', function(ev){
-    try { console.error('Global error caught:', ev); } catch(e) {}
+    console.error('Global error caught:', ev);
+
+    // Ignore extension blocked or failed resource loads
+    if (isBlockedResourceError(ev)) return;
+
+    // Ignore generic Event-only errors with no message or file
+    if (!ev.message && !ev.filename) return;
+
     redirectToRejected();
   }, true);
 
   window.addEventListener('unhandledrejection', function(ev){
-    try { console.error('Unhandled promise rejection:', ev); } catch(e) {}
+    console.error('Unhandled promise rejection:', ev);
+
+    const msg = String(ev.reason || '');
+
+    // Ignore network and blocker related failures
+    if (
+      msg.includes('Failed to fetch') ||
+      msg.includes('NetworkError') ||
+      msg.includes('ERR_BLOCKED_BY_CLIENT') ||
+      msg.includes('Load failed')
+    ) {
+      console.warn('Ignoring network or client-blocked rejection');
+      return;
+    }
+
     redirectToRejected();
   });
 })();
@@ -41,7 +74,7 @@ function loadFooter() {
     return;
   }
   
-  fetch('/footer.html')
+  fetch('footer.html')
     .then(response => {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -98,5 +131,4 @@ if (document.readyState === 'loading') {
   });
 } else {
   loadFooter();
-
 }
