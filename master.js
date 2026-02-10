@@ -3,26 +3,41 @@
  * Handles common functionality across all pages
  */
 
-// Load snow effect script
-function loadSnowEffect() {
-  if (!document.querySelector('script[src="snow.js"]')) {
-    const script = document.createElement('script');
-    script.src = 'snow.js';
-    script.defer = true;
-    script.onload = () => {
-      // Wait for snow effect to initialize
-      setTimeout(() => {
-        // Snow toggle is now handled by snow.js
-      }, 200);
-    };
-    document.head.appendChild(script);
-  }
-}
+// Snow script is included directly in pages where needed; no dynamic loader required.
 
-// Load footer on all pages (except 404.html)
+// Global JS error handling: redirect to /rejected.html on uncaught errors or unhandled promise rejections
+(function(){
+  function redirectToRejected() {
+    try {
+      // Don't redirect if we're already on the rejected page to avoid loops
+      if (/\/?rejected(\.html)?$/.test(window.location.pathname)) return;
+      // Prevent rapid repeat redirects during an error storm
+      if (sessionStorage.getItem('redirectingToRejected')) return;
+      sessionStorage.setItem('redirectingToRejected','1');
+      // Use replace so the failing page is not left in history
+      window.location.replace('/rejected.html');
+    } catch (e) {
+      // If redirecting fails, at least log the failure
+      console.error('Failed to redirect to /rejected.html', e);
+    }
+  }
+
+  window.addEventListener('error', function(ev){
+    try { console.error('Global error caught:', ev); } catch(e) {}
+    redirectToRejected();
+  }, true);
+
+  window.addEventListener('unhandledrejection', function(ev){
+    try { console.error('Unhandled promise rejection:', ev); } catch(e) {}
+    redirectToRejected();
+  });
+})();
+
+// Load footer on all pages (except 404 pages)
 function loadFooter() {
-  // Skip footer loading on 404.html
-  if (window.location.pathname.includes('404.html')) {
+  // Skip footer loading on 404 and rejected pages (supports /404, /rejected, and .html variants)
+  const path = window.location.pathname;
+  if (/\/?(404|rejected)(\.html)?$/.test(path)) {
     return;
   }
   
@@ -56,7 +71,7 @@ function loadFooter() {
     })
     .catch(error => {
       console.error('Error loading footer:', error);
-      // Fallback: create a simple footer if loading fails (but not on 404.html)
+      // Fallback: create a simple footer if loading fails (but not on 404 pages)
       const footerContainer = document.getElementById('footer-container') || 
         document.createElement('div');
       if (!document.getElementById('footer-container')) {
@@ -74,16 +89,13 @@ function loadFooter() {
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
   loadFooter();
-  loadSnowEffect();
 });
 
 // Fallback for pages that might not fire DOMContentLoaded
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', function() {
     loadFooter();
-    loadSnowEffect();
   });
 } else {
   loadFooter();
-  loadSnowEffect();
 }

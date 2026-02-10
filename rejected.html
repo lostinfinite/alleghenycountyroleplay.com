@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request Rejected</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto Condensed', sans-serif;
+      background: url('https://cdn2.contentltd.net/ban2.png') center/cover no-repeat;
+      background-color: rgba(0, 0, 0, 0.7);
+      background-blend-mode: overlay;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2.25rem;
+      margin-bottom: 1rem;
+    }
+    p {
+      font-size: 1.25rem;
+      margin-bottom: 1.25rem;
+      max-width: 700px;
+    }
+    .reason {
+      background: rgba(255,255,255,0.08);
+      padding: 1rem 1.25rem;
+      border-radius: 8px;
+      font-style: italic;
+      margin-bottom: 1.25rem;
+    }
+    a {
+      background: #FFBB00;
+      color: #000;
+      padding: 0.75rem 1.5rem;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+    a:hover {
+      background: #e0a800;
+      transform: scale(1.02);
+    }
+    img { width: 150px; margin-bottom: 0.75rem; }
+  </style>
+</head>
+<body>
+  <img src="https://cdn2.contentltd.net/acrp%20(2).png" alt="ACRP Logo">
+  <h1>We couldnt complete your request</h1>
+  <p class="reason" id="reason">Fetching reason...</p>
+  <p>If you'd like to try again, you can retry the request or return to the home page.</p>
+  <p id="trysoon" style="font-size:0.9rem; opacity:0.85; margin-top:0.5rem; display:none">Try again soon</p>
+  <a href="index.html">Return to Safety</a>
+
+  <script>
+    function getRejectMode() {
+      const raw = window.location.search || '';
+      const params = new URLSearchParams(window.location.search);
+      if (raw.includes('reject_r:ua') || params.has('reject_r:ua') || params.get('reject_r') === 'ua') return 'ua';
+      if (raw.includes('reject_r:time') || params.has('reject_r:time') || params.get('reject_r') === 'time') return 'time';
+      return null;
+    }
+
+    async function loadReason() {
+      const el = document.getElementById('reason');
+      const header = document.querySelector('h1');
+      const tryEl = document.getElementById('trysoon');
+      const mode = getRejectMode();
+
+      if (mode === 'ua') {
+        header.textContent = 'We refused your request';
+        if (tryEl) tryEl.style.display = 'none';
+      } else if (mode === 'time') {
+        header.textContent = "We didnt process your request";
+        if (tryEl) tryEl.style.display = 'block';
+      }
+
+      try {
+        const resp = await fetch('https://naas.isalman.dev/no');
+        if (!resp.ok) throw new Error('Network response was not ok');
+        const data = await resp.json();
+        el.textContent = data.reason || 'No reason provided.';
+      } catch (e) {
+        console.error('Error fetching reason:', e);
+        if (mode === 'ua') {
+          el.textContent = 'Request refused.';
+        } else if (mode === 'time') {
+          el.textContent = 'Request not processed at this time.';
+        } else {
+          el.textContent = 'Could not fetch reason right now. Please try again later.';
+        }
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', loadReason);
+  </script>
+
+  <script src="toasts.js"></script>
+  <script src="notify.js"></script>
+  <script src="snow.js"></script>
+  <script src="master.js"></script>
+</body>
+</html>

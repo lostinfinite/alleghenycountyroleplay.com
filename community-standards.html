@@ -7,6 +7,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="https://cdn2.contentltd.net/acrp%20(2).png">
     <link rel="icon" type="image/png" sizes="16x16" href="https://cdn2.contentltd.net/acrp%20(2).png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="/assets/site.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <style>
@@ -249,19 +250,21 @@
     </style>
 </head>
 <body>
-    <nav class="nav">
-        <div class="nav-inner">
-            <a href="/" class="brand">
-                <img src="https://cdn2.contentltd.net/acrp%20(2).png" alt="ACRP Logo">
-                <span>ACRP</span>
-            </a>
+    <nav class="simple-localnav" aria-label="local" tabindex="-1" style="--progress:0;">
+        <div class="localnav-inner container">
+            <a href="/" class="brand"><img src="https://cdn2.contentltd.net/acrp%20(2).png" alt="ACRP Logo"><span>Allegheny County Roleplay</span></a>
             <div class="actions">
-                <a href="/" class="btn">
-                    <span>← Home</span>
-                </a>
+                <a class="btn-outline" href="/">Home</a>
+                <a class="btn" href="https://discord.gg/GS5Va3zEep">Join</a>
             </div>
         </div>
     </nav>
+                </div>
+            </div>
+        </div>
+        <div class="localnav-overlay-background"></div>
+    </nav>
+    <script src="/assets/sticky-fallback.js" defer></script>
 
     <section class="hero">
         <div class="hero-content">

@@ -259,11 +259,8 @@
             </div>
         </div>
     </nav>
-                </div>
-            </div>
-        </div>
         <div class="localnav-overlay-background"></div>
-    </nav>
+
     <script src="/assets/sticky-fallback.js" defer></script>
 
     <section class="hero">
@@ -300,14 +297,46 @@
         </div>
 
 <div class="section">
-            <h1>3. Age Verification</h1>
-            <p>ACRP enforces age verification to ensure that no users under 13 access our services, in compliance with the COPPA and other applicable U.S. laws. Verification may occur through two methods:</p>
-<br>
-<h3> i. AI-based facial analysis</h3> <p>A user’s facial image may be analyzed to estimate age. These images and any derived biometric data are not permanently stored and are deleted immediately after analysis. Only non-identifying age information, such as age group, is retained in our secure database.</p><br>
-<h3> ii. Screening</h3> <p>Users may be asked to provide their Date of Birth, country of residence, and grade level. This information is used solely to determine age eligibility. Raw Date of Birth and other sensitive information are not stored; only derived age group and verification outcomes are retained. Users under 13 are prohibited from accessing the platform, and no additional personal information from these users is collected or retained.</p><br><p>
-All verification data is processed and stored using industry-standard security measures. Audit logs are maintained only for compliance monitoring and enforcement of age restrictions. In the event of a data breach or unauthorized access, ACRP will follow all applicable notification, mitigation, and legal requirements. Verification data is never sold or shared with third parties and is used strictly to enforce age restrictions, prevent underage access, and maintain the safety and compliance of our platform.
-
-</p>
+            <h1>3. Age Verification and Age Assurance</h1>
+            <p>ACRP requires mandatory age verification and age assurance screening as a condition of access to its services. These measures are designed to prevent access by children under the age of 13 and to support compliance with the Children’s Online Privacy Protection Act, COPPA, and other applicable laws and platform policies. Access to ACRP systems is not permitted unless verification is successfully completed.</p>
+            <p>We use a third party provider, Didit.me, to perform AI based age estimation and biometric liveness checks using facial data.</p>
+            <p>By proceeding with age verification, you consent to the collection and processing of biometric and verification data for eligibility screening and enforcement purposes.</p>
+            <p>Verification may occur through the following methods:</p>
+            <h3>i. AI Based Facial Age Estimation and Liveness Detection</h3>
+            <p>Users may be required to submit a live facial scan. This scan is processed by Didit.me using biometric analysis and liveness detection technology to estimate age and detect spoofing or impersonation attempts.</p>
+            <p>Processing may include:</p>
+            <ul>
+                <li>Facial image capture</li>
+                <li>Biometric feature extraction</li>
+                <li>Age estimation scoring</li>
+                <li>Liveness detection scoring</li>
+                <li>Face quality and luminance metrics</li>
+                <li>Similarity and duplicate face detection results</li>
+                <li>Session and verification metadata</li>
+            </ul>
+            <p>ACRP receives and retains verification results and related metadata, which may include estimation scores, liveness scores, match indicators, session identifiers, and associated technical logs. Facial images and biometric data are processed by Didit as our verification vendor under their applicable terms and privacy policy.</p>
+            <h3>ii. Screening Questions</h3>
+            <p>Users may also be required to provide screening information such as Date of Birth, country of residence, and grade level. This information is used to assess eligibility and detect inconsistent or fraudulent claims. We may retain submitted values, derived age group, risk signals, and verification outcomes.</p>
+            <h3>iii. Use and Enforcement</h3>
+            <p>Age verification and age assurance are used strictly to:</p>
+            <ul>
+                <li>Determine whether a user meets minimum age requirements</li>
+                <li>Detect underage or high risk accounts</li>
+                <li>Enforce platform access restrictions</li>
+                <li>Support moderation, safety, and compliance actions</li>
+            </ul>
+            <p>If a user is determined or reasonably suspected to be under 13, access will be denied or removed. Accounts and related access to ACRP systems, including Discord servers and connected services, may be suspended or banned. Eligibility determinations made through our verification systems are final unless re verification is expressly approved by ACRP.</p>
+            <p>Attempting to bypass, falsify, or interfere with verification systems may result in permanent removal.</p>
+            <h3>iiii. Data Retention</h3>
+            <p>Verification records, results, scores, logs, and related metadata are retained indefinitely for compliance, audit, fraud prevention, repeat offender detection, and enforcement purposes, unless a valid deletion request is received and approved where legally permitted.</p>
+            <p>If verification data is deleted upon request, prior verification status is also removed. Users who delete their verification data must complete the verification process again before regaining access to ACRP systems. Deleted records do not exempt a user from enforcement actions already taken.</p>
+            <h3>iiiii. Third Party Processing</h3>
+            <p>Didit.me acts as a verification and biometric processing provider. Biometric capture and age estimation processing occur through their systems. Their privacy practices and security controls are governed by their published policies. Users acknowledge that biometric and verification data is processed by this provider as part of the screening workflow.</p>
+            <h3>iiiiii. Security and Incident Response</h3>
+            <p>Verification and screening data is stored and transmitted using industry standard security safeguards. In the event of a confirmed data security incident affecting verification data, ACRP will follow applicable legal notification and mitigation requirements.</p>
+            <p>Verification data is not sold. It is shared only with contracted processors and service providers as necessary to operate verification, safety, and compliance systems.</p>
+            <h3>iiiiiii. Requirement for Use</h3>
+            <p>Completion of age verification and age assurance checks is required to access and continue using ACRP services. Refusal to complete required verification will result in denial or removal of access.</p>
         </div>
 
         <div class="section">
@@ -337,5 +366,6 @@ All verification data is processed and stored using industry-standard security m
     <div id="footer-container"></div>
     <script src="snow.js"></script>
     <script src="master.js"></script>
+</div>
 </body>
 </html>

@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/site.css">
   <style>
                     body.menu-open {
                       overflow: hidden !important;
@@ -353,61 +354,19 @@
     <img src="https://cdn2.contentltd.net/acrp%20(2).png" alt="ACRP Logo" class="pulse" style="width: 140px; height: 140px;" />
   </div>
   <script src="https://uptime.betterstack.com/widgets/announcement.js" data-id="227840" async="async" type="text/javascript"></script>
-  <nav class="nav">
-    <div class="nav-inner container">
-      <div class="brand">
-        <img src="https://cdn2.contentltd.net/acrp%20(2).png" alt="ACRP logo" />
+  <nav class="simple-localnav" aria-label="local" tabindex="-1" style="--progress:0;">
+    <div class="localnav-inner container">
+      <a href="/" class="brand" style="display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit;font-weight:800;">
+        <img src="https://cdn2.contentltd.net/acrp%20(2).png" alt="ACRP Logo">
         <span>Allegheny County Roleplay</span>
-      </div>
-      <div class="hamburger" id="hamburger" aria-label="Open menu" tabindex="0">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+      </a>
       <div class="actions">
         <a class="btn-outline" href="#why">Why ACRP</a>
         <a class="btn" href="https://discord.gg/GS5Va3zEep">Join Discord</a>
       </div>
-      <div class="actions mobile" id="mobileMenu" style="display:none;">
-        <button class="mobile-close" id="mobileMenuClose" aria-label="Close menu">&times;</button>
-        <a class="btn-outline" href="#why">Why ACRP</a>
-        <a class="btn" href="https://discord.gg/GS5Va3zEep">Join Discord</a>
-      </div>
     </div>
-    <script>
-      // Hamburger menu toggle
-      document.addEventListener('DOMContentLoaded', function() {
-        var hamburger = document.getElementById('hamburger');
-        var mobileMenu = document.getElementById('mobileMenu');
-        var mobileMenuClose = document.getElementById('mobileMenuClose');
-        function openMenu() {
-          mobileMenu.style.display = 'flex';
-          document.body.classList.add('menu-open');
-        }
-        function closeMenu() {
-          mobileMenu.style.display = 'none';
-          document.body.classList.remove('menu-open');
-        }
-        hamburger.addEventListener('click', openMenu);
-        hamburger.addEventListener('keydown', function(e) {
-          if (e.key === 'Enter' || e.key === ' ') {
-            openMenu();
-          }
-        });
-        mobileMenuClose.addEventListener('click', closeMenu);
-        document.addEventListener('click', function(e) {
-          if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
-            closeMenu();
-          }
-        });
-        document.addEventListener('keydown', function(e) {
-          if (e.key === 'Escape' && mobileMenu.style.display === 'flex') {
-            closeMenu();
-          }
-        });
-      });
-    </script>
   </nav>
+  <script src="/assets/sticky-fallback.js" defer></script>
   <header class="hero">
     <div class="hero-content container">
       <img class="logo" src="https://cdn2.contentltd.net/acrp%20(2).png" alt="ACRP Logo" />
@@ -495,7 +454,7 @@
     <div id="popup" role="dialog" aria-modal="true" aria-labelledby="popup-title" aria-describedby="popup-description">
       <h3 id="popup-title" style="margin-bottom: 1rem;"></h3>
       <p id="popup-description" style="margin-bottom: 1.5rem;"></p>
-      <button onclick="closePopup()" style="background: #FFBB00; color: black; padding: 0.5rem 1rem; border: none; border-radius: 4px; cursor: pointer;">Close</button>
+      <button onclick="closePopup()" style="background: #FFBB00; color: black; padding: 0.5rem 1rem; border: none; border-radius: 10em; cursor: pointer;">Close</button>
     </div>
 
     <section class="section">
@@ -643,7 +602,7 @@
         
         banner.innerHTML = `
           <div class="banner-text">🚌 Live Transit: Route ${state.route.id} - Bus #${state.busNumber || '0000'} currently in service</div>
-          <button onclick="this.parentElement.remove()" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.1);border:none;color:#000;cursor:pointer;border-radius:4px;padding:4px 8px;">×</button>
+          <button onclick="this.parentElement.remove()" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.1);border:none;color:#000;cursor:pointer;border-radius:10em;padding:4px 8px;">×</button>
         `;
         
         document.body.appendChild(banner);

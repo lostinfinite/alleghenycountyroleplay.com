@@ -7,28 +7,33 @@ class SnowParticle {
     }
 
     reset() {
-        this.x = Math.random() * this.canvas.width;
-        this.y = -10;
+        // General properties
         this.size = Math.random() * 3 + 1;
-        this.speed = Math.random() * 2 + 0.5;
-        this.wind = Math.random() * 0.5 - 0.25;
         this.opacity = Math.random() * 0.8 + 0.2;
+        this.speed = Math.random() * 2 + 0.5;
+        // Small horizontal drift for natural look, but primarily vertical
+        this.vx = (Math.random() - 0.5) * 0.3;
+        this.vy = Math.abs(this.speed);
+
+        // Always spawn near the top at a random horizontal position
+        this.x = Math.random() * this.canvas.width;
+        this.y = -10 - Math.random() * 50;
     }
 
     update() {
-        this.y += this.speed;
-        this.x += this.wind;
+        // Add a slight jitter for natural motion
+        const jitter = (Math.random() - 0.5) * 0.3;
 
-        // Only reset particle when it goes off screen if NOT fading out
-        if (this.y > this.canvas.height + 10 && !window.snowEffect?.fadingOut) {
+        // Small horizontal jitter for natural motion; primarily move downwards
+        this.x += this.vx + jitter;
+        this.y += this.vy + jitter; 
+
+        const offBottom = this.y > this.canvas.height + 50;
+        const offSide = this.x < -100 || this.x > this.canvas.width + 100;
+
+        // Reset particle if it's sufficiently off-screen and we aren't fading out
+        if ((offBottom || offSide) && !window.snowEffect?.fadingOut) {
             this.reset();
-        }
-
-        // Wrap around horizontally
-        if (this.x > this.canvas.width) {
-            this.x = 0;
-        } else if (this.x < 0) {
-            this.x = this.canvas.width;
         }
     }
 
@@ -62,9 +67,11 @@ class SnowEffect {
         this.animationId = null;
         this.fadingOut = false; // Flag for graceful fade-out mode
 
+        // Initialize without mouse-direction behavior
         this.init();
         // Create the toggle button after initialization
         setTimeout(() => this.createSnowToggle(), 100);
+
     }
 
     isSnowSeason() {
@@ -176,7 +183,9 @@ class SnowEffect {
 
         // Create particles
         for (let i = 0; i < this.particleCount; i++) {
-            this.particles.push(new SnowParticle(this.canvas));
+            const p = new SnowParticle(this.canvas);
+            p.reset();
+            this.particles.push(p);
         }
 
         // Handle window resize
@@ -189,6 +198,8 @@ class SnowEffect {
             this.canvas.style.display = 'none';
         }
     }
+
+
 
     resizeCanvas() {
         if (this.canvas) {
