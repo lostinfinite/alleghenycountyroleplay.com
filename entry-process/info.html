@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entry Process Information - ACRP</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="https://cdn2.contentltd.net/acrp-favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://cdn2.contentltd.net/acrp-favicon-16.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand:#FFBB00;
+            --brand-900:#d69a00;
+            --text:#fff;
+            --muted:#bdbdbd;
+            --bg:#0b0b0c;
+            --surface:#121214;
+            --card:#141417;
+            --border:rgba(255,255,255,.08);
+            --shadow:0 20px 60px rgba(0,0,0,.35);
+        }
+
+        * { box-sizing: border-box; }
+        html, body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            width: 100vw;
+            max-width: 100vw;
+        }
+
+        body { 
+            font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; 
+            color: var(--text); 
+            background: radial-gradient(1200px 600px at 10% -10%, rgba(255,187,0,.06), transparent),
+                radial-gradient(1200px 600px at 110% 10%, rgba(120,120,255,.06), transparent), var(--bg); 
+            line-height: 1.6; 
+        }
+
+        .container { 
+            width: min(1200px, 92vw); 
+            margin: 0 auto; 
+        }
+
+        .header {
+            padding: 2rem 0;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header h1 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin: 0;
+            color: var(--brand);
+            font-weight: 900;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            color: var(--muted);
+            margin: 0.5rem 0 0 0;
+        }
+
+        .content {
+            padding: 3rem 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .intro {
+            background: var(--card);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            margin-bottom: 2rem;
+        }
+
+        .intro h2 {
+            color: var(--brand);
+            margin-top: 0;
+            font-size: 1.5rem;
+        }
+
+        .requirements {
+            background: var(--surface);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            margin: 2rem 0;
+        }
+
+        .requirements h3 {
+            color: var(--brand);
+            text-align: center;
+            margin-top: 0;
+            font-size: 1.4rem;
+            border-bottom: 2px solid var(--brand);
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .requirement-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin: 1rem 0;
+            padding: 1rem;
+            background: rgba(255, 187, 0, 0.05);
+            border-radius: 8px;
+            border-left: 4px solid var(--brand);
+        }
+
+        .requirement-item .icon {
+            color: var(--brand);
+            font-size: 1.2rem;
+            margin-top: 0.2rem;
+        }
+
+        .requirement-item .text {
+            flex: 1;
+        }
+
+        .application-section {
+            background: var(--card);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .application-section h3 {
+            color: var(--brand);
+            margin-top: 0;
+            font-size: 1.5rem;
+        }
+
+        .notice {
+            background: rgba(255, 187, 0, 0.1);
+            border: 1px solid var(--brand);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .notice h4 {
+            color: var(--brand);
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 1rem 2rem;
+            background: var(--brand);
+            color: #000;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.2s ease;
+            margin: 1rem;
+        }
+
+        .btn:hover {
+            background: var(--brand-900);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 24px rgba(255,187,0,.25);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--brand);
+            color: var(--brand);
+        }
+
+        .btn-outline:hover {
+            background: var(--brand);
+            color: #000;
+        }
+
+        .departments {
+            margin: 2rem 0;
+        }
+
+        .departments h3 {
+            color: var(--brand);
+            margin-bottom: 1rem;
+        }
+
+        .ticker-container {
+            overflow: hidden;
+            background: rgba(255, 187, 0, 0.05);
+            border: 1px solid rgba(255, 187, 0, 0.3);
+            border-radius: 8px;
+            padding: 1rem 0;
+            margin: 1rem 0;
+            position: relative;
+        }
+
+        .ticker {
+            display: flex;
+            animation: scroll 30s linear infinite;
+            white-space: nowrap;
+            width: calc(200%);
+        }
+
+        .ticker:hover {
+            animation-play-state: paused;
+        }
+
+        .dept-tag {
+            background: rgba(255, 187, 0, 0.1);
+            border: 1px solid var(--brand);
+            color: var(--brand);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container { width: 95vw; }
+            .content { padding: 2rem 1rem; }
+            .requirement-item {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            .btn { 
+                padding: 0.8rem 1.5rem; 
+                font-size: 1rem; 
+                margin: 0.5rem;
+            }
+        }
+
+        /* Footer styles */
+        footer { background: #0d0d0d; color: #ccc; padding: 3rem 1rem; }
+        footer .cols { max-width: 1200px; margin: 0 auto; display:flex; flex-wrap:wrap; justify-content: space-between; gap: 2rem; text-align: left; }
+        footer h3 { color: var(--brand); margin-bottom: 1rem; font-size: 1.4rem; }
+        footer a { color: var(--brand); text-decoration: none; }
+        footer .copyright { margin-top: 2rem; border-top: 1px solid #333; padding-top: 1.5rem; text-align: center; font-size: 0.85rem; color: #888; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Entry Process Information</h1>
+            <p>Your gateway to professional roleplay in Allegheny County</p>
+        </div>
+
+        <div class="content">
+            <div class="intro">
+                <h2>Welcome to Allegheny County Roleplay</h2>
+                <p>We are a whitelisted community, originally semi-whitelisted and founded in 2024. We have much to offer like the Pittsburgh Police Department, Allegheny County Sheriff's Office, Pennsylvania State Police, PennDOT, and much more.</p>
+                
+                <div class="departments">
+                    <h3>Available Departments & Organizations</h3>
+                    <div class="ticker-container">
+                        <div class="ticker">
+                            <span class="dept-tag">Pittsburgh Police Department</span>
+                            <span class="dept-tag">Allegheny County Sheriff's Office</span>
+                            <span class="dept-tag">Pennsylvania State Police</span>
+                            <span class="dept-tag">PennDOT</span>
+                            <span class="dept-tag">Emergency Medical Services</span>
+                            <span class="dept-tag">Fire Department</span>
+                            <span class="dept-tag">Civilian Operations</span>
+                            <span class="dept-tag">Pittsburgh Police Department</span>
+                            <span class="dept-tag">Allegheny County Sheriff's Office</span>
+                            <span class="dept-tag">Pennsylvania State Police</span>
+                            <span class="dept-tag">PennDOT</span>
+                            <span class="dept-tag">Emergency Medical Services</span>
+                            <span class="dept-tag">Fire Department</span>
+                            <span class="dept-tag">Civilian Operations</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="requirements">
+                <h3>Requirements to Become Whitelisted</h3>
+                
+                <div class="requirement-item">
+                    <div class="icon">•</div>
+                    <div class="text">
+                        <strong>Age Requirement:</strong> You MUST be 14 years or older (exceptions can be made on a case-by-case basis)
+                    </div>
+                </div>
+
+                <div class="requirement-item">
+                    <div class="icon">•</div>
+                    <div class="text">
+                        <strong>Technical Requirements:</strong> You MUST play ERLC on a computer or laptop and be able to run ER:LC smoothly with a minimum of 15 FPS
+                    </div>
+                </div>
+
+                <div class="requirement-item">
+                    <div class="icon">•</div>
+                    <div class="text">
+                        <strong>Language Proficiency:</strong> You MUST speak fluent English to ensure clear communication during roleplay scenarios
+                    </div>
+                </div>
+
+                <div class="requirement-item">
+                    <div class="icon">•</div>
+                    <div class="text">
+                        <strong>Communication Equipment:</strong> You must have a working microphone and be willing to actively communicate during roleplay sessions
+                    </div>
+                </div>
+            </div>
+
+            <div class="application-section">
+                <h3>Ready to Join Our Community?</h3>
+                <p>Take the first step towards becoming part of our professional roleplay community. Our application process is designed to ensure the best experience for all members.</p>
+                
+                <div class="notice">
+                    <h4>Important Notice</h4>
+                    <p><strong>You may apply ahead of time online, but you MUST join our Discord server to complete the process.</strong> The Discord server is essential for community communication, updates, and coordination of roleplay sessions.</p>
+                </div>
+
+                <div style="margin: 2rem 0;">
+                    <a href="https://forms.gle/vkN93EyaXBcHW2yb9" target="_blank" class="btn">
+                        Apply Now
+                    </a>
+                    <a href="https://discord.gg/fKrrT7Djgr" target="_blank" class="btn btn-outline">
+                        Join Discord
+                    </a>
+                </div>
+
+                <p style="font-size: 0.9rem; color: var(--muted); margin-top: 2rem;">
+                    After submitting your application, please join our Discord server and wait for further instructions from our staff team. Application processing times may vary depending on volume.
+                </p>
+            </div>
+
+           
+        </div>
+    </div>
+
+    <div id="footer-container"></div>
+    <script src="../snow.js"></script>
+    <script src="../master.js"></script>
+</body>
+</html>

@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/site.css" />
+    <title>First SSU- ACRP</title>
+
+    <style>
+        :root{
+            --brand:#FFBB00;
+            --brand-900:#d69a00;
+            --text:#fff;
+            --muted:#bdbdbd;
+            --bg:#0b0b0c;
+            --surface:#121214;
+            --card:#141417;
+            --border:rgba(255,255,255,.08);
+            --shadow:0 20px 60px rgba(0,0,0,.35);
+        }
+
+        html, body { width: 100%; max-width: 100%; overflow-x: hidden; }
+        body{
+            background:
+                radial-gradient(1200px 600px at 10% -10%, rgba(255,187,0,.06), transparent),
+                radial-gradient(1200px 600px at 110% 10%, rgba(120,120,255,.06), transparent),
+                var(--bg);
+        }
+
+        /* Page-local splash hero styling */
+        .event-hero{
+            min-height: 100vh;
+            min-height: 100svh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            padding: clamp(22px, 5vw, 64px);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background-color: #0d0d0d;
+            background-image:
+                linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.65)),
+                url('https://cdn.alleghenycountyroleplay.com/RobloxPlayerBeta_ebOPZRvacN.png');
+            background-size: cover;
+            background-position: center;
+        }
+        /* Keep hero from being hidden behind sticky localnav */
+        .event-hero{ padding-top: calc(clamp(22px, 5vw, 64px) + 56px); }
+        .event-hero::after{
+            content: "";
+            position: absolute;
+            inset: 0;
+     
+            pointer-events: none;
+        }
+        @keyframes ssu-fade-up{
+            from{opacity:0; transform: translateY(10px)}
+            to{opacity:1; transform: translateY(0)}
+        }
+        @media (prefers-reduced-motion: reduce){
+            .event-hero *{animation:none}
+        }
+
+        .event-hero-tit{
+            position: relative;
+            z-index: 1;
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+            font-family: 'Roboto Condensed', 'Open Sans', sans-serif;
+            font-weight: 900;
+            margin: 0;
+            animation: ssu-fade-up .65s ease both;
+        }
+        .event-hero-des{
+            position: relative;
+            z-index: 1;
+            font-size: 1.1rem;
+            color: rgba(255,255,255,.88);
+            margin: 0;
+            max-width: 980px;
+            animation: ssu-fade-up .75s ease both;
+        }
+        .hero-bottom{
+z-index: 1;
+        }
+        .event-hero-tim{margin:0; color: rgba(255,255,255,.78)}
+        .large-daat-tim-holder{margin:.35rem 0 0}
+
+        /* Match the rest of the site's localnav spacing */
+        .simple-localnav{margin-top:6px}
+        a {text-decoration: none; color: white;}
+
+        /* About section styling */
+        .about-section {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 800px;
+            box-shadow: var(--shadow);
+        }
+        .about-section h2 {
+            color: var(--brand);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .about-section p {
+            color: var(--text);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        .cta {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+        .cta p {
+            color: var(--muted);
+            margin-bottom: 0.5rem;
+        }
+        .subtle-click-cta-btn {
+            background: var(--brand);
+            color: var(--bg);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+        .subtle-click-cta-btn:hover {
+            background: var(--brand-900);
+        }
+    </style>
+</head>
+
+<body data-event-start-et="" data-event-timezone="America/New_York">
+    <nav class="simple-localnav" aria-label="local" tabindex="-1" style="--progress:0;">
+        <div class="localnav-inner container">
+            <a href="/" class="brand"><img src="https://cdn2.contentltd.net/acrp%20(2).png" alt="ACRP Logo"><span>Allegheny County Roleplay</span></a>
+            <div class="actions">
+                <a class="btn-outline" href="/">Home</a>
+                <a class="btn" href="https://discord.gg/GS5Va3zEep">Join</a>
+            </div>
+        </div>
+    </nav>
+    <div class="localnav-overlay-background"></div>
+    <script src="/assets/sticky-fallback.js" defer></script>
+
+    <div class="event-hero" role="banner" aria-label="Event splash">
+        <h1 class="event-hero-tit">Safety Assurance Council</h1>
+<p class="event-hero-des">Soon, the applications to join the Safety Assurance Council will open. Stay tuned for more details!</p>
+        <div class="hero-bottom">
+            <div note="this is for the button"></div>
+        </div>
+    </div>
+<div>
+    <div class="container about-section">
+        <h2>About the Safety Assurance Council</h2>
+        <p>The Safety Assurance Council is a group that will work with Allegheny County Roleplay's Directorship team to ensure that all future changes prioritize privacy while maintaining the goals of the overall community. This group will provide feedback on changes to ensure that all changes are community-focused and respectful of member privacy. They will also provide ideas to help us maintain a safe and respectful community where roleplay can thrive. </p>
+        <div class="cta">
+            <p>Does this sound like something you would be interested in?</p><br><a id="apply-btn" class="subtle-click-cta-btn in-sentence" style="cursor: not-allowed; opacity: 0.6;">Apply Now!</a>
+        </div>
+    </div>
+</div>
+
+    <script>
+
+        window['--postermakinguishowingdevshouldithis is superlongbecauseiwantittobesoyeahweloveyou'] = true
+            window['--postermakinguishowingdevshouldithis is superlongbecauseiwantittobesoyeahweloveyou'] ?? false;
+
+        (function(){
+            const startEt = document.body?.dataset?.eventStartEt;
+            const timeZone = document.body?.dataset?.eventTimezone || 'America/New_York';
+
+            const POSTER_FLAG_NAME = "--postermakinguishowingdevshouldithis is superlongbecauseiwantittobesoyeahweloveyou";
+            const posterUiEnabled = (window[POSTER_FLAG_NAME] === true || window[POSTER_FLAG_NAME] === 'true');
+
+            function setPlaceholders(){
+                document.querySelectorAll('.event-date').forEach(el => { el.textContent = '-/-/--'; });
+                document.querySelectorAll('.event-time').forEach(el => { el.textContent = '--:--'; });
+            }
+
+            if(!startEt){
+                console.warn('Missing data-event-start-et on <body>.');
+                setPlaceholders();
+                return;
+            }
+
+            // Parse "YYYY-MM-DDTHH:mm:ss" (seconds optional)
+            const m = String(startEt).trim().match(/^([0-9]{4})-([0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2})(?::([0-9]{2}))?$/);
+            if(!m){
+                console.warn('Invalid data-event-start-et format. Use YYYY-MM-DDTHH:mm or YYYY-MM-DDTHH:mm:ss');
+                setPlaceholders();
+                return;
+            }
+            const year = Number(m[1]);
+            const month = Number(m[2]);
+            const day = Number(m[3]);
+            const hour = Number(m[4]);
+            const minute = Number(m[5]);
+            const second = m[6] ? Number(m[6]) : 0;
+
+            function getTimeZoneOffsetMinutes(date, tz){
+                // Offset = (wall time in tz as UTC) - (actual UTC)
+                const dtf = new Intl.DateTimeFormat('en-US', {
+                    timeZone: tz,
+                    hour12: false,
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit'
+                });
+                const parts = dtf.formatToParts(date);
+                const values = Object.fromEntries(parts.filter(p => p.type !== 'literal').map(p => [p.type, p.value]));
+                const asUtcMs = Date.UTC(
+                    Number(values.year),
+                    Number(values.month) - 1,
+                    Number(values.day),
+                    Number(values.hour),
+                    Number(values.minute),
+                    Number(values.second)
+                );
+                return (asUtcMs - date.getTime()) / 60000;
+            }
+
+            function zonedTimeToUtc(y, mo, d, h, mi, s, tz){
+                // Start with a UTC guess for the same components.
+                const utcGuess = Date.UTC(y, mo - 1, d, h, mi, s);
+                let date = new Date(utcGuess);
+                let offset = getTimeZoneOffsetMinutes(date, tz);
+                date = new Date(utcGuess - offset * 60000);
+                const offset2 = getTimeZoneOffsetMinutes(date, tz);
+                if(offset2 !== offset){
+                    date = new Date(utcGuess - offset2 * 60000);
+                }
+                return date;
+            }
+
+            const startInstant = zonedTimeToUtc(year, month, day, hour, minute, second, timeZone);
+            if(Number.isNaN(startInstant.getTime())){
+                console.warn('Could not compute event start instant.');
+                setPlaceholders();
+                return;
+            }
+
+            const dateLocalText = new Intl.DateTimeFormat(undefined, {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            }).format(startInstant);
+            const timeLocalText = new Intl.DateTimeFormat(undefined, {
+                hour: 'numeric',
+                minute: '2-digit'
+            }).format(startInstant);
+
+            function getUsTimeZoneSuffix(){
+                const viewerTz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                if(!viewerTz) return '';
+                const tz = String(viewerTz);
+                if(tz === 'America/New_York' || tz === 'America/Detroit' || tz === 'America/Indiana/Indianapolis' || tz === 'America/Indiana/Marengo' || tz === 'America/Indiana/Vevay' || tz === 'America/Indiana/Vincennes' || tz === 'America/Indiana/Winamac' || tz === 'America/Kentucky/Louisville' || tz === 'America/Kentucky/Monticello') return 'ET';
+                if(tz === 'America/Chicago' || tz === 'America/Indiana/Knox' || tz === 'America/Indiana/Tell_City' || tz === 'America/Menominee' || tz === 'America/North_Dakota/Beulah' || tz === 'America/North_Dakota/Center' || tz === 'America/North_Dakota/New_Salem') return 'CT';
+                if(tz === 'America/Denver' || tz === 'America/Boise' || tz === 'America/Phoenix') return 'MT';
+                if(tz === 'America/Los_Angeles' || tz === 'America/Vancouver' || tz === 'America/Tijuana') return 'PT';
+                if(tz === 'Pacific/Honolulu' || tz === 'America/Honolulu') return 'HT';
+                return '';
+            }
+
+            // Tooltip includes the canonical schedule in Eastern Time (handles DST automatically).
+            const dateEtText = new Intl.DateTimeFormat(undefined, {
+                timeZone,
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            }).format(startInstant);
+            const timeEtText = new Intl.DateTimeFormat(undefined, {
+                timeZone,
+                hour: 'numeric',
+                minute: '2-digit'
+            }).format(startInstant);
+
+            document.querySelectorAll('.event-date').forEach(el => { el.textContent = dateLocalText; });
+            const suffix = getUsTimeZoneSuffix();
+            document.querySelectorAll('.event-time').forEach(el => {
+                el.textContent = suffix ? `${timeLocalText} ${suffix}` : timeLocalText;
+            });
+            const holder = document.querySelector('.event-hero-dat-large-dat-tim-holder');
+            if(holder){ holder.title = `Scheduled (ET): ${dateEtText} at ${timeEtText}`; }
+
+            if(posterUiEnabled){
+                const heroBottom = document.querySelector('.hero-bottom');
+                if(heroBottom && !heroBottom.querySelector('[data-poster-button]')){
+                    const btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.setAttribute('data-poster-button', '1');
+                    btn.textContent = 'Download Poster';
+                    btn.className = 'btn';
+                    btn.style.marginTop = '12px';
+                    btn.style.padding = '.85rem 1.1rem';
+                    btn.style.borderRadius = '12px';
+                    btn.style.border = 'none';
+                    btn.style.cursor = 'pointer';
+                    btn.style.fontWeight = '800';
+                    btn.style.boxShadow = '0 10px 24px rgba(255,187,0,.22)';
+
+                    heroBottom.appendChild(btn);
+
+                    btn.addEventListener('click', async () => {
+                        btn.disabled = true;
+                        const originalText = btn.textContent;
+                        btn.textContent = 'Generating…';
+                        try{
+                            await generateAndDownloadPoster({
+                                title: 'Our First SSU',
+                                dateEtText,
+                                timeEtText,
+                                joinUrl: 'https://discord.gg/GS5Va3zEep'
+                            });
+                        }catch(err){
+                            console.error(err);
+                            alert('Poster generation failed. Check console for details.');
+                        }finally{
+                            btn.disabled = false;
+                            btn.textContent = originalText;
+                        }
+                    });
+                }
+            }
+
+            async function generateAndDownloadPoster(opts){
+                const width = 1080;
+                const height = 1350;
+                const canvas = document.createElement('canvas');
+                canvas.width = width;
+                canvas.height = height;
+                const ctx = canvas.getContext('2d');
+                if(!ctx) throw new Error('Canvas 2D context unavailable');
+
+                // Ensure fonts are loaded before drawing.
+                if(document.fonts && document.fonts.ready){
+                    try{ await document.fonts.ready; }catch(e){}
+                }
+
+                function loadImage(src){
+                    return new Promise((resolve, reject) => {
+                        const img = new Image();
+                        img.onload = () => resolve(img);
+                        img.onerror = reject;
+                        img.src = src;
+                    });
+                }
+
+                function drawCover(img){
+                    const iw = img.naturalWidth || img.width;
+                    const ih = img.naturalHeight || img.height;
+                    const scale = Math.max(width / iw, height / ih);
+                    const dw = iw * scale;
+                    const dh = ih * scale;
+                    const dx = (width - dw) / 2;
+                    const dy = (height - dh) / 2;
+                    ctx.drawImage(img, dx, dy, dw, dh);
+                }
+
+                // Background (same-origin asset to avoid CORS-tainted canvas)
+                ctx.fillStyle = '#0b0b0c';
+                ctx.fillRect(0, 0, width, height);
+                try{
+                    const bg = await loadImage('/assets/ssu-hero.svg');
+                    drawCover(bg);
+                }catch(e){
+                    // Fallback gradient
+                    const g = ctx.createLinearGradient(0, 0, width, height);
+                    g.addColorStop(0, '#0d0d0d');
+                    g.addColorStop(0.7, '#141417');
+                    g.addColorStop(1, '#332500');
+                    ctx.fillStyle = g;
+                    ctx.fillRect(0, 0, width, height);
+                }
+
+                // Overlay for readability
+                ctx.fillStyle = 'rgba(0,0,0,0.55)';
+                ctx.fillRect(0, 0, width, height);
+                const vignette = ctx.createRadialGradient(width*0.5, height*0.25, 0, width*0.5, height*0.25, height*0.9);
+                vignette.addColorStop(0, 'rgba(255,187,0,0.10)');
+                vignette.addColorStop(0.45, 'rgba(0,0,0,0.25)');
+                vignette.addColorStop(1, 'rgba(0,0,0,0.75)');
+                ctx.fillStyle = vignette;
+                ctx.fillRect(0, 0, width, height);
+
+                function wrapText(text, x, y, maxWidth, lineHeight){
+                    const words = String(text).split(/\s+/);
+                    let line = '';
+                    for(const word of words){
+                        const test = line ? `${line} ${word}` : word;
+                        if(ctx.measureText(test).width > maxWidth && line){
+                            ctx.fillText(line, x, y);
+                            y += lineHeight;
+                            line = word;
+                        }else{
+                            line = test;
+                        }
+                    }
+                    if(line) ctx.fillText(line, x, y);
+                    return y;
+                }
+
+                const pad = 84;
+
+                // Title
+                ctx.fillStyle = '#ffffff';
+                ctx.textAlign = 'left';
+                ctx.textBaseline = 'top';
+                ctx.font = '900 98px "Roboto Condensed", "Open Sans", sans-serif';
+                let y = pad;
+                y = wrapText(opts.title || 'Event', pad, y, width - pad*2, 102) + 26;
+
+                // Date/time (ET)
+                const dateLine = (opts.dateEtText || '-/-/--');
+                const timeLine = (opts.timeEtText || '--:--') + ' ET';
+                ctx.font = '700 72px Oswald, "Open Sans", sans-serif';
+                ctx.fillStyle = 'rgba(255,255,255,0.95)';
+                ctx.fillText(dateLine, pad, y);
+                y += 88;
+                ctx.fillText(timeLine, pad, y);
+                y += 92;
+
+                // Accent bar
+                ctx.fillStyle = '#FFBB00';
+                ctx.fillRect(pad, y, 220, 10);
+                y += 44;
+
+                // Join info
+                ctx.fillStyle = 'rgba(255,255,255,0.9)';
+                ctx.font = '600 34px Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif';
+                wrapText(`Join: ${opts.joinUrl || 'discord.gg/GS5Va3zEep'}`, pad, y, width - pad*2, 44);
+
+                // Footer
+                ctx.textAlign = 'center';
+                ctx.fillStyle = 'rgba(255,255,255,0.75)';
+                ctx.font = '600 30px Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif';
+                ctx.fillText('Allegheny County Roleplay', width/2, height - 86);
+                ctx.fillText('alleghenycountyroleplay.com', width/2, height - 48);
+
+                const blob = await new Promise((resolve) => canvas.toBlob(resolve, 'image/png', 1));
+                if(!blob) throw new Error('Failed to export poster image');
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `ACRP_SSU_Poster_${new Date().toISOString().slice(0,10)}.png`;
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+                setTimeout(() => URL.revokeObjectURL(url), 1500);
+            }
+        })();
+    </script>
+
+    <script src="/master.js"></script>
+    <script src="/toasts.js"></script>
+    <script>
+        document.getElementById('apply-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            showToast('Application\'s are not open currently. Check back later', 'error');
+        });
+    </script>
+</body>
+</html>

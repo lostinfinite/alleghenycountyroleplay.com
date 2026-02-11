@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ACRP Email Signatures</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 2rem;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .signature-container {
+      background: white;
+      padding: 2.5rem;
+      margin-bottom: 3rem;
+      border-radius: 16px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .signature-container:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+    }
+
+    .signature-container h2 {
+      margin-top: 0;
+      color: #1a1a1a;
+      border-bottom: 3px solid #FFBB00;
+      padding-bottom: 0.75rem;
+      margin-bottom: 1.5rem;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .signature {
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+      font-size: 14px;
+      color: #2c3e50;
+      line-height: 1.5;
+      border: 2px solid #e8e8e8;
+      padding: 1.5rem;
+      background: linear-gradient(to bottom right, #ffffff, #f8f9fa);
+      display: inline-block;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .sig-table {
+      border-collapse: collapse;
+    }
+
+    .sig-logo {
+      padding-right: 20px;
+      vertical-align: middle;
+      border-right: 4px solid #FFBB00;
+      position: relative;
+    }
+
+    .sig-logo::after {
+      content: '';
+      position: absolute;
+      right: -2px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 4px;
+      height: 60%;
+      background: linear-gradient(to bottom, transparent, #FFBB00, transparent);
+    }
+
+    .sig-logo img {
+      display: block;
+      width: 90px;
+      height: 90px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .sig-info {
+      padding-left: 20px;
+      vertical-align: middle;
+    }
+
+    .sig-name {
+      font-size: 20px;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin: 0 0 5px 0;
+      letter-spacing: -0.3px;
+    }
+
+    .sig-title {
+      font-size: 15px;
+      color: #FFBB00;
+      font-weight: 700;
+      margin: 0 0 3px 0;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-size: 13px;
+    }
+
+    .sig-company {
+      font-size: 15px;
+      font-weight: 600;
+      color: #34495e;
+      margin: 0 0 12px 0;
+      letter-spacing: -0.2px;
+    }
+
+    .sig-divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, #e0e0e0, transparent);
+      margin: 10px 0;
+    }
+
+    .sig-contact {
+      font-size: 13px;
+      color: #555;
+      margin: 6px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .sig-contact-icon {
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      min-width: 18px;
+      min-height: 18px;
+      flex-shrink: 0;
+      vertical-align: middle;
+    }
+
+    .sig-contact a {
+      color: #2c3e50;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .sig-contact a:hover {
+      color: #FFBB00;
+    }
+
+    .copy-btn {
+      margin-top: 1.5rem;
+      padding: 0.75rem 1.5rem;
+      background: linear-gradient(135deg, #FFBB00, #d69a00);
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 14px;
+      box-shadow: 0 4px 12px rgba(255, 187, 0, 0.3);
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .copy-btn:hover {
+      background: linear-gradient(135deg, #d69a00, #b88400);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(255, 187, 0, 0.4);
+    }
+
+    .copy-btn:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 8px rgba(255, 187, 0, 0.3);
+    }
+
+    .instructions {
+      background: linear-gradient(135deg, #e8f4fd, #d4e9f9);
+      padding: 1.25rem;
+      border-radius: 8px;
+      margin-top: 1.5rem;
+      font-size: 13px;
+      color: #2c3e50;
+      border-left: 4px solid #3498db;
+      box-shadow: 0 2px 8px rgba(52, 152, 219, 0.1);
+    }
+
+    .instructions strong {
+      color: #1a1a1a;
+      font-weight: 700;
+    }
+
+    h1 {
+      text-align: center;
+      color: white;
+      font-size: 36px;
+      font-weight: 800;
+      margin-bottom: 2rem;
+      text-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      letter-spacing: -0.5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>ACRP Email Signatures</h1>
+  
+  <!-- Sage Chudnovsky - Director -->
+  <div class="signature-container">
+    <h2>Sage Chudnovsky - Director</h2>
+    <div class="signature" id="sig1">
+      <table class="sig-table" cellpadding="0" cellspacing="0">
+        <tr>
+          <td class="sig-logo">
+            <img src="https://cdn2.contentltd.net/acrp%20(2).png" alt="ACRP Logo">
+          </td>
+          <td class="sig-info">
+            <p class="sig-name">Sage Chudnovsky</p>
+            <p class="sig-title">Director</p>
+            <p class="sig-company">Allegheny County Roleplay</p>
+            <div class="sig-divider"></div>
+            <p class="sig-contact" style="margin:6px 0;font-size:13px;color:#555;">
+              <span style="display:inline-block;width:18px;height:18px;line-height:18px;background:#FFBB00;border-radius:50%;text-align:center;font-size:10px;font-weight:700;color:#000;font-family:Arial,sans-serif;vertical-align:middle;margin-right:8px;">E</span>
+              <a href="mailto:contentltd@acrp.work" style="color:#2c3e50;text-decoration:none;font-weight:500;">contentltd@acrp.work</a>
+            </p>
+            <p class="sig-contact" style="margin:6px 0;font-size:13px;color:#555;">
+              <span style="display:inline-block;width:18px;height:18px;line-height:18px;background:#FFBB00;border-radius:50%;text-align:center;font-size:10px;font-weight:700;color:#000;font-family:Arial,sans-serif;vertical-align:middle;margin-right:8px;">W</span>
+              <a href="https://alleghenycountyroleplay.com" style="color:#2c3e50;text-decoration:none;font-weight:500;">alleghenycountyroleplay.com</a>
+            </p>
+            <p class="sig-contact" style="margin:6px 0;font-size:13px;color:#555;">
+              <span style="display:inline-block;width:18px;height:18px;line-height:18px;background:#FFBB00;border-radius:50%;text-align:center;font-size:10px;font-weight:700;color:#000;font-family:Arial,sans-serif;vertical-align:middle;margin-right:8px;">D</span>
+              <a href="https://discord.com/invite/fKrrT7Djgr" style="color:#2c3e50;text-decoration:none;font-weight:500;">discord.com/invite/fKrrT7Djgr</a>
+            </p>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <button class="copy-btn" onclick="copySignature('sig1')">Copy Signature</button>
+    <div class="instructions">
+      <strong>To use:</strong> Click "Copy Signature" then paste into your email client's signature settings (Gmail, Outlook, etc.)
+    </div>
+  </div>
+
+  <!-- Albion Stevens - Deputy Director -->
+  <div class="signature-container">
+    <h2>Albion Stevens - Deputy Director</h2>
+    <div class="signature" id="sig2">
+      <table class="sig-table" cellpadding="0" cellspacing="0">
+        <tr>
+          <td class="sig-logo">
+            <img src="https://cdn2.contentltd.net/acrp%20(2).png" alt="ACRP Logo">
+          </td>
+          <td class="sig-info">
+            <p class="sig-name">Albion Stevens</p>
+            <p class="sig-title">Deputy Director</p>
+            <p class="sig-company">Allegheny County Roleplay</p>
+            <div class="sig-divider"></div>
+            <p class="sig-contact" style="margin:6px 0;font-size:13px;color:#555;">
+              <span style="display:inline-block;width:18px;height:18px;line-height:18px;background:#FFBB00;border-radius:50%;text-align:center;font-size:10px;font-weight:700;color:#000;font-family:Arial,sans-serif;vertical-align:middle;margin-right:8px;">E</span>
+              <a href="mailto:iabigalb@acrp.work" style="color:#2c3e50;text-decoration:none;font-weight:500;">iabigalb@acrp.work</a>
+            </p>
+            <p class="sig-contact" style="margin:6px 0;font-size:13px;color:#555;">
+              <span style="display:inline-block;width:18px;height:18px;line-height:18px;background:#FFBB00;border-radius:50%;text-align:center;font-size:10px;font-weight:700;color:#000;font-family:Arial,sans-serif;vertical-align:middle;margin-right:8px;">W</span>
+              <a href="https://alleghenycountyroleplay.com" style="color:#2c3e50;text-decoration:none;font-weight:500;">alleghenycountyroleplay.com</a>
+            </p>
+            <p class="sig-contact" style="margin:6px 0;font-size:13px;color:#555;">
+              <span style="display:inline-block;width:18px;height:18px;line-height:18px;background:#FFBB00;border-radius:50%;text-align:center;font-size:10px;font-weight:700;color:#000;font-family:Arial,sans-serif;vertical-align:middle;margin-right:8px;">D</span>
+              <a href="https://discord.com/invite/fKrrT7Djgr" style="color:#2c3e50;text-decoration:none;font-weight:500;">discord.com/invite/fKrrT7Djgr</a>
+            </p>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <button class="copy-btn" onclick="copySignature('sig2')">Copy Signature</button>
+    <div class="instructions">
+      <strong>To use:</strong> Click "Copy Signature" then paste into your email client's signature settings (Gmail, Outlook, etc.)
+    </div>
+  </div>
+
+  <script>
+    function copySignature(id) {
+      const signature = document.getElementById(id);
+      const range = document.createRange();
+      range.selectNode(signature);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+      
+      try {
+        document.execCommand('copy');
+        alert('Signature copied to clipboard! You can now paste it into your email client.');
+      } catch (err) {
+        alert('Failed to copy. Please select the signature manually and copy it.');
+      }
+      
+      window.getSelection().removeAllRanges();
+    }
+  </script>
+</body>
+</html>

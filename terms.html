@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - Allegheny County Roleplay</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="https://cdn2.contentltd.net/acrp%20(2).png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://cdn2.contentltd.net/acrp%20(2).png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="/assets/site.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --brand: #FFBB00;
+            --brand-900: #d69a00;
+            --bg: #0b0b0c;
+            --surface: #121214;
+            --card: #141417;
+            --text: #fff;
+            --muted: #bdbdbd;
+            --border: rgba(255, 255, 255, 0.08);
+            --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            font-size: 11px;
+            font-weight: 400;
+        }
+
+        a {
+            color: var(--brand);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(10, 10, 10, 0.6);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 20px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .brand img {
+            width: 32px;
+            height: 32px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 8px;
+            background: var(--brand);
+            color: #000;
+            font-weight: 600;
+            font-size: 11px;
+            transition: transform 0.18s ease, background 0.18s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+            background: var(--brand-900);
+            text-decoration: none;
+        }
+
+        .hero {
+            padding: 60px 20px 40px;
+            text-align: center;
+            background: radial-gradient(1200px 600px at 50% -10%, rgba(255, 187, 0, 0.06), transparent);
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero .title {
+            font-size: 26px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--brand) 0%, #FFA500 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .dates {
+            font-size: 11px;
+            color: var(--muted);
+            margin-bottom: 20px;
+        }
+
+        .dates p {
+            margin-bottom: 4px;
+        }
+
+        .content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .section {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 24px;
+        }
+
+        h1 {
+            font-size: 20px;
+            font-weight: 400;
+            margin-bottom: 16px;
+            color: var(--brand);
+        }
+
+        h2 {
+            font-size: 16px;
+            font-weight: 400;
+            margin: 20px 0 12px;
+            color: var(--text);
+        }
+
+        h3 {
+            font-size: 14px;
+            font-weight: 400;
+            margin: 16px 0 8px;
+            color: var(--text);
+        }
+
+        .section p, .section ul, .section ol, .section li {
+            font-size: 11px;
+            font-weight: 400;
+            line-height: 1.8;
+        }
+
+        .section p {
+            margin-bottom: 16px;
+            color: var(--muted);
+        }
+
+        .section ul, .section ol {
+            margin: 16px 0;
+            padding-left: 24px;
+            color: var(--muted);
+        }
+
+        .section li {
+            margin-bottom: 8px;
+        }
+
+        strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background: #0d0d0d;
+            color: #ccc;
+            padding: 3rem 1rem;
+        }
+
+        footer .cols {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+            text-align: left;
+        }
+
+        footer h3 {
+            color: var(--brand);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        footer a {
+            color: var(--brand);
+            text-decoration: none;
+        }
+
+        footer .copyright {
+            margin-top: 2rem;
+            border-top: 1px solid #333;
+            padding-top: 1.5rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        @media (max-width: 768px) {
+            .hero .title {
+                font-size: 22px;
+            }
+
+            .section {
+                padding: 24px;
+            }
+
+            h1 {
+                font-size: 18px;
+            }
+
+            h2 {
+                font-size: 15px;
+            }
+
+            h3 {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="simple-localnav" aria-label="local" tabindex="-1" style="--progress:0;">
+        <div class="localnav-inner container">
+            <a href="/" class="brand"><img src="https://cdn2.contentltd.net/acrp%20(2).png" alt="ACRP Logo"><span>Allegheny County Roleplay</span></a>
+            <div class="actions">
+                <a class="btn-outline" href="/">Home</a>
+                <a class="btn" href="https://discord.gg/GS5Va3zEep">Join</a>
+            </div>
+        </div>
+    </nav>
+        <div class="localnav-overlay-background"></div>
+
+    <script src="/assets/sticky-fallback.js" defer></script>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="title">Allegheny County Roleplay Terms of Service</div>
+            <div class="dates">
+                <p>Last Updated: February 9, 2026</p>
+                <p>Effective: December 16, 2025</p>
+                <p>Established: December 16, 2025</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="content">
+        <div class="section">
+            <h1>Introduction</h1>
+            <p>Allegheny County Roleplay and its designated departments and staff team (Collectively, "ACRP", "Allegheny County Roleplay", "we", or "us") offer the Allegheny County Roleplay website (www.alleghenycountyroleplay.com and www.acrp.work) and its associated platform (collectively, the "Platform"), as well as various features, tools, bots, applications, content, in-game server, and custom functionalities (together with the Platform, the "Services") to allow users ("Users," "you," or "your") to participate in our Emergency Response; Liberty County ("ER;LC") environment's and server(s).</p>
+            <p>These roleplay environments include servers directly created, maintained, or operated by Allegheny County Roleplay (collectively, the "Servers," and also referred to as "Private Servers," "Server," or "Our Private Servers" where applicable).</p>
+            <p>These Terms of Service ("Terms") govern your access to and use of the Services, including but not limited to our Website, Discord Bots, Custom Game Integrations, "Departments", and Automated Custom Applications used for verification.</p>
+            <p>By accessing or using the Platform, Services, or Servers provided by us, you agree to the following:</p>
+            <p>These terms govern your use of Allegheny County Roleplay and its Platform, Services, and Servers. Allegheny County Roleplay Staff members may restrict your use of Allegheny County Roleplay's Platform, Services, and Servers at any time, even for infractions and or any rule listed here, in our Community Standards, and Privacy Policy.</p>
+            <p>You will follow all articles, clauses, and rules outlined in our Terms and our Community Standards as described and written.</p>
+            <p>For U.S. users, Allegheny County Roleplay's Arbitration Agreement (Section 3) outlines how disputes between you and Allegheny County Roleplay will be resolved. Specifically, these Allegheny County Roleplay Terms contain A BINDING, INDIVIDUAL, ARBITRATION AND CLASS ACTION WAIVER. THIS MEANS THAT YOU GIVE UP THE RIGHT TO BRING AN ACTION IN COURT, INDIVIDUALLY OR AS PART OF A CLASS ACTION.</p>
+            <p>PLEASE READ THE ALLEGHENY COUNTY ROLEPLAY TERMS CAREFULLY BEFORE BEGINNING TO USE THE SERVICES, PLATFORMS, AND SERVERS WE MANAGE, AS THEY SET FORTH A LEGALLY BINDING AGREEMENT BETWEEN YOU AND ALLEGHENY COUNTY ROLEPLAY. BY USING THE SERVICES, PLATFORM, AND SERVERS, YOU AFFIRM THAT YOU HAVE REACHED THE LEGAL AGE OF MAJORITY IN YOUR JURISDICTION AND STATE OF RESIDENCE, AND UNDERSTAND, ACCEPT, AND AGREE TO BE BOUND AND ABIDE BY THE ALLEGHENY COUNTY ROLEPLAY TERMS. IF YOU DO NOT AGREE TO THE ALLEGHENY COUNTY ROLEPLAY TERMS, YOU MUST NOT USE THE SERVICES, PLATFORM, OR SERVERS.</p>
+            <b>IF YOU ARE UNDER THE LEGAL AGE OF MAJORITY (A "MINOR" ) IN YOUR JURISDICTION OR STATE OF RESIDENCE, BEFORE USING THE SERVICES OR SERVERS, YOUR PARENT OR LEGAL GUARDIAN MUST READ AND AGREE TO THE ALLEGHENY COUNTY ROLEPLAY TERMS. BY PERMITTING A MINOR TO USE THE SERVICES, A MINOR'S PARENT BECOMES SUBJECT TO THE ALLEGHENY COUNTY ROLEPLAY TERMS AND AGREES TO BE RESPONSIBLE FOR ALL OF THE MINOR'S ACTIVITIES ON THE SERVICES, PLATFORM, OR SERVERS, INCLUDING THE PURCHASE OF ANY VIRTUAL CONTENT FROM US.</b>
+            <p>These Terms may be updated at any time. We reserve the right to modify these Terms, along with any other legal documentation, at our sole discretion and without prior notice, explanation, consent, or approval. Your continued use of our services constitutes acceptance of any such changes. Changes shall be effective as of the "Last Updated" date atop of this page.</p>
+        </div>
+
+        <div class="section">
+            <h1>The third-party platform we utilize.</h1>
+            <p>At Allegheny County Roleplay, we utilize many third-party platforms. Within this section, we will explain your responsibilities within these platforms, as well as define what each platform is.</p>
+            <p>We ask that all users respect the Terms of Service, Community Standards, and Privacy Policy of each of the third-party platforms we utilize; failure to do so will result in a restriction from Allegheny County Roleplay, as those same Terms of Service, Community Standards, and Privacy Policies govern us.</p>
+            
+            <h2>2a. Discord Account</h2>
+            <p>A "Discord Account" refers to any account registered with Discord, Inc. ("Discord"), used to access the Allegheny County Roleplay Discord server or any related bot services. Users are responsible for maintaining the security and privacy of their Discord account Credentials. Allegheny County Roleplay is not responsible for Discord account compromise, suspension, or deletion by Discord.</p>
+            
+            <h2>2b. Roblox Account</h2>
+            <p>A "Roblox Account" refers to any account registered with Roblox Corporation ("Roblox"), used to access the Allegheny County Roleplay in-game server or any Roblox-related services. Users are responsible for maintaining the security and privacy of their Roblox account credentials. Allegheny County Roleplay is not responsible for Roblox account compromise, suspension, or deletion by Roblox.</p>
+            
+            <h2>2c. No Affiliation</h2>
+            <p>Allegheny County Roleplay is not affiliated with, endorsed by, or sponsored by Discord or Roblox. Use of these platforms is subject to their respective terms, and Allegheny County Roleplay disclaims any liability arising from their functionality or policies.</p>
+        </div>
+
+        <div class="section">
+            <h1>3. Arbitration Agreement</h1>
+            <p><strong>Agreement to Arbitrate.</strong> By using our services or accessing any Platform, Product, or Servers by Allegheny County Roleplay, you and Allegheny County Roleplay agree to resolve any and all disputes, claims, or controversies arising out of or relating to these Terms or the Services through final and binding arbitration, rather than in court. This includes any claims based on conduct that occurred before this agreement and claims that may arise after termination.</p>
+            <p><strong>Class Action Waiver.</strong> You and Allegheny County Roleplay agree that all arbitration proceedings will be conducted only on an individual basis and not as a class, collective, consolidated, or representative action. You acknowledge and agree that you are waiving the right to participate in a class action or class-wide arbitration.</p>
+            <p><strong>Governing Law and Jurisdiction.</strong> This Arbitration Agreement is governed by the Federal Arbitration Act ("FAA") and applicable U.S. federal arbitration law. The arbitration shall be conducted by a single arbitrator through the American Arbitration Association ("AAA") or another mutually agreed-upon arbitrator provider, under the applicable rules in effect at the time of filing.</p>
+            <p><strong>Location and Procedure.</strong> Unless otherwise agreed, arbitration will be conducted remotely via written submissions, phone, or video conference. If a hearing is required, it will be held in the U.S. county where you reside or another location agreed upon by both parties.</p>
+            <p><strong>Exceptions.</strong> Notwithstanding the foregoing, either party may bring a claim in small claims court if the court qualifies, or seek injunctive or equitable relief in a court of competent jurisdiction to prevent actual or threatened misuse of intellectual property or confidential information.</p>
+            <p><strong>Opt-Out Right.</strong> If you are a new user of the Services, you may opt out of this Arbitration Agreement within 30 days of accepting these Terms by sending written notice to ownership@acrp.work. Your notice must include your full name, Discord® Username, address, and a clear statement that you wish to opt out of arbitration.</p>
+        </div>
+
+        <div class="section">
+            <h1>4. Payments and Refunds</h1>
+            
+            <h2>4a. General</h2>
+            <p>Only Users who have reached the age of majority in their jurisdiction or state of residence may engage in financial transactions within Allegheny County Roleplay, such as donations or any other financial transaction(s).</p>
+            
+            <h2>4b. User Responsibilities.</h2>
+            <p>When purchasing anything from Allegheny County Roleplay, you (or your Guardian, as applicable) represent and warrant that you have the right to use your selected payment method and that your payment method has enough credit available to complete the applicable transaction. You further agree that you are bound by Applicable terms, like our Payment Terms, and your local law(s).</p>
+            
+            <h2>4c. Unauthorized Transactions.</h2>
+            <p>If you notice charges on your credit/debit card, Paypal®, or Google Play® account relating to the Services or Servers that you did not authorize, please contact Allegheny County Roleplay Support immediately. Tell Allegheny County Roleplay AT ONCE if you believe that a charge has been made without your permission. Our goal is to learn about and promptly address your concerns. If you dispute any charges directly with your payment processor, Allegheny County Roleplay may be restricted in the assistance, including any refund, that Allegheny County Roleplay can provide due to prohibitions under the payment provider's dispute process. To protect Allegheny County Roleplay and Users from fraud and other harm, Allegheny County Roleplay reserves the right to restrict your access to Allegheny County Roleplay.</p>
+            
+            <h2>4d. Pricing and Tax.</h2>
+            <p>When you purchase anything from Allegheny County Roleplay, the price payable is the price indicated at the time of purchase, plus all applicable sales and/or use taxes, value-added tax ("VAT"), or goods and services tax ("GST") that Allegheny County Roleplay assesses on your purchase (the "Purchase Price"). For U.S and Canadian purchasers, applicable sales tax may be added to the price displayed; for purchasers in other countries where Allegheny County Roleplay is registered for VAT or GST, the Purchase Price will include applicable VAT or GST, at the rate applicable in the territory, unless otherwise indicated at the time of purchase.</p>
+        </div>
+
+        <div class="section">
+            <h1>5. Severability and Entire Agreement</h1>
+            <p>If any provision of these Terms is found to be unlawful, void, or unenforceable for any reason, that provision shall be deemed severable from the Terms and shall not affect the validity and enforceability of any remaining provisions.</p>
+            <p>These Terms, along with the Privacy Policy, Payment Terms, Community Standards, and any other Legal Documentation referenced or incorporated by link or contract, constitute the entire agreement between you and Allegheny County Roleplay regarding your use of the Services and supersede any prior or contemporaneous understandings or agreements, whether oral or written.</p>
+            <p>No waiver by Allegheny County Roleplay of any provision or right shall be deemed a further or continuing waiver of such provision or any other provision.</p>
+        </div>
+
+        <div class="section">
+            <h1>6. Universal Liability Disclaimer</h1>
+            <p>This section defines the extent to which Allegheny County Roleplay assumes or disclaims responsibility for the actions, conduct, and content of Users, Creators, and third parties. By accessing or using the Services, you acknowledge and accept that your use is entirely at your own risk and that Allegheny County Roleplay's liability is limited as set forth below.</p>
+            
+            <h2>6a. General Limitation of Liability.</h2>
+            <p>To the fullest extent permitted by applicable law, Allegheny County Roleplay, including its designated subsidiaries, affiliates, personnel, moderators, contributors, and developers, shall not be liable for any direct, indirect, incidental, special, consequential, punitive, or exemplary damages arising out of or in connection with your use of the Platform, Services, or Private Servers. This includes, without limitation, any damages relating to personal injury, financial loss, emotional harm, reputational damage, account loss, lost data, inaccessibility, service interruption, or technical failure.</p>
+            <p>All Services and related features are provided "as-is" and "as available" with no express or implied warranties of any kind.</p>
+            
+            <h2>6b. User-Generated Content (UGC).</h2>
+            <p>Allegheny County Roleplay does not pre-approve, monitor, or endorse any User-Generated Content (UGC), including Experiences, communications, or media created or shared by Users or Creators. All content created or uploaded by Users or Creators is the sole responsibility of the originating party.</p>
+            <p>Allegheny County Roleplay expressly disclaims liability for any offensive, infringing, inaccurate, misleading, defamatory, or otherwise unlawful content transmitted or made available via the Services.</p>
+            
+            <h2>6c. Intellectual Property and Copyright.</h2>
+            <p>Allegheny County Roleplay complies with applicable intellectual property laws, including the Digital Millennium Copyright Act (DMCA) as outlined in Section 9 of these Terms. Allegheny County Roleplay shall only be held responsible for responding to valid claims of copyright or trademark infringement when the allegedly infringing material is hosted directly on Allegheny County Roleplay-operated infrastructure (e.g., www.alleghenycountyroleplay.net or related domains/subdomains).</p>
+            <p>Allegheny County Roleplay bears no responsibility for content hosted externally, including on platforms such as Roblox®, Discord®, or YouTube®, even if such content is referenced, linked, or promoted through the Services. If the infringing content resides on an external platform, Users and rights holders must pursue resolution through that respective platform's legal reporting process.</p>
+            <p>Allegheny County Roleplay is not required to take action on intellectual property complaints unless the reported material is both hosted by us and falls within our legal jurisdiction.</p>
+            
+            <h2>6d. Indemnification.</h2>
+            <p>You agree to indemnify, defend, and hold harmless Allegheny County Roleplay, its affiliates, subsidiaries, officers, agents, partners, and employees from and against any and all claims, demands, liabilities, losses, damages, costs, and expenses (including reasonable attorneys' fees) arising from or related to:</p>
+            <p>(i) your use of the Services;</p>
+            <p>(ii) your violation of these Terms or any applicable Legal Documentation;</p>
+            <p>(iii) your infringement of intellectual property or other proprietary rights; or</p>
+            <p>(iv) any harmful or unlawful conduct carried out through your account or Experience.</p>
+        </div>
+
+        <div class="section">
+            <h1>7. Emergencies</h1>
+            <p>Allegheny County Roleplay prioritizes the protection and welfare of all individuals using the Platform, Services, and Private Servers. Emergencies—whether related to mental health, criminal activity, or physical safety—require prompt, real-world response. The following provisions govern how such situations should be addressed:</p>
+            
+            <h2>7a. Immediate Action Required.</h2>
+            <p>If you witness or reasonably believe that a User is in imminent danger—due to a mental health crisis, unlawful conduct, or any other life-threatening event—you are required to immediately contact appropriate emergency services. This may include dialing 911, 988, or any other jurisdictionally relevant emergency number. The use of our Services or reporting mechanisms must not be treated as a substitute for emergency intervention.</p>
+            
+            <h2>7b. Duty to Seek Help.</h2>
+            <p>By using our Services, you accept responsibility for initiating real-world assistance if someone is at risk. This includes, but is not limited to, calling emergency responders, utilizing mental health hotlines, contacting Discord® Trust & Safety, or notifying us directly if the individual is active on our Platforms or Servers. Prompt action may be essential to ensuring the safety of another User.</p>
+            
+            <h2>7c. Cooperation with Authorities.</h2>
+            <p>In circumstances involving threats to life, illegal activity, or credible risk to personal safety, Allegheny County Roleplay reserves the right to fully cooperate with law enforcement, emergency services, or platform security teams (e.g., Discord Trust & Safety). This includes, but is not limited to, providing relevant logs, identifiers, and any data necessary and legally permissible to assist in emergency response or criminal investigation efforts.</p>
+        </div>
+
+        <div class="section">
+            <h1>8. UGC Rules</h1>
+            <p>This section governs all User Generated Content ("UGC") created, submitted, or shared using the Services or Servers. UGC includes, but is not limited to, text, messages, usernames, bots, files, scripts, designs, assets, experiences, ranking systems, logos, game elements, or any other material created or provided by Users or Creators.</p>
+            <p>All UGC must follow the rules listed below at all times while using any part of the Services or affiliated Servers. Any UGC found to violate these rules may be removed without notice. The User who submitted the violating UGC may be restricted, warned, suspended, or permanently removed, depending on the severity of the violation.</p>
+            <p><strong>Content is prohibited if it:</strong></p>
+            <ul>
+                <li>Includes or promotes hate speech, racism, harassment, threats, sexual content, or any form of illegal activity</li>
+                <li>Violates intellectual property laws or uses copyrighted or trademarked material without permission</li>
+                <li>Contains malware, exploits, unauthorized scripts, or links to dangerous content</li>
+                <li>Shares private or identifying information about another person without consent.</li>
+                <li>It is spam, scam-related, deceptive, or purely commercial without written approval.</li>
+                <li>Misrepresents your identity or impersonates another User, Creator, or Staff member</li>
+                <li>Attempts to bypass bans, moderation actions, or automation systems</li>
+            </ul>
+            <p>You must either own or have full rights to all content you submit. By publishing UGC to any Services, you agree that:</p>
+            <ul>
+                <li>You are responsible for the accuracy and legality of the content.</li>
+                <li>You grant Allegheny County Roleplay a royalty-free, non-exclusive, irrevocable, perpetual, and sublicensable license to host, use, publish, archive, adapt, modify, translate, and distribute the content across any media for purposes related to operation, safety, marketing, improvement, or training.</li>
+                <li>You understand that UGC may be stored, shared, reposted, or copied by others both inside and outside of Allegheny County Roleplay's Services.</li>
+                <li>You understand Allegheny County Roleplay is not liable for misuse of UGC by third parties or for any content moderation decision made in good faith.</li>
+            </ul>
+            <p>Allegheny County Roleplay has the right, but not the obligation, to monitor, review, restrict, or remove any UGC at any time. We may also respond to legal takedown notices or safety reports in accordance with Section 9.</p>
+            <p>We reserve the right to take action on any UGC at our sole discretion, including actions not specifically described in this section, if we believe such action is necessary to protect users, ensure legal compliance, preserve platform integrity, or enforce any part of these Terms or associated policies.</p>
+            <p>If you believe content on our Services violates your rights, you may file a report or submit a DMCA takedown request as outlined in Section 7 of these Terms.</p>
+        </div>
+
+        <div class="section">
+            <h1>9. Intellectual Property and UGC</h1>
+            
+            <h2>9a. ACRP's Intellectual Property</h2>
+            <p>The interfaces, graphics, logos, websites, domain names, icons, bots, bot logos, bot names, product names, data, code, artwork, products, software, and all other elements of the Services and Servers (" Allegheny County Roleplay Intellectual Property," "ACRP IP," or "Allegheny County Roleplay IP") we manage are protected by law and the Allegheny County Roleplay Terms. All Allegheny County Roleplay IP is the property of ACRP and ACRP's licensors. Allegheny County Roleplay IP includes all UGC licensed to Allegheny County Roleplay by Server Owners under the IP Licensing Agreement. Except as allowed in the Allegheny County Roleplay Terms and any applicable Additional Terms, you may not use any Allegheny County Roleplay IP contained in the services or servers unless you obtain separate permission in each instance from the owner. Allegheny County Roleplay reserves all rights in/to the Allegheny County Roleplay IP not granted in these terms or elsewhere in additional terms.</p>
+            
+            <h2>9b. UGC</h2>
+            <p>The services and servers may contain various forums, functionality, logos, channel structures, ranking structures, and other interactive features that allow you to create, upload, submit, publish, display, generate, transmit, or otherwise make available ("Publish") UGC on the Services. For more information, please read section 8 and our policies on UGC. Any UGC Published on the services must comply with Allegheny County Roleplay Terms, including the rules described in section 8 regarding UGC, and must not be illegal, fraudulent, deceptive, obscene, threatening, defamatory, invasive of privacy, infringing of intellectual property rights or otherwise injurious to third parties or objectionable and must not consist of or contain software viruses, commercial solicitation, chain letters, mass mailings, or any form of spam.</p>
+            <p>Except as otherwise described in Allegheny County Roleplay's Privacy Policy or any applicable additional terms, (i) you agree any UGC that you Publish to Allegheny County Roleplay any Allegheny County Roleplay affiliated servers or services will be considered non-confidential and non-proprietary, and (II) you grant Allegheny County Roleplay a nonexclusive, royalty-free, perpetual, irrevocable, and fully sublicensable right to host, use, copy, reproduce, modify, adapt, publish, translate, run, create, derivative works of, distribute, communicate to the public, and publicly perform or display including on a through-to-the-audience basis, such as UGC and any related interaction data on the Services and Servers, throughout the world in any media for any business purpose in connection with operating, providing, publicizing, or improving the services or servers, including without limitation in connection with the training of machine learning and related models; however Allegheny County Roleplay will only share personal information that you provide in accordance with Allegheny County Roleplay's Privacy Policy.</p>
+            <p>You represent and warrant that, at the time of Publishing UGC, (i) you own or otherwise control all the rights in/to the UGC; (i) the UGC is accurate and not fraudulent or deceptive; and (iii) the UGC does not violate these Terms, and applicable laws, or the rights of any third party including intellectual property, privacy, and publicity, and will not cause injury to any person or entity. You understand that Allegheny County Roleplay cannot guarantee that certain situations, UGC that you publish or make available on or through the services, will not be copied or used by other users of the services and servers, and discussed on and outside of the services. If you do not have the right to submit UGC for such use, publishing such may subject you to liability. Allegheny County Roleplay takes no responsibility and assumes no liability for any UGC published by you or any third party. Allegheny County Roleplay has the right but not the obligation to monitor, modify, disable access to, or remove any UGC on its Services or servers, and it may exercise these rights at any time, without notice or liability to you or any third party.</p>
+            
+            <h2>9c. Copyright Infringement / Digital Millennium Copyright Act (DMCA).</h2>
+            
+            <h3>i. Notice.</h3>
+            <p>We respect the intellectual property rights of others, and we ask you to do the same. If you are a copyright owner or an agent of a copyright owner and believe that any content on the Servers and/or Services infringes on your copyrights, you may submit a notice pursuant to the DMCA by contacting our copyright team by email at legal@acrp.work. In your email, be sure to include the following:</p>
+            <ul>
+                <li>An electronic or physical signature of the person authorized to act on behalf of the owner of the copyright or other right being infringed;</li>
+                <li>A description of the copyright-protected work or other intellectual property right that you claim has been infringed;</li>
+                <li>A description of the material that you claim is infringing and where it is located; Your address, telephone number, and email address;</li>
+                <li>A statement by you that you have a good faith belief that the use of those materials is not authorized by the copyright owner, its agent, or the law; and</li>
+                <li>A statement by you that the above information in your notice is accurate and that, under penalty of perjury, you are the copyright or intellectual property owner or authorized to act on the copyright or intellectual property owner's behalf.</li>
+            </ul>
+            <p>You acknowledge that if you fail to comply with all of the requirements of this Section, your DMCA notice may not be valid. See 17 U.S.C. § 512 (c)(3) for further details. We may send a copy of your DMCA notice, including any contact information you provide, to the individual(s) responsible for the reported content.</p>
+            
+            <h3>ii. Counter-Notice.</h3>
+            <p>If your server was affected as a result of a DMCA notice, and you believe that your content is not infringing or that you have the proper authorization from the copyright owner, the copyright owner's agent, or pursuant to a law to publish and use the material in your content, you may send a counter-notice to our Copyright Team by Email at legal@acrp.work. Any counter-notice submitted on behalf of a User under the age of 18 must be submitted by a parent, Guardian, or other adult representative. When our copyright team receives a counter-notice, we may send a copy of the counter-notice, including any contact information you provide, to the original complaining party, informing that party that we may, in 10 business days, restart advertising of the server and drop the claim. Unless the copyright owner files an action seeking a court order against the provider of the content, the removed content may be replaced, or access to it restored, in our sole discretion, within 10 to 14 business days or more after our receipt of the counter-notice.</p>
+            
+            <h3>iii. Repeat Infringer Policy.</h3>
+            <p>Allegheny County Roleplay's Intellectual Property Policy is to: (i) remove or disable access to content that Allegheny County Roleplay knows to be infringing on intellectual property rights of third parties or that has been identified in a valid DMCA notice submitted by a valid copyright owner or their agent; and, (ii) in appropriate circumstances, to suspend or terminate the partnerships of and block access to the services or servers by any user who repeatedly or egregiously infringes the copyrights or other intellectual property rights of third-parties.</p>
+            
+            <h3>iiii. Feedback.</h3>
+            <p>Any feedback, comments, or suggestions (collectively "Feedback") you may provide regarding or relating to the Services is entirely voluntary. You hereby grant us a perpetual, irrevocable, royalty-free, fully paid, worldwide license to us to such Feedback, and we will be free to use such Feedback as we see fit and without any obligation to you.</p>
+        </div>
+
+        <div class="section">
+            <h1>10. Age Verification</h1>
+
+            <h2>10a. Our Age Verification Systems</h2>
+            <p>Allegheny County Roleplay, ACRP, requires age verification and age assurance checks as a condition of access to and continued use of our services. We use a combination of in house and third party systems to determine whether users meet minimum age requirements under applicable law, including COPPA, and applicable platform policies, including Discord’s Terms of Service.</p>
+            <p>Verification and assurance measures may include, without limitation:</p>
+            <ul>
+                <li>Screening forms: You may be required to provide your Date of Birth, country of residence, grade level, and related eligibility information.</li>
+                <li>AI based facial age estimation and liveness checks: We may require a live facial scan that is processed using biometric analysis to estimate age and detect spoofing or impersonation attempts. This processing is performed by our verification provider, Didit.me, acting as a data processor.</li>
+                <li>Behavioral and message based age assurance signals: We may use automated systems to analyze account activity and message patterns for age risk indicators.</li>
+            </ul>
+            <p>By submitting verification data, including facial scans, you expressly consent to biometric and eligibility processing for age screening, fraud prevention, safety enforcement, and compliance purposes.</p>
+            <p>Verification providers may process facial images, biometric features, liveness data, similarity scores, device and session metadata, and related technical logs as part of the verification workflow. ACRP receives verification results and related metadata and may retain verification status, scores, flags, and audit logs.</p>
+            <p>Completion of required age verification is mandatory. Refusal or failure to complete required checks will result in denied or removed access to ACRP systems.</p>
+            <p>For additional details on how verification data is handled, processed, and retained, see our Privacy Policy.</p>
+
+            <h2>10b. Age Check Results and Enforcement</h2>
+            <p>You must be at least 13 years old to access or use ACRP services. If our systems determine, or reasonably indicate, that you are under the minimum required age, your access will be denied or revoked.</p>
+            <p>ACRP reserves the right to suspend, remove, or permanently ban accounts that fail age verification, trigger underage risk signals, submit false information, or attempt to bypass verification controls. Access restrictions may include removal from our Discord server and any connected ACRP systems.</p>
+            <p>Verification determinations and risk decisions are made at ACRP’s discretion and are final unless re verification is expressly approved by us.</p>
+
+            <h2>10c. Retention and Re Verification</h2>
+            <p>Verification results, scores, flags, and related audit data may be retained for compliance, safety, fraud prevention, and repeat offender detection purposes. We may retain this data indefinitely unless a valid deletion request is received and approved where legally permitted.</p>
+            <p>If verification records are deleted, prior verification status is void. Users must complete verification again before regaining access. Deletion of verification data does not reverse or invalidate enforcement actions already taken.</p>
+        </div>
+    </div>
+
+    <div id="footer-container"></div>
+    <script src="snow.js"></script>
+    <script src="master.js"></script>
+</body>
+</html>

@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Allegheny County Roleplay</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="https://cdn2.contentltd.net/acrp%20(2).png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://cdn2.contentltd.net/acrp%20(2).png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="/assets/site.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --brand: #FFBB00;
+            --brand-900: #d69a00;
+            --bg: #0b0b0c;
+            --surface: #121214;
+            --card: #141417;
+            --text: #fff;
+            --muted: #bdbdbd;
+            --border: rgba(255, 255, 255, 0.08);
+            --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            font-size: 11px;
+            font-weight: 400;
+        }
+
+        a {
+            color: var(--brand);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(10, 10, 10, 0.6);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 20px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .brand img {
+            width: 32px;
+            height: 32px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 8px;
+            background: var(--brand);
+            color: #000;
+            font-weight: 600;
+            font-size: 11px;
+            transition: transform 0.18s ease, background 0.18s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+            background: var(--brand-900);
+            text-decoration: none;
+        }
+
+        .hero {
+            padding: 60px 20px 40px;
+            text-align: center;
+            background: radial-gradient(1200px 600px at 50% -10%, rgba(255, 187, 0, 0.06), transparent);
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero .title {
+            font-size: 26px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--brand) 0%, #FFA500 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .dates {
+            font-size: 11px;
+            color: var(--muted);
+            margin-bottom: 20px;
+        }
+
+        .dates p {
+            margin-bottom: 4px;
+        }
+
+        .content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .section {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 24px;
+        }
+
+        h1 {
+            font-size: 20px;
+            font-weight: 400;
+            margin-bottom: 16px;
+            color: var(--brand);
+        }
+
+        h2 {
+            font-size: 16px;
+            font-weight: 400;
+            margin: 20px 0 12px;
+            color: var(--text);
+        }
+
+        h3 {
+            font-size: 14px;
+            font-weight: 400;
+            margin: 16px 0 8px;
+            color: var(--text);
+        }
+
+        .section p, .section ul, .section ol, .section li {
+            font-size: 11px;
+            font-weight: 400;
+            line-height: 1.8;
+        }
+
+        .section p {
+            margin-bottom: 16px;
+            color: var(--muted);
+        }
+
+        .section ul, .section ol {
+            margin: 16px 0;
+            padding-left: 24px;
+            color: var(--muted);
+        }
+
+        .section li {
+            margin-bottom: 8px;
+        }
+
+        strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background: #0d0d0d;
+            color: #ccc;
+            padding: 3rem 1rem;
+        }
+
+        footer .cols {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+            text-align: left;
+        }
+
+        footer h3 {
+            color: var(--brand);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        footer a {
+            color: var(--brand);
+            text-decoration: none;
+        }
+
+        footer .copyright {
+            margin-top: 2rem;
+            border-top: 1px solid #333;
+            padding-top: 1.5rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        @media (max-width: 768px) {
+            .hero .title {
+                font-size: 22px;
+            }
+
+            .section {
+                padding: 24px;
+            }
+
+            h1 {
+                font-size: 18px;
+            }
+
+            h2 {
+                font-size: 15px;
+            }
+
+            h3 {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="simple-localnav" aria-label="local" tabindex="-1" style="--progress:0;">
+        <div class="localnav-inner container">
+            <a href="/" class="brand"><img src="https://cdn2.contentltd.net/acrp%20(2).png" alt="ACRP Logo"><span>Allegheny County Roleplay</span></a>
+            <div class="actions">
+                <a class="btn-outline" href="/">Home</a>
+                <a class="btn" href="https://discord.gg/GS5Va3zEep">Join</a>
+            </div>
+        </div>
+    </nav>
+        <div class="localnav-overlay-background"></div>
+
+    <script src="/assets/sticky-fallback.js" defer></script>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="title">Allegheny County Roleplay Privacy Policy</div>
+            <div class="dates">
+                <p>Last Updated: February 9, 2026</p>
+                <p>Created: December 16, 2025</p>
+                <p>Established: December 16, 2025</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="content">
+        <div class="section">
+            <h1>1. Introduction</h1>
+            <p>Welcome to the Allegheny County Roleplay Privacy Policy. This document outlines how we ("we", "us", "ACRP", "Allegheny County Roleplay") will use users ("users", "you" or "your") information. We do not knowingly collect data from users that are under the age of 13, if you are under the age of 13 then we ask that you do not use our services in accordance with our Terms of Service and Community Standards.</p>
+            <p>Before moving on, we use certain phrases and words that we need to define.</p>
+            <ul>
+                <li>"Minor" refers to any individual between the ages of 13 - 17</li>
+                <li>"Adult", "Parent", or "Guardian" refers to the parent or caretaker of any minor. Someone who has sole or major responsibility or custody of the minor.</li>
+                <li>"Identifying Documents" is any document used to identify you as an individual; this can be anything from a username to an ID, driver's License, or Birth certificate.</li>
+                <li>"ID" refers to any identification or driver's license that includes a Date of Birth and a Full legal name.</li>
+                <li>"Private Server" refers to any in-game or Discord® server owned, operated by, or maintained by Allegheny County Roleplay.</li>
+                <li>"Platform" refers to any feature and service, including websites, bots, applications, Private Servers, moderation tools, content, and custom functionalities offered by ACRP.</li>
+                <li>"Privacy Policy" refers to this document.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h1>2. Personally Identifiable Information</h1>
+            <p>We do not knowingly collect Personally Identifiable Information ("PII") outside of official means, which can include our Appeal's system and any other functionality or system used to collect any sort of information on you, including your email address, Discord® username, and so forth. We will NEVER sell, share, or otherwise make your PII known to any individual, third party, or organization. The only exception to this is if there is a request from Law Enforcement.</p>
+            <p>For information on how we protect your data, please review section 6.</p>
+        </div>
+
+<div class="section">
+            <h1>3. Age Verification and Age Assurance</h1>
+            <p>ACRP requires mandatory age verification and age assurance screening as a condition of access to its services. These measures are designed to prevent access by children under the age of 13 and to support compliance with the Children’s Online Privacy Protection Act, COPPA, and other applicable laws and platform policies. Access to ACRP systems is not permitted unless verification is successfully completed.</p>
+            <p>We use a third party provider, Didit.me, to perform AI based age estimation and biometric liveness checks using facial data.</p>
+            <p>By proceeding with age verification, you consent to the collection and processing of biometric and verification data for eligibility screening and enforcement purposes.</p>
+            <p>Verification may occur through the following methods:</p>
+            <h3>i. AI Based Facial Age Estimation and Liveness Detection</h3>
+            <p>Users may be required to submit a live facial scan. This scan is processed by Didit.me using biometric analysis and liveness detection technology to estimate age and detect spoofing or impersonation attempts.</p>
+            <p>Processing may include:</p>
+            <ul>
+                <li>Facial image capture</li>
+                <li>Biometric feature extraction</li>
+                <li>Age estimation scoring</li>
+                <li>Liveness detection scoring</li>
+                <li>Face quality and luminance metrics</li>
+                <li>Similarity and duplicate face detection results</li>
+                <li>Session and verification metadata</li>
+            </ul>
+            <p>ACRP receives and retains verification results and related metadata, which may include estimation scores, liveness scores, match indicators, session identifiers, and associated technical logs. Facial images and biometric data are processed by Didit as our verification vendor under their applicable terms and privacy policy.</p>
+            <h3>ii. Screening Questions</h3>
+            <p>Users may also be required to provide screening information such as Date of Birth, country of residence, and grade level. This information is used to assess eligibility and detect inconsistent or fraudulent claims. We may retain submitted values, derived age group, risk signals, and verification outcomes.</p>
+            <h3>iii. Use and Enforcement</h3>
+            <p>Age verification and age assurance are used strictly to:</p>
+            <ul>
+                <li>Determine whether a user meets minimum age requirements</li>
+                <li>Detect underage or high risk accounts</li>
+                <li>Enforce platform access restrictions</li>
+                <li>Support moderation, safety, and compliance actions</li>
+            </ul>
+            <p>If a user is determined or reasonably suspected to be under 13, access will be denied or removed. Accounts and related access to ACRP systems, including Discord servers and connected services, may be suspended or banned. Eligibility determinations made through our verification systems are final unless re verification is expressly approved by ACRP.</p>
+            <p>Attempting to bypass, falsify, or interfere with verification systems may result in permanent removal.</p>
+            <h3>iiii. Data Retention</h3>
+            <p>Verification records, results, scores, logs, and related metadata are retained indefinitely for compliance, audit, fraud prevention, repeat offender detection, and enforcement purposes, unless a valid deletion request is received and approved where legally permitted.</p>
+            <p>If verification data is deleted upon request, prior verification status is also removed. Users who delete their verification data must complete the verification process again before regaining access to ACRP systems. Deleted records do not exempt a user from enforcement actions already taken.</p>
+            <h3>iiiii. Third Party Processing</h3>
+            <p>Didit.me acts as a verification and biometric processing provider. Biometric capture and age estimation processing occur through their systems. Their privacy practices and security controls are governed by their published policies. Users acknowledge that biometric and verification data is processed by this provider as part of the screening workflow.</p>
+            <h3>iiiiii. Security and Incident Response</h3>
+            <p>Verification and screening data is stored and transmitted using industry standard security safeguards. In the event of a confirmed data security incident affecting verification data, ACRP will follow applicable legal notification and mitigation requirements.</p>
+            <p>Verification data is not sold. It is shared only with contracted processors and service providers as necessary to operate verification, safety, and compliance systems.</p>
+            <h3>iiiiiii. Requirement for Use</h3>
+            <p>Completion of age verification and age assurance checks is required to access and continue using ACRP services. Refusal to complete required verification will result in denial or removal of access.</p>
+        </div>
+
+        <div class="section">
+            <h1>4. General Information We Collect</h1>
+            <p>In general, we collect little information on you, such as emails, Discord®, and Roblox® usernames, and/or profile link(s), Messages you send across our services, and Browser Information. Please note that other information collected is collected by the platforms we use/rely on, such as Discord®, Roblox®, Google®, and Cloudflare®.</p>
+        </div>
+
+        <div class="section">
+            <h1>5. How We Use Your Data</h1>
+            <ul>
+                <li>We collect your email address. Your email is used so we can give you access to documents, webpages, and accounts if you decide to become staff or join a department.</li>
+                <li>We collect your Roblox and Discord usernames and/or profile link(s) if applicable to be able to identify who you are. There is no other purpose to this.</li>
+                <li>We collect the messages that you send, edit, or delete across the services so we can moderate your messages in accordance with our Terms of Service and Community Standards.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h1>6. How We Secure Your Data</h1>
+            <p>We take precautions to protect the information users send to us. This applies whether the data comes through our website, support forms, or any other part of our service. The way we handle this information may vary depending on the context, but in many cases, some level of protection, such as encryption or restricted access, may be used. Certain types of data, such as face photos, images of your ID, or written messages, are treated with additional care when necessary. We only use that kind of data for its intended purpose, such as verifying account ownership or age. Once we've completed the process that required the data, we typically remove it from our systems. We do not intentionally share sensitive user information with others. That includes photos, private messages, or personal documentation submitted for support purposes. If there is a rare case where we are required to release information, such as by law, we'll comply as needed, but these situations are uncommon. The level of protection we apply may very dependiong on how and where the data is submitted. Not all parts of our platform are built with the same level of security, and users should keep in mind when sharing any personal information. While we aim to prevent unauthorized access, we don't guarantee full protection in every scenario. No system is perfect. We can't claim to be fully secure, and we don't suggest that any platform can be. When we do what we can with the tools available to us, users should always use good judgment and only share what they are comfortable with providing.</p>
+        </div>
+
+<div class="section">
+            <h1>7. Data Requests</h1>
+            <p>You may request your data or request to have it deleted at any time by emailing us at <a href="mailto:legal@acrp.work">legal@acrp.work</a>. We will respond via email within 7 days.</p>
+        </div>
+
+    <div id="footer-container"></div>
+    <script src="snow.js"></script>
+    <script src="master.js"></script>
+</div>
+</body>
+</html>

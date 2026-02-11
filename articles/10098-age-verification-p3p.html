@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Introducing Age Checks (Phase 3 Plans) - Allegheny County Roleplay</title>
+	<meta name="description" content="Updates on ACRP's rollout of AI-Powered age verification and their plans for the future.">
+	<link rel="canonical" href="https://alleghenycountyroleplay.com/articles/10098-age-verification-p3p.html">
+
+	<!-- Social embed (Open Graph + Twitter) -->
+	<meta property="og:title" content="Introducing Age Checks (Phase 3 Plans) - Allegheny County Roleplay" />
+	<meta property="og:description" content="Updates on ACRP's rollout of AI-Powered age verification and their plans for the future." />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="https://alleghenycountyroleplay.com/articles/10098-age-verification-p3p.html" />
+	<meta property="og:image" content="https://cdn2.contentltd.net/acrp%20(2).png" />
+	<meta property="og:image:alt" content="Allegheny County Roleplay logo" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Introducing Age Checks (Phase 3 Plans) - Allegheny County Roleplay" />
+	<meta name="twitter:description" content="Updates on ACRP's rollout of AI-Powered age verification and their plans for the future." />
+	<meta name="twitter:image" content="https://cdn2.contentltd.net/acrp%20(2).png" />
+
+	<link rel="icon" type="image/png" sizes="32x32" href="https://cdn2.contentltd.net/acrp%20(2).png">
+	<link rel="icon" type="image/png" sizes="16x16" href="https://cdn2.contentltd.net/acrp%20(2).png">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/assets/site.css">
+<style>@import url('https://fonts.googleapis.com/css?family=Open+Sans:700|Inter:400');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&display=swap');
+
+/* Global site styles and reusable search component styles */
+:root{
+  /* Text palette */
+  --text-50: #f2f2f2;
+  --text-100: #e6e6e6;
+  --text-200: #cccccc;
+  --text-300: #b3b3b3;
+  --text-400: #999999;
+  --text-500: #808080;
+  --text-600: #666666;
+  --text-700: #4d4d4d;
+  --text-800: #333333;
+  --text-900: #1a1a1a;
+  --text-950: #0d0d0d;
+
+  /* Background palette */
+  --background-50: #f2f2f2;
+  --background-100: #e6e6e6;
+  --background-200: #cccccc;
+  --background-300: #b3b3b3;
+  --background-400: #999999;
+  --background-500: #808080;
+  --background-600: #666666;
+  --background-700: #4d4d4d;
+  --background-800: #333333;
+  --background-900: #1a1a1a;
+  --background-950: #0d0d0d;
+
+  /* Brand palette */
+  --brand-50: #fff9e6;
+  --brand-100: #fff2cc;
+  --brand-200: #ffe699;
+  --brand-300: #ffd966;
+  --brand-400: #ffcc33;
+  --brand-500: #ffbb00;
+  --brand-600: #e6a800;
+  --brand-700: #cc9600;
+  --brand-800: #b38600;
+  --brand-900: #997300;
+  --brand-950: #7f5f00;
+
+  /* Surface palette */
+  --surface-50: #f2f2f2;
+  --surface-100: #e6e6e6;
+  --surface-200: #cccccc;
+  --surface-300: #b3b3b3;
+  --surface-400: #999999;
+  --surface-500: #808080;
+  --surface-600: #666666;
+  --surface-700: #4d4d4d;
+  --surface-800: #333333;
+  --surface-900: #1a1a1a;
+  --surface-950: #0d0d0d;
+
+  /* Border palette */
+  --border-50: rgba(255,255,255,.04);
+  --border-100: rgba(255,255,255,.08);
+  --border-200: rgba(255,255,255,.12);
+  --border-300: rgba(255,255,255,.16);
+  --border-400: rgba(255,255,255,.20);
+  --border-500: rgba(255,255,255,.24);
+  --border-600: rgba(255,255,255,.32);
+  --border-700: rgba(255,255,255,.40);
+  --border-800: rgba(255,255,255,.48);
+  --border-900: rgba(255,255,255,.56);
+  --border-950: rgba(255,255,255,.64);
+
+  /* Shadow palette */
+  --shadow-100: 0 1px 2px 0 rgba(0,0,0,.05);
+  --shadow-200: 0 1px 2px 0 rgba(0,0,0,.10);
+  --shadow-300: 0 4px 6px -1px rgba(0,0,0,.10), 0 2px 4px -1px rgba(0,0,0,.06);
+  --shadow-400: 0 10px 15px -3px rgba(0,0,0,.10), 0 4px 6px -2px rgba(0,0,0,.05);
+  --shadow-500: 0 20px 25px -5px rgba(0,0,0,.10), 0 10px 10px -5px rgba(0,0,0,.04);
+  --shadow-600: 0 25px 50px -12px rgba(0,0,0,.25);
+}
+
+/* Additional localnav layout refinements requested */
+:root{
+  --localnav-max-width: 1024px;
+  --localnav-offset-top: 10px;
+}
+
+*{box-sizing:border-box}
+body{margin:0;font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;background:var(--background-950);color:var(--text-100);-webkit-font-smoothing:antialiased}
+
+/* Event pages */
+.large-daat-tim-holder{font-family:'Oswald','Open Sans',sans-serif;font-weight:700;letter-spacing:.02em}
+
+/* Typographic scale */
+html { font-size: 100%; }
+body { font-weight: 400; }
+h1, h2, h3, h4, h5 { font-family: 'Open Sans', sans-serif; font-weight: 700; margin: 0 0 .6rem; color: var(--text-50); }
+h1 { font-size: 4.210rem; /* 67.36px */ }
+h2 { font-size: 3.158rem; /* 50.56px */ }
+h3 { font-size: 2.369rem; /* 37.92px */ }
+h4 { font-size: 1.777rem; /* 28.48px */ }
+h5 { font-size: 1.333rem; /* 21.28px */ }
+small { font-size: 0.750rem; /* 12px */ }
+.container{width:min(1100px,94vw);margin:0 auto;padding:28px 0}
+.header{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.brand{display:flex;gap:12px;align-items:center}
+.brand img.logo{height:44px}
+.actions a{margin-left:10px;padding:8px 12px;border-radius:10em;text-decoration:none;color:var(--text);border:1px solid var(--border);background:transparent}
+.btn{background:var(--brand);color:#000;padding:8px 12px;border-radius:10em;border:none;font-weight:700}
+
+
+#localnav .localnav-container{pointer-events:auto;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;max-width:var(--localnav-max-width);margin:0 auto}
+
+/* Simple sticky local nav (compact island style) */
+.simple-localnav {
+  position: sticky !important;
+  top: 6px; /* small gap from top for visual breathing room */
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  padding-block: 4px;
+  margin-top: 6px;
+  --progress: 0;
+  transition: box-shadow .25s ease, transform .2s ease;
+}
+.simple-localnav .localnav-inner {
+  width: 100%;
+  max-width: 1024px;
+  /* Frosted glass background: subtle dark gradient + translucent color fallback */
+  background: linear-gradient(180deg, rgba(0,0,0,0.15), rgba(0,0,0,0.08));
+  background-color: rgba(0,0,0,0.2); /* fallback */
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: calc(32px - 14px * (1 - var(--progress)));
+  padding-block: 8px;
+  -webkit-backdrop-filter: blur(22px) saturate(140%);
+  backdrop-filter: blur(22px) saturate(140%);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.28);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-inline: 12px;
+  min-height: 48px; /* reduced height */
+  transition: background-color .18s ease, box-shadow .18s ease, transform .18s ease;
+}
+/* Elevated look when fixed by JS */
+.simple-localnav.js-fixed .localnav-inner{
+  box-shadow: 0 16px 50px rgba(0,0,0,0.42);
+  transform: translateY(-2px);
+  background: linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,0,0,0.1));
+}
+.simple-localnav .brand img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  display: block;
+  border-radius: 6px;
+}
+.simple-localnav .actions a { 
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: .5rem .8rem;
+  border-radius: 10em;
+  text-decoration: none;
+  color: var(--text);
+  border: 1px solid rgba(0,0,0,0.08);
+  background: transparent;
+}
+.simple-localnav .actions a.btn { background: var(--brand-500); color: var(--text-950); border: none; padding: .5rem .9rem; }
+
+/* Responsive: tighten up on small screens */
+@media (max-width:600px){
+  .simple-localnav .localnav-inner{padding-inline:10px;gap:8px}
+  .simple-localnav .brand span{display:none}
+  .simple-localnav .actions a{padding:.4rem .6rem}
+  .simple-localnav .brand img{width:36px;height:36px}
+}
+
+button, a.button, .btn, .cta { border-radius: 10em; }
+
+
+.panel{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px;box-shadow:var(--shadow)}
+.hero{display:flex;gap:20px;align-items:center;padding:24px 0;border-bottom:1px solid var(--border)}
+.grid{display:grid;grid-template-columns:360px 1fr;gap:20px;margin-top:24px}
+@media (max-width:900px){.grid{grid-template-columns:1fr}}
+
+.footer{margin-top:28px;padding:24px 0;color:var(--text-400);font-size:13px;border-top:1px solid var(--border)}
+		:root {
+			--brand: #FFBB00;
+			--brand-900: #d69a00;
+			--bg: #0b0b0c;
+			--surface: #121214;
+			--card: #141417;
+			--text: #fff;
+			--muted: #bdbdbd;
+			--border: rgba(255, 255, 255, 0.08);
+			--shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+		}
+
+		body {
+			font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+			background: var(--bg);
+			color: var(--text);
+			line-height: 1.6;
+		}
+
+		a { color: var(--brand); text-decoration: none; }
+		a:hover { text-decoration: underline; }
+
+		.content {
+			max-width: 980px;
+			margin: 0 auto;
+			padding: 18px 20px 44px;
+		}
+
+		.helpbar {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 14px;
+			padding: 12px 16px;
+			border: 1px solid var(--border);
+			background: rgba(255, 255, 255, 0.02);
+			border-radius: 12px;
+		}
+
+		.breadcrumbs {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			display: flex;
+			flex-wrap: wrap;
+			gap: 8px;
+			align-items: center;
+			color: var(--muted);
+			font-size: 12px;
+		}
+
+		.breadcrumbs li { display: inline-flex; gap: 8px; align-items: center; }
+		.breadcrumbs li:not(:last-child)::after { content: '›'; color: var(--muted); }
+		.breadcrumbs a { color: var(--muted); }
+		.breadcrumbs a:hover { color: var(--text); text-decoration: none; }
+		.breadcrumbs [aria-current="page"] { color: var(--text); }
+
+
+		.article-header {
+			padding: 22px 4px 12px;
+		}
+
+		.header-row {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 12px;
+		}
+
+		.article-title {
+			margin: 0;
+			font-size: 30px;
+			font-weight: 600;
+			line-height: 1.15;
+			color: var(--text);
+		}
+
+		.article-updated {
+			margin: 10px 0 0;
+			color: var(--muted);
+			font-size: 12px;
+		}
+
+		.article-subtitle {
+			margin: 12px 0 0;
+			color: var(--muted);
+			font-size: 14px;
+			max-width: 78ch;
+		}
+
+		.rule {
+			height: 1px;
+			background: var(--border);
+			border: none;
+			margin: 16px 0 0;
+		}
+
+		.card {
+			background: var(--card);
+			border: 1px solid var(--border);
+			border-radius: 12px;
+			padding: 28px;
+			box-shadow: var(--shadow);
+		}
+
+		.card + .card { margin-top: 18px; }
+
+		.card h2 {
+			margin: 0 0 10px;
+			font-size: 18px;
+			font-weight: 600;
+			color: var(--text);
+		}
+
+		.card h3 {
+			margin: 18px 0 8px;
+			font-size: 15px;
+			font-weight: 600;
+			color: var(--text);
+		}
+
+		.card h3:target {
+			background: var(--brand-500);
+			color: var(--text-950);
+			padding: 4px 8px;
+			border-radius: 4px;
+			margin: 18px -8px 8px;
+		}
+
+		.card p {
+			margin: 0 0 14px;
+			color: var(--muted);
+			font-size: 14px;
+			line-height: 1.9;
+		}
+
+		.card ul {
+			margin: 12px 0 16px;
+			padding-left: 22px;
+			color: var(--muted);
+			font-size: 14px;
+			line-height: 1.9;
+		}
+
+		.card li { margin: 6px 0; }
+
+		.divider {
+			height: 1px;
+			background: var(--border);
+			margin: 18px 0;
+		}
+
+		@media (max-width: 768px) {
+			.article-title { font-size: 22px; }
+			.card { padding: 20px; }
+			.helpbar { padding: 10px 12px; }
+		}
+
+		/* Motion blur effect during scrolling */
+		.scrolling-blur {
+			filter: blur(0.5px);
+			transition: filter 0.3s ease;
+		}
+	</style>
+</head>
+
+<body>
+	<nav class="simple-localnav" aria-label="local" tabindex="-1" style="--progress:0;">
+		<div class="localnav-inner container">
+			<a href="/" class="brand">
+				<img src="https://cdn2.contentltd.net/acrp%20(2).png" alt="ACRP Logo">
+				<span>Allegheny County Roleplay</span>
+			</a>
+			<div class="actions">
+				<a class="btn-outline" href="/">Home</a>
+				<a class="btn" href="https://discord.gg/GS5Va3zEep">Join</a>
+			</div>
+		</div>
+	</nav>
+	<div class="localnav-overlay-background"></div>
+	<script src="/assets/sticky-fallback.js" defer></script>
+
+	<main class="content" id="main">
+		<div class="helpbar" role="region" aria-label="Article navigation">
+			<nav aria-label="Breadcrumb">
+				<ol class="breadcrumbs">
+					<li><a href="/">ACRP</a></li>
+					<li><a href="/articles/">Help Center</a></li>
+					<li><span aria-current="page">Introducing Age Checks (Phase 3 Plans)</span></li>
+				</ol>
+			</nav>
+		</div>
+
+		<header class="article-header">
+			<div class="header-row">
+				<h1 class="article-title">Introducing Age Checks (Phase 3 Plans)</h1>
+			
+			</div>
+			<p class="article-updated">Updated: 2/10/26</p>
+			<p class="article-subtitle">Updates on ACRP's rollout of AI-Powered age verification and their plans for the future.</p>
+			<hr class="rule">
+		</header>
+
+		<article class="card" aria-label="Article content">
+			<p>Hey Everyone,</p>
+			
+			<p>We wanted to share some information to provide some transparency regarding the rollout of AI-powered age verification.</p>
+			
+			<h3>What is in the works?</h3>
+			
+			<ul>
+				<li><strong>Age Assurance</strong><br>
+				We are developing additional technologies to help ensure that a user is at least the age of 13. It will work by analyzing the messages a user sends and putting them against previous messages that they have sent (specifically within the past month of the message we are looking at), and training data, and we will use this to generate a confidence score on whether we think you are 13 or older. If we find that messages within a certain time span have a low confidence score, then we will prompt an age verification via Didit ®. If you pass the checks, then your messages (specifically the ones that triggered the check) will be analyzed, and we will remember that this is how you talk.</li>
+				
+				<li><strong>A Safety Assurance Council</strong><br>
+				We are working on a Safety Assurance Council to help us respect users' privacy while helping maintain a safer community for all. Members of this council will give us ideas and feedback on ideas for AI safety systems. Are you interested in being a member? Stay tuned for the application.</li>
+				
+				<li><strong>An Appeal System For Those Who Were Flagged For Being Under 13 Falsely</strong><br>
+				Currently, when users are flagged as under 13, they will be automatically banned. We are developing an appeal system where users who were falsely banned can provide their ID, and they can challenge the determination.</li>
+				
+				<li><strong>A way for users to verify their age without having to provide a facial scan (Via Didit ®)</strong><br>
+				So… Actually.. Thats it. Its self explanatory… Anyway.</li>
+			</ul>
+			
+			<h3>What's the plan now?</h3>
+			
+			<p>With the current age checks, we will mandate that all users complete a successful check by 3/10/2026. If a user does not complete these checks by that date, then they will not be able to interact with the community in any way until verification is completed. This includes but is not limited to:</p>
+			
+			<ul>
+				<li>You will not be able to see ANY channels except Announcements</li>
+				<li>You will not be able to read, send, or react to any messages</li>
+			</ul>
+			
+			<p>These restrictions will be in place until you complete the verification process.</p>
+			
+			<h3>What about my data?</h3>
+			
+			<p>We are using <a href="https://didit.me">https://didit.me</a> for Age Assurance and facial scans. We understand that some users may have concerns about this provider. At this time, Didit reports no known history of data breaches. You may review their privacy practices here: <a href="https://didit.me/terms/privacy-policy/">https://didit.me/terms/privacy-policy/</a></p>
+			
+			<p>You may view our privacy practices at <a href="https://alleghenycountyroleplay.com/privacy">https://alleghenycountyroleplay.com/privacy</a> and our terms and conditions at <a href="https://alleghenycountyroleplay.com/terms">https://alleghenycountyroleplay.com/terms</a></p>
+			
+			<p>We appreciate all users' feedback, which is why you can email us at <a href="mailto:ownership@acrp.work">ownership@acrp.work</a> with any questions, comments, or concerns about the new policies.</p>
+			
+			<h3 id="faq">FAQ For Age Verification.</h3>
+			
+			<ul>
+				<li><strong>How can I ensure an accurate reading of my face?</strong><br>
+				Please ensure that the lighting around you is bright and shines <strong>directly on your face</strong>. Avoid having bright lights behind or below you, as they can create glare or shadows. Position the camera at eye level, point it directly at your face, and look into the lens. Make sure all filters and effects are disabled so your image looks natural and avoids looking like a deepfake. Make sure that you're the only person in frame. Keep your movements slow and steady while taking selfies. Remove any masks, sunglasses, or any other face coverings or accessories.</li>
+				
+				<li><strong>How can I ensure an accurate reading of my ID?</strong><br>
+				Take a clear, glare-free photo of your ID that contains a solid background. Ensure that your ID is positioned straight and fully within frame.</li>
+			</ul>
+			
+			<h3>Footnotes.</h3>
+			
+			<p>We cannot wait to release these changes to the greater public and are working on our systems to help users maintain a safe and respectful environment within Allegheny County Roleplay.</p>
+			
+			<p>Thank you for your continued support.</p>
+			
+			<p>Thanks,</p>
+			
+			<p>ContentLTD - Director<br>
+			Bigalb - Deputy Director<br>
+			Devin - Assistant Director</p>
+		</article>
+
+		<section class="card" aria-label="Related links">
+			<h2>Related</h2>
+			<ul>
+				<li><a href="/privacy">Privacy Policy</a></li>
+				<li><a href="/terms">Terms of Service</a></li>
+				<li><a href="/community-standards">Community Standards</a></li>
+				<li><a href="https://didit.me/terms/privacy-policy/">Didit's Privacy Practices</a></li>
+				<li><a href="mailto:ownership@acrp.work">Contact Us</a></li>
+			</ul>
+		</section>
+	</main>
+
+	<div id="footer-container"></div>
+	<script>
+		// Custom scroll function
+		function smoothScrollTo(targetY, duration = 800) {
+			const startY = window.pageYOffset;
+			const distance = targetY - startY;
+			const startTime = performance.now();
+
+			// Add motion blur effect
+			document.body.classList.add('scrolling-blur');
+
+			function animation(currentTime) {
+				const elapsed = currentTime - startTime;
+				const progress = Math.min(elapsed / duration, 1);
+				
+				// Simple linear easing for better performance
+				window.scrollTo(0, startY + distance * progress);
+				
+				if (progress < 1) {
+					requestAnimationFrame(animation);
+				} else {
+					// Remove blur effect
+					document.body.classList.remove('scrolling-blur');
+				}
+			}
+			
+			requestAnimationFrame(animation);
+		}
+
+		// Wait for page load then scroll to FAQ section
+		window.addEventListener('load', function() {
+			if (window.location.hash === '#faq') {
+				const faqElement = document.getElementById('faq');
+				const navElement = document.querySelector('.simple-localnav');
+				if (faqElement && navElement) {
+					const navHeight = navElement.offsetHeight;
+					const targetY = faqElement.offsetTop - navHeight - 30; // 30px extra padding
+					smoothScrollTo(targetY, 500);
+				}
+			}
+		});
+	</script>
+	<script src="/master.js"></script>
+</body>
+</html>

@@ -162,6 +162,46 @@ function setIdentity({ uid, username, avatar, departments }) {
     }
   } catch {}
 
+  // Add Staff Panel tab & container if user is STAFF (either staff-only or staff+dept)
+  try {
+    if (CURRENT_DEPARTMENTS.has('STAFF')) {
+      // Create tab button if it doesn't exist
+      const tabsNavEl = document.querySelector('.tabs');
+      let staffTabBtn = tabsNavEl ? tabsNavEl.querySelector('[data-tab="tabStaff"]') : null;
+      if (!staffTabBtn && tabsNavEl) {
+        staffTabBtn = document.createElement('button');
+        staffTabBtn.className = 'tab';
+        staffTabBtn.type = 'button';
+        staffTabBtn.setAttribute('data-tab', 'tabStaff');
+        staffTabBtn.textContent = 'Staff Panel';
+        // Insert before the admin button if present
+        const adminEl = tabsNavEl.querySelector('#adminBtn');
+        if (adminEl) tabsNavEl.insertBefore(staffTabBtn, adminEl);
+        else tabsNavEl.appendChild(staffTabBtn);
+        // Wire click to show staff tab
+        staffTabBtn.addEventListener('click', (e) => { if (!requireToken(e)) return; showTab('tabStaff'); });
+      }
+
+      // Create the tab content container if missing
+      let staffContainer = document.getElementById('tabStaff');
+      if (!staffContainer) {
+        staffContainer = document.createElement('div');
+        staffContainer.id = 'tabStaff';
+        staffContainer.className = 'tab-content';
+        // For now, simple Test content
+        const card = el('div', { class: 'card' }, [ el('h1', {}, 'Staff Panel'), el('div', {}, 'Test') ]);
+        staffContainer.appendChild(card);
+        // Append to main column
+        const maincol = document.querySelector('.maincol');
+        if (maincol) maincol.appendChild(staffContainer);
+        // Register into tabContainers mapping so showTab can find it
+        try { tabContainers.tabStaff = document.getElementById('tabStaff'); } catch {}
+      }
+    }
+  } catch (e) {
+    console.error('[CAD] Failed to add Staff Panel tab', e);
+  }
+
   if (logoutBtn) logoutBtn.style.display = '';
   if (loginBtn) loginBtn.style.display = 'none';
   if (sectionLoggedOut) sectionLoggedOut.classList.add('hidden');
@@ -720,6 +760,15 @@ document.addEventListener('click', (e) => {
   console.info('[CAD] Setting identity', { uid: String(payload.uid || ''), username: payload.username, departments: payload.departments });
   setIdentity({ uid: String(payload.uid || ''), username: payload.username, avatar: payload.avatar, departments: payload.departments });
   setupTabs();
+  // If redirected with #staff hash (staff-only flow), open Staff Panel
+  try {
+    if (window.location.hash === '#staff') {
+      // Defer to allow tab creation
+      setTimeout(() => {
+        try { showTab('tabStaff'); } catch (e) { console.error(e); }
+      }, 80);
+    }
+  } catch (e) {}
   // Special-case: users with no department (NON) should see invite + logout
   try {
     const isNon = !Array.isArray(payload.departments) || payload.departments.length === 0 || (Array.isArray(payload.departments) && payload.departments.includes('NON'));

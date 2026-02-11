@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biometric Data Privacy Statement - Allegheny County Roleplay</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="https://cdn2.contentltd.net/acrp%20(2).png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://cdn2.contentltd.net/acrp%20(2).png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="../assets/site.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --brand: #FFBB00;
+            --brand-900: #d69a00;
+            --bg: #0b0b0c;
+            --surface: #121214;
+            --card: #141417;
+            --text: #fff;
+            --muted: #bdbdbd;
+            --border: rgba(255, 255, 255, 0.08);
+            --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            font-size: 11px;
+            font-weight: 400;
+        }
+
+        a {
+            color: var(--brand);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(10, 10, 10, 0.6);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 20px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .brand img {
+            width: 32px;
+            height: 32px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 8px;
+            background: var(--brand);
+            color: #000;
+            font-weight: 600;
+            font-size: 11px;
+            transition: transform 0.18s ease, background 0.18s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+            background: var(--brand-900);
+            text-decoration: none;
+        }
+
+        .hero {
+            padding: 60px 20px 40px;
+            text-align: center;
+            background: radial-gradient(1200px 600px at 50% -10%, rgba(255, 187, 0, 0.06), transparent);
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero .title {
+            font-size: 26px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--brand) 0%, #FFA500 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .dates {
+            font-size: 11px;
+            color: var(--muted);
+            margin-bottom: 20px;
+        }
+
+        .dates p {
+            margin-bottom: 4px;
+        }
+
+        .content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .section {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 24px;
+        }
+
+        h1 {
+            font-size: 20px;
+            font-weight: 400;
+            margin-bottom: 16px;
+            color: var(--brand);
+        }
+
+        h2 {
+            font-size: 16px;
+            font-weight: 400;
+            margin: 20px 0 12px;
+            color: var(--text);
+        }
+
+        h3 {
+            font-size: 14px;
+            font-weight: 400;
+            margin: 16px 0 8px;
+            color: var(--text);
+        }
+
+        .section p, .section ul, .section ol, .section li {
+            font-size: 11px;
+            font-weight: 400;
+            line-height: 1.8;
+        }
+
+        .section p {
+            margin-bottom: 16px;
+            color: var(--muted);
+        }
+
+        .section ul, .section ol {
+            margin: 16px 0;
+            padding-left: 24px;
+            color: var(--muted);
+        }
+
+        .section li {
+            margin-bottom: 8px;
+        }
+
+        strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background: #0d0d0d;
+            color: #ccc;
+            padding: 3rem 1rem;
+        }
+
+        footer .cols {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+            text-align: left;
+        }
+
+        footer h3 {
+            color: var(--brand);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        footer a {
+            color: var(--brand);
+            text-decoration: none;
+        }
+
+        footer .copyright {
+            margin-top: 2rem;
+            border-top: 1px solid #333;
+            padding-top: 1.5rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        @media (max-width: 768px) {
+            .hero .title {
+                font-size: 22px;
+            }
+
+            .section {
+                padding: 24px;
+            }
+
+            h1 {
+                font-size: 18px;
+            }
+
+            h2 {
+                font-size: 15px;
+            }
+
+            h3 {
+                font-size: 13px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="simple-localnav" aria-label="local" tabindex="-1" style="--progress:0;">
+        <div class="localnav-inner container">
+            <a href="/" class="brand"><img src="https://cdn2.contentltd.net/acrp%20(2).png" alt="ACRP Logo"><span>Allegheny County Roleplay</span></a>
+            <div class="actions">
+                <a class="btn-outline" href="/">Home</a>
+                <a class="btn" href="https://discord.gg/GS5Va3zEep">Join</a>
+            </div>
+        </div>
+    </nav>
+        <div class="localnav-overlay-background"></div>
+
+    <script src="/assets/sticky-fallback.js" defer></script>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="title">Biometric Data Privacy Statement</div>
+            <div class="dates">
+                <p>Effective: 2/10/26</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="content">
+        <div class="section">
+            <h1>Introduction</h1>
+            <p>Allegheny County Roleplay ("ACRP", "We", "Us", or "Our"), uses biometric technologies as part of its age verification and assurance systems. This statement explains how biometric data is collected, used, stored, retained, and deleted when users complete facial age estimation and liveliness verification.</p>
+        </div>
+
+        <div class="section">
+            <h1>1. What We Collect</h1>
+            <p>We collect a variety of biometric data, including but not limited to:</p>
+            <ul>
+                <li>Facial Images from Live Scans.</li>
+                <li>Biometric Feature Vectors and Templates.</li>
+                <li>Liveliness Signals.</li>
+                <li>Similarity and Duplicate Face Indicators.</li>
+                <li>Age Estimation Outputs and Scores.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h1>2. Why We Collect</h1>
+            <p>We collect this data to accurately estimate your age so we can assess if you are old enough to use our services as outlined in our <a href="/terms.html">Terms of Service</a>. This information is also collected to build a profile on the user ("you", "your", or "yours") to know, including but not limited to:</p>
+            <ul>
+                <li>How many Age Gates were triggered and why.</li>
+                <li>To manually review your age via face scans and data.</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h1>3. How Data is Collected.</h1>
+            <p>Data is collected only during verification via user-submitted live facial scans. This process is controlled and regulated by Didit. See section 5 for information on Didit and their role in age estimation.</p>
+        </div>
+
+        <div class="section">
+            <h1>4. Consent and Legal Basis.</h1>
+            <p>Consent is obtained in multiple ways. When joining and interacting with our services, the user provides consent by agreeing to our Terms of Service and Privacy Policy. When a verification link is made and clicked (by the user) there is a consent page that requires the user to click on a check box, then the "Continue Button" to verify their age.</p>
+            <p>Verification is required for access to the services. If the user refuses to complete the verification process, they may not use our services. Likewise, if a user has a result that detects them as being under 13 years of age, they may not use the services offered by us.</p>
+        </div>
+
+        <div class="section">
+            <h1>5. Third Parties and Their Role.</h1>
+            <p>Below, you will find a list of third parties that we use for age verification, along with their purpose</p>
+            <p><strong>Name:</strong> Didit®<br>
+            <strong>Role:</strong> Vendor for Age estimation, Liveliness Checks, and anything else relating to Age Verification via Face.<br>
+            <strong>Privacy Policy:</strong> <a href="https://didit.me/terms/privacy-policy/">https://didit.me/terms/privacy-policy/</a></p>
+            <p>Note that each third party will have its own Privacy Policies; it is up to the user to read them as they are subject to them alongside our legal documentation (as appropriate).</p>
+        </div>
+
+        <div class="section">
+            <h1>6. What We See from The Third Parties.</h1>
+            <p>When a verification is completed, we will get this information from Didit. Please note that this is anonymized, but it will still contain what we receive:</p>
+            <pre><code>{
+  "created_at": "&lt;unix_timestamp&gt;",
+  "decision": {
+    "aml_screenings": null,
+    "callback": null,
+    "contact_details": null,
+    "created_at": "&lt;iso_timestamp&gt;",
+    "database_validations": null,
+    "email_verifications": null,
+    "expected_details": null,
+    "face_matches": null,
+    "features": ["&lt;feature_name&gt;", "&lt;feature_name&gt;"],
+    "id_verifications": null,
+    "ip_analyses": null,
+    "liveness_checks": [
+      {
+        "age_estimation": "&lt;age_value&gt;",
+        "face_luminance": "&lt;luminance_score&gt;",
+        "face_quality": "&lt;quality_score&gt;",
+        "matches": [
+          {
+            "api_service": null,
+            "is_blocklisted": "&lt;boolean&gt;",
+            "match_image_url": "&lt;vendor_media_url&gt;",
+            "session_id": "&lt;session_id&gt;",
+            "session_number": "&lt;session_number&gt;",
+            "similarity_percentage": "&lt;similarity_score&gt;",
+            "status": "&lt;status&gt;",
+            "user_details": null,
+            "vendor_data": null,
+            "verification_date": "&lt;iso_timestamp&gt;"
+          }
+        ],
+        "method": "&lt;liveness_method&gt;",
+        "node_id": "&lt;node_id&gt;",
+        "reference_image": "&lt;vendor_media_url&gt;",
+        "score": "&lt;score&gt;",
+        "status": "&lt;status&gt;",
+        "video_url": "&lt;vendor_media_url_or_null&gt;",
+        "warnings": [
+          {
+            "additional_data": {
+              "api_service": null,
+              "duplicated_session_id": "&lt;session_id&gt;",
+              "duplicated_session_number": "&lt;session_number&gt;"
+            },
+            "feature": "&lt;feature_name&gt;",
+            "log_type": "&lt;log_type&gt;",
+            "long_description": "&lt;description&gt;",
+            "node_id": "&lt;node_id&gt;",
+            "risk": "&lt;risk_code&gt;",
+            "short_description": "&lt;short_description&gt;"
+          }
+        ]
+      },
+      {
+        "age_estimation": "&lt;age_value&gt;",
+        "face_luminance": "&lt;luminance_score&gt;",
+        "face_quality": "&lt;quality_score&gt;",
+        "matches": [
+          {
+            "api_service": null,
+            "is_blocklisted": "&lt;boolean&gt;",
+            "match_image_url": "&lt;vendor_media_url&gt;",
+            "session_id": "&lt;session_id&gt;",
+            "session_number": "&lt;session_number&gt;",
+            "similarity_percentage": "&lt;similarity_score&gt;",
+            "status": "&lt;status&gt;",
+            "user_details": null,
+            "vendor_data": null,
+            "verification_date": "&lt;iso_timestamp&gt;"
+          }
+        ],
+        "method": "&lt;liveness_method&gt;",
+        "node_id": "&lt;node_id&gt;",
+        "reference_image": "&lt;vendor_media_url&gt;",
+        "score": "&lt;score&gt;",
+        "status": "&lt;status&gt;",
+        "video_url": "&lt;vendor_media_url_or_null&gt;"
+      }
+    ]
+  }
+}</code></pre>
+            <p>We receive the following information from Didit for each verification session:</p>
+            <ul>
+                <li>Overall verification decision status</li>
+                <li>Verification feature list used in the decision</li>
+                <li>Liveness check status</li>
+                <li>Liveness score</li>
+                <li>Liveness method type</li>
+                <li>Face quality score</li>
+                <li>Face luminance or lighting score</li>
+                <li>Liveness warnings or risk flags</li>
+                <li>Age estimation value or age range</li>
+                <li>Age estimation confidence indicator</li>
+                <li>Duplicate face detection flag</li>
+                <li>Duplicate face risk status</li>
+                <li>Prior match count</li>
+                <li>Face similarity scores against prior sessions</li>
+                <li>Match status per prior session</li>
+                <li>Blocklist hit flag</li>
+                <li>Prior matched session identifiers</li>
+                <li>Prior matched session numbers</li>
+                <li>Prior verification timestamps</li>
+                <li>Check or node identifiers</li>
+                <li>Verification timestamps</li>
+                <li>Session identifier</li>
+                <li>Session sequence number</li>
+                <li>Vendor media references for captured face image</li>
+                <li>Vendor media references for captured video, if collected</li>
+                <li>Structured warning and risk log entries tied to the session</li>
+                <li>URLs to the reference image used for verification</li>
+                <li>URLs to the matched images from prior sessions</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h1>7. Use Cases</h1>
+            <p>We use all this information to build a profile on you for future verifications, and to prevent fraud, verify your age, and enforce the rules of Discord®.</p>
+        </div>
+
+        <div class="section">
+            <h1>8. Retention</h1>
+            <p>We retain the information described in Section 6 indefinitely, unless a user requests deletion. If we receive a data deletion request from the user, then we will delete all verification sessions (open, in review, or closed, regardless of status) associated with the user's Discord User ID and Face via the dashboard within Didit®.</p>
+            <h3>i. Deletion Triggers</h3>
+            <p>We will delete appropriate verification data when legally required, such as via a deletion request or when the retention period expires.</p>
+        </div>
+
+        <div class="section">
+            <h1>9. Data Sharing</h1>
+            <p>All verification data is shared with Didit® automatically, as they are the vendor who processes verifications (as outlined in section 5.) Authorized staff may access a user's age group (&lt;13, 13–17, or 18+) and verification completion status.</p>
+            <h3>i. Law Enforcement Requests</h3>
+            <p>We will share all required data to law enforcement if required by court order or other legally compelling document.</p>
+        </div>
+
+        <div class="section">
+            <h1>10. Safeguards</h1>
+            <p>We take your data seriously, which is why only our Director has access to databases containing verification data. Additional safeguards are maintained by Didit®.</p>
+        </div>
+
+        <div class="section">
+            <h1>11. User Rights</h1>
+            <p>Where applicable, users have the right to do any of the following unless stated otherwise by a court order, new U.S law, or our Terms of Service:</p>
+            <ul>
+                <li>Request Data Deletion</li>
+                <li>See what data has been collected so far.</li>
+                <li>Re-request / Request verification via a different form of verification that does not involve biometric data.</li>
+            </ul>
+            <p>Please note that one or more of these options are at the discretion of Allegheny County Roleplay, while other information is a legal right or requirement. The following is a legal requirement:</p>
+            <ul>
+                <li>Request Data Deletion</li>
+                <li>See what data has been collected so far.</li>
+                <li>Request data correction (if the user is in the EU and can articulate proof of residence in the EU)</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h1>12. Refusal Consequences.</h1>
+            <p>If a user refuses to complete verification in some form, then their access to the services will be severely limited or revoked in some cases at our sole discretion.</p>
+        </div>
+
+        <div class="section">
+            <h1>13. Policy Updates</h1>
+            <p>This policy may be updated from time to time; we reserve the right to change it, at any time, for any reason, without any providing or obtaining notice, consent, approval, validation, announcement, or any other obligation we may normally have when updating this policy. This policy may be updated at any time without prior notice. The updated policy takes effect on the date posted at the top of this page.</p>
+        </div>
+    </div>
+
+    <div id="footer-container"></div>
+    <script src="../snow.js"></script>
+    <script src="../master.js"></script>
+</body>
+</html>
+

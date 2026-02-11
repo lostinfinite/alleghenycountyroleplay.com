@@ -1,0 +1,10 @@
+[
+  {"category": "announcements", "name": "Introducing Age Checks (Phase 1)", "link": "10035-introducing-age-verification1.html"},
+  {"category": "announcements", "name": "Introducing Age Checks (Phase 2)", "link": "10043introducing-age-checks-p2.html"},
+  {"category": "announcements", "name": "Introducing Age Checks (Phase 3 Plans)", "link": "10098-age-verification-p3p.html"},
+  {"category": "safety", "name": "Mental Health Resources", "link": "10187-mental-health.html"},
+  {"category": "legal", "name": "Terms", "link": "../terms.html"},
+  {"category": "legal", "name": "Privacy", "link": "../privacy.html"},
+  {"category": "legal", "name": "Community Standards", "link": "../community-standards.html"},
+  {"category": "legal", "name": "Biometric Data Privacy Statement", "link": "../legal/biometric-data-statement.html"}
+]

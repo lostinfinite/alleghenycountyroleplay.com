@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Safety Center - ACRP</title>
+  <link rel="stylesheet" href="site.css">
+  <link rel="stylesheet" href="../assets/site.css">
+  <style>
+    body { background: var(--bg, #0b0b0c); color: var(--text, #fff); font-family: 'Inter', sans-serif; min-height: 100vh; display: flex; flex-direction: column; }
+    #nav-container { width: 100%; }
+    .main-content { max-width: 1200px; margin: 3rem auto 0 auto; padding: 0 1rem; background: none; box-shadow: none; border-radius: 0; color: var(--text, #fff); }
+    .main-content h2 { font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text, #fff); }
+    .searchbar-wrap { display: flex; justify-content: center; margin-bottom: 2.5rem; }
+    .searchbar-wrap input { width: 350px; max-width: 90vw; padding: 0.7rem 1.2rem; border-radius: 8px; border: 1px solid var(--border, #444); background: var(--surface, #121214); color: var(--text, #fff); font-size: 1.1rem; }
+    .categories-row { display: flex; gap: 2.5rem; justify-content: center; align-items: flex-start; flex-wrap: wrap; }
+    .category-col { min-width: 220px; flex: 1 1 0; }
+    .section-title { font-size: 1.3rem; font-weight: 600; margin: 0 0 1rem 0; color: var(--brand, #FFBB00); letter-spacing: 0.01em; }
+    .resource-list { margin-bottom: 2rem; }
+    .resource-list .item { display: flex; align-items: center; font-size: 1.1rem; margin-bottom: 1.2rem; border-bottom: 1px solid var(--border, rgba(255,255,255,0.08)); padding-bottom: 0.7rem; color: var(--text, #fff); text-decoration: none; transition: color 0.2s; }
+    .resource-list .item:last-child { border-bottom: none; }
+    .resource-list .item:hover { color: var(--brand, #FFBB00); }
+    .resource-list .icon { margin-right: 0.7rem; display: flex; align-items: center; }
+    .resource-list .icon svg { fill: #fff; width: 24px; height: 24px; }
+    .resource-list .item:hover .icon svg { fill: var(--brand, #FFBB00); }
+    #footer-container { width: 100%; margin-top: auto; }
+    @media (max-width: 900px) {
+      .categories-row { flex-direction: column; gap: 2.5rem; }
+      .category-col { min-width: 0; }
+    }
+  </style>
+</head>
+<body>
+	<nav class="simple-localnav" aria-label="local" tabindex="-1" style="--progress:0;">
+		<div class="localnav-inner container">
+			<a href="/" class="brand">
+				<img src="https://cdn2.contentltd.net/acrp%20(2).png" alt="ACRP Logo">
+				<span>Allegheny County Roleplay</span>
+			</a>
+			<div class="actions">
+				<a class="btn-outline" href="/">Home</a>
+				<a class="btn" href="https://discord.gg/GS5Va3zEep">Join</a>
+			</div>
+		</div>
+	</nav>
+  <div class="main-content">
+    <h2>Help Center</h2>
+    <div class="searchbar-wrap">
+      <input id="searchbar" type="text" placeholder="Search articles..." oninput="filterArticles()">
+    </div>
+    <div class="categories-row">
+      <div class="category-col" id="announcements-col">
+        <div class="section-title">Announcements:</div>
+        <div class="resource-list" id="announcements-list">
+        </div>
+      </div>
+      <div class="category-col" id="safety-col">
+        <div class="section-title">Safety:</div>
+        <div class="resource-list" id="safety-list">
+        </div>
+      </div>
+      <div class="category-col" id="legal-col">
+        <div class="section-title">Legal:</div>
+        <div class="resource-list" id="legal-list">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="footer-container"></div>
+  <script src="../master.js"></script>
+  <script>
+    const svgIcon = '<span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></svg></span>';
+    let articles = [];
+    fetch('articles.json')
+      .then(r => r.json())
+      .then(data => {
+        articles = data;
+        renderArticles();
+      });
+
+    function renderArticles() {
+      const cats = ['announcements', 'safety', 'legal'];
+      cats.forEach(cat => {
+        const list = document.getElementById(cat+'-list');
+        if (!list) return;
+        list.innerHTML = '';
+        articles.filter(a => a.category === cat).forEach(a => {
+          const aTag = document.createElement('a');
+          aTag.className = 'item';
+          aTag.href = a.link;
+          aTag.innerHTML = svgIcon + ' ' + a.name;
+          list.appendChild(aTag);
+        });
+      });
+    }
+
+    function filterArticles() {
+      const q = document.getElementById('searchbar').value.toLowerCase();
+      const cats = ['announcements', 'safety', 'legal'];
+      cats.forEach(cat => {
+        const list = document.getElementById(cat+'-list');
+        Array.from(list.children).forEach(item => {
+          const name = item.textContent.toLowerCase();
+          item.style.display = name.includes(q) ? '' : 'none';
+        });
+      });
+    }
+  </script>
+</body>
+</html>
