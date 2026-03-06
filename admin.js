@@ -16,7 +16,7 @@
   const nCtaList = document.getElementById('nCtaList');
   const nSecList = document.getElementById('nSecList');
   const saveNoticeBtn = document.getElementById('saveNotice');
-  // Preview elements
+  
   const pvBanner = document.getElementById('nPreviewBanner');
   const pvHeading = document.getElementById('nPreviewHeading');
   const pvText = document.getElementById('nPreviewText');
@@ -24,7 +24,7 @@
   const loginBlockedEl = document.getElementById('loginBlocked');
   const loginMsgEl = document.getElementById('loginMessage');
   const saveLoginBtn = document.getElementById('saveLoginCfg');
-  // KV editor elements
+  
   const kvPrefix = document.getElementById('kvPrefix');
   const kvRefresh = document.getElementById('kvRefresh');
   const kvNew = document.getElementById('kvNew');
@@ -35,7 +35,7 @@
   const kvSave = document.getElementById('kvSave');
   const kvDelete = document.getElementById('kvDelete');
   let kvCursor = null;
-  // Departments KV elements
+  
   const dkvEnv = document.getElementById('dkvEnv');
   const dkvIds = {
     pbp: document.getElementById('dkv_pbp'),
@@ -48,7 +48,7 @@
   const dkvRefresh = document.getElementById('dkvRefresh');
   const dkvSaveAll = document.getElementById('dkvSaveAll');
 
-  // Cookie helpers
+  
   function getCookie(name){
     try{
       const v = document.cookie.split(';').map(s=>s.trim()).find(s=>s.startsWith(encodeURIComponent(name)+'='));
@@ -105,7 +105,7 @@
   async function verify(){
     const token = getToken();
     if(!token){
-      // Start admin login flow: redirect to worker /admin which will bounce to /login and back to admin.html
+      
       try {
         const ret = encodeURIComponent(location.origin + '/admin.html');
         location.href = `${WORKER_BASE}/admin?return=${ret}`;
@@ -125,7 +125,7 @@
 
   function deny(){
     if(authFail) authFail.classList.remove('hidden');
-    // Redirect back to CAD with adminDenied=1 to trigger toast + gray-out
+    
     setTimeout(()=>{ try{ location.href = 'cad.html?adminDenied=1'; }catch{ location.href = 'cad.html'; } }, 1200);
   }
   function allow(){
@@ -138,7 +138,7 @@
       const res = await fetch(`${WORKER_BASE}/public-config`, { cache:'no-store' });
       if(res.ok){
         const cfg = await res.json();
-        // Populate notice structure (supports string or object)
+        
         let n = cfg.notice;
         if(typeof n === 'string') { n = { heading: 'Notice', content: n, color: '#0f1732', dismissable: false, buttons: { cta: [], secondary: [] } }; }
         n = n || { heading: '', content: '', color: '', dismissable: false, buttons: { cta: [], secondary: [] } };
@@ -310,7 +310,7 @@
       const tc = nTextColor?.value?.trim()||'';
       pvText.style.color = tc || '#e8eefc';
       pvHeading.style.color = tc || '#e8eefc';
-      // Buttons
+      
       pvButtons.innerHTML = '';
       const enable = !!nCtaToggle?.checked;
       if(enable){
@@ -360,7 +360,7 @@
           secondary: readList(nSecList, sCount, 'secondary')
         } : { cta: [], secondary: [] }
       };
-      // If all fields empty and no buttons, send null-equivalent by setting empty string to clear
+      
       if(!notice.heading && !notice.content && !notice.color && !notice.dismissable && !notice.buttons.cta.length && !notice.buttons.secondary.length){
         body.notice = '';
       } else {
@@ -389,7 +389,7 @@
   if(saveNoticeBtn) saveNoticeBtn.addEventListener('click', ()=> save('notice'));
   if(saveLoginBtn) saveLoginBtn.addEventListener('click', ()=> save('login'));
 
-  // Toggle buttons config visibility and rerender editors when counts change
+  
   if(nCtaToggle){ nCtaToggle.addEventListener('change', ()=> {
     if(nButtonsCfg) nButtonsCfg.classList.toggle('hidden', !nCtaToggle.checked);
     renderButtonEditors({ buttons: { cta: [], secondary: [] } });
@@ -400,13 +400,13 @@
   // Live preview on field edits
   [nHeading, nContent, nColor, nTextColor, nDismissable].forEach(el => { try { el?.addEventListener('input', updatePreview); } catch {} });
 
-  // KV editor wiring
+  
   if (kvRefresh) kvRefresh.addEventListener('click', ()=> kvListFetch(true));
   if (kvMore) kvMore.addEventListener('click', ()=> kvListFetch(false));
   if (kvNew) kvNew.addEventListener('click', ()=> { if (kvKey) kvKey.value=''; if (kvValue) kvValue.value=''; });
   if (kvSave) kvSave.addEventListener('click', kvSaveKey);
   if (kvDelete) kvDelete.addEventListener('click', kvDeleteKey);
-  // Departments KV wiring
+  
   if (dkvRefresh) dkvRefresh.addEventListener('click', dkvLoad);
   if (dkvSaveAll) dkvSaveAll.addEventListener('click', dkvSave);
 

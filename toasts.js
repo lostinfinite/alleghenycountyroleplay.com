@@ -1,9 +1,9 @@
 (function(){
   try{
-    if (window.__acrp_toasts_inited) return; // singleton
+    if (window.__acrp_toasts_inited) return; 
     window.__acrp_toasts_inited = true;
 
-    // Inject styles once
+    
     const css = `
     .toast-container{position:fixed;right:16px;bottom:16px;display:flex;flex-direction:column;gap:8px;z-index:2147483647}
     .toast-item{background:#121a33;color:#e8eefc;border:1px solid #2d3d6e;border-radius:8px;padding:10px 12px;min-width:240px;max-width:420px;box-shadow:0 4px 24px rgba(0,0,0,.35);display:flex;align-items:flex-start;gap:10px}
@@ -13,7 +13,7 @@
     `;
     const style = document.createElement('style'); style.type = 'text/css'; style.appendChild(document.createTextNode(css)); document.head.appendChild(style);
 
-    // Ensure container exists
+    
     let box = document.getElementById('toasts');
     if (!box){ box = document.createElement('div'); box.id = 'toasts'; box.className = 'toast-container'; document.body.appendChild(box); }
 

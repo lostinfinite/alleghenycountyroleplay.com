@@ -1,21 +1,21 @@
-// Production CAD UI logic (no external libs, no on-page debug panel). Console logging enabled.
+
 console.info('[CAD] Script loaded');
-// Don't log full URL as it may contain token parameter
+
 console.info('[CAD] window.location.hostname:', window.location.hostname);
 console.info('[CAD] window.location.pathname:', window.location.pathname);
 console.info('[CAD] Has URL params:', window.location.search ? 'yes' : 'no');
 
-// CRITICAL: Capture token IMMEDIATELY before anything else can modify the URL
+
 const INITIAL_SEARCH = window.location.search;
 const INITIAL_HREF = window.location.href;
 console.info('[CAD] Captured URL params');
 
-// Detect environment: use production API for alleghenycountyroleplay.com, otherwise local dev
+
 const isProduction = window.location.hostname === 'alleghenycountyroleplay.com' || window.location.hostname.endsWith('.alleghenycountyroleplay.com');
 const WORKER_BASE = isProduction ? 'https://cadapi.alleghenycountyroleplay.com' : 'http://127.0.0.1:8787';
 console.info('[CAD] Environment:', isProduction ? 'PRODUCTION' : 'DEVELOPMENT', '| Worker API:', WORKER_BASE);
 
-// DOM refs
+
 const timeEl = document.getElementById('now');
 const avatarEl = document.getElementById('avatar');
 const usernameEl = document.getElementById('username');
@@ -38,7 +38,7 @@ const tabContainers = {
   tabGuides: document.getElementById('tabGuides'),
   tabMisc: document.getElementById('tabMisc'),
 };
-// Sidebar + toast refs
+
 const sidebarEl = document.getElementById('sidebar');
 const tAvatar = document.getElementById('t_avatar');
 const tUsername = document.getElementById('t_username');
@@ -57,7 +57,7 @@ function showToast(message, type = 'info', ttlMs = 4000) {
     const key = `${type}:${String(message)}`;
     const now = Date.now();
     const last = LAST_TOASTS.get(key) || 0;
-    if (now - last < 1500) return; // dedupe burst
+    if (now - last < 1500) return; 
     LAST_TOASTS.set(key, now);
     if (!toastsEl) return;
     const item = document.createElement('div');
@@ -87,7 +87,7 @@ try {
 // Keep a minimal known department set in case needed later
 const KNOWN_DEPARTMENTS = ['ACSO', 'PBP', 'PBF', 'PSP', 'DOT'];
 let CURRENT_DEPARTMENTS = new Set();
-// Dept full-name fallback (server also returns names)
+
 const FULL_NAMES = {
   PBP: 'Pittsburgh Police Department',
   PSP: 'Pennsylviana State Police',
@@ -95,7 +95,7 @@ const FULL_NAMES = {
   PBF: 'Pittsburgh Fire Department',
   DOT: 'PennDOT',
 };
-// Title-case variant for headings
+
 const TITLE_NAMES = {
   PBP: 'The Pittsburgh Police Department',
   PSP: 'The Pennsylviana State Police',
@@ -104,7 +104,7 @@ const TITLE_NAMES = {
   DOT: 'PennDOT',
 };
 
-// Update clock
+
 function updateClock() {
   const d = new Date();
   const fmt = d.toLocaleString(undefined, { year: 'numeric', month: 'short', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' });
@@ -113,7 +113,7 @@ function updateClock() {
 setInterval(updateClock, 1000);
 updateClock();
 
-// JWT decode (no verify, server will verify for /resources)
+
 function b64urlToStr(b64url) {
   let b64 = b64url.replace(/-/g, '+').replace(/_/g, '/');
   const pad = b64.length % 4; if (pad) b64 += '='.repeat(4 - pad);
@@ -134,7 +134,7 @@ function setIdentity({ uid, username, avatar, departments }) {
   if (avatarEl) avatarEl.src = safeAvatar;
   if (usernameEl) usernameEl.textContent = username || 'Unknown';
   let deptText = Array.isArray(departments) && departments.length > 0 ? departments.join(' | ') : 'NON';
-  // Top-right: display "No Department" instead of NON
+  
   const displayDept = (deptText === 'NON') ? 'No Department' : deptText;
   if (deptEl) deptEl.textContent = displayDept;
   try {
@@ -147,20 +147,60 @@ function setIdentity({ uid, username, avatar, departments }) {
   if (pUserId) pUserId.textContent = uid || '';
   if (pDept) pDept.textContent = displayDept;
 
-  // Populate sidebar toast
+  
   if (tAvatar) tAvatar.src = safeAvatar;
   if (tUsername) {
     const name = String(username || 'Unknown');
     tUsername.textContent = name.length > 19 ? (name.slice(0, 19) + '...') : name;
   }
   if (tUidValue) tUidValue.textContent = uid || '';
-  // Show Admin button only for the admin UID
+  
   try {
     if (adminBtn) {
       if (String(uid) === ADMIN_UID) { adminBtn.style.display = 'block'; adminBtn.classList.remove('hidden'); }
       else { adminBtn.style.display = 'none'; adminBtn.classList.add('hidden'); }
     }
   } catch {}
+
+  // Add Staff Panel tab & container if user is STAFF (either staff-only or staff+dept)
+  try {
+    if (CURRENT_DEPARTMENTS.has('STAFF')) {
+      
+      const tabsNavEl = document.querySelector('.tabs');
+      let staffTabBtn = tabsNavEl ? tabsNavEl.querySelector('[data-tab="tabStaff"]') : null;
+      if (!staffTabBtn && tabsNavEl) {
+        staffTabBtn = document.createElement('button');
+        staffTabBtn.className = 'tab';
+        staffTabBtn.type = 'button';
+        staffTabBtn.setAttribute('data-tab', 'tabStaff');
+        staffTabBtn.textContent = 'Staff Panel';
+        
+        const adminEl = tabsNavEl.querySelector('#adminBtn');
+        if (adminEl) tabsNavEl.insertBefore(staffTabBtn, adminEl);
+        else tabsNavEl.appendChild(staffTabBtn);
+        
+        staffTabBtn.addEventListener('click', (e) => { if (!requireToken(e)) return; showTab('tabStaff'); });
+      }
+
+      // Create the tab content container if missing
+      let staffContainer = document.getElementById('tabStaff');
+      if (!staffContainer) {
+        staffContainer = document.createElement('div');
+        staffContainer.id = 'tabStaff';
+        staffContainer.className = 'tab-content';
+        
+        const card = el('div', { class: 'card' }, [ el('h1', {}, 'Staff Panel'), el('div', {}, 'Test') ]);
+        staffContainer.appendChild(card);
+        
+        const maincol = document.querySelector('.maincol');
+        if (maincol) maincol.appendChild(staffContainer);
+        
+        try { tabContainers.tabStaff = document.getElementById('tabStaff'); } catch {}
+      }
+    }
+  } catch (e) {
+    console.error('[CAD] Failed to add Staff Panel tab', e);
+  }
 
   if (logoutBtn) logoutBtn.style.display = '';
   if (loginBtn) loginBtn.style.display = 'none';
@@ -198,7 +238,7 @@ const DEFAULT_LABELS = {
 };
 
 function getLabel(key) {
-  // 1) URL param override: l.<key>=Value
+  
   try {
     const params = new URLSearchParams(INITIAL_SEARCH);
     const fromUrl = params.get(`l.${key}`);
@@ -240,7 +280,7 @@ function deleteCookie(name){ setCookie(name,'',{maxAge:0}); }
 
 // Session/token guards
 function getStoredToken() {
-  // Prefer cookie, fall back to sessionStorage for backward compatibility
+  
   const fromCookie = getCookie('cad_token');
   if (fromCookie) return fromCookie;
   try { return sessionStorage.getItem('cad_token') || ''; } catch { return ''; }
@@ -257,7 +297,7 @@ function requireToken(ev) {
       if (!p || typeof p.exp !== 'number') ok = false;
       else {
         const now = Math.floor(Date.now() / 1000);
-        // 30s skew
+        
         if (now >= (p.exp - 30)) ok = false;
       }
     } catch { ok = false; }
@@ -357,19 +397,19 @@ function guidesSection(code) {
   } else {
     const btnWrap = el('div', { class: 'toast-actions', style: 'flex-wrap: wrap' });
     for (const it of items) {
-      // Hide URL by not setting href; keep base64 in data attribute
+      
       let b64url = '';
       try { b64url = btoa(unescape(encodeURIComponent(String(it.url || '')))); } catch { b64url = ''; }
       const a = el('a', { class: 'btn', role: 'button', tabindex: '0', 'data-url': b64url }, it.label);
       const handler = (e) => {
-          if (!requireToken(e)) return; // Enforce token validity
-        // Permission check before navigating
+          if (!requireToken(e)) return; 
+        
   if (!canAccess(key)) { e.preventDefault(); showToast('You do not have access to this resource.', 'error'); return; }
         e.preventDefault();
         try {
           const enc = a.getAttribute('data-url') || '';
           const url = decodeURIComponent(escape(atob(enc)));
-          if (url && /^https?:\/\//i.test(url)) window.open(url, '_blank', 'noopener,noreferrer');
+          if (url && /^https?:\/\
         } catch (_) {}
       };
       a.addEventListener('click', handler);
@@ -388,10 +428,10 @@ function renderGuides() {
     const wrap = document.getElementById('guidesSections');
     if (!wrap) return;
     wrap.innerHTML = '';
-    // Render only sections for departments user is in
+    
     const depts = Array.from(CURRENT_DEPARTMENTS);
     for (const d of depts) {
-      if (!TITLE_NAMES[d] && !FULL_NAMES[d]) continue; // skip unknown tokens like NON
+      if (!TITLE_NAMES[d] && !FULL_NAMES[d]) continue; 
       const card = guidesSection(d);
       if (card) wrap.appendChild(card);
     }
@@ -414,12 +454,12 @@ async function fetchResources(token) {
 }
 
 function showTab(target) {
-  // Set active state on tabs
+  
   tabsNav.forEach(b => {
     const t = b.getAttribute('data-tab');
     if (t) b.classList.toggle('active', t === target);
   });
-  // Hide all containers, show selected
+  
   Object.entries(tabContainers).forEach(([key, elRef]) => {
     if (!elRef) return;
     if (key === target) { elRef.classList.remove('hidden'); elRef.classList.add('active'); }
@@ -431,20 +471,20 @@ function setupTabs() {
   if (!tabsNav || !tabsNav.length) return;
   tabsNav.forEach(btn => {
     btn.addEventListener('click', (e) => {
-      // Token must exist and be valid to switch tabs
+      
       if (!requireToken(e)) return;
       const target = btn.getAttribute('data-tab');
       showTab(target);
     });
   });
-  // Default to Info tab on load if present
+  
   if (tabContainers.tabInfo) showTab('tabInfo');
 }
 
 function onPrintScreen() {
 	if (!contentEl) return;
 	contentEl.classList.add('sensitive-blur');
-	// Best-effort clipboard clear
+	
 	try { if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(''); } catch {}
 	setTimeout(() => contentEl.classList.remove('sensitive-blur'), 10000);
 }
@@ -453,12 +493,12 @@ function onPrintScreen() {
 let modifierHeld = { win: false, shift: false, ctrl: false };
 
 window.addEventListener('keydown', (e) => {
-	// Track modifier keys
+	
 	if (e.key === 'Meta' || e.key === 'OS') modifierHeld.win = true;
 	if (e.key === 'Shift') modifierHeld.shift = true;
 	if (e.key === 'Control') modifierHeld.ctrl = true;
 
-	// PrintScreen key
+	
 	if (e.key === 'PrintScreen') {
 		onPrintScreen();
 	}
@@ -474,39 +514,39 @@ window.addEventListener('keydown', (e) => {
 });
 
 window.addEventListener('keyup', (e) => {
-	// Clear modifier tracking
+	
 	if (e.key === 'Meta' || e.key === 'OS') modifierHeld.win = false;
 	if (e.key === 'Shift') modifierHeld.shift = false;
 	if (e.key === 'Control') modifierHeld.ctrl = false;
 });
 
-// Re-check token on focus/visibility (helps catch expired sessions)
+
 window.addEventListener('focus', () => { requireToken(null); });
 document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') requireToken(null); });
 window.addEventListener('storage', (e) => { if (e.key === 'cad_token') requireToken(null); });
 
-// Global click guard for logged-in UI interactions
+
 document.addEventListener('click', (e) => {
   try {
     if (!sectionLoggedIn || sectionLoggedIn.classList.contains('hidden')) return;
     const path = e.composedPath ? e.composedPath() : [e.target];
     const el = path.find(n => n && n.nodeType === 1 && (n.matches?.('button, a.btn, .tab, summary') || false));
     if (!el) return;
-    // Exclusions: allow login/logout/back/legal without token guard
+    
     const id = el.id || '';
     if (id === 'loginBtn' || id === 'loginBtn2' || id === 'logoutBtn' || id === 't_logout' || id === 't_back' || id === 't_legal') return;
     requireToken(e);
   } catch {}
 }, true);
 
-// Init
+
 (async function init() {
-  // Load public config for notice banner and login blocking
+  
   try {
     const res = await fetch(`${WORKER_BASE}/public-config`, { method: 'GET', credentials: 'omit', cache: 'no-store' });
     if (res.ok) {
       const cfg = await res.json();
-      // Notice banner (supports object or legacy string)
+      
       try {
         const banner = document.getElementById('noticeBanner');
         const headingEl = document.getElementById('noticeHeading');
@@ -524,9 +564,9 @@ document.addEventListener('click', (e) => {
           const wasDismissed = (() => { try { return sessionStorage.getItem(dismissedKey) === '1'; } catch { return false; } })();
 
           if (noticeObj && !wasDismissed) {
-            // Content
+            
             if (headingEl) headingEl.textContent = String(noticeObj.heading || 'Notice');
-            // Force newlines -> line breaks for paragraph-like rendering
+            
             try {
               const contentHtml = escapeHtml(String(noticeObj.content || ''))
                 .replace(/\r\n|\r|\n/g, '<br>');
@@ -628,10 +668,10 @@ document.addEventListener('click', (e) => {
   try {
     if (!LOGIN_BLOCKED) {
       const buildLoginUrl = () => `${WORKER_BASE}/login?return=${encodeURIComponent(window.location.origin)}`;
-      // Set hrefs for when users open in new tab
+      
       if (loginBtn) loginBtn.href = buildLoginUrl();
       if (loginBtn2) loginBtn2.href = buildLoginUrl();
-      // Also handle click to avoid race with initial HTML href
+      
       const goLogin = (e) => { 
         e.preventDefault(); 
         if (LOGIN_BLOCKED) { showToast(LOGIN_BLOCK_MSG || 'Logins are disabled.', 'warn', 5000); return; }
@@ -640,7 +680,7 @@ document.addEventListener('click', (e) => {
       if (loginBtn) loginBtn.addEventListener('click', goLogin);
       if (loginBtn2) loginBtn2.addEventListener('click', goLogin);
     } else {
-      // Ensure no hrefs remain if blocked
+      
       try { if (loginBtn) loginBtn.removeAttribute('href'); } catch {}
       try { if (loginBtn2) loginBtn2.removeAttribute('href'); } catch {}
     }
@@ -663,12 +703,12 @@ document.addEventListener('click', (e) => {
 
   // Fallback to sessionStorage to keep you logged in across refreshes
   if (!token) {
-    // Fallback read from cookie (in case URL param not present)
+    
     try {
       token = getCookie('cad_token');
       console.debug('[CAD] Token from cookie:', token ? 'present' : 'missing');
       if (!token) {
-        // legacy fallback
+        
         token = sessionStorage.getItem('cad_token');
         console.debug('[CAD] Token from sessionStorage (legacy):', token ? 'present' : 'missing');
       }
@@ -685,9 +725,9 @@ document.addEventListener('click', (e) => {
 
   // Strip token param from URL and persist to cookie
   try {
-    // Decode to compute max-age from exp
+    
     const parts = String(token).split('.');
-    let maxAge = 60*60*6; // default 6h
+    let maxAge = 60*60*6; 
     try{
       if(parts.length===3){
         const payload = JSON.parse(b64urlToStr(parts[1]));
@@ -720,12 +760,21 @@ document.addEventListener('click', (e) => {
   console.info('[CAD] Setting identity', { uid: String(payload.uid || ''), username: payload.username, departments: payload.departments });
   setIdentity({ uid: String(payload.uid || ''), username: payload.username, avatar: payload.avatar, departments: payload.departments });
   setupTabs();
+  
+  try {
+    if (window.location.hash === '#staff') {
+      
+      setTimeout(() => {
+        try { showTab('tabStaff'); } catch (e) { console.error(e); }
+      }, 80);
+    }
+  } catch (e) {}
   // Special-case: users with no department (NON) should see invite + logout
   try {
     const isNon = !Array.isArray(payload.departments) || payload.departments.length === 0 || (Array.isArray(payload.departments) && payload.departments.includes('NON'));
     if (isNon) {
       console.info('[CAD] User is in NON (no department) — rendering invite panel');
-      // Hide sidebar for NON users
+      
       if (sidebarEl) sidebarEl.classList.remove('visible');
       if (deptSections) {
         deptSections.innerHTML = '';
@@ -733,7 +782,7 @@ document.addEventListener('click', (e) => {
         const heading = el('h1', {}, `Seems like you're not in a department! Please check the ACRP Discord to join one!`);
         const inviteLink = 'https://discord.gg/bJ8TeDsnth';
         const inviteBtn = el('a', { class: 'btn primary', href: inviteLink, target: '_blank', rel: 'noopener noreferrer', 'aria-label': getLabel('cta1-acrp-invite') }, resolveToken('{cta1-acrp-invite}'));
-        // secondary logout button - will trigger the same logout behavior
+        
         const secLogout = el('button', { class: 'btn', type: 'button', 'aria-label': getLabel('secondary-logout') }, resolveToken('{secondary-logout}')); 
         secLogout.addEventListener('click', () => {
           try { if (logoutBtn) logoutBtn.click(); else clearIdentity(); } catch { clearIdentity(); }
@@ -746,9 +795,9 @@ document.addEventListener('click', (e) => {
       try { showTab('tabJoin'); } catch {}
       // Do not fetch department-specific resources for NON users
     } else {
-  // Show sidebar for department users
+  
       if (sidebarEl) sidebarEl.classList.add('visible');
-      // Wire toast interactions once
+      
       try {
         if (tLogout) {
           tLogout.addEventListener('click', (e) => {
@@ -778,7 +827,7 @@ document.addEventListener('click', (e) => {
   }
 })();
 
-// Global error logging to console
+
 window.addEventListener('error', (e) => {
   console.error('[CAD] window.error', { message: e.message, filename: e.filename, lineno: e.lineno, colno: e.colno, error: String(e.error || '') });
 });
@@ -786,7 +835,7 @@ window.addEventListener('unhandledrejection', (e) => {
   console.error('[CAD] unhandledrejection', { reason: String(e.reason || '') });
 });
 
-// Wire logout
+
 if (logoutBtn) {
   logoutBtn.addEventListener('click', (e) => {
     e.preventDefault();
@@ -804,7 +853,7 @@ if (logoutBtn) {
 
 // Secondary login button mirrors main login
 if (loginBtn2 && loginBtn) {
-  loginBtn2.addEventListener('click', (e) => { /* just allow link */ });
+  loginBtn2.addEventListener('click', (e) => {  });
 }
 
 function escapeHtml(s) {
