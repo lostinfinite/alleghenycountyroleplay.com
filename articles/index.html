@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Help Center - ACRP</title>
+  <link rel="stylesheet" href="site.css">
+  <link rel="stylesheet" href="../assets/site.css">
+  <style>
+    :root {
+      --brand: #FFBB00;
+      --brand-900: #d69a00;
+      --bg: #1D1D1D;
+      --surface: #121214;
+      --card: #141417;
+      --text: #fff;
+      --muted: #bdbdbd;
+      --border: rgba(255, 255, 255, 0.08);
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+    }
+    body {
+      font-family:'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    a { color: var(--brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .content {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 18px 20px 44px;
+      width: 100%;
+    }
+    .helpbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 12px;
+      margin-bottom: 24px;
+    }
+    .breadcrumbs {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .breadcrumbs li { display: inline-flex; gap: 8px; align-items: center; }
+    .breadcrumbs li:not(:last-child)::after { content: '›'; color: var(--muted); }
+    .breadcrumbs a { color: var(--muted); }
+    .breadcrumbs a:hover { color: var(--text); text-decoration: none; }
+    .breadcrumbs [aria-current="page"] { color: var(--text); }
+    .main-header {
+      padding: 22px 4px 12px;
+    }
+    .main-title {
+      margin: 0;
+      font-size: 30px;
+      font-weight: 600;
+      line-height: 1.15;
+      color: var(--text);
+    }
+    .main-updated {
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .main-subtitle {
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 78ch;
+    }
+    .rule {
+      height: 1px;
+      background: var(--border);
+      border: none;
+      margin: 16px 0 0;
+    }
+    
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));
+      border: 1px solid rgba(255,255,255,0.04);
+      border-radius: 12px;
+      padding: 28px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.30);
+      margin-bottom: 24px;
+    }
+    .card h2 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .card h3 {
+      margin: 18px 0 8px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .card p {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.75;
+    }
+    .card ul {
+      margin: 12px 0 16px;
+      padding-left: 22px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .card li { margin: 6px 0; }
+
+    
+    .searchbar .search-input { width:100%; padding:14px 18px; padding-right:56px; border-radius:10px; border:1px solid var(--border); background:var(--surface); color:var(--text); box-shadow: 0 8px 30px rgba(0,0,0,0.45); font-size:16px; }
+    .searchbar .search-input:focus { outline:none; border-color: var(--brand); box-shadow: 0 10px 40px rgba(255,187,0,0.04); }
+    .searchbar .search-btn { position:absolute; right:12px; top:50%; transform:translateY(-50%); border:none; background:transparent; padding:6px; margin:0; color:var(--muted); cursor:pointer; display:inline-flex; align-items:center; justify-content:center; }
+    .searchbar .search-btn:hover { color:var(--brand); }
+    .searchbar .search-btn svg { width:20px; height:20px; display:block; }
+    .searchbar .search-btn svg path { fill: currentColor; }
+
+    
+    .resource-list { display: grid; gap: 6px; margin: 0; padding: 0; }
+    .resource-list .item {
+      display: grid;
+      grid-template-columns: 44px 1fr 20px;
+      gap: 12px;
+      align-items: center;
+      padding: 12px 10px;
+      color: var(--text);
+      text-decoration: none;
+      border-radius: 8px;
+      background: transparent;
+      transition: background .12s ease, transform .06s ease;
+    }
+    .resource-list .item:not(:last-child) { border-bottom: 1px solid rgba(255,255,255,0.03); }
+    .resource-list .item:hover { background: rgba(255,255,255,0.02); transform: translateY(-1px); }
+
+    .resource-list .icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,187,0,0.06);
+      border: 1px solid rgba(255,187,0,0.10);
+      color: var(--brand);
+      flex: 0 0 44px;
+    }
+    .resource-list .icon svg { width: 20px; height: 20px; fill: currentColor; }
+
+    .resource-list .meta .title { font-size: 15px; font-weight: 600; color: var(--text); }
+    .resource-list .meta .meta-line { font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+    .resource-list .chev { color: var(--muted); display:inline-flex; align-items:center; justify-content:center; }
+    .resource-list .chev svg { width: 14px; height: 14px; display:block; }
+    .resource-list .item:hover .chev { color: var(--brand); }
+
+    
+    .no-results { text-align: center; color: var(--muted); padding: 28px 18px; border-radius: 8px; background: rgba(255,255,255,0.01); font-size: 15px; margin: 12px 0 18px; }
+
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 18px 0;
+    }
+    @media (max-width: 768px) {
+      .main-title { font-size: 22px; }
+      .card { padding: 20px; }
+      .helpbar { padding: 10px 12px; }
+    }
+    @media (max-width: 480px) {
+      .content { padding: 12px 12px 32px; }
+      .main-title { font-size: 18px; }
+      .card { padding: 16px; }
+      .card h2 { font-size: 16px; }
+      .card p, .card ul { font-size: 14px; }
+      .resource-list .meta .title { font-size: 14px; }
+      #categories-container { gap: 1.5rem !important; }
+    }
+  </style>
+</head>
+<body>
+	<nav class="simple-localnav" aria-label="local" tabindex="-1" style="--progress:0;">
+		<div class="localnav-inner container">
+			<a href="/" class="brand">
+				<img src="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png" alt="ACRP Logo">
+				<span>Allegheny County Roleplay</span>
+			</a>
+			<div class="actions">
+				<a class="btn-outline" href="/">Home</a>
+				<a class="btn" href="https://portal.alleghenycountyroleplay.com">Login</a>
+			</div>
+		</div>
+	</nav>
+  <main class="content" id="main">
+    <div class="helpbar" role="region" aria-label="Article navigation">
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumbs">
+          <li><a href="/">ACRP</a></li>
+          <li><span aria-current="page">Help Center</span></li>
+        </ol>
+      </nav>
+    </div>
+    <header class="main-header">
+      <div class="header-row">
+        <h1 class="main-title">Help Center</h1>
+      </div>
+      <p class="main-updated">Updated: February 15, 2026</p>
+      <p class="main-subtitle">Browse announcements, safety, and legal resources for the ACRP community. Use the search to quickly find articles.</p>
+      <hr class="rule">
+    </header>
+    <section class="card">
+      <div class="searchbar-wrap searchbar" style="margin-bottom:2rem; display:flex; justify-content:center;">
+        <div class="search-input-wrap" style="width:100%; max-width:720px; position:relative;">
+          <input id="searchbar" class="search-input" type="text" placeholder="Search articles..." oninput="clearNoResults()" onkeydown="if(event.key==='Enter'){renderArticles();event.preventDefault();}" aria-label="Search articles">
+          <button type="button" class="search-btn" onclick="renderArticles()" aria-label="Run search">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.172 24l-7.387-7.387c-1.388.874-3.024 1.387-4.785 1.387-4.971 0-9-4.029-9-9s4.029-9 9-9 9 4.029 9 9c0 1.761-.514 3.398-1.387 4.785l7.387 7.387-2.828 2.828zm-12.172-8c3.859 0 7-3.14 7-7s-3.141-7-7-7-7 3.14-7 7 3.141 7 7 7z"/></svg>
+          </button>
+        </div>
+      </div>
+      <div id="no-results" class="no-results" style="display:none;">Our magical wizard's searched and searched but couldn't find what you are looking for. Try using diffrent terms</div>
+      <div id="categories-container" class="categories-row" style="display:flex; gap:2.5rem; justify-content:center; align-items:flex-start; flex-wrap:wrap; max-width:980px; margin:0 auto;">
+        <div class="category-col" id="announcements-col" style="min-width:220px; flex:1 1 0;">
+          <div class="section-title" style="font-size:1.3rem; font-weight:600; margin:0 0 1rem 0; color:var(--brand); letter-spacing:0.01em;">Announcements:</div>
+          <div class="resource-list" id="announcements-list"></div>
+        </div>
+        <div class="category-col" id="safety-col" style="min-width:220px; flex:1 1 0;">
+          <div class="section-title" style="font-size:1.3rem; font-weight:600; margin:0 0 1rem 0; color:var(--brand); letter-spacing:0.01em;">Safety:</div>
+          <div class="resource-list" id="safety-list"></div>
+        </div>
+        <div class="category-col" id="legal-col" style="min-width:220px; flex:1 1 0;">
+          <div class="section-title" style="font-size:1.3rem; font-weight:600; margin:0 0 1rem 0; color:var(--brand); letter-spacing:0.01em;">Legal:</div>
+          <div class="resource-list" id="legal-list"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div id="footer-container"></div>
+  <script src="../master.js"></script>
+  <script>
+    const svgIcon = '<span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></svg></span>';
+    let articles = [];
+    fetch('articles.json')
+      .then(r => r.json())
+      .then(data => {
+        articles = data;
+        renderArticles();
+      });
+
+    function scoreArticle(a, q) {
+      const title = (a.name || '').toLowerCase();
+      const cat = (a.category || '').toLowerCase();
+      let score = 0;
+      if (!q) return 0;
+      if (title === q) score += 100;
+      if (title.startsWith(q)) score += 60;
+      if (title.includes(q)) score += 40;
+      
+      const tokens = q.split(/\s+/).filter(Boolean);
+      tokens.forEach(t => {
+        if (title.includes(t)) score += 8;
+        if (cat.includes(t)) score += 3;
+      });
+      
+      const idx = title.indexOf(q);
+      if (idx >= 0) score += Math.max(0, 10 - idx);
+      return score;
+    }
+
+    function renderArticles() {
+      const q = (document.getElementById('searchbar')?.value || '').toLowerCase().trim();
+      const cats = ['announcements','safety','legal'];
+      const chevSvg = '<span class="chev" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span>';
+
+      
+      cats.forEach(cat => {
+        const listEl = document.getElementById(cat + '-list');
+        if (listEl) listEl.innerHTML = '';
+        const col = document.getElementById(cat + '-col');
+        if (col) col.style.display = '';
+      });
+
+      if (q === '') {
+        
+        articles.forEach(a => {
+          const cat = (a.category || '').toLowerCase();
+          if (!cats.includes(cat)) return;
+          const listEl = document.getElementById(cat + '-list');
+          if (!listEl) return;
+          const aTag = document.createElement('a');
+          aTag.className = 'item';
+          aTag.href = a.link;
+          const title = a.name;
+          const meta = (a.category || '').charAt(0).toUpperCase() + (a.category || '').slice(1);
+          aTag.innerHTML = svgIcon + '<div class="meta"><div class="title">' + title + '</div><div class="meta-line">' + meta + '</div></div>' + chevSvg;
+          listEl.appendChild(aTag);
+        });
+      } else {
+        
+        const matches = [];
+        articles.forEach((a, idx) => {
+          const score = scoreArticle(a, q);
+          if (score > 0) matches.push({ a, score, idx });
+        });
+        
+        const grouped = { announcements: [], safety: [], legal: [] };
+        matches.forEach(m => {
+          const cat = (m.a.category || '').toLowerCase();
+          if (grouped[cat]) grouped[cat].push(m);
+        });
+
+        
+        const totalMatches = matches.length;
+        const noResultsEl = document.getElementById('no-results');
+        const categoriesContainer = document.getElementById('categories-container');
+        if (totalMatches === 0) {
+          if (noResultsEl) noResultsEl.style.display = '';
+          if (categoriesContainer) categoriesContainer.style.display = 'none';
+          return;
+        } else {
+          if (noResultsEl) noResultsEl.style.display = 'none';
+          if (categoriesContainer) categoriesContainer.style.display = '';
+        }
+
+        Object.keys(grouped).forEach(cat => {
+          grouped[cat].sort((x,y) => {
+            if (y.score !== x.score) return y.score - x.score; 
+            return x.idx - y.idx; 
+          });
+          const listEl = document.getElementById(cat + '-list');
+          const col = document.getElementById(cat + '-col');
+          if (!listEl || !col) return;
+          if (grouped[cat].length === 0) {
+            col.style.display = 'none';
+            return;
+          }
+          grouped[cat].forEach(m => {
+            const a = m.a;
+            const aTag = document.createElement('a');
+            aTag.className = 'item';
+            aTag.href = a.link;
+            const title = a.name;
+            const meta = (a.category || '').charAt(0).toUpperCase() + (a.category || '').slice(1);
+            aTag.innerHTML = svgIcon + '<div class="meta"><div class="title">' + title + '</div><div class="meta-line">' + meta + '</div></div>' + chevSvg;
+            listEl.appendChild(aTag);
+          });
+        });
+      }
+    }
+
+    
+    function filterArticles() { renderArticles(); }
+
+    
+    function clearNoResults() {
+      const no = document.getElementById('no-results');
+      if (no) no.style.display = 'none';
+      const categoriesContainer = document.getElementById('categories-container');
+      if (categoriesContainer) categoriesContainer.style.display = '';
+    }
+  </script>
+</body>
+</html>

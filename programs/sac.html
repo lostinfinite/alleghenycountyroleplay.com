@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/site.css" />
+    <title>Safety Assurance Council- ACRP</title>
+
+    <style>
+        :root{
+            --brand:#FFBB00;
+            --brand-900:#d69a00;
+            --text:#fff;
+            --muted:#bdbdbd;
+            --bg:#1D1D1D;
+            --surface:#121214;
+            --card:#141417;
+            --border:rgba(255,255,255,.08);
+            --shadow:0 20px 60px rgba(0,0,0,.35);
+        }
+
+        html, body { width: 100%; max-width: 100%; overflow-x: hidden; }
+        body{
+            background:
+                radial-gradient(1200px 600px at 10% -10%, rgba(255,187,0,.06), transparent),
+                radial-gradient(1200px 600px at 110% 10%, rgba(120,120,255,.06), transparent),
+                var(--bg);
+        }
+
+        
+        .event-hero{
+            min-height: clamp(70vh, 92vh, 100svh);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: clamp(28px, 6vw, 64px);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background-color: #0d0d0d;
+            background-image:
+                linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.65)),
+                url('https://cdn.alleghenycountyroleplay.com/RobloxPlayerBeta_ebOPZRvacN.png');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .event-hero{ padding-top: calc(clamp(28px, 6vw, 64px) + 56px); }
+
+
+        .event-hero::after{ content: ""; position: absolute; inset: 0; pointer-events: none; }
+        @keyframes ssu-fade-up{ from{opacity:0; transform: translateY(10px)} to{opacity:1; transform: translateY(0)} }
+        @media (prefers-reduced-motion: reduce){ .event-hero *{animation:none} }
+
+        .event-hero-tit{
+            position: relative; z-index: 1; line-height: 1.02; letter-spacing: -0.02em; font-family:'Inter', sans-serif; font-weight: 900; margin: 0;
+            font-size: clamp(28px, 6.8vw, 56px);
+            animation: ssu-fade-up .65s ease both;
+            text-wrap: balance;
+        }
+        .event-hero-des{
+            position: relative; z-index: 1; font-size: clamp(0.98rem, 1.2vw, 1.05rem); color: rgba(255,255,255,.92); margin: 0; max-width: 860px; animation: ssu-fade-up .75s ease both; letter-spacing: 0.01em;
+        }
+        .hero-bottom{ z-index: 1; }
+        .event-hero-tim{ margin:0; color: rgba(255,255,255,.78) }
+        .large-daat-tim-holder{ margin:.35rem 0 0 }
+
+        
+        .simple-localnav{margin-top:6px}
+
+        /* secondary sticky navbar (collapsed -> expand vertically) */
+        #secondary-localnav{ display: none; }
+        #secondary-localnav.scrolled-past{ display:block; position: fixed !important; top: 6px !important; left: 0; right: 0; z-index: 99999999999999999999999999999 !important; box-shadow: 0 16px 50px rgba(0,0,0,0.42); }
+
+        /* collapsed (show only brand row) */
+        /* collapsed (logo-only) — keep items on a single row */
+        #secondary-localnav .localnav-inner{ height: 52px; overflow: hidden; display:flex; align-items:center; gap:8px; justify-content: space-between; padding-inline:12px; }
+        /* hide brand text without taking layout space */
+        #secondary-localnav .localnav-inner .brand span{ display:inline-block; max-width:0; opacity:0; overflow:hidden; white-space:nowrap; transition: max-width .22s ease, opacity .18s ease; }
+        /* actions are visually hidden in collapsed state but measured by JS/GSAP */
+        #secondary-localnav .localnav-inner .actions{ display:flex; gap:8px; align-items:center; width:0; overflow:hidden; opacity:0; pointer-events:none; transform: translateY(-6px); transition: width .22s ease, opacity .22s ease, transform .22s ease; } 
+        #secondary-localnav.scrolled-past.expanded .localnav-inner .actions{ width: auto; overflow: visible; }
+
+        /* expanded (match primary) — brand + buttons on same row */
+        #secondary-localnav.scrolled-past.expanded .localnav-inner{ height: 52px; padding-block:6px; flex-direction: row; align-items: center; justify-content: space-between; }
+        #secondary-localnav.scrolled-past.expanded .localnav-inner .brand span{ max-width:400px; opacity:1; }
+        #secondary-localnav.scrolled-past.expanded .localnav-inner .actions{ opacity:1; pointer-events:auto; transform: translateY(0); }
+
+        /* on small screens hide secondary branding text to save space */
+        @media (max-width:600px){
+            #secondary-localnav .brand span { display: none !important; max-width: 0 !important; }
+        }
+
+        /* hide primary while secondary is active */
+        #primary-localnav.hidden-by-secondary{ visibility: hidden; opacity: 0; pointer-events: none; }
+
+        /* placeholder used to prevent layout jump when nav is fixed */
+        .simple-localnav-js-placeholder{ display:block; height:0; }
+        a {text-decoration: none; color: white;}
+
+        
+        
+        .about-section {
+            background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));
+            border: 1px solid rgba(255,255,255,0.04);
+            border-radius: 12px;
+            padding: 1.4rem 1.4rem;
+            margin: 1rem auto;
+            max-width: 980px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.28);
+            font-size: 0.98rem;
+            line-height: 1.5;
+        }
+        .about-section h2 { color: var(--brand); font-weight:700; margin-bottom:0.45rem; font-size:1.15rem; }
+        .about-section p { color: var(--text); line-height:1.5; margin-bottom:0.85rem; }
+
+        .about-grid { display:grid; grid-template-columns: 1fr 300px; gap:20px; align-items:start; }
+        @media (max-width:900px){ .about-grid{ grid-template-columns: 1fr; } }
+
+        .meta-card { background: rgba(255,255,255,0.01); border:1px solid rgba(255,255,255,0.03); border-radius:10px; padding:12px; color:var(--muted); font-size:0.95rem; }
+        @media (max-width:900px){ .meta-card .cta { text-align:center; } .meta-card .subtle-click-cta-btn { margin: 8px auto 0 auto; } }
+
+        .section-compact { margin-top: 0.4rem; margin-bottom: 0.4rem; }
+        .small-list { margin: 0.4rem 0 0 0; padding-left: 18px; color: var(--muted); }
+        .small-list li { margin: 6px 0; }
+
+        .status-pill { display:inline-block; background: rgba(255,187,0,0.06); color:var(--brand); border:1px solid rgba(255,187,0,0.12); padding:4px 8px; border-radius:999px; font-weight:700; font-size:12px; }
+
+        
+        .timeline{
+            /* timeline geometry variables — keep alignment exact */
+            --tl-line-left: 32px;
+            --tl-line-width: 4px;   /* thinner line like the reference */
+            --tl-dot-size: 10px;    /* slightly larger dot */
+            --tl-content-offset: 64px; /* distance from timeline left to content start (matches padding-left) */
+            --tl-line-top: 38px; /* start of the visible line */
+            --tl-line-bottom-gap: 20px; /* distance from bottom edge */
+
+            position: relative;
+            padding-left: 64px; 
+            padding-top: 6px;
+            padding-bottom: 6px;
+            color: var(--muted);
+        }
+        .timeline > strong{ display:block; margin:0 0 8px 0; color:var(--text); font-weight:700; }
+
+        
+        .timeline::before{
+            content: "";
+            position: absolute;
+            left: var(--tl-line-left);
+            top: var(--tl-line-top);
+            bottom: var(--tl-line-bottom-gap);
+            width: var(--tl-line-width);
+            background: linear-gradient(180deg, rgba(255,187,0,0.98), rgba(255,187,0,0.85));
+            border-radius: 9999px; 
+            box-shadow: 0 6px 18px rgba(255,187,0,0.06), inset 0 1px 0 rgba(255,255,255,0.06);
+            z-index: 1; /* ensure the line stays beneath the dots */
+        }
+
+
+
+        
+        .timeline .step{
+            position: relative;
+            padding: 8px 0 8px 0;
+            margin: 0 0 6px 0;
+            font-size: 0.96rem;
+            color:var(--text);
+            line-height:1.4;
+        }
+        /* keep ::after hidden but use ::before for the timeline dot markers */
+        .timeline .step::after { display: none !important; }
+        .timeline .step::before{
+            /* center the dot exactly on the vertical line using the same variables
+               (compute left so the dot's left edge accounts for its width; use translateY only)
+            */
+            content: "";
+            position: absolute;
+            left: calc((var(--tl-line-left) + (var(--tl-line-width) / 2) - (var(--tl-dot-size) / 2)) - var(--tl-content-offset));
+            top: 50%;
+            transform: translateY(-50%);
+            width: var(--tl-dot-size);
+            height: var(--tl-dot-size);
+            box-sizing: border-box; /* include border in the width so centering math is exact */
+            border-radius: 9999px;
+            background: linear-gradient(180deg, rgba(255,187,0,0.98), rgba(255,187,0,0.85));
+            border: 2px solid rgba(11,11,12,0.9); /* black outline */
+            box-shadow: 0 0 6px rgba(255,187,0,0.06); /* subtle glow only */
+            z-index: 3;
+            display: block !important;
+        }
+
+        
+        /* hover effect removed so steps do not shift on hover */
+        .timeline .step:hover{ transform: none; color: inherit; }
+
+        @media (max-width:900px){
+            .timeline{ 
+                --tl-line-left: 22px; 
+                --tl-line-top: 42px;
+                --tl-content-offset: 56px;
+                padding-left: 56px; 
+            }
+            .timeline::before{ left: var(--tl-line-left); top: var(--tl-line-top); }
+        }
+
+        .cta { text-align: left; margin-top: 0.75rem; }
+        .cta p { color: var(--muted); margin-bottom: 0.4rem; font-size:0.95rem; }
+        .subtle-click-cta-btn { background: var(--brand); color: var(--bg); padding: 0.55rem 0.95rem; border-radius: 10px; font-weight: 800; transition: background 0.18s ease, transform .08s ease, box-shadow .12s ease; cursor: pointer; opacity: 1; box-shadow: 0 6px 18px rgba(0,0,0,0.3); display:inline-flex; align-items:center; gap:8px; }
+        .subtle-click-cta-btn:hover { background: var(--brand-900); transform: translateY(-2px); box-shadow: 0 12px 30px rgba(0,0,0,0.35); }
+
+        .dense-note { color: var(--muted); font-size: 0.92rem; margin-top:8px; }
+
+    </style>
+</head>
+
+<body data-event-start-et="" data-event-timezone="America/New_York">
+    <nav id="primary-localnav" class="simple-localnav" aria-label="local" tabindex="-1" style="--progress:0;">
+        <div class="localnav-inner container">
+            <a href="/" class="brand"><img src="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png" alt="ACRP Logo"><span>Allegheny County Roleplay</span></a>
+            <div class="actions">
+                <a class="btn-outline" href="/">Home</a>
+                <a class="btn" href="https://portal.alleghenycountyroleplay.com">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- secondary sticky navbar (appears after hero, collapses → expands vertically) -->
+    <nav id="secondary-localnav" class="simple-localnav secondary-localnav" aria-label="secondary local" tabindex="-1" aria-hidden="true" style="display:none;">
+        <div class="localnav-inner container">
+            <a href="/" class="brand"><img src="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png" alt="ACRP Logo"><span>Allegheny County Roleplay</span></a>
+            <div class="actions">
+                <a class="btn-outline" href="/">Home</a>
+                <a class="btn-outline" href="https://discord.gg/GS5Va3zEep">Join ACRP</a>
+                <a class="btn subtle-click-cta-btn in-sentence" id="apply-btn-2" title="Applications closed">Apply</a>
+            </div>
+        </div>
+    </nav>
+    <div class="localnav-overlay-background"></div>
+    <script src="/assets/sticky-fallback.js" defer></script>
+
+    <div class="event-hero" role="banner" aria-label="Event splash">
+        <h1 class="event-hero-tit">Safety Assurance Council</h1>
+<p class="event-hero-des">Soon, the applications to join the Safety Assurance Council will open. Stay tuned for more details!</p>
+        <div class="hero-bottom">
+            <div note="this is for the button"></div>
+        </div>
+
+
+    </div>
+<div>
+    <div class="container about-section">
+        <h2>About the Safety Assurance Council</h2>
+        <div class="about-grid">
+            <div>
+                <p class="section-compact"><strong>Purpose:</strong> The Safety Assurance Council helps ACRP Directorship make decisions to assure user safety without infringing on users' privacy.</p>
+
+                <h3 style="margin:0.5rem 0 0.25rem; font-size:1rem; color:var(--text)">Mission</h3>
+                <p class="section-compact">The Safety Assurance Council was created to help Allegheny County Roleplay Directorship make policies, rules, and systems to protect users and keep them safe while not infringing on user privacy and rights.</p>
+                <h4 style="margin:0.6rem 0 0.25rem; color:var(--brand); font-size:0.95rem">Eligibility</h4>
+                <ul class="small-list">
+                    <li>You must be at least 13 years of age and age-verified through our systems.</li>
+                    <li>You must be based in the US or UK and be willing to submit proof of region.</li>
+                    <li>You must be a member of the ACRP main Discord server for at least 1 month with a positive moderation history and reputation within the community.</li>
+                </ul>
+
+                <h4 style="margin:0.6rem 0 0.2rem; color:var(--brand); font-size:0.95rem">Applications</h4>
+                <p class="dense-note">Applications are currently <span class="status-pill">closed</span>.</p>
+
+                <div class="timeline" aria-hidden="true">
+                    <strong style="color:var(--text);font-size:0.95rem">Timeline</strong>
+                    <div class="step">You apply</div>
+                    <div class="step">Get a response</div>
+                    <div class="step">Get trained</div>
+                    <div class="step">You're in!</div>
+                </div>
+
+                <h4 style="margin:0.6rem 0 0.2rem; color:var(--brand); font-size:0.95rem">Benefits</h4>
+                <ul class="small-list">
+                    <li>VIP role in Discord along with booster perks permanently.</li>
+                    <li>The ability to influence decisions and make sure your voice is heard.</li>
+                    <li>The "Safety Assurance Council" role in Discord.</li>
+                    <li>The ability to fast-track to being an actual staff member.</li>
+                </ul>
+
+            </div>
+            <aside class="meta-card">
+                <strong>Does this interest you?</strong>
+              
+                <p class="dense-note" style="margin-top:6px">Applications are currently <span class="status-pill">closed</span>. When open, you'll be asked for basic details and a short statement of interest.</p>
+                <div class="cta" style="margin-top:8px">
+                    <p style="margin-bottom:6px">Ready to apply?</p>
+                    <a id="apply-btn" class="subtle-click-cta-btn in-sentence" title="Applications closed">Apply Now!</a>
+                </div>
+            </aside>
+        </div>
+    </div>
+</div>
+<div id="footer-container"></div>
+    <script>
+
+        window['--postermakinguishowingdevshouldithis is superlongbecauseiwantittobesoyeahweloveyou'] = true
+            window['--postermakinguishowingdevshouldithis is superlongbecauseiwantittobesoyeahweloveyou'] ?? false;
+
+        (function(){
+            const startEt = document.body?.dataset?.eventStartEt;
+            const timeZone = document.body?.dataset?.eventTimezone || 'America/New_York';
+
+            const POSTER_FLAG_NAME = "--postermakinguishowingdevshouldithis is superlongbecauseiwantittobesoyeahweloveyou";
+            const posterUiEnabled = (window[POSTER_FLAG_NAME] === true || window[POSTER_FLAG_NAME] === 'true');
+
+            function setPlaceholders(){
+                document.querySelectorAll('.event-date').forEach(el => { el.textContent = '-/-/--'; });
+                document.querySelectorAll('.event-time').forEach(el => { el.textContent = '--:--'; });
+            }
+
+            if(!startEt){
+                console.warn('Missing data-event-start-et on <body>.');
+                setPlaceholders();
+                return;
+            }
+
+            // Parse "YYYY-MM-DDTHH:mm:ss" (seconds optional)
+            const m = String(startEt).trim().match(/^([0-9]{4})-([0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2})(?::([0-9]{2}))?$/);
+            if(!m){
+                console.warn('Invalid data-event-start-et format. Use YYYY-MM-DDTHH:mm or YYYY-MM-DDTHH:mm:ss');
+                setPlaceholders();
+                return;
+            }
+            const year = Number(m[1]);
+            const month = Number(m[2]);
+            const day = Number(m[3]);
+            const hour = Number(m[4]);
+            const minute = Number(m[5]);
+            const second = m[6] ? Number(m[6]) : 0;
+
+            function getTimeZoneOffsetMinutes(date, tz){
+                
+                const dtf = new Intl.DateTimeFormat('en-US', {
+                    timeZone: tz,
+                    hour12: false,
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit'
+                });
+                const parts = dtf.formatToParts(date);
+                const values = Object.fromEntries(parts.filter(p => p.type !== 'literal').map(p => [p.type, p.value]));
+                const asUtcMs = Date.UTC(
+                    Number(values.year),
+                    Number(values.month) - 1,
+                    Number(values.day),
+                    Number(values.hour),
+                    Number(values.minute),
+                    Number(values.second)
+                );
+                return (asUtcMs - date.getTime()) / 60000;
+            }
+
+            function zonedTimeToUtc(y, mo, d, h, mi, s, tz){
+                
+                const utcGuess = Date.UTC(y, mo - 1, d, h, mi, s);
+                let date = new Date(utcGuess);
+                let offset = getTimeZoneOffsetMinutes(date, tz);
+                date = new Date(utcGuess - offset * 60000);
+                const offset2 = getTimeZoneOffsetMinutes(date, tz);
+                if(offset2 !== offset){
+                    date = new Date(utcGuess - offset2 * 60000);
+                }
+                return date;
+            }
+
+            const startInstant = zonedTimeToUtc(year, month, day, hour, minute, second, timeZone);
+            if(Number.isNaN(startInstant.getTime())){
+                console.warn('Could not compute event start instant.');
+                setPlaceholders();
+                return;
+            }
+
+            const dateLocalText = new Intl.DateTimeFormat(undefined, {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            }).format(startInstant);
+            const timeLocalText = new Intl.DateTimeFormat(undefined, {
+                hour: 'numeric',
+                minute: '2-digit'
+            }).format(startInstant);
+
+            function getUsTimeZoneSuffix(){
+                const viewerTz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                if(!viewerTz) return '';
+                const tz = String(viewerTz);
+                if(tz === 'America/New_York' || tz === 'America/Detroit' || tz === 'America/Indiana/Indianapolis' || tz === 'America/Indiana/Marengo' || tz === 'America/Indiana/Vevay' || tz === 'America/Indiana/Vincennes' || tz === 'America/Indiana/Winamac' || tz === 'America/Kentucky/Louisville' || tz === 'America/Kentucky/Monticello') return 'ET';
+                if(tz === 'America/Chicago' || tz === 'America/Indiana/Knox' || tz === 'America/Indiana/Tell_City' || tz === 'America/Menominee' || tz === 'America/North_Dakota/Beulah' || tz === 'America/North_Dakota/Center' || tz === 'America/North_Dakota/New_Salem') return 'CT';
+                if(tz === 'America/Denver' || tz === 'America/Boise' || tz === 'America/Phoenix') return 'MT';
+                if(tz === 'America/Los_Angeles' || tz === 'America/Vancouver' || tz === 'America/Tijuana') return 'PT';
+                if(tz === 'Pacific/Honolulu' || tz === 'America/Honolulu') return 'HT';
+                return '';
+            }
+
+            // Tooltip includes the canonical schedule in Eastern Time (handles DST automatically).
+            const dateEtText = new Intl.DateTimeFormat(undefined, {
+                timeZone,
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            }).format(startInstant);
+            const timeEtText = new Intl.DateTimeFormat(undefined, {
+                timeZone,
+                hour: 'numeric',
+                minute: '2-digit'
+            }).format(startInstant);
+
+            document.querySelectorAll('.event-date').forEach(el => { el.textContent = dateLocalText; });
+            const suffix = getUsTimeZoneSuffix();
+            document.querySelectorAll('.event-time').forEach(el => {
+                el.textContent = suffix ? `${timeLocalText} ${suffix}` : timeLocalText;
+            });
+            const holder = document.querySelector('.event-hero-dat-large-dat-tim-holder');
+            if(holder){ holder.title = `Scheduled (ET): ${dateEtText} at ${timeEtText}`; }
+
+            if(posterUiEnabled){
+                const heroBottom = document.querySelector('.hero-bottom');
+                if(heroBottom && !heroBottom.querySelector('[data-poster-button]')){
+                    const btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.setAttribute('data-poster-button', '1');
+                    btn.textContent = 'Download Poster';
+                    btn.className = 'btn';
+                    btn.style.marginTop = '12px';
+                    btn.style.padding = '.85rem 1.1rem';
+                    btn.style.borderRadius = '12px';
+                    btn.style.border = 'none';
+                    btn.style.cursor = 'pointer';
+                    btn.style.fontWeight = '800';
+                    btn.style.boxShadow = '0 10px 24px rgba(255,187,0,.22)';
+
+                    heroBottom.appendChild(btn);
+
+                    btn.addEventListener('click', async () => {
+                        btn.disabled = true;
+                        const originalText = btn.textContent;
+                        btn.textContent = 'Generating…';
+                        try{
+                            await generateAndDownloadPoster({
+                                title: 'Our First SSU',
+                                dateEtText,
+                                timeEtText,
+                                joinUrl: 'https://discord.gg/GS5Va3zEep'
+                            });
+                        }catch(err){
+                            console.error(err);
+                            alert('Poster generation failed. Check console for details.');
+                        }finally{
+                            btn.disabled = false;
+                            btn.textContent = originalText;
+                        }
+                    });
+                }
+            }
+
+            async function generateAndDownloadPoster(opts){
+                const width = 1080;
+                const height = 1350;
+                const canvas = document.createElement('canvas');
+                canvas.width = width;
+                canvas.height = height;
+                const ctx = canvas.getContext('2d');
+                if(!ctx) throw new Error('Canvas 2D context unavailable');
+
+                
+                if(document.fonts && document.fonts.ready){
+                    try{ await document.fonts.ready; }catch(e){}
+                }
+
+                function loadImage(src){
+                    return new Promise((resolve, reject) => {
+                        const img = new Image();
+                        img.onload = () => resolve(img);
+                        img.onerror = reject;
+                        img.src = src;
+                    });
+                }
+
+                function drawCover(img){
+                    const iw = img.naturalWidth || img.width;
+                    const ih = img.naturalHeight || img.height;
+                    const scale = Math.max(width / iw, height / ih);
+                    const dw = iw * scale;
+                    const dh = ih * scale;
+                    const dx = (width - dw) / 2;
+                    const dy = (height - dh) / 2;
+                    ctx.drawImage(img, dx, dy, dw, dh);
+                }
+
+                // Background (same-origin asset to avoid CORS-tainted canvas)
+                ctx.fillStyle = '#1D1D1D';
+                ctx.fillRect(0, 0, width, height);
+                try{
+                    const bg = await loadImage('/assets/ssu-hero.svg');
+                    drawCover(bg);
+                }catch(e){
+                    
+                    const g = ctx.createLinearGradient(0, 0, width, height);
+                    g.addColorStop(0, '#0d0d0d');
+                    g.addColorStop(0.7, '#141417');
+                    g.addColorStop(1, '#332500');
+                    ctx.fillStyle = g;
+                    ctx.fillRect(0, 0, width, height);
+                }
+
+                // Overlay for readability
+                ctx.fillStyle = 'rgba(0,0,0,0.55)';
+                ctx.fillRect(0, 0, width, height);
+                const vignette = ctx.createRadialGradient(width*0.5, height*0.25, 0, width*0.5, height*0.25, height*0.9);
+                vignette.addColorStop(0, 'rgba(255,187,0,0.10)');
+                vignette.addColorStop(0.45, 'rgba(0,0,0,0.25)');
+                vignette.addColorStop(1, 'rgba(0,0,0,0.75)');
+                ctx.fillStyle = vignette;
+                ctx.fillRect(0, 0, width, height);
+
+                function wrapText(text, x, y, maxWidth, lineHeight){
+                    const words = String(text).split(/\s+/);
+                    let line = '';
+                    for(const word of words){
+                        const test = line ? `${line} ${word}` : word;
+                        if(ctx.measureText(test).width > maxWidth && line){
+                            ctx.fillText(line, x, y);
+                            y += lineHeight;
+                            line = word;
+                        }else{
+                            line = test;
+                        }
+                    }
+                    if(line) ctx.fillText(line, x, y);
+                    return y;
+                }
+
+                const pad = 84;
+
+                
+                ctx.fillStyle = '#ffffff';
+                ctx.textAlign = 'left';
+                ctx.textBaseline = 'top';
+                ctx.font = '900 98px "Roboto Condensed", "Open Sans", sans-serif';
+                let y = pad;
+                y = wrapText(opts.title || 'Event', pad, y, width - pad*2, 102) + 26;
+
+                
+                const dateLine = (opts.dateEtText || '-/-/--');
+                const timeLine = (opts.timeEtText || '--:--') + ' ET';
+                ctx.font = '700 72px Oswald, "Open Sans", sans-serif';
+                ctx.fillStyle = 'rgba(255,255,255,0.95)';
+                ctx.fillText(dateLine, pad, y);
+                y += 88;
+                ctx.fillText(timeLine, pad, y);
+                y += 92;
+
+                
+                ctx.fillStyle = '#FFBB00';
+                ctx.fillRect(pad, y, 220, 10);
+                y += 44;
+
+                
+                ctx.fillStyle = 'rgba(255,255,255,0.9)';
+                ctx.font = '600 34px Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif';
+                wrapText(`Join: ${opts.joinUrl || 'discord.gg/GS5Va3zEep'}`, pad, y, width - pad*2, 44);
+
+                
+                ctx.textAlign = 'center';
+                ctx.fillStyle = 'rgba(255,255,255,0.75)';
+                ctx.font = '600 30px Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif';
+                ctx.fillText('Allegheny County Roleplay', width/2, height - 86);
+                ctx.fillText('alleghenycountyroleplay.com', width/2, height - 48);
+
+                const blob = await new Promise((resolve) => canvas.toBlob(resolve, 'image/png', 1));
+                if(!blob) throw new Error('Failed to export poster image');
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `ACRP_SSU_Poster_${new Date().toISOString().slice(0,10)}.png`;
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+                setTimeout(() => URL.revokeObjectURL(url), 1500);
+            }
+        })();
+    </script>
+
+    <script src="/master.js"></script>
+    <script src="/toasts.js"></script>
+    <script>
+        (function(){
+            const primary = document.getElementById('primary-localnav');
+            const secondary = document.getElementById('secondary-localnav');
+            if(!primary || !secondary) return;
+
+            // choose a reference element to detect "scrolled past" (header → hero → body)
+            const ref = document.querySelector('.header') || document.querySelector('header') || document.querySelector('.event-hero') || document.body;
+
+            let placeholder = null;
+            let gsapTl = null; /* secondary nav timeline */
+            let threshold = 0;
+
+            function calcThreshold(){
+                const r = ref.getBoundingClientRect();
+                return r.bottom + window.pageYOffset - 4; // small buffer
+            }
+
+
+
+            function ensureTimeline(){
+                if(gsapTl) return Promise.resolve(gsapTl);
+                if(window.__gsapReady) {
+                    return window.__gsapReady.then(() => {
+                        try{
+                            const inner = secondary.querySelector('.localnav-inner');
+                            const actions = secondary.querySelector('.actions');
+                            const brandSpan = secondary.querySelector('.brand span');
+
+                            // measure target widths so we can animate max-width for the brand text
+                            const brandTargetWidth = Math.min(brandSpan.scrollWidth || 220, 400);
+
+                            /* secondary nav timeline */
+                            gsapTl = gsap.timeline({ paused:true, reversed:true });
+                            gsapTl.to(brandSpan, { maxWidth: brandTargetWidth + 'px', opacity: 1, duration: .22, ease: 'power2.out' }, 0);
+                            gsapTl.fromTo(actions, { y: -6, opacity: 0 }, { y: 0, opacity: 1, duration: .28, ease: 'power2.out', onStart: () => { actions.style.pointerEvents = 'auto'; } }, 0.06);
+                            gsapTl.eventCallback('onReverseComplete', function(){ try{ actions.style.pointerEvents = 'none'; }catch(e){} });
+
+                            return gsapTl;
+                        }catch(err){ gsapTl = null; return null; }
+                    }).catch(()=>null);
+                }
+                return Promise.resolve(null);
+            }
+
+
+            function showCollapsedThenExpand(){
+                if(secondary.classList.contains('scrolled-past')) return;
+
+                // show secondary (collapsed), hide primary visually and remove primary sticky if present
+                secondary.style.display = '';
+                secondary.setAttribute('aria-hidden','false');
+                secondary.classList.remove('expanded');
+                secondary.classList.add('scrolled-past');
+                primary.classList.add('hidden-by-secondary');
+
+                // run GSAP expand (reversible) if available, otherwise fallback to CSS class toggle
+                ensureTimeline().then(tl => {
+                    if(tl){ tl.play(0); secondary.classList.add('expanded'); }
+                    else {
+                        // fallback: CSS class after a frame
+                        requestAnimationFrame(() => setTimeout(() => secondary.classList.add('expanded'), 60));
+                    }
+                });
+            }
+
+            function hideSticky(){
+                if(!secondary.classList.contains('scrolled-past')) return;
+
+                // reverse GSAP timeline if present, otherwise CSS collapse then hide
+                if(gsapTl){
+                    gsapTl.reverse();
+                    // after collapse animation remove classes
+                    setTimeout(() => {
+                        secondary.classList.remove('scrolled-past','expanded');
+                        secondary.style.display = 'none';
+                        secondary.setAttribute('aria-hidden','true');
+                        primary.classList.remove('hidden-by-secondary');
+                    }, 300);
+                    return;
+                }
+
+                secondary.classList.remove('expanded');
+                setTimeout(() => {
+                    secondary.classList.remove('scrolled-past');
+                    secondary.style.display = 'none';
+                    secondary.setAttribute('aria-hidden','true');
+                    primary.classList.remove('hidden-by-secondary');
+                }, 260);
+            }
+
+            function onScroll(){
+                const y = window.pageYOffset || document.documentElement.scrollTop;
+                if (y >= threshold){
+                    showCollapsedThenExpand();
+                } else {
+                    hideSticky();
+                }
+            }
+
+            window.addEventListener('load', function(){
+                threshold = calcThreshold();
+                ensureTimeline();
+                onScroll();
+            });
+            window.addEventListener('resize', function(){ threshold = calcThreshold(); });
+            window.addEventListener('scroll', onScroll, {passive:true});
+        })();
+
+        // preserve original apply button handler
+        document.getElementById('apply-btn')?.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (window.ACRP && typeof window.ACRP.showToast === 'function') {
+                window.ACRP.showToast("Applications currently aren't open yet", 'warn');
+            } else if (typeof showToast === 'function') {
+                showToast("Applications currently aren't open yet", 'warn');
+            } else {
+                alert("Applications currently aren't open yet");
+            }
+        });
+        // secondary nav apply (same behavior)
+        document.getElementById('apply-btn-2')?.addEventListener('click', function(e){ e.preventDefault(); document.getElementById('apply-btn')?.click(); });
+    </script>
+</body>
+</html>

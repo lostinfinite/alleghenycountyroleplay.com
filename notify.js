@@ -34,7 +34,7 @@
         const btns = document.createElement('div'); btns.style.display='flex'; btns.style.flexWrap='wrap'; btns.style.gap='8px';
         const addBtn = (b,isCta)=>{
           if (!b || !b.label || !b.url) return; const a=document.createElement('a'); a.className='btn'+(isCta?' primary':''); a.href=b.url; a.textContent=b.label; a.target='_blank'; a.rel='noopener noreferrer';
-          // minimal inline style to look button-like across pages
+          
           a.style.padding='6px 10px'; a.style.border='1px solid #2d3d6e'; a.style.borderRadius='6px'; a.style.textDecoration='none'; a.style.color='inherit'; a.style.background=isCta?'#2a8242':'#223059';
           btns.appendChild(a);
         };
@@ -54,7 +54,7 @@
         host.appendChild(body);
         host.appendChild(btns);
 
-        // Insert at top of body
+        
         const target = document.body;
         if (target.firstChild) target.insertBefore(host, target.firstChild); else target.appendChild(host);
 
