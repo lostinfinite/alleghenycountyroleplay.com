@@ -1,0 +1,478 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Allegheny County Roleplay</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="/assets/site.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --brand: #FFBB00;
+            --brand-900: #d69a00;
+            --bg: #1D1D1D;
+            --surface: #121214;
+            --card: #141417;
+            --text: #fff;
+            --muted: #bdbdbd;
+            --border: rgba(255, 255, 255, 0.08);
+            --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+        }
+
+        body {
+            font-family:'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            font-size: 11px;
+            font-weight: 400;
+        }
+
+        a {
+            color: var(--brand);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(10, 10, 10, 0.6);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 20px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .brand img {
+            width: 32px;
+            height: 32px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 8px;
+            background: var(--brand);
+            color: #000;
+            font-weight: 600;
+            font-size: 11px;
+            transition: transform 0.18s ease, background 0.18s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+            background: var(--brand-900);
+            text-decoration: none;
+        }
+
+        .hero {
+            padding: 60px 20px 40px;
+            text-align: center;
+            background: radial-gradient(1200px 600px at 50% -10%, rgba(255, 187, 0, 0.06), transparent);
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero .title {
+            font-size: 26px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--brand) 0%, #FFA500 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .dates {
+            font-size: 11px;
+            color: var(--muted);
+            margin-bottom: 20px;
+        }
+
+        .dates p {
+            margin-bottom: 4px;
+        }
+
+        .content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .section {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 24px;
+        }
+
+        h1 {
+            font-size: 20px;
+            font-weight: 400;
+            margin-bottom: 16px;
+            color: var(--brand);
+        }
+
+        h2 {
+            font-size: 16px;
+            font-weight: 400;
+            margin: 20px 0 12px;
+            color: var(--text);
+        }
+
+        h3 {
+            font-size: 14px;
+            font-weight: 400;
+            margin: 16px 0 8px;
+            color: var(--text);
+        }
+
+        .section p, .section ul, .section ol, .section li {
+            font-size: 11px;
+            font-weight: 400;
+            line-height: 1.8;
+        }
+
+        .section p {
+            margin-bottom: 16px;
+            color: var(--muted);
+        }
+
+        .section ul, .section ol {
+            margin: 16px 0;
+            padding-left: 24px;
+            color: var(--muted);
+        }
+
+        .section li {
+            margin-bottom: 8px;
+        }
+
+        strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        
+        footer {
+            background: #0d0d0d;
+            color: #ccc;
+            padding: 3rem 1rem;
+        }
+
+        footer .cols {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+            text-align: left;
+        }
+
+        footer h3 {
+            color: var(--brand);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        footer a {
+            color: var(--brand);
+            text-decoration: none;
+        }
+
+        footer .copyright {
+            margin-top: 2rem;
+            border-top: 1px solid #333;
+            padding-top: 1.5rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        @media (max-width: 768px) {
+            body { font-size: 13px; }
+            .hero .title { font-size: 22px; }
+            .hero { padding: 40px 20px 28px; }
+            .section { padding: 24px; }
+            h1 { font-size: 18px; }
+            h2 { font-size: 15px; }
+            h3 { font-size: 13px; }
+            .section p, .section ul, .section ol, .section li { font-size: 13px; }
+        }
+
+        @media (max-width: 480px) {
+            body { font-size: 14px; }
+            .hero { padding: 28px 16px 20px; }
+            .hero .title { font-size: 19px; }
+            .content { padding: 24px 12px; }
+            .section { padding: 18px 16px; }
+            .section p, .section ul, .section ol, .section li { font-size: 14px; }
+            footer .cols { flex-direction: column; }
+            .nav-inner { padding: 10px 14px; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="simple-localnav" aria-label="local" tabindex="-1" style="--progress:0;">
+        <div class="localnav-inner container">
+            <a href="/" class="brand"><img src="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png" alt="ACRP Logo"><span>Allegheny County Roleplay</span></a>
+            <div class="actions">
+                <a class="btn-outline" href="/">Home</a>
+                <a class="btn" href="https://portal.alleghenycountyroleplay.com">Login</a>
+            </div>
+        </div>
+    </nav>
+    <div class="localnav-overlay-background"></div>
+
+    <script src="/assets/sticky-fallback.js" defer></script>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="title">Allegheny County Roleplay Privacy Policy</div>
+            <div class="dates">
+                <p>Last Updated: 3/12/2026</p>
+                <p>Created: 12/16/2025</p>
+                <p>Established: 12/16/2025</p>
+            </div>
+            <p style="margin-top:8px;font-size:11px;color:#bdbdbd;">
+                <a href="/legal/privacycompare.html" style="color:#FFBB00;">View change log â†’</a>
+            </p>
+        </div>
+    </section>
+
+    <div class="content">
+
+        <div class="section">
+            <h1>Introduction</h1>
+            <p>Welcome to the Allegheny County Roleplay Privacy Policy. This document outlines how we ("we", "us", "ACRP", "Allegheny County Roleplay") will use users' ("users", "you" or "your") information. We do not knowingly collect data from users who are under the age of 13. If you are under the age of 13, we ask that you do not use our services in accordance with our Terms of Service and Community Standards. This document is subject to the laws of the Commonwealth of Pennsylvania. ACRP's services are intended for U.S. residents only. Users in states with biometric-specific legislation, including Illinois (BIPA, 740 ILCS 14), Texas (CUBI, Tex. Bus. &amp; Com. Code Â§503.001), and Washington, acknowledge that Pennsylvania law governs their use of ACRP services.</p>
+            <p>Before moving on, we use certain phrases and words that we need to define.</p>
+            <ul>
+                <li><strong>"Minor"</strong> refers to any individual between the ages of 13â€“17.</li>
+                <li><strong>"Adult", "Parent", or "Guardian"</strong> refers to the parent or caretaker of any minor; someone who has sole or major responsibility or custody of the minor.</li>
+                <li><strong>"Identifying Documents"</strong> is any document used to identify you as an individual; this can be anything from a username to an ID, driver's license, or birth certificate.</li>
+                <li><strong>"ID"</strong> refers to any identification or driver's license that includes a Date of Birth and a full legal name.</li>
+                <li><strong>"Private Server"</strong> refers to any in-game or DiscordÂ® server owned, operated by, or maintained by Allegheny County Roleplay.</li>
+                <li><strong>"Platform"</strong> refers to any feature and service, including websites, bots, applications, Private Servers, moderation tools, content, and custom functionalities offered by ACRP.</li>
+                <li><strong>"Verification Data"</strong> refers to any data collected or derived through age verification or identity verification processes, including facial scan results, biometric scores, ID-derived information, and associated metadata.</li>
+                <li><strong>"Authorized Staff"</strong> refers to ACRP personnel who have been explicitly granted access to sensitive user data under role-based access controls, subject to internal policy and confidentiality obligations.</li>
+                <li><strong>"Privacy Policy"</strong> refers to this document.</li>
+            </ul>
+            <h3>i. Operator Information</h3>
+            <p><strong>Organization: Allegheny County Roleplay LLC</strong><br>
+               Email: <a href="mailto:legal@acrp.work">legal@acrp.work</a><br>
+               Phone: +1 (412) 254-4008<br>
+               Address: 530 Allegheny River Blvd, Suite 415, Oakmont, PA 15139<br>
+               Website: <a href="https://alleghenycountyroleplay.com">https://alleghenycountyroleplay.com</a></p>
+            <p><strong>Organization: Didit Identity, Inc.</strong><br>
+               EIN: 39-2860573<br>
+               Email: <a href="mailto:privacy@didit.me">privacy@didit.me</a><br>
+               Address: 111B S Governors Ave STE 34855, Dover, DE 199904, USA</p>
+            <p><strong>Organization: Didit Identity Spain SL</strong><br>
+               CIF: B22929327<br>
+               Email: <a href="mailto:privacy@didit.me">privacy@didit.me</a><br>
+               Address: Calle Napoles 227, P. 1, 08013 Barcelona, Spain</p>
+        </div>
+
+        <div class="section">
+            <h1>1. Personally Identifiable Information</h1>
+            <p>We do not knowingly collect Personally Identifiable Information ("PII") outside of official means, which include our appeals system and any other functionality used to collect information about you, including your email address, DiscordÂ® username, and similar identifiers. We do not sell or share your PII for marketing purposes. We do not broker, license, or otherwise transfer user data to third parties for commercial gain.</p>
+            <p>We may share information with service providers that help operate our platform, including Mailgun for email delivery, Clerk for authentication and account infrastructure, and Didit for age verification services. Each of these providers processes data on our behalf under contractual data processing obligations. Information may also be disclosed if required by law, court order, or in response to a valid and verified law enforcement request directed to ACRP through proper legal channels under U.S. law. Third-party providers have their own privacy practices, which we encourage you to review.</p>
+            <p>ACRP is not responsible for the data practices of third-party platforms that users independently access, including DiscordÂ®, RobloxÂ®, or any other external service not directly operated by ACRP.</p>
+            <p>For information on how we protect your data, please review section 6.</p>
+        </div>
+
+        <div class="section">
+            <h1>2. Proving Your Age</h1>
+            <p>ACRP requires mandatory age verification and age assurance screening as a condition of access to its services. These measures are designed to prevent access by children under the age of 13 and to support compliance with the Children's Online Privacy Protection Act (COPPA) and other applicable laws and platform policies. Access to ACRP systems is not permitted unless verification is completed. Users who attempt to circumvent or bypass these requirements will be permanently denied access.</p>
+            <p>We use a third-party provider, Didit.me, to perform AI-based age estimation and biometric liveness checks using facial data.</p>
+            <p>By proceeding with age verification, you provide informed consent to the collection, processing, and retention of biometric and verification data for eligibility screening and enforcement purposes. This consent is a condition of access and cannot be withdrawn while maintaining an active account. Withdrawal of consent requires deletion of your verification data and account, as described in section 8.</p>
+            <p>Verification may occur through the following methods:</p>
+
+            <h3>a. AI-Based Facial Age Estimation and Liveness Detection</h3>
+            <p>Users may be required to submit a live facial scan. Didit.me processes this scan using biometric analysis and liveness detection technology to estimate age and detect spoofing or impersonation attempts.</p>
+            <p>Processing may include:</p>
+            <ul>
+                <li>Facial image capture</li>
+                <li>Biometric feature extraction</li>
+                <li>Age estimation scoring</li>
+                <li>Liveness detection scoring</li>
+                <li>Face quality and luminance metrics</li>
+                <li>Similarity and duplicate face detection results</li>
+                <li>Session and verification metadata</li>
+            </ul>
+            <p>ACRP receives and retains verification results and related metadata, which may include estimation scores, liveness scores, match indicators, session identifiers, and associated technical logs. Didit processes facial images and biometric data as our verification vendor under their applicable terms and privacy policy. ACRP does not receive or store raw facial images beyond what is transmitted to Didit for processing.</p>
+            <p>Facial scan data and biometric scores are classified as sensitive data. Access is restricted to Authorized Staff under role-based controls. Authorized Staff may access this data only for the purposes of verification review, appeals processing, fraud investigation, or compliance with a valid legal request under U.S. law. All staff access is logged and subject to internal audit.</p>
+
+            <h3>b. Screening Questions</h3>
+            <p>Users may also be required to provide screening information such as Date of Birth, country of residence, and grade level. This information is used to assess eligibility and detect inconsistent or fraudulent claims. We may retain submitted values, derived age group, risk signals, and verification outcomes. Inconsistencies between screening answers and other verification data may be flagged for manual review by Authorized Staff.</p>
+
+            <h3>c. ID Verification</h3>
+            <p>Where Didit's AI-based age estimation returns a result near a defined age threshold, or where the estimated age falls below a minimum confidence margin, ACRP may require you to submit a government-issued ID for manual age verification. This step is triggered automatically based on Didit's scoring output and is not applied universally to all users.</p>
+            <p>Acceptable forms of ID are limited to the following:</p>
+            <ul>
+                <li>Driver's License</li>
+                <li>Non-Driving ID / State-Issued ID</li>
+                <li>Birth Certificate</li>
+            </ul>
+            <p>ID documents are collected and processed at the point where Didit makes an age determination. Authorized Staff may access submitted ID documents under the same role-based access controls that apply to facial scan data. All access is restricted on a need-to-know basis and is subject to logging and audit. No staff member may access verification data outside of an approved purpose.</p>
+            <p>Submitted ID documents are subject to the same 30-day retention period described in section e, unless an active review or appeal extends that period. Information derived from your ID, including your full legal name, Date of Birth, and age group, is used to construct a verification profile associated with your account. This profile is used to establish your identity and confirm your age for the purposes described in this policy. Where available and applicable, ACRP may cross-reference submitted information against records from your country of residence to validate the accuracy of submitted documents.</p>
+            <p>Verification data, including facial scan results and ID-derived information, is used for fraud prevention. This includes detecting duplicate or fraudulent accounts, identifying inconsistencies between submitted documents and prior verification records, and maintaining the integrity of ACRP's access controls.</p>
+            <p>Verification data collected through facial scans and ID submission may also be used, in whole or in part, to credential-verify the identity of a user in connection with law enforcement requests, legal process, or authorized user data requests. Such disclosure will only occur in response to a valid legal process directed to ACRP under U.S. law. ACRP will not voluntarily disclose verification data to any law enforcement or government authority outside the United States without a valid U.S. court order or equivalent legal instrument recognized under U.S. law.</p>
+            <p>Refusal to submit a required ID where verification is inconclusive will result in denial of access to ACRP services.</p>
+
+            <h3>d. Use and Enforcement</h3>
+            <p>Age verification and age assurance are used strictly to:</p>
+            <ul>
+                <li>Determine whether a user meets minimum age requirements</li>
+                <li>Detect underage or high-risk accounts</li>
+                <li>Enforce platform access restrictions</li>
+                <li>Support moderation, safety, and compliance actions</li>
+                <li>Construct verification profiles for fraud prevention and identity confirmation</li>
+                <li>Support credential verification for valid legal process under U.S. law</li>
+            </ul>
+            <p>If verification determines or reasonably indicates that a user is under 13, access to ACRP services will be denied immediately. Biometric and verification data associated with that determination will be handled in accordance with our verification data retention policy and may be retained for up to 30 days if a user requests a review or appeal. Users denied access will retain access to our portal solely for the purpose of submitting appeals or reviewing their verification data.</p>
+            <p>Attempting to bypass, falsify, or interfere with verification systems, including submitting fraudulent documents or impersonation attempts, constitutes a material breach of ACRP's Terms of Service and will result in permanent removal and may result in referral to appropriate authorities.</p>
+
+            <h3>e. Data Retention</h3>
+            <p>Verification records, results, scores, logs, and related metadata are retained for 30 days from the date of verification, unless a user requests a review of their verification determination, in which case the data will be retained for the duration of that review and will be examined by Authorized Staff.</p>
+            <p>If verification data is deleted upon user request, the associated verification status is also removed. Users who delete their verification data must complete the verification process again before regaining access to ACRP systems. Deletion of verification data does not exempt a user from enforcement actions already taken on the basis of that data.</p>
+            <p>Data retained beyond the standard 30-day period due to an active review will be deleted within 14 days of the conclusion of that review, unless further retention is required to comply with a valid legal obligation under U.S. law.</p>
+
+            <h3>f. Third-Party Processing</h3>
+            <p>Didit.me acts as ACRP's verification and biometric processing provider. Biometric capture and age estimation processing occur through their systems under a data processing agreement. Their privacy practices and security controls are governed by their published policies. Users acknowledge that biometric and verification data is processed by this provider as part of the screening workflow. ACRP has no control over Didit's internal processing operations beyond the terms of our agreement with them.</p>
+
+            <h3>g. Security and Incident Response</h3>
+            <p>Verification and screening data are stored and transmitted using industry-standard security safeguards, including encryption at rest and in transit. In the event of a confirmed data security incident affecting verification data, ACRP will assess the scope and nature of the incident and follow all applicable legal notification and mitigation requirements under U.S. law.</p>
+            <p>Where a breach affects 500 or more Pennsylvania residents, ACRP will provide concurrent notice to the Pennsylvania Attorney General in accordance with 73 P.S. Â§2305. Affected users will be notified as required by applicable law and, where practicable, by direct communication to the contact information on file.</p>
+            <p>ACRP will not delay breach notification to affected users at the request of any foreign government or regulatory authority. Incident response is governed exclusively by U.S. law.</p>
+            <p>Verification data is not sold. It is shared only with contracted processors and service providers as necessary to operate verification, safety, and compliance systems, or as required by valid legal process under U.S. law.</p>
+
+            <h3>h. Requirement for Use</h3>
+            <p>Completion of age verification and age assurance checks is a mandatory condition of access to ACRP services. Refusal to complete the required verification will result in denial or removal of access. ACRP reserves the right to re-verify users at any time if there is reasonable cause to question the accuracy of a prior verification.</p>
+
+            <h3>i. More Information</h3>
+            <p>For more information on what we collect, how we collect it, and how we keep your biometric data secure, you may view our practices in our <a href="/legal/biometric-data-statement.html">Biometric Data Privacy Statement</a>.</p>
+        </div>
+
+        <div class="section">
+            <h1>3. General Information We Collect</h1>
+            <p>In general, we collect limited information on you, such as email addresses, DiscordÂ® and RobloxÂ® usernames and/or profile links, messages you send across our services, and browser information.</p>
+            <p>We also collect analytics data through Google Analytics and may collect analytics across our portal and any other services we operate. This includes information about how users interact with our services, such as pages visited, scroll depth, outbound link clicks, file downloads, form interactions, and site search queries. This data is collected through cookies and similar tracking technologies, processed by Google under their privacy policy, and used in aggregate to understand usage patterns. It is not used to identify individual users.</p>
+            <p>Please note that additional information may be collected by the platforms we use or rely on, including DiscordÂ®, RobloxÂ®, GoogleÂ®, ClerkÂ®, and CloudflareÂ®. ACRP is not responsible for the data practices of these third-party platforms.</p>
+        </div>
+
+        <div class="section">
+            <h1>4. How We Use Your Data</h1>
+            <p>We collect your email address to provide you with access to documents, webpages, and accounts if you become staff or join a department. Email addresses are also used to send transactional communications as described in section 7.</p>
+            <p>We collect your Roblox and Discord usernames and/or profile links, if applicable, to identify who you are across our services. This information is not used for any other purpose.</p>
+            <p>We collect the messages that you send, edit, or delete across our services to moderate content in accordance with our Terms of Service and Community Standards. Message logs may also be retained as evidence in connection with enforcement actions, appeals, or valid legal process.</p>
+            <p>We collect analytics data through Google Analytics and any other analytics tools we deploy across our services to understand how our platform is used and to improve our services. This data is aggregated and is not used to identify individual users.</p>
+            <p>We collect and retain verification data as described in section 2 for the purposes of age gating, identity confirmation, fraud prevention, and legal compliance.</p>
+        </div>
+
+        <div class="section">
+            <h1>5. Cookies and Tracking Technologies</h1>
+            <p>We use cookies and similar tracking technologies across our portal and any other services we operate. These include cookies set by Google Analytics to measure site usage and user interactions. Google Analytics Enhanced Measurement is enabled, which may automatically collect data on page views, scrolls, outbound link clicks, file downloads, form interactions, and site search queries across our services.</p>
+            <p>We do not use cookies for advertising or cross-site tracking. Cookies set by our authentication provider, Clerk, are used solely to manage session state and account access and are necessary for platform functionality.</p>
+            <p>You can opt out of Google Analytics tracking by using the Google Analytics Opt-out Browser Add-on, available at: <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">https://tools.google.com/dlpage/gaoptout</a></p>
+            <p>Opting out of analytics cookies does not affect your ability to use ACRP services. Session and authentication cookies are necessary for platform access and cannot be disabled without affecting functionality. ACRP does not honor Do Not Track signals at this time.</p>
+        </div>
+
+        <div class="section">
+            <h1>6. How We Secure Your Data</h1>
+            <p>We implement and maintain administrative, technical, and operational safeguards reasonably designed to protect user data against unauthorized access, disclosure, alteration, and destruction. These include, but are not limited to, encryption of sensitive data at rest and in transit, role-based access controls, and periodic security reviews.</p>
+            <p>Access to user data is restricted on a need-to-know basis. Sensitive data, including biometric verification results and ID-derived information, is subject to additional access controls and is accessible only to Authorized Staff for approved purposes. All access to sensitive data is logged and subject to audit.</p>
+            <p>ACRP staff are bound by confidentiality obligations with respect to user data accessed in the course of their duties. Unauthorized access, disclosure, or misuse of user data by staff is subject to disciplinary action and may constitute a violation of applicable law.</p>
+            <p>No system can guarantee absolute security. ACRP does not warrant that unauthorized third parties will never be able to defeat our security measures. In the event of a confirmed security incident, ACRP will follow the incident response procedures described in section 2g.</p>
+        </div>
+
+        <div class="section">
+            <h1>7. Limitation of Liability</h1>
+            <p>ACRP's services are provided on an "as-is" and "as-available" basis. To the fullest extent permitted by applicable U.S. law, ACRP disclaims all warranties, express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, and non-infringement.</p>
+            <p>ACRP shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising out of or related to your use of or inability to use our services, including but not limited to loss of data, loss of access, or unauthorized access to your account, except where such liability cannot be excluded under applicable law.</p>
+            <p>ACRP's total liability to any user for any claim arising out of or relating to this Privacy Policy or the use of our services shall not exceed the greater of (a) the amount paid by the user to ACRP in the twelve months preceding the claim, or (b) one hundred U.S. dollars ($100.00).</p>
+            <p>ACRP is not liable for the data practices, security incidents, or actions of third-party service providers, including Didit, Clerk, Cloudflare, or Google, beyond what is expressly covered by our agreements with those providers.</p>
+        </div>
+
+        <div class="section">
+            <h1>8. Mailing Lists</h1>
+            <p>We use your email address to send transactional communications related to account activity, policy changes, security notices, and other service-related updates. We do not send marketing or promotional emails. Users may opt out of non-essential communications by contacting us at <a href="mailto:legal@acrp.work">legal@acrp.work</a>. Opting out of transactional communications required for account security or legal compliance is not available while an account remains active.</p>
+        </div>
+
+        <div class="section">
+            <h1>9. User Rights and Enforcement</h1>
+            <p>You have the following rights with respect to your data held by ACRP, subject to the limitations described in this policy:</p>
+            <ul>
+                <li><strong>Right to Access:</strong> You may request a copy of the data ACRP holds about you.</li>
+                <li><strong>Right to Deletion:</strong> You may request deletion of your data. Deletion of verification data will result in removal of your verification status and require re-verification before regaining access.</li>
+                <li><strong>Right to Correction:</strong> You may request correction of inaccurate data held about you, subject to verification.</li>
+                <li><strong>Right to Appeal:</strong> You may appeal any access denial or enforcement action through the appeals process available at our portal.</li>
+            </ul>
+            <p>These rights are provided in accordance with applicable U.S. law. ACRP does not recognize data subject rights frameworks established by foreign regulatory bodies, including but not limited to the EU General Data Protection Regulation (GDPR) or the UK Data Protection Act 2018, except to the extent they are independently required under U.S. law.</p>
+            <p>To exercise any of the above rights, you may email <a href="mailto:legal@acrp.work">legal@acrp.work</a> or visit the Data Center tab at: <a href="https://portal.alleghenycountyroleplay.com">https://portal.alleghenycountyroleplay.com</a></p>
+            <p>Data requests will be processed within a reasonable timeframe. ACRP may require verification of identity before releasing, correcting, or deleting data. Requests that are manifestly unfounded, repetitive, or conflict with ACRP's legal obligations may be declined, with notice to the requesting user.</p>
+            <p>Users who believe their rights have been violated may contact ACRP at <a href="mailto:legal@acrp.work">legal@acrp.work</a>. ACRP does not accept complaints filed with foreign data protection authorities as a substitute for direct resolution through our internal process.</p>
+        </div>
+
+        <div class="section">
+            <h1>10. Regulatory Obligations and Responsible Use</h1>
+            <p>ACRP is committed to operating its age verification and data collection systems responsibly. These systems are designed to prevent the knowing collection of personal data from individuals who are under the age of 13, consistent with COPPA, or below the minimum age required to use online services in their country of residence where that age exceeds 13. For example, users in Australia are subject to a minimum age of 16 under applicable online safety legislation. Where ACRP becomes aware that a user is below the applicable minimum age for their jurisdiction, access will be denied and any data collected will be handled in accordance with our verification data retention policy.</p>
+            <p>These protections reflect ACRP's own commitment to responsible operation and user safety. They do not constitute an acknowledgment of legal obligation under any non-U.S. regulatory framework, nor do they create enforceable rights under any foreign law.</p>
+        </div>
+
+        <div class="section">
+            <h1>11. Governing Law and Jurisdictional Scope</h1>
+            <p>Allegheny County Roleplay is a U.S.-based organization. This Privacy Policy and all practices described within it are governed exclusively by the laws of the United States and the Commonwealth of Pennsylvania. ACRP does not recognize, and is not obligated to comply with, the privacy, data protection, or age verification laws of any foreign jurisdiction, including but not limited to those of the European Union, the United Kingdom, Australia, or Canada.</p>
+            <p>ACRP's services are intended for U.S. residents. Users who access our services from outside the United States do so at their own initiative and are solely responsible for compliance with their local laws. ACRP makes no representation that its services or practices comply with the laws of any jurisdiction outside the United States.</p>
+            <p>Any attempt by a foreign government, regulatory body, or authority to impose legal obligations on ACRP outside of U.S. law will be contested to the fullest extent available. ACRP reserves all rights to challenge, dispute, or decline compliance with any foreign regulatory demand that exceeds the scope of applicable U.S. law. This position is stated without ambiguity and is not subject to implied waiver by any action or omission on ACRP's part.</p>
+            <p>Disputes arising under this Privacy Policy shall be resolved under the laws of the Commonwealth of Pennsylvania. The exclusive venue for any such dispute is the courts of Allegheny County, Pennsylvania, or the applicable federal courts sitting in the Western District of Pennsylvania.</p>
+        </div>
+
+        <div class="section">
+            <h1>12. Changes to This Policy</h1>
+            <p>ACRP reserves the right to update or modify this Privacy Policy at any time. Material changes will be communicated to users via email or through a notice on our portal prior to the change taking effect. Continued use of ACRP services following notice of a material change constitutes acceptance of the revised policy. Users who do not accept a material change may request deletion of their account and data as described in section 9.</p>
+            <p>The most current version of this Privacy Policy is always available at: <a href="https://portal.alleghenycountyroleplay.com">https://portal.alleghenycountyroleplay.com</a></p>
+            <p style="margin-top:16px;"><a href="/legal/privacycompare.html">View the full change log â†’</a></p>
+        </div>
+
+    </div>
+    <script src="/master.js"></script>
+</body>
+</html>

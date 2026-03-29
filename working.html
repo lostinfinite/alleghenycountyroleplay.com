@@ -6,8 +6,8 @@
   <title>ACRP — Renovation in Progress</title>
   <meta name="robots" content="noindex, nofollow">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" href="https://cdn2.contentltd.net/acrp%20(2).png" sizes="any">
-  <link rel="shortcut icon" href="https://cdn2.contentltd.net/acrp%20(2).png" type="image/png">
+  <link rel="icon" type="image/png" href="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png" sizes="any">
+  <link rel="shortcut icon" href="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png" type="image/png">
   <style>
     * {
       margin: 0;
@@ -17,7 +17,7 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: url('https://cdn2.contentltd.net/banner9327.jpg') center/cover no-repeat fixed;
+      background: url('https://cdn.alleghenycountyroleplay.com/acrp_brandingworks/acrp_promoaa.png') center/cover no-repeat fixed;
       background-color: rgba(0, 0, 0, 0.8);
       background-blend-mode: overlay;
       color: #ffffff;
@@ -101,11 +101,13 @@
       opacity: 0;
       animation: fadeIn 0.8s ease-out 0.2s forwards;
     }
-
+    #footer-container {
+      display: none !important;
+    }
     .subtitle {
       font-size: clamp(1rem, 2vw, 1.2rem);
       font-weight: 300;
-      color: #a0a0a0;
+      color: #898889;
       margin-bottom: 4rem;
       opacity: 0;
       animation: fadeIn 0.8s ease-out 0.4s forwards;
@@ -140,7 +142,7 @@
 <body>
   <div class="container">
     <div class="logo-cycle" aria-label="ACRP and department logos">
-      <img class="acrp-logo" src="https://cdn2.contentltd.net/acrp%20(2).png" alt="ACRP Logo">
+      <img class="acrp-logo" src="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png" alt="ACRP Logo">
       <span class="x-sep" aria-hidden="true">×</span>
       <div class="dept-slot" aria-hidden="true">
         <img class="dept-logo" alt="Department logo" />
@@ -148,7 +150,9 @@
     </div>
   <h1><span id="typewriter" aria-live="polite"></span><span class="cursor" aria-hidden="true">|</span></h1>
   <p class="subtitle">We are making renovations! Check back later</p>
-  </div>
+  
+  
+ 
   <script>
     (function () {
       const el = document.getElementById('typewriter');
@@ -202,11 +206,11 @@
       if (!cycle || !deptImg) return;
 
       const logos = [
-        'https://cdn2.contentltd.net/dps/psp.png',
-        'https://cdn2.contentltd.net/dps/ppd.png',
-        'https://cdn2.contentltd.net/dps/pfd.png',
-        'https://cdn2.contentltd.net/dps/penndot_emblem.svg',
-        'https://cdn2.contentltd.net/dps/acso.png'
+        'https://auxcdn.contentltd.xyz/dps/psp.png',
+        'https://auxcdn.contentltd.xyz/dps/ppd.png',
+        'https://auxcdn.contentltd.xyz/dps/pfd.png',
+        'https://auxcdn.contentltd.xyz/dps/penndot_emblem.svg',
+        'https://auxcdn.contentltd.xyz/dps/acso.png'
       ];
 
       const slideDuration = 500;
@@ -250,5 +254,114 @@
       setTimeout(runCycle, 1600);
     })();
   </script>
+  
+  
+  <script>
+    let logElement, statusElement, statusText;
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      logElement = document.getElementById('liveData');
+      statusElement = document.getElementById('apiStatus');
+      statusText = document.getElementById('statusText');
+      
+      
+      monitorTransitSystem();
+      setInterval(monitorTransitSystem, 3000);
+    });
+    
+    function log(message) {
+      if (!logElement) return;
+      const timestamp = new Date().toLocaleTimeString();
+      logElement.textContent += `[${timestamp}] ${message}\n`;
+      logElement.scrollTop = logElement.scrollHeight;
+    }
+    
+    function updateStatus(status, color) {
+      if (!statusElement || !statusText) return;
+      statusText.textContent = status;
+      statusElement.style.background = color;
+    }
+    
+    function monitorTransitSystem() {
+      try {
+        const driverState = localStorage.getItem('PTA_DRIVER_STATE');
+        
+        if (!driverState) {
+          updateStatus('No active transit data', 'rgba(128,128,128,.3)');
+          return;
+        }
+        
+        const state = JSON.parse(driverState);
+        
+        if (state.tripActive && state.route) {
+          updateStatus(`LIVE: Route ${state.route.id} - Bus #${state.busNumber || '0000'}`, 'rgba(34,197,94,.3)');
+          
+          const currentStop = state.route.stops[state.currentStopIndex || 0];
+          const nextStopIndex = ((state.currentStopIndex || 0) + 1) % state.route.stops.length;
+          const nextStop = state.route.stops[nextStopIndex];
+          
+          log(`🔴 LIVE: Route ${state.route.id} | Current: ${currentStop} | Next: ${nextStop}`);
+        } else {
+          updateStatus('Driver interface online but no active trip', 'rgba(245,158,11,.3)');
+        }
+        
+      } catch (error) {
+        updateStatus('Error reading transit data', 'rgba(239,68,68,.3)');
+        log(`❌ Error: ${error.message}`);
+      }
+    }
+    
+    function testAPI() {
+      log('🧪 Testing API integration...');
+      
+      
+      try {
+        const testData = { test: 'data', timestamp: Date.now() };
+        localStorage.setItem('PTA_TEST', JSON.stringify(testData));
+        const retrieved = localStorage.getItem('PTA_TEST');
+        localStorage.removeItem('PTA_TEST');
+        
+        if (retrieved) {
+          log('✅ localStorage API access working');
+        } else {
+          log('❌ localStorage API access failed');
+        }
+      } catch (e) {
+        log(`❌ localStorage error: ${e.message}`);
+      }
+      
+      // Test plan.html integration
+      if (typeof loadLiveTransitData === 'function') {
+        log('✅ plan.html API integration available');
+      } else {
+        log('⚠️  plan.html API integration not loaded');
+      }
+      
+      // Test current state
+      const driverState = localStorage.getItem('PTA_DRIVER_STATE');
+      if (driverState) {
+        try {
+          const parsed = JSON.parse(driverState);
+          log(`📊 Current state: ${Object.keys(parsed).join(', ')}`);
+        } catch (e) {
+          log(`❌ State parse error: ${e.message}`);
+        }
+      } else {
+        log('📭 No current driver state found');
+      }
+      
+      log('🧪 API test complete');
+    }
+    
+    function clearLog() {
+      if (logElement) logElement.textContent = '';
+      log('🗑️  Log cleared');
+    }
+  </script>
+  
+  <script src="toasts.js"></script>
+  <script src="notify.js"></script>
+  <script src="snow.js"></script>
+  <script src="master.js"></script>
 </body>
 </html>
