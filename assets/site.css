@@ -84,8 +84,8 @@ body{margin:0;font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Helvet
 .large-daat-tim-holder{font-family:'Oswald','Open Sans',sans-serif;font-weight:700;letter-spacing:.02em}
 
  
-html { font-size: 100%; }
-body { font-weight: 400; }
+html { font-size: 100%;}
+body { font-weight: 400;}
 h1, h2, h3, h4, h5 { font-family: 'Open Sans', sans-serif; font-weight: 700; margin: 0 0 .6rem; color: var(--text-50); }
 h1 { font-size: 4.210rem;  }
 h2 { font-size: 3.158rem;  }
