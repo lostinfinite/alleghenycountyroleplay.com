@@ -39,8 +39,7 @@
     body {
       font-family:'Inter', sans-serif;
       color: var(--text);
-      background: radial-gradient(1200px 600px at 10% -10%, rgba(255,187,0,.06), transparent),
-        radial-gradient(1200px 600px at 110% 10%, rgba(120,120,255,.06), transparent), var(--bg);
+      background: #1d1d1d;
       line-height: 1.6;
     }
 
@@ -106,29 +105,416 @@
       background: var(--brand-900); 
     }
 
-    
+    /* ── Hero ─────────────────────────────────────── */
     .hero-banner {
       position: relative;
-      min-height: 50vh;
-      background: url('https://cdn.alleghenycountyroleplay.com/staffapp.jpg') center/cover no-repeat;
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: -40px;
+      background: url('https://cdn.alleghenycountyroleplay.com/bushos.jpg') center/cover no-repeat;
+      filter: blur(18px) brightness(0.4) saturate(1.15);
+      transform: scale(1.08);
+      pointer-events: none;
+      z-index: -2;
+    }
+
+    /* Subtle grid texture overlay */
+    .hero-banner::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, #000 30%, transparent 75%);
+      -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, #000 30%, transparent 75%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* Bleed gradient into page bg */
+    .hero-banner::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 80% 50% at 50% 50%, rgba(255,187,0,.08), transparent 70%),
+        linear-gradient(to bottom, rgba(0,0,0,.3) 0%, transparent 30%, transparent 70%, var(--bg) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      width: min(1100px, 92vw);
+      margin: 0 auto;
+      padding: 6rem 1rem 5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1.5rem;
+    }
+
+    .hero-logo {
+      width: 88px;
+      height: 88px;
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow:
+        0 12px 40px rgba(0,0,0,.5),
+        inset 0 1px 0 rgba(255,255,255,.1);
+    }
+
+    .hero-logo img { width: 56px; height: 56px; object-fit: contain; }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--brand);
+      padding: 0.4rem 0.95rem;
+      background: rgba(255,187,0,.08);
+      border: 1px solid rgba(255,187,0,.22);
+      border-radius: 999px;
+    }
+
+    .hero-eyebrow::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--brand);
+      box-shadow: 0 0 8px var(--brand);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%      { opacity: .5; transform: scale(.85); }
+    }
+
+    .hero-content h1 {
+      font-size: clamp(2.4rem, 5.5vw, 4rem);
+      font-weight: 900;
+      letter-spacing: -0.035em;
+      line-height: 1.02;
+      color: #fff;
+      max-width: 18ch;
+      text-shadow: 0 2px 32px rgba(0,0,0,.6);
+    }
+
+    .hero-content h1 .accent {
+      background: linear-gradient(180deg, var(--brand) 0%, #ff9d00 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-content > p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,.72);
+      max-width: 560px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 560px) {
+      .hero-content { padding: 4rem 1rem 3rem; gap: 1.25rem; }
+      .hero-logo { width: 72px; height: 72px; border-radius: 18px; }
+      .hero-logo img { width: 44px; height: 44px; }
+    }
+
+    /* ── Content ──────────────────────────────────── */
+    .content-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 1rem 6rem;
+    }
+
+    .openings-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+
+    .openings-header h2 {
+      font-size: 1.75rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #fff;
+    }
+
+    .openings-header .subtitle {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-top: 0.4rem;
+    }
+
+    .openings-meta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .openings-meta strong {
+      color: var(--brand);
+      font-weight: 700;
+    }
+
+    /* Process strip */
+    .process-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 4rem;
+      padding-top: 3rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .process-step {
+      padding: 1.25rem;
+    }
+
+    .process-step .step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: rgba(255,187,0,.12);
+      color: var(--brand);
+      font-weight: 800;
+      font-size: 0.85rem;
+      margin-bottom: 0.75rem;
+      border: 1px solid rgba(255,187,0,.25);
+    }
+
+    .process-step h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.4rem;
+    }
+
+    .process-step p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    /* Breezy widget styling */
+    #bzOpeningsContainer {
+      width: 100%;
+    }
+
+    .bzOpeningsList {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+      gap: 1.25rem;
+    }
+
+    /* Center grid when only 1-2 cards exist so they don't sit alone on the left */
+    .bzOpeningsList:has(> :nth-child(1):last-child),
+    .bzOpeningsList:has(> :nth-child(2):last-child) {
+      grid-template-columns: repeat(auto-fit, minmax(340px, 420px));
+      justify-content: center;
+    }
+
+    .bzOpening {
+      list-style: none;
+      display: block;
+      position: relative;
+    }
+
+    .bzOpening > a {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      height: 100%;
+      padding: 1.75rem;
+      background: linear-gradient(180deg, var(--card) 0%, #0f0f12 100%);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: 0 4px 16px rgba(0,0,0,.25);
+      text-decoration: none;
+      color: var(--text);
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
       overflow: hidden;
     }
 
-    .hero-banner::before {
-      content:"";
-      position:absolute;
-      inset:0;
-      pointer-events:none;
-      background:
-        linear-gradient(to bottom, var(--bg) 0%, rgba(0,0,0,0) 12%),
-        linear-gradient(to top, var(--bg) 0%, rgba(0,0,0,0) 16%);
+    .bzOpening > a::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 16px;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(255,187,0,.0) 0%, rgba(255,187,0,.0) 60%, rgba(255,187,0,.35) 100%);
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+              mask-composite: exclude;
+      opacity: 0;
+      transition: opacity .25s ease;
+      pointer-events: none;
     }
 
-    
-    .content-wrapper {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 4rem 1rem 2rem;
+    .bzOpening > a:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255,187,0,.35);
+      box-shadow: 0 18px 48px rgba(0,0,0,.45), 0 0 0 1px rgba(255,187,0,.15);
+    }
+
+    .bzOpening > a:hover::before {
+      opacity: 1;
+    }
+
+    .bzOpening h2 {
+      order: 1;
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      line-height: 1.25;
+      color: var(--text);
+      margin: 0;
+      padding-right: 2.5rem;
+    }
+
+    .bzOpening h2::after {
+      content: "→";
+      position: absolute;
+      top: 1.75rem;
+      right: 1.75rem;
+      width: 36px;
+      height: 36px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 1rem;
+      font-weight: 700;
+      transition: transform .25s ease, background .25s ease, color .25s ease, border-color .25s ease;
+    }
+
+    .bzOpening > a:hover h2::after {
+      background: var(--brand);
+      color: #000;
+      border-color: var(--brand);
+      transform: translateX(3px);
+    }
+
+    .bzMeta {
+      order: 2;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .bzMeta li {
+      list-style: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--muted);
+      background: rgba(255,255,255,.03);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      line-height: 1;
+    }
+
+    .bzMeta li::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--muted);
+      flex-shrink: 0;
+    }
+
+    .bzMeta .bzLocation::before { background: #4a9eff; }
+    .bzMeta .bzRemote::before { background: #4ade80; }
+    .bzMeta .bzType::before { background: #f472b6; }
+    .bzMeta .bzDepartment {
+      color: var(--brand);
+      background: rgba(255,187,0,.08);
+      border-color: rgba(255,187,0,.25);
+    }
+    .bzMeta .bzDepartment::before { background: var(--brand); }
+    .bzMeta .bzSalary {
+      color: #4ade80;
+      background: rgba(74,222,128,.08);
+      border-color: rgba(74,222,128,.25);
+    }
+    .bzMeta .bzSalary::before { background: #4ade80; }
+
+    .bzButtonApply {
+      order: 3;
+      align-self: flex-start;
+      margin-top: auto;
+      padding: 0.65rem 1.4rem;
+      background: transparent;
+      color: var(--brand);
+      border: 1px solid rgba(255,187,0,.35);
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+      transition: background .2s ease, color .2s ease, border-color .2s ease;
+    }
+
+    .bzOpening > a:hover .bzButtonApply {
+      background: var(--brand);
+      color: #000;
+      border-color: var(--brand);
+    }
+
+    /* Empty state */
+    #bzOpeningsContainer:empty::after,
+    .bzOpeningsList:empty::after {
+      content: "Loading open positions…";
+      display: block;
+      text-align: center;
+      padding: 3rem 1rem;
+      color: var(--muted);
+      font-size: 0.95rem;
     }
 
     
@@ -457,68 +843,6 @@
       text-align: center;
     }
 
-    
-    footer {
-      background: #0d0d0d;
-      color: #ccc;
-      padding: 3rem 1rem;
-    }
-
-    footer .cols {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 2rem;
-      text-align: left;
-    }
-
-    footer .col {
-      flex: 1;
-      min-width: 250px;
-    }
-
-    footer h3 {
-      color: var(--brand);
-      margin-bottom: 1rem;
-      font-size: 1.4rem;
-    }
-
-    footer a {
-      color: var(--brand);
-      text-decoration: none;
-      transition: opacity 0.2s;
-    }
-
-    footer a:hover {
-      opacity: 0.8;
-    }
-
-    footer ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      line-height: 2;
-      font-size: 1rem;
-    }
-
-    footer .copyright {
-      margin-top: 2rem;
-      border-top: 1px solid #333;
-      padding-top: 1.5rem;
-      text-align: center;
-      font-size: 0.85rem;
-      color: #888;
-    }
-
-    footer .footer-pattern {
-      width: 100%;
-      height: 50px;
-      background: url('https://cdn.itzcontent.com/footer45-pattern-acrp.svg') repeat-x;
-      background-size: auto 100%;
-      margin-top: 1rem;
-    }
 
     
     @media (max-width: 1024px) {
@@ -579,187 +903,64 @@
       </div>
     </div>
   </nav>
-        </div>
-      </div>
-    </div>
-    <div class="localnav-overlay-background"></div>
-  </nav>
   <script src="/assets/sticky-fallback.js" defer></script>
 
-  
   <div class="hero-banner">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-logo">
+        <img src="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png" alt="ACRP Logo">
+      </div>
+      <span class="hero-eyebrow">We're hiring</span>
+      <h1>Build the future of <span class="accent">Allegheny County</span></h1>
+      <p>Join a team obsessed with crafting an immersive roleplay experience. Browse open roles below and take the next step.</p>
+    </div>
   </div>
 
-  
   <div class="content-wrapper">
-    <div class="search-section">
-      <div class="search-bar">
-        <input type="text" id="searchInput" placeholder="Search for jobs or keywords" class="search-input">
-        <button class="search-button">Search</button>
+    <div class="openings-header">
+      <div>
+        <h2>Open positions</h2>
+        <div class="subtitle">Find a role that fits and apply in minutes.</div>
       </div>
-      
-      <div class="filters">
-        <div class="filter-group">
-          <label>Location</label>
-          <select class="filter-select">
-            <option>Remote</option>
-          </select>
-        </div>
-        <div class="filter-group">
-          <label>Time Type</label>
-          <select class="filter-select">
-            <option>Part-time</option>
-          </select>
-        </div>
-        <div class="filter-group">
-          <label>Job Family</label>
-          <select class="filter-select" id="jobFamilyFilter">
-            <option>All</option>
-            <option>Moderation</option>
-            <option>Management</option>
-            <option>Human Resources</option>
-            <option>Executive</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="applied-filters">
-        <span class="filter-tag">Remote <button class="remove-filter">×</button></span>
-        <span class="filter-tag">Part-time <button class="remove-filter">×</button></span>
-        <button class="clear-all">Clear All (2)</button>
+      <div class="openings-meta" id="openings-count">
+        <span>0 open roles</span>
       </div>
     </div>
 
-    <div class="main-content">
-      
-      <div class="jobs-sidebar">
-        <div class="jobs-count">5 JOBS FOUND</div>
-        
-        <div class="job-list">
-          <div class="job-item active" data-family="Moderation" onclick="selectJob('moderator')">
-            <h3 class="job-item-title">Moderator</h3>
-            <div class="job-item-id">JR-037059</div>
-            <div class="job-item-posted" id="posted-moderator">Posted 4 Days Ago</div>
-          </div>
+    <div style="text-align:center;padding:4rem 1rem;color:var(--muted);font-size:1rem;border:1px solid var(--border);border-radius:16px;background:var(--card);">
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;margin:0 auto 1rem;opacity:.35;"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+      <p style="font-weight:600;color:#fff;margin-bottom:.4rem;">No open positions currently</p>
+      <p style="font-size:.9rem;">Check back later — new roles are posted when they become available.</p>
+    </div>
 
-          <div class="job-item" data-family="Moderation" onclick="selectJob('administrator')">
-            <h3 class="job-item-title">Administrator</h3>
-            <div class="job-item-id">JR-038461</div>
-            <div class="job-item-posted" id="posted-administrator">Posted 14 Days Ago</div>
-          </div>
-
-          <div class="job-item" data-family="Human Resources" onclick="selectJob('hr')">
-            <h3 class="job-item-title">Human Resources</h3>
-            <div class="job-item-id">JR-039182</div>
-            <div class="job-item-posted" id="posted-hr">Posted 8 Days Ago</div>
-          </div>
-
-          <div class="job-item" data-family="Human Resources" onclick="selectJob('hr-specialist')">
-            <h3 class="job-item-title">Human Resources Specialist</h3>
-            <div class="job-item-id">JR-039183</div>
-            <div class="job-item-posted" id="posted-hr-specialist">Posted 8 Days Ago</div>
-          </div>
-
-          <div class="job-item" data-family="Management" onclick="selectJob('management')">
-            <h3 class="job-item-title">Management</h3>
-            <div class="job-item-id">JR-039467</div>
-            <div class="job-item-posted" id="posted-management">Posted 19 Days Ago</div>
-          </div>
-
-          <div class="job-item" data-family="Management" onclick="selectJob('directorship')" id="directorship-item" data-directorship="true" style="display: none;">
-            <h3 class="job-item-title">Directorship Team</h3>
-            <div class="job-item-id">JR-040001</div>
-            <div class="job-item-posted" id="posted-directorship">Posted 245 Days Ago</div>
-          </div>
-
-          <div class="job-item" data-family="Executive" onclick="selectJob('ciso')" id="ciso-item" data-directorship="true" style="display: none;">
-            <h3 class="job-item-title">Chief Information Security Officer</h3>
-            <div class="job-item-id">JR-040002</div>
-            <div class="job-item-posted" id="posted-ciso">Posted Today</div>
-          </div>
-
-          <div class="job-item" data-family="Executive" onclick="selectJob('cdo')" id="cdo-item" data-directorship="true" style="display: none;">
-            <h3 class="job-item-title">Chief Data Officer</h3>
-            <div class="job-item-id">JR-040003</div>
-            <div class="job-item-posted" id="posted-cdo">Posted Today</div>
-          </div>
-
-          <div class="job-item" data-family="Executive" onclick="selectJob('clo')" id="clo-item" data-directorship="true" style="display: none;">
-            <h3 class="job-item-title">Chief Legal Officer</h3>
-            <div class="job-item-id">JR-040004</div>
-            <div class="job-item-posted" id="posted-clo">Posted Today</div>
-          </div>
-        </div>
-
-        <div class="pagination">
-          <button class="page-btn active">1</button>
-          <span id="job-count-pagination">1 - 5 of 5 Jobs</span>
-        </div>
+    <div class="process-strip">
+      <div class="process-step">
+        <div class="step-num">1</div>
+        <h4>Apply</h4>
+        <p>Submit your application when a role opens. It takes a few minutes.</p>
       </div>
-
-      
-      <div class="job-details">
-        <div id="jobDetailsContent">
-          
-          <div class="job-details-header">
-            <h2>Moderator</h2>
-            <button class="btn-apply-main" onclick="applyForJob('Moderator')">Apply</button>
-          </div>
-          
-          <div class="job-info-grid">
-            <div class="info-item">
-              <strong>Location:</strong> Remote
-            </div>
-            <div class="info-item">
-              <strong>Time Type:</strong> Part-time
-            </div>
-            <div class="info-item">
-              <strong>Job ID:</strong> JR-037059
-            </div>
-            <div class="info-item" id="initial-posted">
-              <strong>Posted:</strong> <span id="posted-text">4 Days Ago</span>
-            </div>
-          </div>
-
-          <div class="job-section">
-            <h3>Job Description</h3>
-            <p>Manage and ensure members follow rules In-Game and within the Discord</p>
-          </div>
-
-          <div class="job-section">
-            <h3>Roles & Responsibilities</h3>
-            <ul>
-              <li>Moderate and Enforce all rules in the Discord and In-Game</li>
-            </ul>
-          </div>
-
-          <div class="job-section">
-            <h3>Required Qualifications</h3>
-            <ul>
-              <li>Minimum age: 14 years old</li>
-              <li>At least 4 weeks of prior moderation or staff experience in ER:LC-related communities</li>
-              <li>Proficient in English (spoken and written)</li>
-              <li>Familiar with ER:LC mechanics and gameplay</li>
-              <li>Must hold the in-game rank of Corporal or higher on the Police or Sheriff team</li>
-              <li>Strong communication and problem-solving skills</li>
-              <li>Ability to remain calm under pressure</li>
-            </ul>
-          </div>
-
-          <div class="apply-footer">
-            <button class="btn-apply-footer" onclick="applyForJob('Moderator')">Apply</button>
-          </div>
-        </div>
+      <div class="process-step">
+        <div class="step-num">2</div>
+        <h4>Review</h4>
+        <p>Our team reviews every application carefully. You'll hear back within a few days.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">3</div>
+        <h4>Interview</h4>
+        <p>If there's a fit, we'll set up a short conversation to get to know each other.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">4</div>
+        <h4>Welcome aboard</h4>
+        <p>Onboarding, training, and your first day on the team.</p>
       </div>
     </div>
   </div>
 
-  <script>
-    
-    const SHOW_DIRECTORSHIP = true; 
 
-
-    function getDaysAgo() {
+  <script type="text/plain" data-removed="true">
+    function getDaysAgo_unused() {
       const postDate = new Date('2024-03-11');
       const today = new Date();
       const diffTime = Math.abs(today - postDate);
@@ -1175,38 +1376,6 @@
     });
 
     
-    window.addEventListener('DOMContentLoaded', function() {
-      const daysAgo = getDaysAgo();
-      
-      
-      document.getElementById('posted-moderator').textContent = 'Posted ' + daysAgo.replace(' Days Ago', ' Days Ago');
-      document.getElementById('posted-administrator').textContent = 'Posted ' + daysAgo.replace(' Days Ago', ' Days Ago');
-      document.getElementById('posted-hr').textContent = 'Posted ' + daysAgo.replace(' Days Ago', ' Days Ago');
-      document.getElementById('posted-hr-specialist').textContent = 'Posted ' + daysAgo.replace(' Days Ago', ' Days Ago');
-      document.getElementById('posted-management').textContent = 'Posted ' + daysAgo.replace(' Days Ago', ' Days Ago');
-      
-      
-      document.getElementById('posted-text').textContent = daysAgo;
-
-      
-      if (SHOW_DIRECTORSHIP) {
-        document.querySelectorAll('[data-directorship]').forEach(el => { el.style.display = 'block'; });
-        document.getElementById('posted-directorship').textContent = 'Posted ' + daysAgo;
-        document.getElementById('posted-ciso').textContent = 'Posted Today';
-        document.getElementById('posted-cdo').textContent = 'Posted Today';
-        document.getElementById('posted-clo').textContent = 'Posted Today';
-
-        const totalJobs = 9;
-        document.querySelector('.jobs-count').textContent = `${totalJobs} JOBS FOUND`;
-        document.getElementById('job-count-pagination').textContent = `1 - ${totalJobs} of ${totalJobs} Jobs`;
-      } else {
-        document.querySelectorAll('[data-directorship]').forEach(el => { el.style.display = 'none'; });
-
-        const totalJobs = 5;
-        document.querySelector('.jobs-count').textContent = `${totalJobs} JOBS FOUND`;
-        document.getElementById('job-count-pagination').textContent = `1 - ${totalJobs} of ${totalJobs} Jobs`;
-      }
-    });
   </script>
 
   <div id="footer-container"></div>

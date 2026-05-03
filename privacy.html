@@ -1,478 +1,602 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - Allegheny County Roleplay</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="stylesheet" href="/assets/site.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --brand: #FFBB00;
-            --brand-900: #d69a00;
-            --bg: #1D1D1D;
-            --surface: #121214;
-            --card: #141417;
-            --text: #fff;
-            --muted: #bdbdbd;
-            --border: rgba(255, 255, 255, 0.08);
-            --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
-        }
-
-        body {
-            font-family:'Inter', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            font-size: 11px;
-            font-weight: 400;
-        }
-
-        a {
-            color: var(--brand);
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        .nav {
-            position: sticky;
-            top: 0;
-            z-index: 50;
-            background: rgba(10, 10, 10, 0.6);
-            backdrop-filter: blur(8px);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .nav-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 12px 20px;
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 600;
-            font-size: 14px;
-        }
-
-        .brand img {
-            width: 32px;
-            height: 32px;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            border-radius: 8px;
-            background: var(--brand);
-            color: #000;
-            font-weight: 600;
-            font-size: 11px;
-            transition: transform 0.18s ease, background 0.18s ease;
-        }
-
-        .btn:hover {
-            transform: translateY(-1px);
-            background: var(--brand-900);
-            text-decoration: none;
-        }
-
-        .hero {
-            padding: 60px 20px 40px;
-            text-align: center;
-            background: radial-gradient(1200px 600px at 50% -10%, rgba(255, 187, 0, 0.06), transparent);
-        }
-
-        .hero-content {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .hero .title {
-            font-size: 26px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, var(--brand) 0%, #FFA500 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .dates {
-            font-size: 11px;
-            color: var(--muted);
-            margin-bottom: 20px;
-        }
-
-        .dates p {
-            margin-bottom: 4px;
-        }
-
-        .content {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        .section {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 32px;
-            margin-bottom: 24px;
-        }
-
-        h1 {
-            font-size: 20px;
-            font-weight: 400;
-            margin-bottom: 16px;
-            color: var(--brand);
-        }
-
-        h2 {
-            font-size: 16px;
-            font-weight: 400;
-            margin: 20px 0 12px;
-            color: var(--text);
-        }
-
-        h3 {
-            font-size: 14px;
-            font-weight: 400;
-            margin: 16px 0 8px;
-            color: var(--text);
-        }
-
-        .section p, .section ul, .section ol, .section li {
-            font-size: 11px;
-            font-weight: 400;
-            line-height: 1.8;
-        }
-
-        .section p {
-            margin-bottom: 16px;
-            color: var(--muted);
-        }
-
-        .section ul, .section ol {
-            margin: 16px 0;
-            padding-left: 24px;
-            color: var(--muted);
-        }
-
-        .section li {
-            margin-bottom: 8px;
-        }
-
-        strong {
-            color: var(--text);
-            font-weight: 600;
-        }
-
-        
-        footer {
-            background: #0d0d0d;
-            color: #ccc;
-            padding: 3rem 1rem;
-        }
-
-        footer .cols {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 2rem;
-            text-align: left;
-        }
-
-        footer h3 {
-            color: var(--brand);
-            margin-bottom: 1rem;
-            font-size: 1.4rem;
-        }
-
-        footer a {
-            color: var(--brand);
-            text-decoration: none;
-        }
-
-        footer .copyright {
-            margin-top: 2rem;
-            border-top: 1px solid #333;
-            padding-top: 1.5rem;
-            text-align: center;
-            font-size: 0.85rem;
-            color: #888;
-        }
-
-        @media (max-width: 768px) {
-            body { font-size: 13px; }
-            .hero .title { font-size: 22px; }
-            .hero { padding: 40px 20px 28px; }
-            .section { padding: 24px; }
-            h1 { font-size: 18px; }
-            h2 { font-size: 15px; }
-            h3 { font-size: 13px; }
-            .section p, .section ul, .section ol, .section li { font-size: 13px; }
-        }
-
-        @media (max-width: 480px) {
-            body { font-size: 14px; }
-            .hero { padding: 28px 16px 20px; }
-            .hero .title { font-size: 19px; }
-            .content { padding: 24px 12px; }
-            .section { padding: 18px 16px; }
-            .section p, .section ul, .section ol, .section li { font-size: 14px; }
-            footer .cols { flex-direction: column; }
-            .nav-inner { padding: 10px 14px; }
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy &mdash; Allegheny County Roleplay</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/legal-doc.css">
 </head>
 <body>
-    <nav class="simple-localnav" aria-label="local" tabindex="-1" style="--progress:0;">
-        <div class="localnav-inner container">
-            <a href="/" class="brand"><img src="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png" alt="ACRP Logo"><span>Allegheny County Roleplay</span></a>
-            <div class="actions">
-                <a class="btn-outline" href="/">Home</a>
-                <a class="btn" href="https://portal.alleghenycountyroleplay.com">Login</a>
-            </div>
+
+  <nav class="top-nav">
+    <div class="nav-inner">
+      <div class="nav-brand">
+        <img src="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png" alt="ACRP" class="nav-logo">
+        <span class="nav-brand-name">Allegheny County Roleplay</span>
+      </div>
+      <div class="nav-right">
+        <div class="nav-search-wrap">
+          <svg class="nav-search-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M21.172 24l-7.387-7.387c-1.388.874-3.024 1.387-4.785 1.387-4.971 0-9-4.029-9-9s4.029-9 9-9 9 4.029 9 9c0 1.761-.514 3.398-1.387 4.785l7.387 7.387-2.828 2.828zm-12.172-8c3.859 0 7-3.14 7-7s-3.141-7-7-7-7 3.14-7 7 3.141 7 7 7z"/>
+          </svg>
+          <input id="mainSearch" class="nav-search" type="text" placeholder="Search document&hellip;" autocomplete="off">
         </div>
-    </nav>
-    <div class="localnav-overlay-background"></div>
-
-    <script src="/assets/sticky-fallback.js" defer></script>
-
-    <section class="hero">
-        <div class="hero-content">
-            <div class="title">Allegheny County Roleplay Privacy Policy</div>
-            <div class="dates">
-                <p>Last Updated: 3/12/2026</p>
-                <p>Created: 12/16/2025</p>
-                <p>Established: 12/16/2025</p>
-            </div>
-            <p style="margin-top:8px;font-size:11px;color:#bdbdbd;">
-                <a href="/legal/privacycompare.html" style="color:#FFBB00;">View change log â†’</a>
-            </p>
-        </div>
-    </section>
-
-    <div class="content">
-
-        <div class="section">
-            <h1>Introduction</h1>
-            <p>Welcome to the Allegheny County Roleplay Privacy Policy. This document outlines how we ("we", "us", "ACRP", "Allegheny County Roleplay") will use users' ("users", "you" or "your") information. We do not knowingly collect data from users who are under the age of 13. If you are under the age of 13, we ask that you do not use our services in accordance with our Terms of Service and Community Standards. This document is subject to the laws of the Commonwealth of Pennsylvania. ACRP's services are intended for U.S. residents only. Users in states with biometric-specific legislation, including Illinois (BIPA, 740 ILCS 14), Texas (CUBI, Tex. Bus. &amp; Com. Code Â§503.001), and Washington, acknowledge that Pennsylvania law governs their use of ACRP services.</p>
-            <p>Before moving on, we use certain phrases and words that we need to define.</p>
-            <ul>
-                <li><strong>"Minor"</strong> refers to any individual between the ages of 13â€“17.</li>
-                <li><strong>"Adult", "Parent", or "Guardian"</strong> refers to the parent or caretaker of any minor; someone who has sole or major responsibility or custody of the minor.</li>
-                <li><strong>"Identifying Documents"</strong> is any document used to identify you as an individual; this can be anything from a username to an ID, driver's license, or birth certificate.</li>
-                <li><strong>"ID"</strong> refers to any identification or driver's license that includes a Date of Birth and a full legal name.</li>
-                <li><strong>"Private Server"</strong> refers to any in-game or DiscordÂ® server owned, operated by, or maintained by Allegheny County Roleplay.</li>
-                <li><strong>"Platform"</strong> refers to any feature and service, including websites, bots, applications, Private Servers, moderation tools, content, and custom functionalities offered by ACRP.</li>
-                <li><strong>"Verification Data"</strong> refers to any data collected or derived through age verification or identity verification processes, including facial scan results, biometric scores, ID-derived information, and associated metadata.</li>
-                <li><strong>"Authorized Staff"</strong> refers to ACRP personnel who have been explicitly granted access to sensitive user data under role-based access controls, subject to internal policy and confidentiality obligations.</li>
-                <li><strong>"Privacy Policy"</strong> refers to this document.</li>
-            </ul>
-            <h3>i. Operator Information</h3>
-            <p><strong>Organization: Allegheny County Roleplay LLC</strong><br>
-               Email: <a href="mailto:legal@acrp.work">legal@acrp.work</a><br>
-               Phone: +1 (412) 254-4008<br>
-               Address: 530 Allegheny River Blvd, Suite 415, Oakmont, PA 15139<br>
-               Website: <a href="https://alleghenycountyroleplay.com">https://alleghenycountyroleplay.com</a></p>
-            <p><strong>Organization: Didit Identity, Inc.</strong><br>
-               EIN: 39-2860573<br>
-               Email: <a href="mailto:privacy@didit.me">privacy@didit.me</a><br>
-               Address: 111B S Governors Ave STE 34855, Dover, DE 199904, USA</p>
-            <p><strong>Organization: Didit Identity Spain SL</strong><br>
-               CIF: B22929327<br>
-               Email: <a href="mailto:privacy@didit.me">privacy@didit.me</a><br>
-               Address: Calle Napoles 227, P. 1, 08013 Barcelona, Spain</p>
-        </div>
-
-        <div class="section">
-            <h1>1. Personally Identifiable Information</h1>
-            <p>We do not knowingly collect Personally Identifiable Information ("PII") outside of official means, which include our appeals system and any other functionality used to collect information about you, including your email address, DiscordÂ® username, and similar identifiers. We do not sell or share your PII for marketing purposes. We do not broker, license, or otherwise transfer user data to third parties for commercial gain.</p>
-            <p>We may share information with service providers that help operate our platform, including Mailgun for email delivery, Clerk for authentication and account infrastructure, and Didit for age verification services. Each of these providers processes data on our behalf under contractual data processing obligations. Information may also be disclosed if required by law, court order, or in response to a valid and verified law enforcement request directed to ACRP through proper legal channels under U.S. law. Third-party providers have their own privacy practices, which we encourage you to review.</p>
-            <p>ACRP is not responsible for the data practices of third-party platforms that users independently access, including DiscordÂ®, RobloxÂ®, or any other external service not directly operated by ACRP.</p>
-            <p>For information on how we protect your data, please review section 6.</p>
-        </div>
-
-        <div class="section">
-            <h1>2. Proving Your Age</h1>
-            <p>ACRP requires mandatory age verification and age assurance screening as a condition of access to its services. These measures are designed to prevent access by children under the age of 13 and to support compliance with the Children's Online Privacy Protection Act (COPPA) and other applicable laws and platform policies. Access to ACRP systems is not permitted unless verification is completed. Users who attempt to circumvent or bypass these requirements will be permanently denied access.</p>
-            <p>We use a third-party provider, Didit.me, to perform AI-based age estimation and biometric liveness checks using facial data.</p>
-            <p>By proceeding with age verification, you provide informed consent to the collection, processing, and retention of biometric and verification data for eligibility screening and enforcement purposes. This consent is a condition of access and cannot be withdrawn while maintaining an active account. Withdrawal of consent requires deletion of your verification data and account, as described in section 8.</p>
-            <p>Verification may occur through the following methods:</p>
-
-            <h3>a. AI-Based Facial Age Estimation and Liveness Detection</h3>
-            <p>Users may be required to submit a live facial scan. Didit.me processes this scan using biometric analysis and liveness detection technology to estimate age and detect spoofing or impersonation attempts.</p>
-            <p>Processing may include:</p>
-            <ul>
-                <li>Facial image capture</li>
-                <li>Biometric feature extraction</li>
-                <li>Age estimation scoring</li>
-                <li>Liveness detection scoring</li>
-                <li>Face quality and luminance metrics</li>
-                <li>Similarity and duplicate face detection results</li>
-                <li>Session and verification metadata</li>
-            </ul>
-            <p>ACRP receives and retains verification results and related metadata, which may include estimation scores, liveness scores, match indicators, session identifiers, and associated technical logs. Didit processes facial images and biometric data as our verification vendor under their applicable terms and privacy policy. ACRP does not receive or store raw facial images beyond what is transmitted to Didit for processing.</p>
-            <p>Facial scan data and biometric scores are classified as sensitive data. Access is restricted to Authorized Staff under role-based controls. Authorized Staff may access this data only for the purposes of verification review, appeals processing, fraud investigation, or compliance with a valid legal request under U.S. law. All staff access is logged and subject to internal audit.</p>
-
-            <h3>b. Screening Questions</h3>
-            <p>Users may also be required to provide screening information such as Date of Birth, country of residence, and grade level. This information is used to assess eligibility and detect inconsistent or fraudulent claims. We may retain submitted values, derived age group, risk signals, and verification outcomes. Inconsistencies between screening answers and other verification data may be flagged for manual review by Authorized Staff.</p>
-
-            <h3>c. ID Verification</h3>
-            <p>Where Didit's AI-based age estimation returns a result near a defined age threshold, or where the estimated age falls below a minimum confidence margin, ACRP may require you to submit a government-issued ID for manual age verification. This step is triggered automatically based on Didit's scoring output and is not applied universally to all users.</p>
-            <p>Acceptable forms of ID are limited to the following:</p>
-            <ul>
-                <li>Driver's License</li>
-                <li>Non-Driving ID / State-Issued ID</li>
-                <li>Birth Certificate</li>
-            </ul>
-            <p>ID documents are collected and processed at the point where Didit makes an age determination. Authorized Staff may access submitted ID documents under the same role-based access controls that apply to facial scan data. All access is restricted on a need-to-know basis and is subject to logging and audit. No staff member may access verification data outside of an approved purpose.</p>
-            <p>Submitted ID documents are subject to the same 30-day retention period described in section e, unless an active review or appeal extends that period. Information derived from your ID, including your full legal name, Date of Birth, and age group, is used to construct a verification profile associated with your account. This profile is used to establish your identity and confirm your age for the purposes described in this policy. Where available and applicable, ACRP may cross-reference submitted information against records from your country of residence to validate the accuracy of submitted documents.</p>
-            <p>Verification data, including facial scan results and ID-derived information, is used for fraud prevention. This includes detecting duplicate or fraudulent accounts, identifying inconsistencies between submitted documents and prior verification records, and maintaining the integrity of ACRP's access controls.</p>
-            <p>Verification data collected through facial scans and ID submission may also be used, in whole or in part, to credential-verify the identity of a user in connection with law enforcement requests, legal process, or authorized user data requests. Such disclosure will only occur in response to a valid legal process directed to ACRP under U.S. law. ACRP will not voluntarily disclose verification data to any law enforcement or government authority outside the United States without a valid U.S. court order or equivalent legal instrument recognized under U.S. law.</p>
-            <p>Refusal to submit a required ID where verification is inconclusive will result in denial of access to ACRP services.</p>
-
-            <h3>d. Use and Enforcement</h3>
-            <p>Age verification and age assurance are used strictly to:</p>
-            <ul>
-                <li>Determine whether a user meets minimum age requirements</li>
-                <li>Detect underage or high-risk accounts</li>
-                <li>Enforce platform access restrictions</li>
-                <li>Support moderation, safety, and compliance actions</li>
-                <li>Construct verification profiles for fraud prevention and identity confirmation</li>
-                <li>Support credential verification for valid legal process under U.S. law</li>
-            </ul>
-            <p>If verification determines or reasonably indicates that a user is under 13, access to ACRP services will be denied immediately. Biometric and verification data associated with that determination will be handled in accordance with our verification data retention policy and may be retained for up to 30 days if a user requests a review or appeal. Users denied access will retain access to our portal solely for the purpose of submitting appeals or reviewing their verification data.</p>
-            <p>Attempting to bypass, falsify, or interfere with verification systems, including submitting fraudulent documents or impersonation attempts, constitutes a material breach of ACRP's Terms of Service and will result in permanent removal and may result in referral to appropriate authorities.</p>
-
-            <h3>e. Data Retention</h3>
-            <p>Verification records, results, scores, logs, and related metadata are retained for 30 days from the date of verification, unless a user requests a review of their verification determination, in which case the data will be retained for the duration of that review and will be examined by Authorized Staff.</p>
-            <p>If verification data is deleted upon user request, the associated verification status is also removed. Users who delete their verification data must complete the verification process again before regaining access to ACRP systems. Deletion of verification data does not exempt a user from enforcement actions already taken on the basis of that data.</p>
-            <p>Data retained beyond the standard 30-day period due to an active review will be deleted within 14 days of the conclusion of that review, unless further retention is required to comply with a valid legal obligation under U.S. law.</p>
-
-            <h3>f. Third-Party Processing</h3>
-            <p>Didit.me acts as ACRP's verification and biometric processing provider. Biometric capture and age estimation processing occur through their systems under a data processing agreement. Their privacy practices and security controls are governed by their published policies. Users acknowledge that biometric and verification data is processed by this provider as part of the screening workflow. ACRP has no control over Didit's internal processing operations beyond the terms of our agreement with them.</p>
-
-            <h3>g. Security and Incident Response</h3>
-            <p>Verification and screening data are stored and transmitted using industry-standard security safeguards, including encryption at rest and in transit. In the event of a confirmed data security incident affecting verification data, ACRP will assess the scope and nature of the incident and follow all applicable legal notification and mitigation requirements under U.S. law.</p>
-            <p>Where a breach affects 500 or more Pennsylvania residents, ACRP will provide concurrent notice to the Pennsylvania Attorney General in accordance with 73 P.S. Â§2305. Affected users will be notified as required by applicable law and, where practicable, by direct communication to the contact information on file.</p>
-            <p>ACRP will not delay breach notification to affected users at the request of any foreign government or regulatory authority. Incident response is governed exclusively by U.S. law.</p>
-            <p>Verification data is not sold. It is shared only with contracted processors and service providers as necessary to operate verification, safety, and compliance systems, or as required by valid legal process under U.S. law.</p>
-
-            <h3>h. Requirement for Use</h3>
-            <p>Completion of age verification and age assurance checks is a mandatory condition of access to ACRP services. Refusal to complete the required verification will result in denial or removal of access. ACRP reserves the right to re-verify users at any time if there is reasonable cause to question the accuracy of a prior verification.</p>
-
-            <h3>i. More Information</h3>
-            <p>For more information on what we collect, how we collect it, and how we keep your biometric data secure, you may view our practices in our <a href="/legal/biometric-data-statement.html">Biometric Data Privacy Statement</a>.</p>
-        </div>
-
-        <div class="section">
-            <h1>3. General Information We Collect</h1>
-            <p>In general, we collect limited information on you, such as email addresses, DiscordÂ® and RobloxÂ® usernames and/or profile links, messages you send across our services, and browser information.</p>
-            <p>We also collect analytics data through Google Analytics and may collect analytics across our portal and any other services we operate. This includes information about how users interact with our services, such as pages visited, scroll depth, outbound link clicks, file downloads, form interactions, and site search queries. This data is collected through cookies and similar tracking technologies, processed by Google under their privacy policy, and used in aggregate to understand usage patterns. It is not used to identify individual users.</p>
-            <p>Please note that additional information may be collected by the platforms we use or rely on, including DiscordÂ®, RobloxÂ®, GoogleÂ®, ClerkÂ®, and CloudflareÂ®. ACRP is not responsible for the data practices of these third-party platforms.</p>
-        </div>
-
-        <div class="section">
-            <h1>4. How We Use Your Data</h1>
-            <p>We collect your email address to provide you with access to documents, webpages, and accounts if you become staff or join a department. Email addresses are also used to send transactional communications as described in section 7.</p>
-            <p>We collect your Roblox and Discord usernames and/or profile links, if applicable, to identify who you are across our services. This information is not used for any other purpose.</p>
-            <p>We collect the messages that you send, edit, or delete across our services to moderate content in accordance with our Terms of Service and Community Standards. Message logs may also be retained as evidence in connection with enforcement actions, appeals, or valid legal process.</p>
-            <p>We collect analytics data through Google Analytics and any other analytics tools we deploy across our services to understand how our platform is used and to improve our services. This data is aggregated and is not used to identify individual users.</p>
-            <p>We collect and retain verification data as described in section 2 for the purposes of age gating, identity confirmation, fraud prevention, and legal compliance.</p>
-        </div>
-
-        <div class="section">
-            <h1>5. Cookies and Tracking Technologies</h1>
-            <p>We use cookies and similar tracking technologies across our portal and any other services we operate. These include cookies set by Google Analytics to measure site usage and user interactions. Google Analytics Enhanced Measurement is enabled, which may automatically collect data on page views, scrolls, outbound link clicks, file downloads, form interactions, and site search queries across our services.</p>
-            <p>We do not use cookies for advertising or cross-site tracking. Cookies set by our authentication provider, Clerk, are used solely to manage session state and account access and are necessary for platform functionality.</p>
-            <p>You can opt out of Google Analytics tracking by using the Google Analytics Opt-out Browser Add-on, available at: <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">https://tools.google.com/dlpage/gaoptout</a></p>
-            <p>Opting out of analytics cookies does not affect your ability to use ACRP services. Session and authentication cookies are necessary for platform access and cannot be disabled without affecting functionality. ACRP does not honor Do Not Track signals at this time.</p>
-        </div>
-
-        <div class="section">
-            <h1>6. How We Secure Your Data</h1>
-            <p>We implement and maintain administrative, technical, and operational safeguards reasonably designed to protect user data against unauthorized access, disclosure, alteration, and destruction. These include, but are not limited to, encryption of sensitive data at rest and in transit, role-based access controls, and periodic security reviews.</p>
-            <p>Access to user data is restricted on a need-to-know basis. Sensitive data, including biometric verification results and ID-derived information, is subject to additional access controls and is accessible only to Authorized Staff for approved purposes. All access to sensitive data is logged and subject to audit.</p>
-            <p>ACRP staff are bound by confidentiality obligations with respect to user data accessed in the course of their duties. Unauthorized access, disclosure, or misuse of user data by staff is subject to disciplinary action and may constitute a violation of applicable law.</p>
-            <p>No system can guarantee absolute security. ACRP does not warrant that unauthorized third parties will never be able to defeat our security measures. In the event of a confirmed security incident, ACRP will follow the incident response procedures described in section 2g.</p>
-        </div>
-
-        <div class="section">
-            <h1>7. Limitation of Liability</h1>
-            <p>ACRP's services are provided on an "as-is" and "as-available" basis. To the fullest extent permitted by applicable U.S. law, ACRP disclaims all warranties, express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, and non-infringement.</p>
-            <p>ACRP shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising out of or related to your use of or inability to use our services, including but not limited to loss of data, loss of access, or unauthorized access to your account, except where such liability cannot be excluded under applicable law.</p>
-            <p>ACRP's total liability to any user for any claim arising out of or relating to this Privacy Policy or the use of our services shall not exceed the greater of (a) the amount paid by the user to ACRP in the twelve months preceding the claim, or (b) one hundred U.S. dollars ($100.00).</p>
-            <p>ACRP is not liable for the data practices, security incidents, or actions of third-party service providers, including Didit, Clerk, Cloudflare, or Google, beyond what is expressly covered by our agreements with those providers.</p>
-        </div>
-
-        <div class="section">
-            <h1>8. Mailing Lists</h1>
-            <p>We use your email address to send transactional communications related to account activity, policy changes, security notices, and other service-related updates. We do not send marketing or promotional emails. Users may opt out of non-essential communications by contacting us at <a href="mailto:legal@acrp.work">legal@acrp.work</a>. Opting out of transactional communications required for account security or legal compliance is not available while an account remains active.</p>
-        </div>
-
-        <div class="section">
-            <h1>9. User Rights and Enforcement</h1>
-            <p>You have the following rights with respect to your data held by ACRP, subject to the limitations described in this policy:</p>
-            <ul>
-                <li><strong>Right to Access:</strong> You may request a copy of the data ACRP holds about you.</li>
-                <li><strong>Right to Deletion:</strong> You may request deletion of your data. Deletion of verification data will result in removal of your verification status and require re-verification before regaining access.</li>
-                <li><strong>Right to Correction:</strong> You may request correction of inaccurate data held about you, subject to verification.</li>
-                <li><strong>Right to Appeal:</strong> You may appeal any access denial or enforcement action through the appeals process available at our portal.</li>
-            </ul>
-            <p>These rights are provided in accordance with applicable U.S. law. ACRP does not recognize data subject rights frameworks established by foreign regulatory bodies, including but not limited to the EU General Data Protection Regulation (GDPR) or the UK Data Protection Act 2018, except to the extent they are independently required under U.S. law.</p>
-            <p>To exercise any of the above rights, you may email <a href="mailto:legal@acrp.work">legal@acrp.work</a> or visit the Data Center tab at: <a href="https://portal.alleghenycountyroleplay.com">https://portal.alleghenycountyroleplay.com</a></p>
-            <p>Data requests will be processed within a reasonable timeframe. ACRP may require verification of identity before releasing, correcting, or deleting data. Requests that are manifestly unfounded, repetitive, or conflict with ACRP's legal obligations may be declined, with notice to the requesting user.</p>
-            <p>Users who believe their rights have been violated may contact ACRP at <a href="mailto:legal@acrp.work">legal@acrp.work</a>. ACRP does not accept complaints filed with foreign data protection authorities as a substitute for direct resolution through our internal process.</p>
-        </div>
-
-        <div class="section">
-            <h1>10. Regulatory Obligations and Responsible Use</h1>
-            <p>ACRP is committed to operating its age verification and data collection systems responsibly. These systems are designed to prevent the knowing collection of personal data from individuals who are under the age of 13, consistent with COPPA, or below the minimum age required to use online services in their country of residence where that age exceeds 13. For example, users in Australia are subject to a minimum age of 16 under applicable online safety legislation. Where ACRP becomes aware that a user is below the applicable minimum age for their jurisdiction, access will be denied and any data collected will be handled in accordance with our verification data retention policy.</p>
-            <p>These protections reflect ACRP's own commitment to responsible operation and user safety. They do not constitute an acknowledgment of legal obligation under any non-U.S. regulatory framework, nor do they create enforceable rights under any foreign law.</p>
-        </div>
-
-        <div class="section">
-            <h1>11. Governing Law and Jurisdictional Scope</h1>
-            <p>Allegheny County Roleplay is a U.S.-based organization. This Privacy Policy and all practices described within it are governed exclusively by the laws of the United States and the Commonwealth of Pennsylvania. ACRP does not recognize, and is not obligated to comply with, the privacy, data protection, or age verification laws of any foreign jurisdiction, including but not limited to those of the European Union, the United Kingdom, Australia, or Canada.</p>
-            <p>ACRP's services are intended for U.S. residents. Users who access our services from outside the United States do so at their own initiative and are solely responsible for compliance with their local laws. ACRP makes no representation that its services or practices comply with the laws of any jurisdiction outside the United States.</p>
-            <p>Any attempt by a foreign government, regulatory body, or authority to impose legal obligations on ACRP outside of U.S. law will be contested to the fullest extent available. ACRP reserves all rights to challenge, dispute, or decline compliance with any foreign regulatory demand that exceeds the scope of applicable U.S. law. This position is stated without ambiguity and is not subject to implied waiver by any action or omission on ACRP's part.</p>
-            <p>Disputes arising under this Privacy Policy shall be resolved under the laws of the Commonwealth of Pennsylvania. The exclusive venue for any such dispute is the courts of Allegheny County, Pennsylvania, or the applicable federal courts sitting in the Western District of Pennsylvania.</p>
-        </div>
-
-        <div class="section">
-            <h1>12. Changes to This Policy</h1>
-            <p>ACRP reserves the right to update or modify this Privacy Policy at any time. Material changes will be communicated to users via email or through a notice on our portal prior to the change taking effect. Continued use of ACRP services following notice of a material change constitutes acceptance of the revised policy. Users who do not accept a material change may request deletion of their account and data as described in section 9.</p>
-            <p>The most current version of this Privacy Policy is always available at: <a href="https://portal.alleghenycountyroleplay.com">https://portal.alleghenycountyroleplay.com</a></p>
-            <p style="margin-top:16px;"><a href="/legal/privacycompare.html">View the full change log â†’</a></p>
-        </div>
-
+        <a href="/" class="btn-outline">Home</a>
+        <button class="btn-primary" onclick="window.print()">Print / PDF</button>
+      </div>
     </div>
-    <script src="/master.js"></script>
+  </nav>
+
+  <div class="page-layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-label">// Navigation</div>
+      <nav class="sidebar-nav" id="sidebarNav">
+        <a class="sidebar-link" data-section="overview" onclick="scrollToSection('overview')">Overview</a>
+        <div class="sidebar-divider"></div>
+        <a class="sidebar-link" data-section="sectionintro" onclick="scrollToSection('sectionintro')">Introduction</a>
+        <a class="sidebar-link" data-section="sectionop" onclick="scrollToSection('sectionop')">i. Operator Info</a>
+        <a class="sidebar-link" data-section="section1" onclick="scrollToSection('section1')">1. What We Collect</a>
+        <a class="sidebar-link" data-section="section2" onclick="scrollToSection('section2')">2. Verification Data</a>
+        <a class="sidebar-link" data-section="section3" onclick="scrollToSection('section3')">3. How We Use It</a>
+        <a class="sidebar-link" data-section="section4" onclick="scrollToSection('section4')">4. Automated Processing</a>
+        <a class="sidebar-link" data-section="section5" onclick="scrollToSection('section5')">5. Who We Share With</a>
+        <a class="sidebar-link" data-section="section6" onclick="scrollToSection('section6')">6. Retention</a>
+        <a class="sidebar-link" data-section="section7" onclick="scrollToSection('section7')">7. Your Rights</a>
+        <a class="sidebar-link" data-section="section8" onclick="scrollToSection('section8')">8. Cookies</a>
+        <a class="sidebar-link" data-section="section9" onclick="scrollToSection('section9')">9. Security</a>
+        <a class="sidebar-link" data-section="section10" onclick="scrollToSection('section10')">10. Children</a>
+        <a class="sidebar-link" data-section="section11" onclick="scrollToSection('section11')">11. Third-Party Platforms</a>
+        <a class="sidebar-link" data-section="section12" onclick="scrollToSection('section12')">12. Changes</a>
+        <div class="sidebar-divider"></div>
+        <a class="sidebar-link" href="/legal/privacycompare.html" style="font-size:0.76rem;color:#444e5c;">Change Log</a>
+        <a class="sidebar-link" style="font-size:0.76rem;color:#444e5c;" onclick="window.print()">&#x2191; Print / PDF</a>
+      </nav>
+    </aside>
+
+    <main class="main-content" id="mainContent">
+      <div class="search-banner" id="searchBanner">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M21.172 24l-7.387-7.387c-1.388.874-3.024 1.387-4.785 1.387-4.971 0-9-4.029-9-9s4.029-9 9-9 9 4.029 9 9c0 1.761-.514 3.398-1.387 4.785l7.387 7.387-2.828 2.828zm-12.172-8c3.859 0 7-3.14 7-7s-3.141-7-7-7-7 3.14-7 7 3.141 7 7 7z"/>
+        </svg>
+        <span id="searchBannerText">Showing results for ""</span>
+        <button class="search-clear" onclick="clearSearch()">&#x2715; Clear</button>
+      </div>
+
+      <div class="doc-header" id="section-overview">
+        <div class="doc-eyebrow">// ACRP Legal Document</div>
+        <h1 class="doc-title">Privacy Policy</h1>
+        <p class="doc-intro">This Privacy Policy describes how Allegheny County Roleplay collects, uses, and shares information about you when you access or use our Services. It also explains your choices and rights regarding your data.</p>
+        <div class="doc-meta">
+          <div class="doc-meta-item"><span>Last Updated: April 27, 2026</span></div>
+          <div class="doc-meta-item"><span>Created: December 16, 2025</span></div>
+          <div class="doc-meta-item"><span>Established: December 16, 2025</span></div>
+        </div>
+        <div class="doc-actions">
+          <button class="btn-outline" onclick="expandAll()">Expand All</button>
+          <button class="btn-outline" onclick="collapseAll()">Collapse All</button>
+          <button class="btn-primary" onclick="window.print()">Print / PDF</button>
+        </div>
+      </div>
+
+      <!-- Introduction -->
+      <section class="doc-section" id="section-sectionintro" data-section="sectionintro">
+        <div class="section-header">
+          <div class="section-num">// 00</div>
+          <h2 class="section-heading">Introduction</h2>
+        </div>
+        <div class="accordion" id="accordion-sectionintro">
+          <div class="accordion-item" id="accordion-sectionintro-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('sectionintro-item1')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">Read Introduction</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>Allegheny County Roleplay and its designated departments and staff team (collectively, &ldquo;ACRP,&rdquo; &ldquo;Allegheny County Roleplay,&rdquo; &ldquo;we,&rdquo; or &ldquo;us&rdquo;) offer the Allegheny County Roleplay website (www.alleghenycountyroleplay.com and www.acrp.work) and its associated platform, as well as various features, tools, bots, applications, content, in-game server, and custom functionalities (together, the &ldquo;Services&rdquo;) to allow users (&ldquo;Users,&rdquo; &ldquo;you,&rdquo; or &ldquo;your&rdquo;) to participate in our Emergency Response; Liberty County (&ldquo;ER:LC&rdquo;) environments and server(s).</p>
+              <p>This Privacy Policy describes how Allegheny County Roleplay collects, uses, retains, and shares information about you when you access or use our Services, Platforms, or Servers. It also describes your choices and rights regarding your data.</p>
+              <p>By using the Services, you acknowledge that you have read, understood, and agreed to this Privacy Policy. If you do not agree with this policy, do not use the Services.</p>
+            </div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- i. Operator Information -->
+      <section class="doc-section" id="section-sectionop" data-section="sectionop">
+        <div class="section-header">
+          <div class="section-num">// i.</div>
+          <h2 class="section-heading">Operator Information</h2>
+        </div>
+        <div class="accordion" id="accordion-sectionop">
+          <div class="accordion-item" id="accordion-sectionop-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('sectionop-item1')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">Who Operates This Service</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>The Services are operated by Allegheny County Roleplay, an unincorporated community organization. For privacy inquiries, data requests, or legal correspondence, contact us at <a href="mailto:legal@acrp.work">legal@acrp.work</a>.</p>
+            </div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 1 -->
+      <section class="doc-section" id="section-section1" data-section="section1">
+        <div class="section-header">
+          <div class="section-num">// 01</div>
+          <h2 class="section-heading">Information We Collect</h2>
+        </div>
+        <div class="accordion" id="accordion-section1">
+          <div class="accordion-item" id="accordion-section1-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section1-item1')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">1a. Information You Provide</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>We collect information you provide when you interact with our Services. This includes: Discord user ID, username, and discriminator; Roblox user ID and username; date of birth (where provided for age verification); country of residence; messages and communications sent through ACRP-operated channels; reports, appeals, forms, and other submissions you complete; and payment information processed through third-party payment processors (we do not directly store payment card numbers).</p>
+            </div></div>
+          </div>
+          <div class="accordion-item" id="accordion-section1-item2">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section1-item2')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">1b. Information We Collect Automatically</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>When you interact with our Services, our systems may automatically collect: log data including IP addresses, timestamps, and request information; device and browser metadata when you access our websites; moderation and enforcement records, including warnings, bans, and appeals; in-server activity records; and content classification signals from our automated systems, as further described in Section 4.</p>
+            </div></div>
+          </div>
+          <div class="accordion-item" id="accordion-section1-item3">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section1-item3')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">1c. Information From Third Parties</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>We may receive information about you from third parties including: Discord and Roblox (such as linked account identifiers); our age verification providers (such as Didit.me), who provide verification results, scores, and risk flags; payment processors who provide transaction status and fraud signals; and community members who report potentially harmful content or conduct.</p>
+            </div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2 -->
+      <section class="doc-section" id="section-section2" data-section="section2">
+        <div class="section-header">
+          <div class="section-num">// 02</div>
+          <h2 class="section-heading">Age Verification and Biometric Data</h2>
+        </div>
+        <div class="accordion" id="accordion-section2">
+          <div class="accordion-item" id="accordion-section2-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section2-item1')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">2a. Overview</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>ACRP collects and processes age-related data for the purpose of verifying that users meet minimum age requirements under applicable law and platform policy. The types of data collected and how they are processed depend on the specific verification pathway used.</p>
+            </div></div>
+          </div>
+          <div class="accordion-item" id="accordion-section2-item2">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section2-item2')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">2b. Screening Form Data</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>ACRP&rsquo;s entry process may require you to submit a screening form that collects your date of birth, country of residence, grade level, and related eligibility information. This form data is processed by ACRP directly and is used to determine eligibility for access. Form data is retained in accordance with the retention schedule in Section 6.</p>
+            </div></div>
+          </div>
+          <div class="accordion-item" id="accordion-section2-item3">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section2-item3')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">2c. Facial Age Estimation and Liveness Data</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>Where ACRP requires biometric age verification, we use Didit.me, a third-party verification provider that processes facial images to estimate age and verify liveness. Didit.me acts as a data processor on our behalf. The following data is collected and processed as part of this flow:</p>
+              <ul>
+                <li>Live facial image(s) captured during the verification session</li>
+                <li>Biometric features derived from facial geometry used for age estimation</li>
+                <li>Liveness detection signals used to prevent spoofing or impersonation</li>
+                <li>Estimated age range or pass/fail result</li>
+                <li>Device and session metadata (e.g., IP address, timestamp, browser/device identifiers)</li>
+              </ul>
+              <p>Facial images are processed by Didit.me and are not permanently stored by Didit.me or ACRP after the verification session completes, unless a fraud or safety issue requires retention for investigation purposes. ACRP receives a verification result and associated metadata from Didit.me. ACRP does not receive raw facial images.</p>
+            </div></div>
+          </div>
+          <div class="accordion-item" id="accordion-section2-item4">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section2-item4')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">2d. What ACRP Retains</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>ACRP retains the following data from the verification process: verification status (pass/fail/flagged); age range estimate or eligibility score; fraud or anomaly flags; timestamp of verification; and associated Discord user ID. ACRP does not retain raw facial images or biometric feature templates.</p>
+            </div></div>
+          </div>
+          <div class="accordion-item" id="accordion-section2-item5">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section2-item5')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">2e. Legal Basis</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>Processing of biometric data for age verification is carried out on the basis of your consent (where applicable under state or national law), our legitimate interest in maintaining a safe and age-compliant community, and applicable legal obligations under COPPA and other child safety regulations.</p>
+            </div></div>
+          </div>
+          <div class="accordion-item" id="accordion-section2-item6">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section2-item6')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">2f. Illinois &amp; Texas Biometric Privacy Notice</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>If you are a resident of Illinois or Texas, additional protections may apply to the collection and processing of your biometric data under the Illinois Biometric Information Privacy Act (BIPA) or the Texas Capture or Use of Biometric Identifier Act (CUBI). For full details, including disclosure of the purpose and length of collection, please review our <a href="/legal/biometric-data-statement.html">Biometric Data Statement</a>.</p>
+            </div></div>
+          </div>
+          <div class="accordion-item" id="accordion-section2-item7">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section2-item7')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">2g. Behavioral and Message-Based Age Assurance</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>In addition to active verification processes, ACRP may use automated systems to analyze account activity and message patterns for signals that are correlated with underage users. These signals are used for risk assessment and may trigger a manual review or additional verification requirements. This analysis is conducted using ACRP-operated systems and does not involve transmission of content to third-party AI providers.</p>
+            </div></div>
+          </div>
+          <div class="accordion-item" id="accordion-section2-item8">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section2-item8')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">2h. Retention of Verification Data</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>Verification results, scores, flags, and audit data retained by ACRP are generally kept for 30 days from the date of verification. Verified status may be retained for the duration of your active access to ACRP Services. Fraud and anomaly flags may be retained longer for safety and repeat-offender purposes. Screening form data may be retained for up to 90 days for audit and compliance purposes.</p>
+            </div></div>
+          </div>
+          <div class="accordion-item" id="accordion-section2-item9">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section2-item9')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">2i. Deletion and Re-Verification</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>You may request deletion of your verification data by contacting us at <a href="mailto:legal@acrp.work">legal@acrp.work</a>. Deletion requests are subject to review and may be limited where retention is required for safety, fraud prevention, or compliance purposes. If verification data is deleted, your verification status is voided and you must re-verify before regaining access. Deletion of verification data does not reverse enforcement actions already taken.</p>
+            </div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3 -->
+      <section class="doc-section" id="section-section3" data-section="section3">
+        <div class="section-header">
+          <div class="section-num">// 03</div>
+          <h2 class="section-heading">How We Use Your Information</h2>
+        </div>
+        <div class="accordion" id="accordion-section3">
+          <div class="accordion-item" id="accordion-section3-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section3-item1')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">How We Use Your Information</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>We use the information we collect to: operate, maintain, and improve the Services; verify your identity and age eligibility; enforce our Terms of Service, Community Standards, and other policies; detect, investigate, and prevent fraud, abuse, unauthorized access, and harmful conduct; respond to your requests, reports, and appeals; provide customer and moderation support; comply with applicable laws and regulations; maintain safety and security; process payments and manage subscriptions; and communicate with you about the Services, updates, and enforcement actions.</p>
+            </div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4 -->
+      <section class="doc-section" id="section-section4" data-section="section4">
+        <div class="section-header">
+          <div class="section-num">// 04</div>
+          <h2 class="section-heading">Automated Processing and Content Classification</h2>
+        </div>
+        <div class="accordion" id="accordion-section4">
+          <div class="accordion-item" id="accordion-section4-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section4-item1')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">4a. Content Classification System</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>ACRP operates an automated content classification system that analyzes messages posted in monitored channels. This system processes the text content of messages in real time. It is hosted entirely on ACRP-operated infrastructure. Message content is not transmitted to any third-party AI provider.</p>
+              <p>The system evaluates messages for eight content categories: self-harm, directed harm, hate speech, harassment, sexual content, drugs, weapons, and violence. It applies a combination of a machine-learning classifier and a deterministic rule engine. The rule engine runs first and can independently trigger enforcement for the most severe content patterns regardless of classifier output.</p>
+              <p>When content crosses a threshold or a hard-rule pattern fires, the message is deleted and an automated Warning is issued. These actions may occur without prior human review. Users may appeal automated enforcement actions at <a href="https://portal.alleghenycountyroleplay.com">portal.alleghenycountyroleplay.com</a>.</p>
+            </div></div>
+          </div>
+          <div class="accordion-item" id="accordion-section4-item2">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section4-item2')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">4b. Public Safety Detection Layer</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>A separate, higher-priority safety layer runs independently of the general content classifier. This layer scans for content that may indicate potential imminent physical harm, including language referencing mass shootings, bomb threats, active shooter situations, or explicit threats to kill or attack individuals or groups.</p>
+              <p>When triggered, this layer initiates an escalated internal review workflow. As part of that workflow, relevant content may be compiled into an evidence dossier and, following human review by designated ACRP staff, may be referred to law enforcement or the National Center for Missing &amp; Exploited Children (NCMEC). No external submission occurs automatically; all referrals require human review prior to transmission.</p>
+            </div></div>
+          </div>
+          <div class="accordion-item" id="accordion-section4-item3">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section4-item3')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">4c. Disclosure in Discord</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>The use of automated content classification is disclosed to members of our Discord server via the /info command footer, which references Terms of Service &sect;8 and this Privacy Policy &sect;4. Every automated enforcement action also generates a public notice in the channel where it occurred, containing links to relevant legal documents and the appeals portal. That notice auto-deletes after 15 seconds. The affected user also receives a private direct message with enforcement details.</p>
+            </div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5 -->
+      <section class="doc-section" id="section-section5" data-section="section5">
+        <div class="section-header">
+          <div class="section-num">// 05</div>
+          <h2 class="section-heading">Who We Share Information With</h2>
+        </div>
+        <div class="accordion" id="accordion-section5">
+          <div class="accordion-item" id="accordion-section5-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section5-item1')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">Sharing and Disclosure Practices</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>We do not sell your personal data to third parties. We may share your information in the following circumstances:</p>
+              <p><strong>Service providers and data processors:</strong> We share data with vendors and processors who help us operate the Services, such as Didit.me (age verification), Cloudflare (hosting and security), and payment processors. These parties are contractually restricted to processing your data only as directed by us.</p>
+              <p><strong>Legal compliance and safety:</strong> We may disclose your information to law enforcement, regulatory agencies, or emergency services where we believe in good faith that disclosure is necessary to comply with a legal obligation, protect the rights or safety of any person, prevent or investigate fraud or abuse, or respond to a government request.</p>
+              <p><strong>Child safety organizations:</strong> As described in Section 4b, content that may indicate imminent physical harm may, following human review, be referred to law enforcement or NCMEC.</p>
+              <p><strong>Moderation and enforcement staff:</strong> ACRP staff members who are responsible for moderation and enforcement may access user records, logs, and communications as necessary to carry out enforcement actions.</p>
+              <p><strong>Business transfers:</strong> If ACRP is dissolved, transferred, or merged, your data may be transferred as part of that transaction, subject to continued compliance with this Privacy Policy.</p>
+            </div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 6 -->
+      <section class="doc-section" id="section-section6" data-section="section6">
+        <div class="section-header">
+          <div class="section-num">// 06</div>
+          <h2 class="section-heading">Data Retention</h2>
+        </div>
+        <div class="accordion" id="accordion-section6">
+          <div class="accordion-item" id="accordion-section6-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section6-item1')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">How Long We Keep Your Data</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>We retain personal data for as long as necessary to fulfill the purposes described in this Privacy Policy, unless a longer retention period is required or permitted by law. The following general schedules apply:</p>
+              <ul>
+                <li><strong>Account and identity data</strong> (Discord ID, Roblox ID, linked account information): retained while you are an active member and for a reasonable period after account closure or removal.</li>
+                <li><strong>Screening form data:</strong> up to 90 days from submission, unless a safety or compliance issue requires longer retention.</li>
+                <li><strong>Verification results and flags:</strong> up to 30 days from the verification date, unless a fraud or safety flag requires longer retention.</li>
+                <li><strong>Moderation and enforcement records:</strong> retained indefinitely for safety, compliance, and appeal purposes.</li>
+                <li><strong>Message content and logs:</strong> retained for the operational period of the channel or bot, and may be retained longer if associated with an enforcement action or safety investigation.</li>
+                <li><strong>Payment records:</strong> as required by applicable law and our payment processors&rsquo; requirements.</li>
+              </ul>
+            </div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 7 -->
+      <section class="doc-section" id="section-section7" data-section="section7">
+        <div class="section-header">
+          <div class="section-num">// 07</div>
+          <h2 class="section-heading">Your Privacy Rights</h2>
+        </div>
+        <div class="accordion" id="accordion-section7">
+          <div class="accordion-item" id="accordion-section7-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section7-item1')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">What Rights You Have</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>Depending on your jurisdiction, you may have the following rights regarding your personal data:</p>
+              <ul>
+                <li><strong>Access:</strong> Request a copy of the personal data we hold about you.</li>
+                <li><strong>Correction:</strong> Request correction of inaccurate or incomplete data.</li>
+                <li><strong>Deletion:</strong> Request deletion of your data, subject to legal and safety limitations described in this policy.</li>
+                <li><strong>Restriction:</strong> Request that we restrict processing of your data in certain circumstances.</li>
+                <li><strong>Portability:</strong> Receive your data in a structured, commonly used, machine-readable format where technically feasible.</li>
+                <li><strong>Objection:</strong> Object to processing based on legitimate interest.</li>
+              </ul>
+              <p>To exercise any of these rights, contact us at <a href="mailto:legal@acrp.work">legal@acrp.work</a>. We will respond within a reasonable timeframe and no later than the period required by applicable law. We may require identity verification before processing your request. Some requests may be limited where retention is required for safety, legal compliance, or fraud prevention.</p>
+              <p>California residents may have additional rights under the CCPA/CPRA. Virginia, Colorado, Connecticut, and other state residents may have additional rights under their respective state privacy laws. Contact us at <a href="mailto:legal@acrp.work">legal@acrp.work</a> to exercise any applicable state-specific rights.</p>
+            </div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 8 -->
+      <section class="doc-section" id="section-section8" data-section="section8">
+        <div class="section-header">
+          <div class="section-num">// 08</div>
+          <h2 class="section-heading">Cookies and Tracking Technologies</h2>
+        </div>
+        <div class="accordion" id="accordion-section8">
+          <div class="accordion-item" id="accordion-section8-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section8-item1')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">How We Use Cookies</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>Our websites may use cookies and similar tracking technologies (such as local storage) for functional purposes, including session management, security, and preference storage. We do not use advertising cookies or third-party behavioral tracking on our owned web properties.</p>
+              <p>Third-party services integrated with our platform (such as Discord OAuth, Cloudflare, or payment processors) may set their own cookies in accordance with their respective privacy policies. We encourage you to review those policies directly.</p>
+              <p>You may configure your browser to block or delete cookies; however, doing so may affect the functionality of our web services.</p>
+            </div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 9 -->
+      <section class="doc-section" id="section-section9" data-section="section9">
+        <div class="section-header">
+          <div class="section-num">// 09</div>
+          <h2 class="section-heading">Security</h2>
+        </div>
+        <div class="accordion" id="accordion-section9">
+          <div class="accordion-item" id="accordion-section9-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section9-item1')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">How We Protect Your Data</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>We implement reasonable administrative, technical, and physical safeguards designed to protect your personal data from unauthorized access, disclosure, alteration, and destruction. These measures include access controls for staff, use of encrypted communications, and hosting through reputable providers such as Cloudflare.</p>
+              <p>No security system is impenetrable. We cannot guarantee the security of information transmitted through third-party platforms such as Discord or Roblox, which are subject to their own security practices. If you become aware of a security vulnerability affecting our Services, please contact us promptly at <a href="mailto:legal@acrp.work">legal@acrp.work</a>.</p>
+            </div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 10 -->
+      <section class="doc-section" id="section-section10" data-section="section10">
+        <div class="section-header">
+          <div class="section-num">// 10</div>
+          <h2 class="section-heading">Children&rsquo;s Privacy</h2>
+        </div>
+        <div class="accordion" id="accordion-section10">
+          <div class="accordion-item" id="accordion-section10-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section10-item1')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">COPPA and Underage Users</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>Our Services are not directed to children under 13 years of age, and we do not knowingly collect personal information from children under 13. Access to ACRP Services requires users to be at least 13 years old.</p>
+              <p>We use age verification and age assurance systems described in Section 2 to help identify and remove underage users. If we determine that a user is under 13, we will deny or revoke their access and delete any personal data we have collected from them, to the extent practicable and subject to any applicable safety or legal retention requirements.</p>
+              <p>If you believe we have collected data from a child under 13 without appropriate consent, please contact us at <a href="mailto:legal@acrp.work">legal@acrp.work</a> and we will take prompt corrective action.</p>
+            </div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 11 -->
+      <section class="doc-section" id="section-section11" data-section="section11">
+        <div class="section-header">
+          <div class="section-num">// 11</div>
+          <h2 class="section-heading">Third-Party Platforms</h2>
+        </div>
+        <div class="accordion" id="accordion-section11">
+          <div class="accordion-item" id="accordion-section11-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section11-item1')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">Platforms We Do Not Control</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>Our Services operate across several third-party platforms, including Discord and Roblox. These platforms collect and process your data pursuant to their own privacy policies, which are separate from and independent of this Privacy Policy.</p>
+              <p>ACRP is not responsible for the data practices of Discord, Roblox, or any other third-party platform through which you access our Services. We encourage you to review the relevant platform policies to understand how your data is handled outside of ACRP-operated infrastructure.</p>
+            </div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 12 -->
+      <section class="doc-section" id="section-section12" data-section="section12">
+        <div class="section-header">
+          <div class="section-num">// 12</div>
+          <h2 class="section-heading">Changes to This Privacy Policy</h2>
+        </div>
+        <div class="accordion" id="accordion-section12">
+          <div class="accordion-item" id="accordion-section12-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section12-item1')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">How We Notify You of Changes</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>We may update this Privacy Policy from time to time. We will notify you of material changes by updating the &ldquo;Last Updated&rdquo; date at the top of this page, and we may provide additional notice through our Discord server or other communication channels as appropriate.</p>
+              <p>Your continued use of the Services after any such changes constitutes your acceptance of the updated Privacy Policy. If you do not agree with a change, you must stop using the Services.</p>
+              <p>A history of changes to this Privacy Policy is available at <a href="/legal/privacycompare.html">Privacy Policy Change Log</a>.</p>
+            </div></div>
+          </div>
+        </div>
+      </section>
+
+      <div class="doc-footer">
+        <div class="footer-links">
+          <a class="footer-link" href="/terms.html">Terms of Service</a>
+          <a class="footer-link" href="/community-standards.html">Community Standards</a>
+          <a class="footer-link" href="/legal/biometric-data-statement.html">Biometric Data Statement</a>
+          <a class="footer-link" href="/legal/privacycompare.html">Change Log</a>
+          <a class="footer-link" href="mailto:legal@acrp.work">Contact Legal</a>
+        </div>
+        <div class="footer-fine">
+          ACRP &mdash; Allegheny County Roleplay &nbsp;&middot;&nbsp; Allegheny County, Pennsylvania (fictional) &nbsp;&middot;&nbsp; Not affiliated with Roblox Corporation<br>
+          This Privacy Policy is subject to change. Continued use constitutes acceptance of the current version.
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="footer-container"></div>
+  <script src="/assets/legal-doc.js"></script>
+  <script src="/master.js"></script>
 </body>
 </html>

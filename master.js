@@ -161,7 +161,7 @@ function loadFooter() {
         footerContainer.id = 'footer-container';
         
 
-        const scripts = document.querySelectorAll('script[src]');
+        const scripts = document.body.querySelectorAll(':scope > script[src]');
         if (scripts.length > 0) {
           document.body.insertBefore(footerContainer, scripts[0]);
         } else {
@@ -191,11 +191,6 @@ function loadFooter() {
       `;
     });
 }
-
-
-document.addEventListener('DOMContentLoaded', function() {
-  loadFooter();
-});
 
 
 if (document.readyState === 'loading') {

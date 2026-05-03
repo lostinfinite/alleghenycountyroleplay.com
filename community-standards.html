@@ -1,353 +1,1020 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Community Standards - Allegheny County Roleplay</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="stylesheet" href="/assets/site.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --brand: #FFBB00;
-            --brand-900: #d69a00;
-            --bg: #1D1D1D;
-            --surface: #121214;
-            --card: #141417;
-            --text: #fff;
-            --muted: #bdbdbd;
-            --border: rgba(255, 255, 255, 0.08);
-            --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
-        }
-
-        body {
-            font-family:'Inter', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            font-size: 11px;
-            font-weight: 400;
-        }
-
-        a {
-            color: var(--brand);
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        .nav {
-            position: sticky;
-            top: 0;
-            z-index: 50;
-            background: rgba(10, 10, 10, 0.6);
-            backdrop-filter: blur(8px);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .nav-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 12px 20px;
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 600;
-            font-size: 14px;
-        }
-
-        .brand img {
-            width: 32px;
-            height: 32px;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            border-radius: 8px;
-            background: var(--brand);
-            color: #000;
-            font-weight: 600;
-            font-size: 11px;
-            transition: transform 0.18s ease, background 0.18s ease;
-        }
-
-        .btn:hover {
-            transform: translateY(-1px);
-            background: var(--brand-900);
-            text-decoration: none;
-        }
-
-        .hero {
-            padding: 60px 20px 40px;
-            text-align: center;
-            background: radial-gradient(1200px 600px at 50% -10%, rgba(255, 187, 0, 0.06), transparent);
-        }
-
-        .hero-content {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .hero .title {
-            font-size: 26px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, var(--brand) 0%, #FFA500 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .dates {
-            font-size: 11px;
-            color: var(--muted);
-            margin-bottom: 20px;
-        }
-
-        .dates p {
-            margin-bottom: 4px;
-        }
-
-        .content {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        .section {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 32px;
-            margin-bottom: 24px;
-        }
-
-        h1 {
-            font-size: 20px;
-            font-weight: 400;
-            margin-bottom: 16px;
-            color: var(--brand);
-        }
-
-        h2 {
-            font-size: 16px;
-            font-weight: 400;
-            margin: 20px 0 12px;
-            color: var(--text);
-        }
-
-        h3 {
-            font-size: 14px;
-            font-weight: 400;
-            margin: 16px 0 8px;
-            color: var(--text);
-        }
-
-        .section p, .section ul, .section ol, .section li {
-            font-size: 11px;
-            font-weight: 400;
-            line-height: 1.8;
-        }
-
-        .section p {
-            margin-bottom: 16px;
-            color: var(--muted);
-        }
-
-        .section ul, .section ol {
-            margin: 16px 0;
-            padding-left: 24px;
-            color: var(--muted);
-        }
-
-        .section li {
-            margin-bottom: 8px;
-        }
-
-        strong {
-            color: var(--text);
-            font-weight: 600;
-        }
-
-        
-        footer {
-            background: #0d0d0d;
-            color: #ccc;
-            padding: 3rem 1rem;
-        }
-
-        footer .cols {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 2rem;
-            text-align: left;
-        }
-
-        footer h3 {
-            color: var(--brand);
-            margin-bottom: 1rem;
-            font-size: 1.4rem;
-        }
-
-        footer a {
-            color: var(--brand);
-            text-decoration: none;
-        }
-
-        footer .copyright {
-            margin-top: 2rem;
-            border-top: 1px solid #333;
-            padding-top: 1.5rem;
-            text-align: center;
-            font-size: 0.85rem;
-            color: #888;
-        }
-
-        @media (max-width: 768px) {
-            .hero .title {
-                font-size: 22px;
-            }
-
-            .section {
-                padding: 24px;
-            }
-
-            h1 {
-                font-size: 18px;
-            }
-
-            h2 {
-                font-size: 15px;
-            }
-
-            h3 {
-                font-size: 13px;
-            }
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Community Standards &mdash; Allegheny County Roleplay</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/legal-doc.css">
 </head>
 <body>
-    <nav class="simple-localnav" aria-label="local" tabindex="-1" style="--progress:0;">
-        <div class="localnav-inner container">
-            <a href="/" class="brand"><img src="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png" alt="ACRP Logo"><span>Allegheny County Roleplay</span></a>
-            <div class="actions">
-                <a class="btn-outline" href="/">Home</a>
-                <a class="btn" href="https://portal.alleghenycountyroleplay.com">Login</a>
-            </div>
-        </div>
-    </nav>
-                </div>
-            </div>
-        </div>
-        <div class="localnav-overlay-background"></div>
-    </nav>
-    <script src="/assets/sticky-fallback.js" defer></script>
 
-    <section class="hero">
-        <div class="hero-content">
-            <div class="title">Allegheny County Roleplay Community Standards</div>
-            <div class="dates">
-                <p>Last Updated: December 16, 2025</p>
-                <p>Created: December 16, 2025</p>
-                <p>Established: December 16, 2025</p>
-            </div>
+  <nav class="top-nav">
+    <div class="nav-inner">
+      <div class="nav-brand">
+        <img src="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png" alt="ACRP" class="nav-logo">
+        <span class="nav-brand-name">Allegheny County Roleplay</span>
+      </div>
+      <div class="nav-right">
+        <div class="nav-search-wrap">
+          <svg class="nav-search-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M21.172 24l-7.387-7.387c-1.388.874-3.024 1.387-4.785 1.387-4.971 0-9-4.029-9-9s4.029-9 9-9 9 4.029 9 9c0 1.761-.514 3.398-1.387 4.785l7.387 7.387-2.828 2.828zm-12.172-8c3.859 0 7-3.14 7-7s-3.141-7-7-7-7 3.14-7 7 3.141 7 7 7z"/>
+          </svg>
+          <input id="mainSearch" class="nav-search" type="text" placeholder="Search document&hellip;" autocomplete="off">
         </div>
-    </section>
-
-    <div class="content">
-        <div class="section">
-            <h1>Community Standards</h1>
-            <p>By participating in ACRP, you agree to follow:</p>
-            <ul>
-                <li>Our <a href="/terms.html" target="_blank">Terms of Service</a></li>
-                <li>Our <a href="/privacy.html" target="_blank">Privacy Policy</a></li>
-                <li><a href="https://discord.com/terms" target="_blank">Discord Terms of Service</a></li>
-                <li><a href="https://en.help.roblox.com/hc/en-us/articles/203313410-Roblox-Terms-of-Use" target="_blank">Roblox Terms of Use</a></li>
-            </ul>
-            <p>Failure to comply with these may result in removal from the community.</p>
-        </div>
-
-        <div class="section">
-            <h2>Discord Rules</h2>
-            <p>By joining ACRP, you agree to Discord's Terms of Service & Community Guidelines and our server rules. Non-compliance may result in warnings, mutes, or bans depending on severity.</p>
-            <ul>
-                <li><b>Spam and Trolling Prevention:</b> No spamming or trolling.</li>
-                <li><b>Universal Respect:</b> No harassment, hate speech, or derogatory remarks.</li>
-                <li><b>ACRP-Focused Content:</b> Keep discussions related to ACRP.</li>
-                <li><b>No Unauthorized Promotions:</b> No self-promotion or advertising without staff permission.</li>
-                <li><b>Channel Etiquette:</b> Use channels for their intended purposes.</li>
-                <li><b>Drama-Free Environment:</b> Avoid drama; report issues privately.</li>
-                <li><b>Safe Content Only:</b> No NSFW content.</li>
-                <li><b>Following Staff Instructions:</b> Follow staff guidance at all times.</li>
-                <li><b>Considerate Use of Mentions:</b> Use mentions thoughtfully and sparingly.</li>
-                <li><b>We Moderate DMs:</b> DMs are moderated for advertising, NSFW, and TOS violations.</li>
-            </ul>
-            <p>Enjoy your time and help us keep ACRP a welcoming, creative, and respectful community!</p>
-        </div>
-
-        <div class="section">
-            <h2>Roblox / In-Game Rules</h2>
-            <h3>Banned Vehicles</h3>
-            <ul>
-                <li><b>Banned Civilian Vehicles:</b> Strugatti Ettore, Falcon Heritage, Surrey 650S, Takeo Experience, Navara Horizon, Averon R8, Leland LTS5-V Blackwing, Bullhorn Determinator SFP Fury, Bullhorn Prancer Widebody</li>
-                <li><b>Banned Police Vehicles:</b> 2022 Bullhorn Determinator SFP Fury (LE), Bullhorn Prancer Pursuit Widebody, Chevlon Corbeta TZ, 2011 Chevlon Amigo ZL1, Falcon Stallion 350, SWAT Truck</li>
-                <li><b>Banned Fire and EMS Vehicles:</b> Tanker, Heavy Rescue, Special Operations Unit, Medical Bus, Heavy Tanker, FD Mobile Command Center</li>
-                <li><b>Banned DOT Vehicles:</b> Cone Truck, Street Sweeper, Salt Truck</li>
-            </ul>
-            <h3>In-Game Rules</h3>
-            <ul>
-                <li>Management may take action without due process. Appeals are allowed.</li>
-                <li><b>TOS & Banned RPs:</b> Suicide and Bomb RP are strictly prohibited. Kidnap/Hostage RP is allowed (no torture). No inappropriate minor/underage RP. Roblox TOS violations = ban.</li>
-                <li><b>Staff:</b> Follow all staff orders. No running from, impersonating, or killing staff.</li>
-                <li><b>Alt Accounts:</b> Not allowed unless given permission.</li>
-                <li><b>No Intention to Roleplay (NITRP):</b> Messing around = kick/ban.</li>
-                <li><b>Full Killing:</b> Wait for EMS or suspects to leave before respawning.</li>
-                <li><b>RDM/VDM:</b> No random killing or ramming.</li>
-                <li><b>Guns:</b> All banned guns are disabled.</li>
-                <li><b>Driving:</b> Drive realistically; no erratic driving.</li>
-                <li><b>Accidents:</b> Crashes above 30 mph must be roleplayed.</li>
-                <li><b>Cop Baiting & Priority Calls:</b> No cop baiting. Panic button/radio spam is not allowed.</li>
-                <li><b>Cuff & Jail Rush:</b> Roleplay cuffing and transporting suspects.</li>
-                <li><b>Avatars/Uniforms/Liveries:</b> Use only realistic avatars, server uniforms, and custom liveries.</li>
-                <li><b>Protesting:</b> Must have permission, be non-violent, and not about race/politics.</li>
-                <li><b>Groups:</b> 3+ people required for major robberies.</li>
-                <li><b>Permission:</b> Major calls require staff permission.</li>
-                <li><b>Interferences:</b> Only engage in RPs if involved from the start.</li>
-                <li><b>Safe Zones:</b> No major calls at spawn, police/fire/DOT stations, or hospital.</li>
-                <li><b>NLR:</b> New-Life Rule applies after death, hospital, or jail.</li>
-                <li><b>Fear RP:</b> Act as if your life is in danger during Fear RP.</li>
-                <li><b>Animal RP:</b> Prohibited, including K9 RP.</li>
-                <li><b>Priorities:</b> Approval required for major priorities (bank/jewelry robbery, escorts, hostage, high-speed pursuits, protests). See <a href="https://discord.com/channels/1365054426724827267/1365314515180458034" target="_blank">#🔫┃Priority Request</a> and fill out the form.</li>
-            </ul>
-            <p>By following these rules, you help keep ACRP safe, fun, and fair for everyone. Thank you for being part of our community!</p>
-        </div>
+        <a href="/" class="btn-outline">Home</a>
+        <button class="btn-primary" onclick="window.print()">Print / PDF</button>
+      </div>
     </div>
+  </nav>
 
-    <div id="footer-container"></div>
-    <script src="snow.js"></script>
-    <script src="master.js"></script>
+  <div class="page-layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-label">// Navigation</div>
+      <nav class="sidebar-nav" id="sidebarNav">
+        <a class="sidebar-link" data-section="overview" onclick="scrollToSection('overview')">Overview</a>
+        <div class="sidebar-divider"></div>
+        <a class="sidebar-link" data-section="preamble" onclick="scrollToSection('preamble')">Preamble</a>
+        <a class="sidebar-link" data-section="governing" onclick="scrollToSection('governing')">Governing Docs</a>
+        <a class="sidebar-link" data-section="part1" onclick="scrollToSection('part1')">Part I &mdash; Safety</a>
+        <a class="sidebar-link" data-section="part2" onclick="scrollToSection('part2')">Part II &mdash; Respect</a>
+        <a class="sidebar-link" data-section="part3" onclick="scrollToSection('part3')">Part III &mdash; Integrity</a>
+        <a class="sidebar-link" data-section="part4" onclick="scrollToSection('part4')">Part IV &mdash; Accountability</a>
+        <a class="sidebar-link" data-section="part5" onclick="scrollToSection('part5')">Part V &mdash; Content &amp; IP</a>
+        <a class="sidebar-link" data-section="part6" onclick="scrollToSection('part6')">Part VI &mdash; Platform Policies</a>
+        <a class="sidebar-link" data-section="part7" onclick="scrollToSection('part7')">Part VII &mdash; 3rd-Party Relations</a>
+        <a class="sidebar-link" data-section="part8" onclick="scrollToSection('part8')">Part VIII &mdash; Age Requirements</a>
+        <a class="sidebar-link" data-section="part9" onclick="scrollToSection('part9')">Part IX &mdash; Amendments</a>
+        <a class="sidebar-link" data-section="contact" onclick="scrollToSection('contact')">Contact &amp; Reporting</a>
+        <div class="sidebar-divider"></div>
+        <a class="sidebar-link" style="font-size:0.76rem;color:#444e5c;" onclick="window.print()">&#x2191; Print / PDF</a>
+      </nav>
+    </aside>
+
+    <main class="main-content" id="mainContent">
+      <div class="search-banner" id="searchBanner">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M21.172 24l-7.387-7.387c-1.388.874-3.024 1.387-4.785 1.387-4.971 0-9-4.029-9-9s4.029-9 9-9 9 4.029 9 9c0 1.761-.514 3.398-1.387 4.785l7.387 7.387-2.828 2.828zm-12.172-8c3.859 0 7-3.14 7-7s-3.141-7-7-7-7 3.14-7 7 3.141 7 7 7z"/>
+        </svg>
+        <span id="searchBannerText">Showing results for ""</span>
+        <button class="search-clear" onclick="clearSearch()">&#x2715; Clear</button>
+      </div>
+
+      <div class="doc-header" id="section-overview">
+        <div class="doc-eyebrow">// ACRP Legal Document</div>
+        <h1 class="doc-title">Community Standards</h1>
+        <p class="doc-intro">These Community Standards govern the conduct of every individual who participates in ACRP in any capacity, across every platform and system we operate. They are a component of ACRP&rsquo;s broader legal framework and are expressly incorporated into the Terms of Service.</p>
+        <div class="doc-meta">
+          <div class="doc-meta-item"><span>Last Updated: December 16, 2025</span></div>
+          <div class="doc-meta-item"><span>Effective: December 16, 2025</span></div>
+          <div class="doc-meta-item"><span>Established: December 16, 2025</span></div>
+        </div>
+        <div class="doc-actions">
+          <button class="btn-outline" onclick="expandAll()">Expand All</button>
+          <button class="btn-outline" onclick="collapseAll()">Collapse All</button>
+          <button class="btn-primary" onclick="window.print()">Print / PDF</button>
+        </div>
+      </div>
+
+      <!-- Preamble -->
+      <section class="doc-section" id="section-preamble" data-section="preamble">
+        <div class="section-header">
+          <div class="section-num">// 00</div>
+          <h2 class="section-heading">Preamble</h2>
+        </div>
+        <div class="accordion" id="accordion-preamble">
+          <div class="accordion-item" id="accordion-preamble-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('preamble-item1')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">Read Preamble</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>Allegheny County Roleplay (&ldquo;ACRP&rdquo;) is a Pennsylvania LLC operating a structured, serious Emergency Response: Liberty County (&ldquo;ER:LC&rdquo;) roleplay environment. These Community Standards (&ldquo;Standards&rdquo;) govern the conduct of every individual who participates in ACRP in any capacity, across every platform and system we operate, including but not limited to our Discord server, our Roblox private server, the ACRP Portal (portal.alleghenycountyroleplay.com), and any affiliated communication channel or service.</p>
+              <p>These Standards are a component of ACRP&rsquo;s broader legal framework. They are intended to be read alongside, and are expressly incorporated into, ACRP&rsquo;s Terms of Service (&ldquo;Terms&rdquo;). Defined terms used in these Standards that are not separately defined here carry the meanings assigned to them in the Terms. In any conflict between these Standards and the Terms, the Terms control.</p>
+              <p>Participation in ACRP is a privilege, not a right. Access to our community, platforms, and servers may be restricted or revoked at any time, with or without prior notice, in accordance with these Standards, the Terms, or any other governing documentation. No specific number of prior violations is required before permanent enforcement action is taken. No prior warning is guaranteed.</p>
+              <p>These Standards are intended to be read in full. Claiming ignorance of a rule is not a defense against enforcement.</p>
+              <p>If you have a question about whether a specific action is permitted, contact staff before proceeding. We would rather answer a question in advance than take enforcement action after the fact.</p>
+            </div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Governing Documentation -->
+      <section class="doc-section" id="section-governing" data-section="governing">
+        <div class="section-header">
+          <div class="section-num">// 01</div>
+          <h2 class="section-heading">Governing Documentation</h2>
+        </div>
+        <div class="accordion" id="accordion-governing">
+          <div class="accordion-item" id="accordion-governing-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('governing-item1')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">Documents That Bind All Members</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>By participating in ACRP in any capacity, you agree to comply with all of the following. These documents are binding on all members regardless of role or rank. Participation in any part of ACRP constitutes acceptance of each.</p>
+              <ul>
+                <li><strong>ACRP Terms of Service</strong> &mdash; <a href="https://acrp.work/terms" target="_blank" rel="noopener">acrp.work/terms</a></li>
+                <li><strong>ACRP Privacy Policy</strong> &mdash; <a href="https://acrp.work/privacy" target="_blank" rel="noopener">acrp.work/privacy</a></li>
+                <li><strong>ACRP Community Standards</strong> &mdash; this document</li>
+                <li><strong>Discord Terms of Service</strong> &mdash; <a href="https://discord.com/terms" target="_blank" rel="noopener">discord.com/terms</a></li>
+                <li><strong>Discord Community Guidelines</strong> &mdash; <a href="https://discord.com/guidelines" target="_blank" rel="noopener">discord.com/guidelines</a></li>
+                <li><strong>Roblox Terms of Use</strong> &mdash; <a href="https://www.roblox.com/terms" target="_blank" rel="noopener">roblox.com/terms</a></li>
+                <li><strong>Roblox Community Standards</strong> &mdash; <a href="https://www.roblox.com/community-standards" target="_blank" rel="noopener">roblox.com/community-standards</a></li>
+              </ul>
+              <p>Violations of any of the above may result in enforcement action within ACRP, up to and including permanent removal from all platforms and systems we operate. ACRP is not required to wait for a third-party platform to act before taking its own enforcement action. As stated in the Terms, ACRP Staff members may restrict your use of ACRP&rsquo;s Platform, Services, and Servers at any time for any infraction listed in any of the above documents.</p>
+            </div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Part I: Safety -->
+      <section class="doc-section" id="section-part1" data-section="part1">
+        <div class="section-header">
+          <div class="section-num">// Part I</div>
+          <h2 class="section-heading">Safety</h2>
+        </div>
+        <div class="accordion" id="accordion-part1">
+
+          <div class="accordion-item" id="accordion-part1-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('part1-item1')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">1.1 Real-World Emergencies</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>ACRP is a roleplay community. Real-world emergencies are not roleplay, and ACRP&rsquo;s internal reporting tools are not substitutes for emergency services.</p>
+              <p>If you witness or reasonably believe that any individual is in genuine danger due to a mental health crisis, a threat of physical violence, or any other life-threatening situation, you are required to contact real emergency services immediately. Do not wait for an ACRP staff member to respond before calling for help.</p>
+              <p><strong>Required actions:</strong></p>
+              <ul>
+                <li>In the United States: dial <strong>911</strong> for physical emergencies or <strong>988</strong> for mental health crises</li>
+                <li>Outside the United States: contact the appropriate jurisdictional emergency services</li>
+                <li>If the individual is active in ACRP: notify ACRP staff in addition to contacting emergency services</li>
+              </ul>
+              <p>As established in Terms &sect;7b, by using our Services, you accept responsibility for initiating real-world assistance if someone is at risk. Failure to act in a situation where you had reasonable awareness of a genuine emergency may itself result in enforcement action at ACRP&rsquo;s discretion.</p>
+              <p>ACRP will cooperate fully with law enforcement, emergency services, and relevant platform safety teams in any situation involving a credible threat to life, as described in Terms &sect;7c. This cooperation may include disclosure of logs, account identifiers, and other data as permitted by law and our Privacy Policy.</p>
+            </div></div>
+          </div>
+
+          <div class="accordion-item" id="accordion-part1-item2">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('part1-item2')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">1.2 Automated Public Safety Detection</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>As described in Terms &sect;7d, ACRP operates a dedicated high-priority detection layer within its content classification infrastructure. This layer scans for content referencing mass casualties, bomb threats, active shooter situations, or explicit threats to harm named or general groups of individuals. It operates independently of, and with higher priority than, the general content classifier described in Part IV of these Standards.</p>
+              <p>When this layer activates, an escalated internal review workflow is triggered automatically. That workflow may result in the content being preserved, compiled into an evidence dossier, and referred to law enforcement or the National Center for Missing and Exploited Children (NCMEC) following review by designated ACRP staff. No external submission occurs automatically. All referrals are subject to human review prior to transmission.</p>
+            </div></div>
+          </div>
+
+          <div class="accordion-item" id="accordion-part1-item3">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('part1-item3')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">1.3 Absolute Prohibitions</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>The following conduct is prohibited across all ACRP platforms at all times. These prohibitions are not subject to context, intent, or prior relationship between parties. A single violation of any item in this section may result in permanent removal without warning and may result in referral to law enforcement.</p>
+              <ul>
+                <li>Threats of physical harm, violence, or death directed at any individual or group, whether inside or outside of ACRP</li>
+                <li>Sexual content involving minors in any form, including in roleplay contexts</li>
+                <li>Sharing, threatening to share, or soliciting another person&rsquo;s private identifying information without their consent (doxxing)</li>
+                <li>Content that promotes, glorifies, or facilitates self-harm or suicide</li>
+                <li>Bomb threats, mass casualty threats, or any content referencing planned real-world violence</li>
+                <li>Impersonating law enforcement, emergency services, or ACRP staff in a manner intended to deceive</li>
+                <li>Any conduct that triggers a mandatory reporting obligation under applicable law, including content involving child sexual exploitation</li>
+              </ul>
+            </div></div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Part II: Respect -->
+      <section class="doc-section" id="section-part2" data-section="part2">
+        <div class="section-header">
+          <div class="section-num">// Part II</div>
+          <h2 class="section-heading">Respect</h2>
+        </div>
+        <div class="accordion" id="accordion-part2">
+
+          <div class="accordion-item" id="accordion-part2-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('part2-item1')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">2.1 Harassment and Discrimination</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>ACRP prohibits harassment, targeted bullying, hate speech, and discrimination in any form. This applies to conduct or content directed at any individual or group on the basis of:</p>
+              <ul>
+                <li>Race, ethnicity, or national origin</li>
+                <li>Gender, gender identity, or gender expression</li>
+                <li>Sexual orientation</li>
+                <li>Religion or belief system</li>
+                <li>Disability status, including physical, cognitive, or mental health conditions</li>
+                <li>Age</li>
+                <li>Any other characteristic protected under applicable law</li>
+              </ul>
+              <p><strong>Harassment</strong> is defined as repeated or sustained conduct directed at a specific individual or group with the intent or effect of distressing, demeaning, intimidating, or excluding them. A single severe incident may also constitute harassment depending on its nature and context. ACRP staff will evaluate each situation using the totality of the circumstances.</p>
+              <p>Discriminatory content, slurs, and hate speech are prohibited regardless of whether they are directed at a specific individual. Using a slur in any context, including ironically or as part of a joke, is a violation of these Standards.</p>
+              <p>This section is consistent with and supplements the UGC prohibitions in Terms &sect;8, which independently prohibit hate speech, racism, harassment, and threats across all ACRP Services.</p>
+            </div></div>
+          </div>
+
+          <div class="accordion-item" id="accordion-part2-item2">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('part2-item2')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">2.2 Discord Conduct</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>The following conduct standards apply to all members in ACRP&rsquo;s Discord server at all times.</p>
+              <p><strong>General conduct:</strong></p>
+              <ul>
+                <li>Keep all content and conversation relevant to ACRP and appropriate to the channel in which it is posted</li>
+                <li>Do not spam, mass-ping, or otherwise deliberately disrupt channels or conversations</li>
+                <li>Do not post NSFW content of any kind in any channel</li>
+                <li>Do not self-promote, advertise other communities, or recruit members for external projects without explicit prior written approval from ACRP management</li>
+                <li>Follow all staff instructions promptly. If you believe a staff instruction was incorrect, use the appeals process described in Part IV. Do not argue with or ignore staff in active channels.</li>
+              </ul>
+              <p><strong>Channel usage:</strong></p>
+              <p>Each channel in the ACRP Discord server exists for a specific purpose. Use channels for their intended purpose. Off-topic posting, cross-posting the same content across multiple channels, and using channels to circumvent or evade moderation actions are all violations of these Standards.</p>
+              <p><strong>Direct Messages:</strong></p>
+              <p>ACRP moderates direct messages where violations are reported by recipients. As stated in the Terms, sending unsolicited advertising, NSFW content, or content that violates our Terms of Service to another ACRP member through direct message is a violation of these Standards and may result in enforcement action.</p>
+              <p><strong>Mentions and notifications:</strong></p>
+              <p>Use @mentions thoughtfully and sparingly. Mass-pinging, pinging staff without cause, and abusing role mentions are prohibited.</p>
+            </div></div>
+          </div>
+
+          <div class="accordion-item" id="accordion-part2-item3">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('part2-item3')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">2.3 Interpersonal Conflict</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>Interpersonal disputes between members are to be handled through staff, not in public channels. If you have a conflict with another member, bring it to a staff member through private message or the appropriate support channel.</p>
+              <p>The following are not acceptable responses to interpersonal conflict and will themselves result in enforcement action:</p>
+              <ul>
+                <li>Posting callouts, accusations, or complaints about another member in public channels</li>
+                <li>Recruiting other members to target, mock, or pressure a specific individual</li>
+                <li>Threatening to leak, expose, or publish private information about another member</li>
+                <li>Continuing a dispute in public after being directed by staff to take it private</li>
+              </ul>
+              <p>ACRP reserves the right to take enforcement action against all parties involved in a public dispute, regardless of which party initiated it.</p>
+            </div></div>
+          </div>
+
+          <div class="accordion-item" id="accordion-part2-item4">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('part2-item4')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">2.4 Staff Relations</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>ACRP staff exercise authority on behalf of the organization. Members are expected to follow staff instructions during active moderation situations. The appropriate channel for disagreeing with a staff decision is the formal appeals process, not public argument, confrontation, or coordinated pressure.</p>
+              <p>The following are prohibited:</p>
+              <ul>
+                <li>Arguing with, ignoring, or deliberately circumventing staff instructions</li>
+                <li>Publicly accusing staff of bias, misconduct, or bad faith without going through the formal complaint process</li>
+                <li>Threatening staff members personally, including threats to report them to external platforms or authorities without a legitimate factual basis</li>
+                <li>Attempting to coordinate other members against a specific staff member</li>
+              </ul>
+              <p>Complaints about staff conduct may be submitted to management at <a href="mailto:ownership@acrp.work">ownership@acrp.work</a>. Complaints submitted in good faith will be reviewed. Frivolous or retaliatory complaints may themselves result in enforcement action.</p>
+            </div></div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Part III: Integrity -->
+      <section class="doc-section" id="section-part3" data-section="part3">
+        <div class="section-header">
+          <div class="section-num">// Part III</div>
+          <h2 class="section-heading">Integrity</h2>
+        </div>
+        <div class="accordion" id="accordion-part3">
+
+          <div class="accordion-item" id="accordion-part3-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('part3-item1')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">3.1 General In-Game Policy</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>The following rules apply to all participants in the ACRP ER:LC private server at all times, regardless of department, rank, or experience level.</p>
+              <p><strong>3.1.1 Staff Authority</strong></p>
+              <p>Staff decisions are final during active server sessions. All participants are expected to comply with staff instructions immediately. Disputes with a staff decision are resolved through the appeals process described in Part IV, not by challenging or ignoring staff in-server.</p>
+              <p>Management may take enforcement action at any time, including without following progressive discipline procedures, where the circumstances require it. The existence of an appeals process does not limit management&rsquo;s authority to act immediately.</p>
+              <p><strong>3.1.2 Alt Accounts</strong></p>
+              <p>Alt accounts are prohibited. Participating in the ACRP server under any account other than your registered account requires explicit prior written approval from ACRP management. Using an alternate account to bypass any enforcement action, including a ban, restriction, or warning record, is a separate and independent violation that will result in permanent removal of all associated accounts. This is consistent with Terms &sect;11c, which prohibits circumvention of any restriction through alternate accounts, proxies, or affiliated individuals.</p>
+              <p><strong>3.1.3 No Intention to Roleplay (NITRP)</strong></p>
+              <p>Joining the server to grief, troll, or disrupt without engaging in good-faith roleplay will result in removal. NITRP includes but is not limited to: random vehicle ramming, unprovoked attacks on other players, deliberately derailing active scenarios, and joining the server solely to obstruct or harass other participants.</p>
+              <p><strong>3.1.4 Cheating and Exploits</strong></p>
+              <p>Using any exploit, bug, script, or unauthorized modification to gain an unfair advantage is prohibited. This includes but is not limited to speed exploits, noclip, unauthorized teleportation, and any modification to server behavior not authorized by ACRP. Discovery of an exploit must be reported to staff. Exploiting a known bug rather than reporting it is itself a violation.</p>
+              <p><strong>3.1.5 Weapons</strong></p>
+              <p>All banned weapons are disabled server-side. Attempting to access, equip, or use a banned weapon through any means, including exploits or unauthorized third-party tools, is prohibited.</p>
+            </div></div>
+          </div>
+
+          <div class="accordion-item" id="accordion-part3-item2">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('part3-item2')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">3.2 Roleplay Standards</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p><strong>3.2.1 Random Deathmatch (RDM) and Vehicle Deathmatch (VDM)</strong></p>
+              <p>Killing or seriously injuring another player without a valid, established roleplay reason is RDM and is prohibited. Ramming another vehicle without a valid roleplay reason is VDM and is prohibited. Claiming an indirect or tenuous roleplay justification does not excuse RDM or VDM. Both are enforced strictly.</p>
+              <p><strong>3.2.2 New Life Rule (NLR)</strong></p>
+              <p>After dying, being hospitalized, or being released from jail, your character has no memory of the events that led to that outcome. You may not:</p>
+              <ul>
+                <li>Return to the scene of your character&rsquo;s death during the same scenario</li>
+                <li>Continue pursuing the same individuals who caused your character&rsquo;s death</li>
+                <li>Use information your character obtained before death to influence your actions after respawning</li>
+              </ul>
+              <p>NLR applies until the active scenario has fully concluded or until staff explicitly releases you from it.</p>
+              <p><strong>3.2.3 Fear RP</strong></p>
+              <p>Fear RP is the requirement to act as if your character&rsquo;s life has genuine value. If your character is outnumbered, restrained, or has a weapon aimed at them, you must act in accordance with that situation. Ignoring an active threat to your character&rsquo;s life, attempting to flee when restrained, or acting invulnerable to danger are Fear RP violations.</p>
+              <p><strong>3.2.4 Full Killing</strong></p>
+              <p>After your character is downed, do not respawn until one of the following conditions is met:</p>
+              <ul>
+                <li>EMS personnel have responded and completed their roleplay at your location</li>
+                <li>All suspects involved in the scenario have left the immediate area</li>
+                <li>Staff have explicitly authorized an early respawn</li>
+              </ul>
+              <p>Respawning prematurely disrupts EMS roleplay and active scenarios and is a violation of these Standards.</p>
+              <p><strong>3.2.5 Driving and Accidents</strong></p>
+              <p>All participants are expected to drive realistically and in accordance with traffic patterns appropriate to the server environment. The following are prohibited:</p>
+              <ul>
+                <li>Driving at excessive speeds through populated areas without a valid scenario reason</li>
+                <li>Using a vehicle as a weapon outside of an authorized scenario</li>
+                <li>Ignoring traffic signals, lane markers, or road conditions in a clearly non-realistic manner</li>
+              </ul>
+              <p>Any collision at or above 30 mph must be roleplayed. This includes remaining at the scene, calling EMS if applicable, and engaging with responding units. Leaving the scene of a significant collision without roleplaying it is a violation.</p>
+              <p><strong>3.2.6 Cop Baiting</strong></p>
+              <p>Deliberately provoking law enforcement into initiating a pursuit or response without a legitimate roleplay basis is prohibited. This includes driving erratically near patrol units, committing minor violations solely to attract attention, and intentionally creating situations designed to generate law enforcement responses without a valid story reason.</p>
+              <p><strong>3.2.7 Panic Button and Radio Abuse</strong></p>
+              <p>Abusing the panic button, spamming radio channels, or using emergency communications systems for non-emergency purposes is prohibited. Radio communications must be used in good faith and in accordance with realistic radio protocols for your department or role.</p>
+              <p><strong>3.2.8 Cuffing and Transport</strong></p>
+              <p>Arrests must be fully roleplayed. Rush cuffing, skipping the verbal interaction phase of an arrest, and transporting a suspect without engaging in appropriate roleplay are prohibited. Law enforcement and EMS are expected to coordinate in accordance with realistic protocols.</p>
+              <p><strong>3.2.9 Safe Zones</strong></p>
+              <p>The following locations are designated safe zones. No hostile action, active pursuit, or major criminal scenario may originate at or within these locations:</p>
+              <ul>
+                <li>Spawn areas</li>
+                <li>Police stations and substations</li>
+                <li>Fire stations</li>
+                <li>DOT stations and depots</li>
+                <li>The hospital and surrounding property</li>
+              </ul>
+              <p>Engaging in hostile action within a safe zone, or deliberately using a safe zone to avoid the consequences of an ongoing scenario, is prohibited.</p>
+              <p><strong>3.2.10 Interferences</strong></p>
+              <p>Only engage in an active scenario if you were involved from its beginning. Inserting yourself into an ongoing pursuit, shooting, negotiation, or medical call that you were not a part of is interference and is prohibited. If you arrive at a scene and are uncertain whether you should be involved, wait for staff or the scenario participants to direct you.</p>
+              <p><strong>3.2.11 Priorities and Major Scenarios</strong></p>
+              <p>Major priority scenarios require prior staff approval before initiation. This includes:</p>
+              <ul>
+                <li>Bank and jewelry store robberies</li>
+                <li>Hostage situations</li>
+                <li>High-speed pursuits initiated by players</li>
+                <li>Organized escort scenarios</li>
+                <li>Organized protests</li>
+              </ul>
+              <p>All major priority requests must be submitted through the designated Priority Request channel and require a completed request form before approval will be granted. Initiating a major priority without approval may result in the scenario being terminated and enforcement action taken against the initiating parties. Major criminal scenarios require a minimum of three participants to initiate.</p>
+              <p><strong>3.2.12 Protesting</strong></p>
+              <p>Protest roleplay is permitted only under the following conditions:</p>
+              <ul>
+                <li>Prior written approval from ACRP staff has been obtained before the protest begins</li>
+                <li>The protest remains non-violent throughout</li>
+                <li>The protest does not involve racial, political, or divisive real-world themes</li>
+              </ul>
+              <p>Protests that do not meet all three conditions will be terminated by staff. Participants who initiated or continued an unapproved protest may face enforcement action.</p>
+            </div></div>
+          </div>
+
+          <div class="accordion-item" id="accordion-part3-item3">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('part3-item3')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">3.3 Prohibited Roleplay Scenarios</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>The following roleplay scenarios are prohibited regardless of context, participant consent, or claimed story justification. These restrictions apply even where all participants agree and even where the scenario occurs in a private or limited channel.</p>
+              <ul>
+                <li><strong>Suicide RP:</strong> Any roleplay scenario that depicts, simulates, or glorifies suicide or self-harm in any form</li>
+                <li><strong>Bomb RP:</strong> Any roleplay scenario involving bomb threats, explosive devices, or mass casualty events, unless explicitly approved in advance by ACRP management as a structured server event</li>
+                <li><strong>Torture RP:</strong> Kidnap and hostage scenarios are permitted within the Priority rules, but torture is prohibited in all forms</li>
+                <li><strong>Minor RP:</strong> Any roleplay that sexualizes, inappropriately depicts, or targets minors, consistent with Terms &sect;1 and the absolute prohibitions in Part I of these Standards</li>
+                <li><strong>Roblox ToS Violations:</strong> Any scenario that violates Roblox&rsquo;s Terms of Use, Community Standards, or platform policies</li>
+              </ul>
+            </div></div>
+          </div>
+
+          <div class="accordion-item" id="accordion-part3-item4">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('part3-item4')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">3.4 Avatars, Uniforms, and Liveries</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p><strong>Avatars:</strong> All participants must use realistic avatars appropriate for their in-server role. Civilian avatars must be plausible and appropriate in appearance. Fantasy, abstract, or clearly non-human avatars are not permitted.</p>
+              <p><strong>Uniforms:</strong> Department members are required to wear approved department uniforms while operating in their department&rsquo;s capacity. Wearing a department uniform without active membership in that department is prohibited.</p>
+              <p><strong>Liveries:</strong> Only ACRP-approved custom liveries may be used on department vehicles. Unapproved modifications to vehicle appearance are not permitted. Civilians may use standard vehicle appearances and approved civilian liveries only.</p>
+            </div></div>
+          </div>
+
+          <div class="accordion-item" id="accordion-part3-item5">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('part3-item5')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">3.5 Banned Vehicles</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>The following vehicles are not permitted in the ACRP server. Using a banned vehicle may result in an immediate kick from the server. Repeated violations will result in escalating enforcement action.</p>
+              <p><strong>Banned Civilian Vehicles:</strong></p>
+              <ul>
+                <li>Strugatti Ettore</li>
+                <li>Falcon Heritage</li>
+                <li>Surrey 650S</li>
+                <li>Takeo Experience</li>
+                <li>Navara Horizon</li>
+                <li>Averon R8</li>
+                <li>Leland LTS5-V Blackwing</li>
+                <li>Bullhorn Determinator SFP Fury</li>
+                <li>Bullhorn Prancer Widebody</li>
+              </ul>
+              <p><strong>Banned Law Enforcement Vehicles:</strong></p>
+              <ul>
+                <li>2022 Bullhorn Determinator SFP Fury (LE)</li>
+                <li>Bullhorn Prancer Pursuit Widebody</li>
+                <li>Chevlon Corbeta TZ</li>
+                <li>2011 Chevlon Amigo ZL1</li>
+                <li>Falcon Stallion 350</li>
+                <li>SWAT Truck</li>
+              </ul>
+              <p><strong>Banned Fire and EMS Vehicles:</strong></p>
+              <ul>
+                <li>Tanker</li>
+                <li>Heavy Rescue</li>
+                <li>Special Operations Unit</li>
+                <li>Medical Bus</li>
+                <li>Heavy Tanker</li>
+                <li>FD Mobile Command Center</li>
+              </ul>
+              <p><strong>Banned DOT Vehicles:</strong></p>
+              <ul>
+                <li>Cone Truck</li>
+                <li>Street Sweeper</li>
+                <li>Salt Truck</li>
+              </ul>
+            </div></div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Part IV: Accountability -->
+      <section class="doc-section" id="section-part4" data-section="part4">
+        <div class="section-header">
+          <div class="section-num">// Part IV</div>
+          <h2 class="section-heading">Accountability</h2>
+        </div>
+        <div class="accordion" id="accordion-part4">
+
+          <div class="accordion-item" id="accordion-part4-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('part4-item1')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">4.1 Enforcement Authority</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>ACRP staff and management are authorized to take enforcement action against any member at any time for any violation of these Standards, the Terms, or any other governing documentation. Enforcement action does not require a minimum number of prior violations. Staff may act without following a progressive discipline sequence where the circumstances require it, including but not limited to:</p>
+              <ul>
+                <li>Safety violations under Part I of these Standards</li>
+                <li>Violations of Terms &sect;7 (Emergencies) or Terms &sect;11 (Blacklisting and Cease and Desist Authority)</li>
+                <li>Ban, restriction, or account evasion of any kind</li>
+                <li>Severe or egregious single-incident misconduct</li>
+                <li>Conduct that poses a credible threat to the community, staff, or the integrity of ACRP&rsquo;s systems</li>
+              </ul>
+              <p>Management retains full authority to act in any situation, at any time, where management determines immediate action is necessary. As stated in Terms &sect;1, ACRP Staff members may restrict your use of ACRP&rsquo;s Platform, Services, and Servers at any time.</p>
+            </div></div>
+          </div>
+
+          <div class="accordion-item" id="accordion-part4-item2">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('part4-item2')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">4.2 Enforcement Actions</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>The following enforcement actions are available to ACRP staff and management. This list is not exhaustive. Actions may be applied individually or in combination, and may escalate or de-escalate based on a member&rsquo;s history and the circumstances of each violation. ACRP does not guarantee that enforcement will follow any particular sequence.</p>
+              <table style="width:100%;border-collapse:collapse;font-size:0.9em;">
+                <thead>
+                  <tr style="border-bottom:1px solid #2a3240;">
+                    <th style="text-align:left;padding:8px 12px;color:#8b949e;font-weight:600;font-family:'Share Tech Mono',monospace;">Action</th>
+                    <th style="text-align:left;padding:8px 12px;color:#8b949e;font-weight:600;font-family:'Share Tech Mono',monospace;">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="border-bottom:1px solid #1c2230;"><td style="padding:8px 12px;color:#c9d1d9;">Verbal Warning</td><td style="padding:8px 12px;color:#8b949e;">An informal correction issued during an active session. Not formally logged.</td></tr>
+                  <tr style="border-bottom:1px solid #1c2230;"><td style="padding:8px 12px;color:#c9d1d9;">Formal Warning</td><td style="padding:8px 12px;color:#8b949e;">A logged warning applied to the member&rsquo;s account record. Formal warnings accumulate and inform future enforcement decisions.</td></tr>
+                  <tr style="border-bottom:1px solid #1c2230;"><td style="padding:8px 12px;color:#c9d1d9;">Temporary Mute</td><td style="padding:8px 12px;color:#8b949e;">Restriction of a member&rsquo;s ability to send messages in Discord channels for a specified duration.</td></tr>
+                  <tr style="border-bottom:1px solid #1c2230;"><td style="padding:8px 12px;color:#c9d1d9;">Server Kick</td><td style="padding:8px 12px;color:#8b949e;">Removal from the Roblox private server for the current session. Does not affect Discord access unless separately actioned.</td></tr>
+                  <tr style="border-bottom:1px solid #1c2230;"><td style="padding:8px 12px;color:#c9d1d9;">Temporary Suspension</td><td style="padding:8px 12px;color:#8b949e;">Temporary removal from the Discord server, Roblox server, or both, for a defined period.</td></tr>
+                  <tr style="border-bottom:1px solid #1c2230;"><td style="padding:8px 12px;color:#c9d1d9;">Permanent Ban</td><td style="padding:8px 12px;color:#8b949e;">Permanent removal from all ACRP platforms, systems, and affiliated networks.</td></tr>
+                  <tr style="border-bottom:1px solid #1c2230;"><td style="padding:8px 12px;color:#c9d1d9;">Blacklisting</td><td style="padding:8px 12px;color:#8b949e;">Applied to external servers, communities, or operators under Terms &sect;11a. Denies access to all ACRP-operated infrastructure, partnerships, and community resources.</td></tr>
+                  <tr><td style="padding:8px 12px;color:#c9d1d9;">Cease and Desist</td><td style="padding:8px 12px;color:#8b949e;">Issued under Terms &sect;11b. Upon issuance, the recipient is immediately and automatically restricted from all ACRP Services, Platforms, and Servers for the duration specified, or permanently if no duration is stated.</td></tr>
+                </tbody>
+              </table>
+              <p style="margin-top:1em;">A first-time violation may result in a permanent ban if the circumstances warrant it. No prior warning is guaranteed.</p>
+            </div></div>
+          </div>
+
+          <div class="accordion-item" id="accordion-part4-item3">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('part4-item3')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">4.3 Automated Moderation</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>As described in Terms &sect;8a, ACRP operates an automated content classification system that monitors messages in designated Discord channels in real time. This system runs entirely on ACRP&rsquo;s own infrastructure. No message content is transmitted to any third-party AI provider for classification.</p>
+              <p>The classifier evaluates each message across eight content categories:</p>
+              <ol>
+                <li>Self-harm</li>
+                <li>Directed harm</li>
+                <li>Hate speech</li>
+                <li>Harassment</li>
+                <li>Sexual content</li>
+                <li>Drugs</li>
+                <li>Weapons</li>
+                <li>Violence</li>
+              </ol>
+              <p>The system uses a combination of a machine-learning model and a deterministic rule engine. The rule engine executes first and applies fixed enforcement responses for the most severe content patterns regardless of threshold configuration. The system also applies normalization techniques, including leetspeak detection, homoglyph detection, and phonetic substitution analysis, to prevent evasion attempts.</p>
+              <p>When a violation is detected, the message is removed and an automated Formal Warning is issued to the account. A notice is posted in the relevant channel for 15 seconds and includes citations to the applicable Terms and Standards sections, links to all relevant legal documents, and a direct link to the appeals portal. The affected member also receives a private message with full enforcement details. All automated actions may be appealed through the Portal.</p>
+              <p>Automated content moderation is also disclosed in the <code>/info</code> command footer in the ACRP Discord server, which references Terms &sect;8a and Privacy Policy &sect;4.</p>
+            </div></div>
+          </div>
+
+          <div class="accordion-item" id="accordion-part4-item4">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('part4-item4')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">4.4 Age Verification and Access Control</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>As described in Terms &sect;10, ACRP requires age verification and age assurance checks as a condition of access to and continued use of our Services. Members must be at least 13 years old to access or use ACRP Services.</p>
+              <p>Verification measures include screening forms, AI-based facial age estimation and liveness checks performed by our verification provider Didit.me acting as a data processor, and behavioral and message-based age assurance signals. Completion of required verification is mandatory. Refusal or failure to complete verification will result in denied or removed access.</p>
+              <p>Accounts that fail verification, trigger underage risk signals, submit false information, or attempt to bypass verification controls are subject to suspension, removal, or permanent ban under Terms &sect;10b. Attempting to bypass Age Proofpoint verification through any means is a serious violation of both these Standards and the Terms.</p>
+            </div></div>
+          </div>
+
+          <div class="accordion-item" id="accordion-part4-item5">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('part4-item5')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">4.5 Reputation-Based Access</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>As established in Terms &sect;11e, ACRP reserves the right to deny or revoke access to any individual based on their reputation or conduct within the broader ER:LC community, the Roblox platform, or any public-facing social media space, regardless of whether that conduct occurred within ACRP&rsquo;s own systems.</p>
+              <p>Factors ACRP may consider include a pattern of harmful, deceptive, or bad-faith conduct in other communities; public statements or behavior incompatible with ACRP&rsquo;s values; and association with servers, individuals, or organizations that ACRP has blacklisted or issued cease and desist notices to. ACRP is not required to disclose the specific basis for a reputation-based access decision.</p>
+              <p>ACRP reserves the right to conduct its own due diligence, including reviewing publicly available social media profiles, community records, and third-party reports, when evaluating whether to admit or retain a member. Access denials under this section are final and are excluded from the standard appeals process described in &sect;4.6 below.</p>
+            </div></div>
+          </div>
+
+          <div class="accordion-item" id="accordion-part4-item6">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('part4-item6')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">4.6 Appeals</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>Members who believe an enforcement action was applied in error may submit a formal appeal through the ACRP Portal at <a href="https://portal.alleghenycountyroleplay.com" target="_blank" rel="noopener">portal.alleghenycountyroleplay.com</a>.</p>
+              <p><strong>Appeals process:</strong></p>
+              <ol>
+                <li>Submit your appeal through the Portal within <strong>30 days</strong> of the enforcement action</li>
+                <li>Include a clear description of the action taken, why you believe it was applied in error, and any supporting information</li>
+                <li>Your appeal will be reviewed by staff who were not involved in the original enforcement decision</li>
+                <li>You will receive a written determination within 30 days of submission</li>
+              </ol>
+              <p><strong>Limitations:</strong></p>
+              <ul>
+                <li>Submitting an appeal does not suspend or pause the enforcement action during review</li>
+                <li>Appeals are not available for decisions made under Terms &sect;11, including blacklisting decisions, cease and desist actions, and reputation-based access denials under Terms &sect;11e, unless ACRP expressly agrees in writing to reconsider</li>
+                <li>Frivolous or bad-faith appeals may result in restriction of your ability to submit further appeals</li>
+                <li>Staff members involved in the original enforcement decision are excluded from the appeals review process</li>
+              </ul>
+            </div></div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Part V: Content and IP -->
+      <section class="doc-section" id="section-part5" data-section="part5">
+        <div class="section-header">
+          <div class="section-num">// Part V</div>
+          <h2 class="section-heading">Content and Intellectual Property</h2>
+        </div>
+        <div class="accordion" id="accordion-part5">
+
+          <div class="accordion-item" id="accordion-part5-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('part5-item1')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">5.1 User-Generated Content</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>All content created, submitted, shared, or published through any ACRP platform or server is subject to the UGC rules in Terms &sect;8 and &sect;9b. Members are responsible for ensuring that any content they contribute complies with these Standards, the Terms, and all applicable laws. By publishing UGC to any ACRP Service, you agree to the license terms described in Terms &sect;8 and &sect;9b, including a royalty-free, non-exclusive, irrevocable, perpetual, and sublicensable license to ACRP to use, host, publish, archive, modify, and distribute that content for purposes related to the operation, safety, improvement, and promotion of ACRP&rsquo;s services, including in connection with the training of machine learning and related models.</p>
+              <p>Content is prohibited if it:</p>
+              <ul>
+                <li>Includes or promotes hate speech, racism, harassment, threats, sexual content, or any form of illegal activity</li>
+                <li>Violates any intellectual property right, including unauthorized use of copyrighted or trademarked material</li>
+                <li>Contains malware, exploits, unauthorized automation scripts, or links to harmful external content</li>
+                <li>Shares private or identifying information about another person without their explicit consent</li>
+                <li>Is spam, deceptive, or commercially promotional without prior written approval from ACRP management</li>
+                <li>Misrepresents your identity or impersonates another member, staff member, or external individual</li>
+                <li>Attempts to circumvent any ban, moderation action, or automated enforcement system</li>
+              </ul>
+              <p>You represent and warrant that you own or control all rights in any content you submit, and that the content is accurate and not fraudulent or deceptive. Allegheny County Roleplay takes no responsibility and assumes no liability for any UGC published by you or any third party.</p>
+            </div></div>
+          </div>
+
+          <div class="accordion-item" id="accordion-part5-item2">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('part5-item2')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">5.2 ACRP Intellectual Property</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>As described in Terms &sect;9a, ACRP&rsquo;s interfaces, graphics, logos, websites, domain names, icons, bots, bot logos, bot names, product names, data, code, artwork, products, software, and all related materials (&ldquo;ACRP IP&rdquo;) are protected by law and the Terms. All ACRP IP is the property of ACRP and ACRP&rsquo;s licensors.</p>
+              <p>You may not reproduce, distribute, or publicly display ACRP IP without prior written authorization from ACRP. Unauthorized use of ACRP&rsquo;s name, branding, or intellectual property may result in a formal cease and desist notice under Terms &sect;11b, with the associated automatic service restriction under Terms &sect;11c.</p>
+            </div></div>
+          </div>
+
+          <div class="accordion-item" id="accordion-part5-item3">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('part5-item3')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">5.3 DMCA and Copyright</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>ACRP complies with the Digital Millennium Copyright Act as described in Terms &sect;9c. ACRP is only responsible for responding to valid DMCA claims where the allegedly infringing material is hosted directly on ACRP-operated infrastructure. ACRP bears no responsibility for content hosted externally, including on Roblox, Discord, or any other third-party platform, even if that content is referenced or linked through ACRP&rsquo;s Services, consistent with Terms &sect;6c.</p>
+              <p>DMCA notices and counter-notices may be submitted to <a href="mailto:legal@acrp.work">legal@acrp.work</a>. See Terms &sect;9c for full submission requirements.</p>
+            </div></div>
+          </div>
+
+          <div class="accordion-item" id="accordion-part5-item4">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('part5-item4')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">5.4 Promotion and Advertising</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>Promoting external communities, servers, or services within ACRP&rsquo;s platforms without prior written approval from management is prohibited. This applies to direct promotion, indirect promotion through links or references, and recruitment of ACRP members for external projects. Approved promotional arrangements must be agreed to in writing before any promotional content is posted. ACRP reserves the right to revoke promotional arrangements at any time, for any reason, without prior notice.</p>
+            </div></div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Part VI: Platform-Specific Policies -->
+      <section class="doc-section" id="section-part6" data-section="part6">
+        <div class="section-header">
+          <div class="section-num">// Part VI</div>
+          <h2 class="section-heading">Platform-Specific Policies</h2>
+        </div>
+        <div class="accordion" id="accordion-part6">
+
+          <div class="accordion-item" id="accordion-part6-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('part6-item1')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">6.1 Discord</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>ACRP&rsquo;s Discord server is our primary community communication platform. In addition to the conduct standards in Part II, the following platform-specific policies apply.</p>
+              <p><strong>Bots and automation:</strong> ACRP&rsquo;s Discord bots are official tools. Attempting to exploit, abuse, or manipulate bot functionality is a violation of these Standards. Bot commands must be used in their designated channels and for their intended purposes only.</p>
+              <p><strong>Roles and verification:</strong> Role assignment is managed through ACRP&rsquo;s verification and staffing systems. Attempting to obtain a role through unauthorized means, including social engineering of staff or exploitation of verification systems, is prohibited.</p>
+              <p><strong>Server boosting:</strong> Server boosting is appreciated but confers no exception to these Standards or the Terms.</p>
+            </div></div>
+          </div>
+
+          <div class="accordion-item" id="accordion-part6-item2">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('part6-item2')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">6.2 Roblox</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>ACRP&rsquo;s private server operates within Roblox&rsquo;s platform environment. All Roblox platform policies, including the Terms of Use and Community Standards, apply in addition to ACRP&rsquo;s own rules. Where ACRP&rsquo;s rules and Roblox&rsquo;s platform policies conflict, the more restrictive rule applies.</p>
+              <p>ACRP is not affiliated with, endorsed by, or sponsored by Roblox Corporation, consistent with Terms &sect;2c. Roblox account actions taken by Roblox Corporation do not automatically result in ACRP enforcement action, and ACRP enforcement actions do not automatically affect a member&rsquo;s standing on the Roblox platform.</p>
+            </div></div>
+          </div>
+
+          <div class="accordion-item" id="accordion-part6-item3">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('part6-item3')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">6.3 ACRP Portal</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>The ACRP Portal at <a href="https://portal.alleghenycountyroleplay.com" target="_blank" rel="noopener">portal.alleghenycountyroleplay.com</a> is ACRP&rsquo;s official member management platform. Portal access is tied to your ACRP account and subject to all applicable Terms provisions.</p>
+              <p>Attempting to access Portal features or data beyond your assigned permission tier, exploiting Portal vulnerabilities, or submitting false information through Portal forms are violations of these Standards and may result in immediate enforcement action. The Portal&rsquo;s permission tier system governs what actions each member class may take within the system. Acting beyond your assigned tier, or attempting to escalate your own permissions by any means, is prohibited.</p>
+            </div></div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Part VII: Third-Party Platform Relations -->
+      <section class="doc-section" id="section-part7" data-section="part7">
+        <div class="section-header">
+          <div class="section-num">// Part VII</div>
+          <h2 class="section-heading">Third-Party Platform Relations</h2>
+        </div>
+        <div class="accordion" id="accordion-part7">
+
+          <div class="accordion-item" id="accordion-part7-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('part7-item1')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">7.1 External ER:LC Servers</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>As established in Terms &sect;11a, ACRP reserves the right to blacklist any external ER:LC server, community, or associated operator from our Services, Platforms, and affiliated networks at any time, for any reason, at our sole discretion. Blacklisted servers and their operators may be denied access to all ACRP-operated infrastructure, partnerships, integrations, and community resources without prior notice, explanation, or appeal.</p>
+              <p>Members of ACRP who are also affiliated with a blacklisted server or operator are subject to review under Terms &sect;11e. Association with a blacklisted entity is a factor ACRP may consider when evaluating a member&rsquo;s continued access.</p>
+            </div></div>
+          </div>
+
+          <div class="accordion-item" id="accordion-part7-item2">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('part7-item2')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">7.2 Cease and Desist</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>As established in Terms &sect;11b, ACRP reserves the right to issue formal cease and desist notices to any individual, server, organization, or entity for conduct including but not limited to: infringement of ACRP&rsquo;s intellectual property; misrepresentation of affiliation with ACRP; conduct detrimental to ACRP&rsquo;s operations or reputation; conduct that reflects negatively on the ER:LC community or ACRP&rsquo;s standing within it; or any conduct that ACRP has a legal, organizational, or community-based basis to address.</p>
+              <p>Upon issuance of a cease and desist notice, the recipient is immediately and automatically restricted from all ACRP Services, Platforms, and Servers for the duration specified in the notice. If no duration is stated, the restriction is permanent. This restriction takes effect upon issuance, not upon acknowledgment by the recipient.</p>
+              <p>ACRP is not obligated to provide a reason for any cease and desist action and may characterize the basis as &ldquo;Miscellaneous&rdquo; where ACRP determines that disclosure is not warranted. Such characterization does not affect the validity or enforceability of the notice or the associated restriction. See Terms &sect;11d.</p>
+            </div></div>
+          </div>
+
+          <div class="accordion-item" id="accordion-part7-item3">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('part7-item3')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">7.3 No Affiliation</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>ACRP is not affiliated with, endorsed by, or sponsored by Discord, Inc. or Roblox Corporation. Use of those platforms is governed by their respective terms. ACRP disclaims any liability arising from those platforms&rsquo; functionality, policies, or enforcement decisions. See Terms &sect;2c.</p>
+            </div></div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Part VIII: Age Requirements -->
+      <section class="doc-section" id="section-part8" data-section="part8">
+        <div class="section-header">
+          <div class="section-num">// Part VIII</div>
+          <h2 class="section-heading">Age Requirements and Verification</h2>
+        </div>
+        <div class="accordion" id="accordion-part8">
+
+          <div class="accordion-item" id="accordion-part8-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('part8-item1')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">8.1 Minimum Age</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>You must be at least 13 years old to access or use any ACRP Service. This requirement is consistent with COPPA, Discord&rsquo;s Terms of Service, and Roblox&rsquo;s Terms of Use. If ACRP&rsquo;s systems determine or reasonably indicate that you are under the minimum required age, your access will be denied or revoked.</p>
+              <p>Minors who use the Services with parental consent are subject to these Standards in full. Parents and legal guardians who permit a minor to access ACRP&rsquo;s Services are subject to the Terms and are responsible for the minor&rsquo;s conduct across all ACRP platforms, as stated in Terms &sect;1.</p>
+            </div></div>
+          </div>
+
+          <div class="accordion-item" id="accordion-part8-item2">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('part8-item2')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">8.2 Verification Requirements</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>As described in Terms &sect;10a, ACRP&rsquo;s age verification system (Age Proofpoint) may require:</p>
+              <ul>
+                <li>Completion of a screening form including your date of birth, country of residence, and related eligibility information</li>
+                <li>A live facial scan for biometric age estimation and liveness detection, processed by our verification provider Didit.me acting as a data processor</li>
+                <li>Review of behavioral and message-based age assurance signals through ACRP&rsquo;s automated systems</li>
+              </ul>
+              <p>Completion of required verification is mandatory. Refusal or failure to complete verification will result in denied or removed access to ACRP systems. By submitting verification data including facial scans, you consent to biometric and eligibility processing for age screening, fraud prevention, safety enforcement, and compliance purposes, as detailed in our <a href="/privacy.html">Privacy Policy</a>.</p>
+            </div></div>
+          </div>
+
+          <div class="accordion-item" id="accordion-part8-item3">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('part8-item3')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">8.3 Enforcement and Retention</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>Accounts that fail verification, trigger underage risk signals, submit false information, or attempt to bypass verification controls are subject to suspension, removal, or permanent ban under Terms &sect;10b. Attempting to circumvent Age Proofpoint verification through any means is a serious violation of both these Standards and the Terms.</p>
+              <p>Verification results, scores, flags, and related audit data may be retained for up to 30 days unless a valid deletion request is received and approved where legally permitted. Deletion of verification data does not reverse or invalidate enforcement actions already taken. If verification records are deleted, prior verification status is void and the member must complete verification again before regaining access. See Terms &sect;10c.</p>
+            </div></div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Part IX: Amendments -->
+      <section class="doc-section" id="section-part9" data-section="part9">
+        <div class="section-header">
+          <div class="section-num">// Part IX</div>
+          <h2 class="section-heading">Amendments and Enforcement Discretion</h2>
+        </div>
+        <div class="accordion" id="accordion-part9">
+
+          <div class="accordion-item" id="accordion-part9-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('part9-item1')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">9.1 Amendments</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>ACRP reserves the right to amend, revise, or replace these Standards at any time, at our sole discretion, without prior notice or consent. Amendments take effect as of the &ldquo;Last Updated&rdquo; date at the top of this document. Continued participation in ACRP following an amendment constitutes acceptance of the revised Standards, consistent with Terms &sect;1.</p>
+              <p>ACRP will make reasonable efforts to communicate significant changes through official channels. Members are responsible for reviewing these Standards periodically. ACRP is not obligated to provide individual notice of every revision.</p>
+            </div></div>
+          </div>
+
+          <div class="accordion-item" id="accordion-part9-item2">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('part9-item2')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">9.2 Enforcement Discretion</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>ACRP staff and management retain full discretion in the interpretation and application of these Standards. The enumeration of specific prohibited behaviors in this document does not limit ACRP&rsquo;s authority to take enforcement action against conduct not explicitly listed here, where that conduct is inconsistent with the values, safety, or integrity of the community.</p>
+              <p>ACRP may take enforcement action on any basis it determines to be appropriate, including conduct that occurs outside of ACRP&rsquo;s platforms, where that conduct has a direct and material impact on the ACRP community or its members. As stated in Terms &sect;11d, ACRP reserves the right to characterize the basis for any enforcement action as &ldquo;Miscellaneous&rdquo; or to decline to specify a precise reason where ACRP determines disclosure is not warranted. Such characterization does not affect the validity or enforceability of the action.</p>
+            </div></div>
+          </div>
+
+          <div class="accordion-item" id="accordion-part9-item3">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('part9-item3')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">9.3 Relationship to Terms of Service</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>These Standards do not supersede the Terms. In any conflict between these Standards and the Terms, the Terms control. These Standards are expressly incorporated into the Terms as referenced in Terms &sect;5. Together with the Terms, Privacy Policy, Payment Terms, and any other legal documentation referenced by ACRP, these Standards constitute part of the entire agreement between you and ACRP regarding your use of the Services.</p>
+            </div></div>
+          </div>
+
+          <div class="accordion-item" id="accordion-part9-item4">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('part9-item4')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">9.4 Severability</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>If any provision of these Standards is found to be unenforceable for any reason, that provision shall be deemed severable from the Standards. The remaining provisions continue in full force and effect, consistent with Terms &sect;5.</p>
+            </div></div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Contact and Reporting -->
+      <section class="doc-section" id="section-contact" data-section="contact">
+        <div class="section-header">
+          <div class="section-num">// Contact</div>
+          <h2 class="section-heading">Contact and Reporting</h2>
+        </div>
+        <div class="accordion" id="accordion-contact">
+          <div class="accordion-item" id="accordion-contact-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('contact-item1')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">How to Report &amp; Contact</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>If you observe a violation of these Standards, use the reporting tools available in the ACRP Discord server or the ACRP Portal. Do not attempt to enforce these Standards yourself. Self-enforcement, including public callouts, confrontational direct messages, or attempts to pressure another member into compliance, may itself result in enforcement action.</p>
+              <table style="width:100%;border-collapse:collapse;font-size:0.9em;margin-top:0.75em;">
+                <thead>
+                  <tr style="border-bottom:1px solid #2a3240;">
+                    <th style="text-align:left;padding:8px 12px;color:#8b949e;font-weight:600;font-family:'Share Tech Mono',monospace;">Purpose</th>
+                    <th style="text-align:left;padding:8px 12px;color:#8b949e;font-weight:600;font-family:'Share Tech Mono',monospace;">Contact</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="border-bottom:1px solid #1c2230;"><td style="padding:8px 12px;color:#c9d1d9;">Legal, compliance, and DMCA</td><td style="padding:8px 12px;"><a href="mailto:legal@acrp.work">legal@acrp.work</a></td></tr>
+                  <tr style="border-bottom:1px solid #1c2230;"><td style="padding:8px 12px;color:#c9d1d9;">Management and ownership</td><td style="padding:8px 12px;"><a href="mailto:ownership@acrp.work">ownership@acrp.work</a></td></tr>
+                  <tr style="border-bottom:1px solid #1c2230;"><td style="padding:8px 12px;color:#c9d1d9;">Appeals</td><td style="padding:8px 12px;"><a href="https://portal.alleghenycountyroleplay.com" target="_blank" rel="noopener">portal.alleghenycountyroleplay.com</a></td></tr>
+                  <tr><td style="padding:8px 12px;color:#c9d1d9;">Priority requests</td><td style="padding:8px 12px;"><a href="https://discord.com/channels/1365054426724827267/1365314515180458034" target="_blank" rel="noopener">#Priority Request</a></td></tr>
+                </tbody>
+              </table>
+            </div></div>
+          </div>
+        </div>
+      </section>
+
+      <div class="doc-footer">
+        <div class="footer-links">
+          <a class="footer-link" href="/terms.html">Terms of Service</a>
+          <a class="footer-link" href="/privacy.html">Privacy Policy</a>
+          <a class="footer-link" href="/legal/biometric-data-statement.html">Biometric Data Statement</a>
+          <a class="footer-link" href="mailto:legal@acrp.work">Contact Legal</a>
+        </div>
+        <div class="footer-fine">
+          ACRP &mdash; Allegheny County Roleplay &nbsp;&middot;&nbsp; Allegheny County, Pennsylvania (fictional) &nbsp;&middot;&nbsp; Not affiliated with Roblox Corporation<br>
+          These Community Standards are subject to change. Continued participation constitutes acceptance of the current version.
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="footer-container"></div>
+  <script src="/assets/legal-doc.js"></script>
+  <script src="/master.js"></script>
 </body>
 </html>

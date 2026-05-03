@@ -733,6 +733,20 @@
 
     /* ── HERO MOBILE (≤724px) ── */
     @media (max-width: 724px) {
+      /* HOTFIX: force hero content visible without depending on JS (.hero-mobile-ready).
+         If DOMContentLoaded is delayed or the loading screen blocks paint, the animated
+         elements would otherwise stay at opacity:0 forever on mobile. */
+      .hero .hero-eyebrow,
+      .hero .hero-content img.logo,
+      .hero h1,
+      .hero .hero-sub,
+      .hero .hero-btns,
+      .hero .hero-trust,
+      .hero .down-chevron {
+        opacity: 1 !important;
+        transform: none !important;
+        animation: none !important;
+      }
       /* Remove transform scale — causes compositing layer issues on mobile WebKit/Blink */
       .hero-bg, .hero-bg.loaded { transform: none !important; transition: none !important; }
       /* Ensure hero fills full screen width on mobile */
@@ -1099,11 +1113,6 @@
           Join Discord
         </a>
         <a class="btn-outline" href="/entry-process/info.html">Apply Today →</a>
-      </div>
-      <div class="cta-badge-row reveal">
-        <span class="cta-badge">Open Applications</span>
-        <span class="cta-badge">Discord Required</span>
-        <span class="cta-badge">Ages 14+</span>
       </div>
     </div>
   </section>

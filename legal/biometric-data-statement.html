@@ -1,324 +1,261 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biometric Data Privacy Statement - Allegheny County Roleplay</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="stylesheet" href="../assets/site.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --brand: #FFBB00;
-            --brand-900: #d69a00;
-            --bg: #1D1D1D;
-            --surface: #121214;
-            --card: #141417;
-            --text: #fff;
-            --muted: #bdbdbd;
-            --border: rgba(255, 255, 255, 0.08);
-            --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
-        }
-
-        body {
-            font-family:'Inter', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            font-size: 11px;
-            font-weight: 400;
-        }
-
-        a {
-            color: var(--brand);
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        .nav {
-            position: sticky;
-            top: 0;
-            z-index: 50;
-            background: rgba(10, 10, 10, 0.6);
-            backdrop-filter: blur(8px);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .nav-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 12px 20px;
-        }
-
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 600;
-            font-size: 14px;
-        }
-
-        .brand img {
-            width: 32px;
-            height: 32px;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            border-radius: 8px;
-            background: var(--brand);
-            color: #000;
-            font-weight: 600;
-            font-size: 11px;
-            transition: transform 0.18s ease, background 0.18s ease;
-        }
-
-        .btn:hover {
-            transform: translateY(-1px);
-            background: var(--brand-900);
-            text-decoration: none;
-        }
-
-        .hero {
-            padding: 60px 20px 40px;
-            text-align: center;
-            background: radial-gradient(1200px 600px at 50% -10%, rgba(255, 187, 0, 0.06), transparent);
-        }
-
-        .hero-content {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .hero .title {
-            font-size: 26px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, var(--brand) 0%, #FFA500 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .dates {
-            font-size: 11px;
-            color: var(--muted);
-            margin-bottom: 20px;
-        }
-
-        .dates p {
-            margin-bottom: 4px;
-        }
-
-        .content {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        .section {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 32px;
-            margin-bottom: 24px;
-        }
-
-        h1 {
-            font-size: 20px;
-            font-weight: 400;
-            margin-bottom: 16px;
-            color: var(--brand);
-        }
-
-        h2 {
-            font-size: 16px;
-            font-weight: 400;
-            margin: 20px 0 12px;
-            color: var(--text);
-        }
-
-        h3 {
-            font-size: 14px;
-            font-weight: 400;
-            margin: 16px 0 8px;
-            color: var(--text);
-        }
-
-        .section p, .section ul, .section ol, .section li {
-            font-size: 11px;
-            font-weight: 400;
-            line-height: 1.8;
-        }
-
-        .section p {
-            margin-bottom: 16px;
-            color: var(--muted);
-        }
-
-        .section ul, .section ol {
-            margin: 16px 0;
-            padding-left: 24px;
-            color: var(--muted);
-        }
-
-        .section li {
-            margin-bottom: 8px;
-        }
-
-        strong {
-            color: var(--text);
-            font-weight: 600;
-        }
-
-        
-        footer {
-            background: #0d0d0d;
-            color: #ccc;
-            padding: 3rem 1rem;
-        }
-
-        footer .cols {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 2rem;
-            text-align: left;
-        }
-
-        footer h3 {
-            color: var(--brand);
-            margin-bottom: 1rem;
-            font-size: 1.4rem;
-        }
-
-        footer a {
-            color: var(--brand);
-            text-decoration: none;
-        }
-
-        footer .copyright {
-            margin-top: 2rem;
-            border-top: 1px solid #333;
-            padding-top: 1.5rem;
-            text-align: center;
-            font-size: 0.85rem;
-            color: #888;
-        }
-
-        @media (max-width: 768px) {
-            .hero .title {
-                font-size: 22px;
-            }
-
-            .section {
-                padding: 24px;
-            }
-
-            h1 {
-                font-size: 18px;
-            }
-
-            h2 {
-                font-size: 15px;
-            }
-
-            h3 {
-                font-size: 13px;
-            }
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Biometric Data Privacy Statement &mdash; Allegheny County Roleplay</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/legal-doc.css">
 </head>
 <body>
-    <nav class="simple-localnav" aria-label="local" tabindex="-1" style="--progress:0;">
-        <div class="localnav-inner container">
-            <a href="/" class="brand"><img src="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png" alt="ACRP Logo"><span>Allegheny County Roleplay</span></a>
-            <div class="actions">
-                <a class="btn-outline" href="/">Home</a>
-                <a class="btn" href="https://portal.alleghenycountyroleplay.com">Login</a>
-            </div>
+
+  <nav class="top-nav">
+    <div class="nav-inner">
+      <div class="nav-brand">
+        <img src="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png" alt="ACRP" class="nav-logo">
+        <span class="nav-brand-name">Allegheny County Roleplay</span>
+      </div>
+      <div class="nav-right">
+        <div class="nav-search-wrap">
+          <svg class="nav-search-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M21.172 24l-7.387-7.387c-1.388.874-3.024 1.387-4.785 1.387-4.971 0-9-4.029-9-9s4.029-9 9-9 9 4.029 9 9c0 1.761-.514 3.398-1.387 4.785l7.387 7.387-2.828 2.828zm-12.172-8c3.859 0 7-3.14 7-7s-3.141-7-7-7-7 3.14-7 7 3.141 7 7 7z"/>
+          </svg>
+          <input id="mainSearch" class="nav-search" type="text" placeholder="Search document&hellip;" autocomplete="off">
         </div>
-    </nav>
-        <div class="localnav-overlay-background"></div>
+        <a href="/" class="btn-outline">Home</a>
+        <button class="btn-primary" onclick="window.print()">Print / PDF</button>
+      </div>
+    </div>
+  </nav>
 
-    <script src="/assets/sticky-fallback.js" defer></script>
+  <div class="page-layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-label">// Navigation</div>
+      <nav class="sidebar-nav" id="sidebarNav">
+        <a class="sidebar-link" data-section="overview" onclick="scrollToSection('overview')">Overview</a>
+        <div class="sidebar-divider"></div>
+        <a class="sidebar-link" data-section="intro" onclick="scrollToSection('intro')">Introduction</a>
+        <a class="sidebar-link" data-section="s1" onclick="scrollToSection('s1')">1 &mdash; What We Collect</a>
+        <a class="sidebar-link" data-section="s2" onclick="scrollToSection('s2')">2 &mdash; Why We Collect</a>
+        <a class="sidebar-link" data-section="s3" onclick="scrollToSection('s3')">3 &mdash; How Data is Collected</a>
+        <a class="sidebar-link" data-section="s4" onclick="scrollToSection('s4')">4 &mdash; Consent &amp; Legal Basis</a>
+        <a class="sidebar-link" data-section="s5" onclick="scrollToSection('s5')">5 &mdash; Third Parties</a>
+        <a class="sidebar-link" data-section="s6" onclick="scrollToSection('s6')">6 &mdash; What We Receive</a>
+        <a class="sidebar-link" data-section="s7" onclick="scrollToSection('s7')">7 &mdash; Use Cases</a>
+        <a class="sidebar-link" data-section="s8" onclick="scrollToSection('s8')">8 &mdash; Retention</a>
+        <a class="sidebar-link" data-section="s9" onclick="scrollToSection('s9')">9 &mdash; Data Sharing</a>
+        <a class="sidebar-link" data-section="s10" onclick="scrollToSection('s10')">10 &mdash; Safeguards</a>
+        <a class="sidebar-link" data-section="s11" onclick="scrollToSection('s11')">11 &mdash; User Rights</a>
+        <a class="sidebar-link" data-section="s12" onclick="scrollToSection('s12')">12 &mdash; Refusal Consequences</a>
+        <a class="sidebar-link" data-section="s13" onclick="scrollToSection('s13')">13 &mdash; Policy Updates</a>
+        <div class="sidebar-divider"></div>
+        <a class="sidebar-link" style="font-size:0.76rem;color:#444e5c;" onclick="window.print()">&#x2191; Print / PDF</a>
+      </nav>
+    </aside>
 
-    <section class="hero">
-        <div class="hero-content">
-            <div class="title">Biometric Data Privacy Statement</div>
-            <div class="dates">
-                <p>Effective: 3/4/26</p>
-            </div>
+    <main class="main-content" id="mainContent">
+      <div class="search-banner" id="searchBanner">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M21.172 24l-7.387-7.387c-1.388.874-3.024 1.387-4.785 1.387-4.971 0-9-4.029-9-9s4.029-9 9-9 9 4.029 9 9c0 1.761-.514 3.398-1.387 4.785l7.387 7.387-2.828 2.828zm-12.172-8c3.859 0 7-3.14 7-7s-3.141-7-7-7-7 3.14-7 7 3.141 7 7 7z"/>
+        </svg>
+        <span id="searchBannerText">Showing results for ""</span>
+        <button class="search-clear" onclick="clearSearch()">&#x2715; Clear</button>
+      </div>
+
+      <div class="doc-header" id="section-overview">
+        <div class="doc-eyebrow">// ACRP Legal Document</div>
+        <h1 class="doc-title">Biometric Data Privacy Statement</h1>
+        <p class="doc-intro">This statement explains how ACRP collects, uses, stores, retains, and deletes biometric data when users complete facial age estimation and liveness verification as part of ACRP&rsquo;s Age Proofpoint system.</p>
+        <div class="doc-meta">
+          <div class="doc-meta-item"><span>Effective: March 4, 2026</span></div>
         </div>
-    </section>
-
-    <div class="content">
-        <div class="section">
-            <h1>Introduction</h1>
-            <p>Allegheny County Roleplay (“ACRP”, “We”, “Us”, or “Our”) uses biometric technologies as part of its age verification and assurance systems. This statement explains how biometric data is collected, used, stored, retained, and deleted when users complete facial age estimation and liveliness verification. This document is subject to the laws of the Commonwealth of Pennsylvania. ACRP’s Services are intended for U.S residents only. Users in states with biometric-specific legislation, including Illinois (BIPA, 740 ILCS 14), Texas (CUBI, Tex. Bus. & Com. Code §503.001), and Washington, acknowledge that Pennsylvania law governs their use of ACRP services.</p>
+        <div class="doc-actions">
+          <button class="btn-outline" onclick="expandAll()">Expand All</button>
+          <button class="btn-outline" onclick="collapseAll()">Collapse All</button>
+          <button class="btn-primary" onclick="window.print()">Print / PDF</button>
         </div>
+      </div>
 
-        <div class="section">
-            <h1>1. What We Collect</h1>
-            <p>We collect a variety of biometric data, including but not limited to:</p>
-            <ul>
-                <li>Facial Images from Live Scans.</li>
-                <li>Biometric Feature Vectors and Templates.</li>
-                <li>Liveliness Signals.</li>
-                <li>Similarity and Duplicate Face Indicators.</li>
-                <li>Age Estimation Outputs and Scores.</li>
-            </ul>
+      <!-- Introduction -->
+      <section class="doc-section" id="section-intro" data-section="intro">
+        <div class="section-header">
+          <div class="section-num">// 00</div>
+          <h2 class="section-heading">Introduction</h2>
         </div>
-
-        <div class="section">
-            <h1>2.  Why We Collect</h1>
-            <p>We collect this data to accurately estimate your age so we can assess if you are old enough to use our services as outlined in our <a href="/terms.html">Terms of Service</a>. This information is also collected to prevent fraud and verify a user’s age (“you”, “your”, or “yours”).</p>
+        <div class="accordion" id="accordion-intro">
+          <div class="accordion-item" id="accordion-intro-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('intro-item1')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">About This Statement</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>Allegheny County Roleplay (&ldquo;ACRP&rdquo;, &ldquo;We&rdquo;, &ldquo;Us&rdquo;, or &ldquo;Our&rdquo;) uses biometric technologies as part of its age verification and assurance systems. This statement explains how biometric data is collected, used, stored, retained, and deleted when users complete facial age estimation and liveness verification.</p>
+              <p>This document is subject to the laws of the Commonwealth of Pennsylvania. ACRP&rsquo;s Services are intended for U.S. residents only. Users in states with biometric-specific legislation, including Illinois (BIPA, 740 ILCS 14), Texas (CUBI, Tex. Bus. &amp; Com. Code &sect;503.001), and Washington, acknowledge that Pennsylvania law governs their use of ACRP services.</p>
+            </div></div>
+          </div>
         </div>
+      </section>
 
-        <div class="section">
-            <h1>3. How Data is Collected.</h1>
-            <p>Data is collected only during verification via user-submitted live facial scans. This process is controlled and regulated by Didit. See section 5 for information on Didit and their role in age estimation.</p>
+      <!-- Section 1 -->
+      <section class="doc-section" id="section-s1" data-section="s1">
+        <div class="section-header">
+          <div class="section-num">// 01</div>
+          <h2 class="section-heading">What We Collect</h2>
         </div>
-
-        <div class="section">
-            <h1>4. Consent and Legal Basis.</h1>
-            <p>Consent is obtained in multiple ways. When joining and interacting with our services, the user provides consent by agreeing to our Terms of Service and Privacy Policy. When a verification link is made and clicked (by the user) there is a consent page that requires the user to click on a check box, then the "Continue Button" to verify their age.</p>
-            <p>Verification is required for access to the services. If the user refuses to complete the verification process, they may not use our services. Likewise, if a user has a result that detects them as being under 13 years of age, they may not use the services offered by us.</p>
+        <div class="accordion" id="accordion-s1">
+          <div class="accordion-item" id="accordion-s1-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('s1-item1')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">Biometric Data Types</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>We collect a variety of biometric data, including but not limited to:</p>
+              <ul>
+                <li>Facial images from live scans</li>
+                <li>Biometric feature vectors and templates</li>
+                <li>Liveness signals</li>
+                <li>Similarity and duplicate face indicators</li>
+                <li>Age estimation outputs and scores</li>
+              </ul>
+            </div></div>
+          </div>
         </div>
+      </section>
 
-        <div class="section">
-            <h1>5. Third Parties and Their Role.</h1>
-            <p>Below, you will find a list of third parties that we use for age verification, along with their purpose</p>
-            <p><strong>Name:</strong> Didit®<br>
-            <strong>Role:</strong> Vendor for Age estimation, Liveliness Checks, and anything else relating to Age Verification via Face.<br>
-            <strong>Privacy Policy:</strong> <a href="https://didit.me/terms/privacy-policy/">https://didit.me/terms/privacy-policy/</a></p>
-            <p>Note that each third party will have its own Privacy Policies; it is up to the user to read them as they are subject to them alongside our legal documentation (as appropriate).</p>
+      <!-- Section 2 -->
+      <section class="doc-section" id="section-s2" data-section="s2">
+        <div class="section-header">
+          <div class="section-num">// 02</div>
+          <h2 class="section-heading">Why We Collect</h2>
         </div>
+        <div class="accordion" id="accordion-s2">
+          <div class="accordion-item" id="accordion-s2-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('s2-item1')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">Purpose of Collection</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>We collect this data to accurately estimate your age so we can assess if you are old enough to use our services as outlined in our <a href="/terms.html">Terms of Service</a>. This information is also collected to prevent fraud and verify a user&rsquo;s age.</p>
+            </div></div>
+          </div>
+        </div>
+      </section>
 
-        <div class="section">
-            <h1>6. What We See from The Third Parties.</h1>
-            <p>When a verification is completed, we will get this information from Didit. Please note that this is anonymized, but it will still contain what we receive:</p>
-            <pre><code>{
+      <!-- Section 3 -->
+      <section class="doc-section" id="section-s3" data-section="s3">
+        <div class="section-header">
+          <div class="section-num">// 03</div>
+          <h2 class="section-heading">How Data is Collected</h2>
+        </div>
+        <div class="accordion" id="accordion-s3">
+          <div class="accordion-item" id="accordion-s3-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('s3-item1')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">Collection Method</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>Data is collected only during verification via user-submitted live facial scans. This process is controlled and regulated by Didit. See Section 5 for information on Didit and their role in age estimation.</p>
+            </div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4 -->
+      <section class="doc-section" id="section-s4" data-section="s4">
+        <div class="section-header">
+          <div class="section-num">// 04</div>
+          <h2 class="section-heading">Consent and Legal Basis</h2>
+        </div>
+        <div class="accordion" id="accordion-s4">
+          <div class="accordion-item" id="accordion-s4-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('s4-item1')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">How Consent is Obtained</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>Consent is obtained in multiple ways. When joining and interacting with our services, the user provides consent by agreeing to our Terms of Service and Privacy Policy. When a verification link is made and clicked by the user, there is a consent page that requires the user to check a box and then click the &ldquo;Continue&rdquo; button to proceed with age verification.</p>
+              <p>Verification is required for access to the services. If the user refuses to complete the verification process, they may not use our services. Likewise, if a user has a result that detects them as being under 13 years of age, they may not use the services offered by us.</p>
+            </div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5 -->
+      <section class="doc-section" id="section-s5" data-section="s5">
+        <div class="section-header">
+          <div class="section-num">// 05</div>
+          <h2 class="section-heading">Third Parties and Their Role</h2>
+        </div>
+        <div class="accordion" id="accordion-s5">
+          <div class="accordion-item" id="accordion-s5-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('s5-item1')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">Verification Vendors</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>Below is a list of third parties we use for age verification, along with their purpose and privacy documentation.</p>
+              <table style="width:100%;border-collapse:collapse;font-size:0.9em;">
+                <thead>
+                  <tr style="border-bottom:1px solid #2a3240;">
+                    <th style="text-align:left;padding:8px 12px;color:#8b949e;font-weight:600;font-family:'Share Tech Mono',monospace;">Name</th>
+                    <th style="text-align:left;padding:8px 12px;color:#8b949e;font-weight:600;font-family:'Share Tech Mono',monospace;">Role</th>
+                    <th style="text-align:left;padding:8px 12px;color:#8b949e;font-weight:600;font-family:'Share Tech Mono',monospace;">Privacy Policy</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="padding:8px 12px;color:#c9d1d9;">Didit&reg;</td>
+                    <td style="padding:8px 12px;color:#8b949e;">Vendor for age estimation, liveness checks, and facial age verification</td>
+                    <td style="padding:8px 12px;"><a href="https://didit.me/terms/privacy-policy/" target="_blank" rel="noopener">didit.me/terms/privacy-policy</a></td>
+                  </tr>
+                </tbody>
+              </table>
+              <p style="margin-top:1em;">Each third party has its own privacy policies. It is the user&rsquo;s responsibility to review them, as they are subject to those policies alongside ACRP&rsquo;s legal documentation where applicable.</p>
+            </div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 6 -->
+      <section class="doc-section" id="section-s6" data-section="s6">
+        <div class="section-header">
+          <div class="section-num">// 06</div>
+          <h2 class="section-heading">What We Receive from Third Parties</h2>
+        </div>
+        <div class="accordion" id="accordion-s6">
+          <div class="accordion-item" id="accordion-s6-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('s6-item1')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">Didit Verification Response Schema</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>When a verification is completed, we receive the following information from Didit. The schema below is anonymized to illustrate the data structure:</p>
+              <pre style="background:#0d1117;border:1px solid #2a3240;border-radius:6px;padding:16px;overflow-x:auto;font-size:0.78em;line-height:1.6;color:#c9d1d9;font-family:'Share Tech Mono',monospace;"><code>{
   "created_at": "&lt;unix_timestamp&gt;",
   "decision": {
     "aml_screenings": null,
@@ -372,37 +309,12 @@
             "short_description": "&lt;short_description&gt;"
           }
         ]
-      },
-      {
-        "age_estimation": "&lt;age_value&gt;",
-        "face_luminance": "&lt;luminance_score&gt;",
-        "face_quality": "&lt;quality_score&gt;",
-        "matches": [
-          {
-            "api_service": null,
-            "is_blocklisted": "&lt;boolean&gt;",
-            "match_image_url": "&lt;vendor_media_url&gt;",
-            "session_id": "&lt;session_id&gt;",
-            "session_number": "&lt;session_number&gt;",
-            "similarity_percentage": "&lt;similarity_score&gt;",
-            "status": "&lt;status&gt;",
-            "user_details": null,
-            "vendor_data": null,
-            "verification_date": "&lt;iso_timestamp&gt;"
-          }
-        ],
-        "method": "&lt;liveness_method&gt;",
-        "node_id": "&lt;node_id&gt;",
-        "reference_image": "&lt;vendor_media_url&gt;",
-        "score": "&lt;score&gt;",
-        "status": "&lt;status&gt;",
-        "video_url": "&lt;vendor_media_url_or_null&gt;"
       }
     ]
   }
 }</code></pre>
-            <p>We receive the following information from Didit for each verification session:</p>
-            <ul>
+              <p style="margin-top:1em;">We receive the following data fields for each verification session:</p>
+              <ul>
                 <li>Overall verification decision status</li>
                 <li>Verification feature list used in the decision</li>
                 <li>Liveness check status</li>
@@ -431,62 +343,218 @@
                 <li>Structured warning and risk log entries tied to the session</li>
                 <li>URLs to the reference image used for verification</li>
                 <li>URLs to the matched images from prior sessions</li>
-            </ul>
+              </ul>
+            </div></div>
+          </div>
         </div>
+      </section>
 
-        <div class="section">
-            <h1>7. Use Cases</h1>
-            <p>We use all this information to verify you are who you say you are, to help fight against fraud, and to verify your age.</p>
+      <!-- Section 7 -->
+      <section class="doc-section" id="section-s7" data-section="s7">
+        <div class="section-header">
+          <div class="section-num">// 07</div>
+          <h2 class="section-heading">Use Cases</h2>
         </div>
-
-        <div class="section">
-            <h1>8. Retention</h1>
-            <p>We retain the information described in Section 6 for 30 days, regardless of the verification result. If a user challenges a verification result, we may retain the result for longer, and the result will be subject to human review. If we receive a data deletion request from the user, then we will delete all verification sessions (open, in review, or closed, regardless of status) associated with the user’s Discord User ID and Face via the dashboard within Didit®.</p>
-            <h3>i. Deletion Triggers</h3>
-            <p>We will delete appropriate verification data when legally required, such as via a deletion request or when the retention period expires.</p>
+        <div class="accordion" id="accordion-s7">
+          <div class="accordion-item" id="accordion-s7-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('s7-item1')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">How We Use This Data</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>We use all information described above to verify you are who you say you are, to help fight against fraud, and to verify your age for eligibility purposes in accordance with our Terms of Service.</p>
+            </div></div>
+          </div>
         </div>
+      </section>
 
-        <div class="section">
-            <h1>9. Data Sharing</h1>
-            <p>All verification data is shared with Didit® automatically, as they are the vendor who processes verifications (as outlined in section 5.) Authorized staff may access a user's age group (&lt;13, 13–17, or 18+) and verification completion status.</p>
-            <h3>i. Law Enforcement Requests</h3>
-            <p>We will share all required data to law enforcement if required by court order or other legally compelling document.</p>
+      <!-- Section 8 -->
+      <section class="doc-section" id="section-s8" data-section="s8">
+        <div class="section-header">
+          <div class="section-num">// 08</div>
+          <h2 class="section-heading">Retention</h2>
         </div>
-
-        <div class="section">
-            <h1>10. Safeguards</h1>
-            <p>We take your data seriously, which is why only our Director has access to databases containing verification data. Additional safeguards are maintained by Didit®.</p>
+        <div class="accordion" id="accordion-s8">
+          <div class="accordion-item" id="accordion-s8-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('s8-item1')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">Retention Period</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>We retain the information described in Section 6 for 30 days, regardless of the verification result. If a user challenges a verification result, we may retain the result for longer, and the result will be subject to human review.</p>
+              <p>If we receive a data deletion request from the user, we will delete all verification sessions (open, in review, or closed, regardless of status) associated with the user&rsquo;s Discord User ID and face via the dashboard within Didit&reg;.</p>
+            </div></div>
+          </div>
+          <div class="accordion-item" id="accordion-s8-item2">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('s8-item2')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">i. Deletion Triggers</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>We will delete appropriate verification data when legally required, such as via a valid deletion request, or when the retention period expires.</p>
+            </div></div>
+          </div>
         </div>
+      </section>
 
-        <div class="section">
-            <h1>11. User Rights</h1>
-            <p>Where applicable, users have the right to do any of the following unless stated otherwise by a court order, new U.S law, or our Terms of Service:</p>
-            <ul>
-                <li>Request Data Deletion</li>
-                <li>See what data has been collected so far.</li>
-                <li>Re-request / Request verification via a different form of verification that does not involve biometric data.</li>
-            </ul>
-            <p>Please note that one or more of these options are at the discretion of Allegheny County Roleplay, while other information is a legal right or requirement. The following is a legal requirement:</p>
-            <ul>
-                <li>Request Data Deletion</li>
-                <li>See what data has been collected so far.</li>
-            </ul>
+      <!-- Section 9 -->
+      <section class="doc-section" id="section-s9" data-section="s9">
+        <div class="section-header">
+          <div class="section-num">// 09</div>
+          <h2 class="section-heading">Data Sharing</h2>
         </div>
-
-        <div class="section">
-            <h1>12. Refusal Consequences.</h1>
-            <p>If a user refuses to complete verification in some form, then their access to the services will be severely limited or revoked in some cases at our sole discretion.</p>
+        <div class="accordion" id="accordion-s9">
+          <div class="accordion-item" id="accordion-s9-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('s9-item1')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">Who We Share Data With</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>All verification data is shared with Didit&reg; automatically, as they are the vendor who processes verifications as outlined in Section 5. Authorized staff may access a user&rsquo;s age group (&lt;13, 13&ndash;17, or 18+) and verification completion status.</p>
+            </div></div>
+          </div>
+          <div class="accordion-item" id="accordion-s9-item2">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('s9-item2')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">i. Law Enforcement Requests</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>We will share all required data with law enforcement if required by court order or other legally compelling legal process.</p>
+            </div></div>
+          </div>
         </div>
+      </section>
 
-        <div class="section">
-            <h1>13. Policy Updates</h1>
-            <p>This policy will be updated from time to time. As a matter of practice and as obligated by applicable laws, we will attempt to send all users an email about the update.</p>
+      <!-- Section 10 -->
+      <section class="doc-section" id="section-s10" data-section="s10">
+        <div class="section-header">
+          <div class="section-num">// 10</div>
+          <h2 class="section-heading">Safeguards</h2>
         </div>
-    </div>
+        <div class="accordion" id="accordion-s10">
+          <div class="accordion-item" id="accordion-s10-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('s10-item1')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">Data Security Measures</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>We take your data seriously. Only our Director has access to databases containing verification data. Additional safeguards are maintained by Didit&reg; on their infrastructure.</p>
+            </div></div>
+          </div>
+        </div>
+      </section>
 
-    <div id="footer-container"></div>
-    <script src="../snow.js"></script>
-    <script src="../master.js"></script>
+      <!-- Section 11 -->
+      <section class="doc-section" id="section-s11" data-section="s11">
+        <div class="section-header">
+          <div class="section-num">// 11</div>
+          <h2 class="section-heading">User Rights</h2>
+        </div>
+        <div class="accordion" id="accordion-s11">
+          <div class="accordion-item" id="accordion-s11-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('s11-item1')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">Your Rights Regarding Biometric Data</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>Where applicable, users have the right to do any of the following unless restricted by a court order, applicable U.S. law, or our Terms of Service:</p>
+              <ul>
+                <li>Request data deletion</li>
+                <li>Request to see what data has been collected</li>
+                <li>Request verification via an alternative method that does not involve biometric data</li>
+              </ul>
+              <p>Please note that some of these options are at the discretion of Allegheny County Roleplay. The following are legal requirements and not subject to ACRP discretion:</p>
+              <ul>
+                <li>Request data deletion</li>
+                <li>Request to see what data has been collected</li>
+              </ul>
+            </div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 12 -->
+      <section class="doc-section" id="section-s12" data-section="s12">
+        <div class="section-header">
+          <div class="section-num">// 12</div>
+          <h2 class="section-heading">Refusal Consequences</h2>
+        </div>
+        <div class="accordion" id="accordion-s12">
+          <div class="accordion-item" id="accordion-s12-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('s12-item1')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">What Happens If You Refuse</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>If a user refuses to complete verification in some form, their access to the services will be severely limited or revoked in some cases at our sole discretion.</p>
+            </div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 13 -->
+      <section class="doc-section" id="section-s13" data-section="s13">
+        <div class="section-header">
+          <div class="section-num">// 13</div>
+          <h2 class="section-heading">Policy Updates</h2>
+        </div>
+        <div class="accordion" id="accordion-s13">
+          <div class="accordion-item" id="accordion-s13-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('s13-item1')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">How We Communicate Changes</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>This policy will be updated from time to time. As a matter of practice and as obligated by applicable laws, we will attempt to notify all users of material updates via email.</p>
+            </div></div>
+          </div>
+        </div>
+      </section>
+
+      <div class="doc-footer">
+        <div class="footer-links">
+          <a class="footer-link" href="/terms.html">Terms of Service</a>
+          <a class="footer-link" href="/privacy.html">Privacy Policy</a>
+          <a class="footer-link" href="/community-standards.html">Community Standards</a>
+          <a class="footer-link" href="mailto:legal@acrp.work">Contact Legal</a>
+        </div>
+        <div class="footer-fine">
+          ACRP &mdash; Allegheny County Roleplay &nbsp;&middot;&nbsp; Allegheny County, Pennsylvania (fictional) &nbsp;&middot;&nbsp; Not affiliated with Roblox Corporation<br>
+          This statement is subject to change. Continued use of ACRP&rsquo;s services constitutes acceptance of the current version.
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="footer-container"></div>
+  <script src="../assets/legal-doc.js"></script>
+  <script src="../master.js"></script>
 </body>
 </html>
-
