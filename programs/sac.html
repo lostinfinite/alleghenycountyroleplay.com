@@ -1,729 +1,608 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
   <script src="/assets/cdn-fallback.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Safety Assurance Council - Allegheny County Roleplay</title>
+  <meta name="description" content="The Safety Assurance Council is a community advisory body that helps ACRP Directorship build safety policies that protect users without compromising privacy or rights.">
+  <link rel="icon" type="image/png" href="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Roboto+Condensed:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/site.css">
+  <style>
+    :root {
+      --brand:        #FFBB00;
+      --brand-900:    #d69a00;
+      --brand-dim:    rgba(255,187,0,.1);
+      --brand-border: rgba(255,187,0,.18);
+      --text:         #fff;
+      --muted:        #8f8f8f;
+      --muted-2:      #5a5a5a;
+      --bg:           #1D1D1D;
+      --surface:      #141417;
+      --card:         #19191d;
+      --card-border:  rgba(255,255,255,.07);
+      --card-hover:   rgba(255,187,0,.18);
+      --r-sm:         10px;
+      --r-md:         16px;
+      --r-lg:         24px;
+    }
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/site.css" />
-    <title>Safety Assurance Council- ACRP</title>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    html, body { width: 100%; max-width: 100%; overflow-x: hidden; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
 
-    <style>
-        :root{
-            --brand:#FFBB00;
-            --brand-900:#d69a00;
-            --text:#fff;
-            --muted:#bdbdbd;
-            --bg:#1D1D1D;
-            --surface:#121214;
-            --card:#141417;
-            --border:rgba(255,255,255,.08);
-            --shadow:0 20px 60px rgba(0,0,0,.35);
-        }
+    .container { width: min(1080px, 92vw); margin-inline: auto; }
 
-        html, body { width: 100%; max-width: 100%; overflow-x: hidden; }
-        body{
-            background:
-                radial-gradient(1200px 600px at 10% -10%, rgba(255,187,0,.06), transparent),
-                radial-gradient(1200px 600px at 110% 10%, rgba(120,120,255,.06), transparent),
-                var(--bg);
-        }
+    .simple-localnav { margin-top: 6px; }
 
-        
-        .event-hero{
-            min-height: clamp(70vh, 92vh, 100svh);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            padding: clamp(28px, 6vw, 64px);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            background-color: #0d0d0d;
-            background-image:
-                linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.65)),
-                url('https://cdn.alleghenycountyroleplay.com/RobloxPlayerBeta_ebOPZRvacN.png');
-            background-size: cover;
-            background-position: center;
-        }
-        
-        .event-hero{ padding-top: calc(clamp(28px, 6vw, 64px) + 56px); }
+    #secondary-localnav {
+      position: fixed !important;
+      top: 6px !important;
+      left: 0;
+      right: 0;
+      z-index: 9999999 !important;
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+      transition: opacity .24s ease, transform .24s ease, box-shadow .24s ease;
+      will-change: opacity, transform;
+    }
+    #secondary-localnav .localnav-inner {
+      height: 52px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      justify-content: space-between;
+      padding-inline: 12px;
+      background: linear-gradient(180deg, rgba(24,24,29,.78), rgba(18,18,22,.68));
+      background-color: rgba(20,20,24,.72);
+      border: 1px solid rgba(255,255,255,.1);
+      -webkit-backdrop-filter: blur(24px) saturate(145%);
+      backdrop-filter: blur(24px) saturate(145%);
+      box-shadow: 0 16px 50px rgba(0,0,0,.45);
+    }
+    #secondary-localnav .localnav-inner .brand span { display: inline-block; max-width: 400px; opacity: 1; overflow: hidden; white-space: nowrap; }
+    #secondary-localnav .localnav-inner .actions { display: flex; gap: 8px; align-items: center; width: auto; overflow: visible; opacity: 1; pointer-events: auto; transform: translateY(0); }
+    @media (max-width: 600px) { #secondary-localnav .brand span { display: none !important; max-width: 0 !important; } }
 
+    /* -- Hero -- */
+    .hero {
+      position: relative;
+      min-height: clamp(58vh, 68vh, 760px);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: clamp(88px, 10vw, 128px) clamp(24px, 6vw, 80px) clamp(56px, 8vw, 88px);
+      overflow: hidden; isolation: isolate;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0; z-index: -2;
+      background:
+        radial-gradient(ellipse 860px 560px at 12% -8%,  rgba(255,187,0,.15), transparent 65%),
+        radial-gradient(ellipse 600px 400px at 90% 108%, rgba(255,120,0,.06), transparent 70%),
+        radial-gradient(ellipse 500px 500px at 50% 50%,  rgba(255,187,0,.03), transparent 70%),
+        #0c0c0e;
+    }
+    .hero::after {
+      content: ''; position: absolute; inset: 0; z-index: -1;
+      background-image:
+        linear-gradient(rgba(255,255,255,.022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.022) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: radial-gradient(ellipse 78% 72% at 50% 50%, black, transparent);
+    }
+    .hero-fade {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 140px;
+      background: linear-gradient(to bottom, transparent, var(--bg));
+      z-index: 0; pointer-events: none;
+    }
+    .hero-inner {
+      position: relative; z-index: 1;
+      display: flex; flex-direction: column; align-items: center; gap: 22px;
+      animation: fade-up .75s cubic-bezier(.22,1,.36,1) both;
+      width: min(980px, 100%);
+    }
+    @keyframes fade-up { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+    @media (prefers-reduced-motion: reduce) { .hero-inner { animation: none; } }
 
-        .event-hero::after{ content: ""; position: absolute; inset: 0; pointer-events: none; }
-        @keyframes ssu-fade-up{ from{opacity:0; transform: translateY(10px)} to{opacity:1; transform: translateY(0)} }
-        @media (prefers-reduced-motion: reduce){ .event-hero *{animation:none} }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,187,0,.09); border: 1px solid rgba(255,187,0,.2);
+      border-radius: 999px; padding: 5px 16px 5px 10px;
+      font-size: .78rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--brand);
+    }
+    .eyebrow-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--brand); flex-shrink: 0; }
 
-        .event-hero-tit{
-            position: relative; z-index: 1; line-height: 1.02; letter-spacing: -0.02em; font-family:'Inter', sans-serif; font-weight: 900; margin: 0;
-            font-size: clamp(28px, 6.8vw, 56px);
-            animation: ssu-fade-up .65s ease both;
-            text-wrap: balance;
-        }
-        .event-hero-des{
-            position: relative; z-index: 1; font-size: clamp(0.98rem, 1.2vw, 1.05rem); color: rgba(255,255,255,.92); margin: 0; max-width: 860px; animation: ssu-fade-up .75s ease both; letter-spacing: 0.01em;
-        }
-        .hero-bottom{ z-index: 1; }
-        .event-hero-tim{ margin:0; color: rgba(255,255,255,.78) }
-        .large-daat-tim-holder{ margin:.35rem 0 0 }
+    .hero-title {
+      font-family: 'Roboto Condensed', 'Inter', sans-serif;
+      font-weight: 900; font-size: clamp(3.2rem, 10vw, 8rem);
+      line-height: .93; letter-spacing: -.025em; text-wrap: balance; max-width: 860px;
+    }
+    .hero-title em { font-style: normal; color: var(--brand); }
 
-        
-        .simple-localnav{margin-top:6px}
+    .hero-sub {
+      font-size: clamp(.97rem, 1.5vw, 1.12rem);
+      color: rgba(255,255,255,.68); max-width: 720px; line-height: 1.72; text-wrap: balance;
+    }
 
-        /* secondary sticky navbar (collapsed -> expand vertically) */
-        #secondary-localnav{ display: none; }
-        #secondary-localnav.scrolled-past{ display:block; position: fixed !important; top: 6px !important; left: 0; right: 0; z-index: 99999999999999999999999999999 !important; box-shadow: 0 16px 50px rgba(0,0,0,0.42); }
+    .hero-status {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
+      border-radius: 999px; padding: 8px 20px; font-size: .87rem; color: var(--muted);
+    }
+    .hero-status strong { color: #fff; font-weight: 600; }
+    .status-dot-red {
+      width: 7px; height: 7px; border-radius: 50%; background: #ff5f5f; flex-shrink: 0;
+      animation: pulse-red 2.2s ease infinite;
+    }
+    @keyframes pulse-red {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(255,95,95,.45); }
+      55%       { box-shadow: 0 0 0 5px rgba(255,95,95,0); }
+    }
 
-        /* collapsed (show only brand row) */
-        /* collapsed (logo-only) — keep items on a single row */
-        #secondary-localnav .localnav-inner{ height: 52px; overflow: hidden; display:flex; align-items:center; gap:8px; justify-content: space-between; padding-inline:12px; }
-        /* hide brand text without taking layout space */
-        #secondary-localnav .localnav-inner .brand span{ display:inline-block; max-width:0; opacity:0; overflow:hidden; white-space:nowrap; transition: max-width .22s ease, opacity .18s ease; }
-        /* actions are visually hidden in collapsed state but measured by JS/GSAP */
-        #secondary-localnav .localnav-inner .actions{ display:flex; gap:8px; align-items:center; width:0; overflow:hidden; opacity:0; pointer-events:none; transform: translateY(-6px); transition: width .22s ease, opacity .22s ease, transform .22s ease; } 
-        #secondary-localnav.scrolled-past.expanded .localnav-inner .actions{ width: auto; overflow: visible; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
 
-        /* expanded (match primary) — brand + buttons on same row */
-        #secondary-localnav.scrolled-past.expanded .localnav-inner{ height: 52px; padding-block:6px; flex-direction: row; align-items: center; justify-content: space-between; }
-        #secondary-localnav.scrolled-past.expanded .localnav-inner .brand span{ max-width:400px; opacity:1; }
-        #secondary-localnav.scrolled-past.expanded .localnav-inner .actions{ opacity:1; pointer-events:auto; transform: translateY(0); }
+    .hero-summary {
+      width: min(840px, 100%);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 8px;
+    }
+    .hero-summary-item {
+      text-align: left;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 14px;
+      padding: 16px 18px;
+    }
+    .hero-summary-label {
+      display: block;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--brand);
+      margin-bottom: 6px;
+    }
+    .hero-summary-text {
+      font-size: .92rem;
+      color: rgba(255,255,255,.78);
+      line-height: 1.55;
+    }
+    @media (max-width: 760px) {
+      .hero-summary { grid-template-columns: 1fr; }
+      .hero-summary-item { text-align: center; }
+    }
 
-        /* on small screens hide secondary branding text to save space */
-        @media (max-width:600px){
-            #secondary-localnav .brand span { display: none !important; max-width: 0 !important; }
-        }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--brand); color: #000; font-weight: 800; font-size: .95rem;
+      padding: .78rem 1.55rem; border-radius: 12px; border: none; cursor: not-allowed; opacity: .45;
+    }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
+      color: #fff; font-weight: 600; font-size: .95rem;
+      padding: .78rem 1.55rem; border-radius: 12px;
+      transition: background .15s, border-color .15s;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,.11); border-color: rgba(255,255,255,.2); }
 
-        /* hide primary while secondary is active */
-        #primary-localnav.hidden-by-secondary{ visibility: hidden; opacity: 0; pointer-events: none; }
+    .btn-secondary.info-link {
+      font-weight: 700;
+      background: rgba(255,255,255,.03);
+    }
 
-        /* placeholder used to prevent layout jump when nav is fixed */
-        .simple-localnav-js-placeholder{ display:block; height:0; }
-        a {text-decoration: none; color: white;}
+    /* -- Program at a glance -- */
+    .stats-bar { background: #202025; border-top: 1px solid var(--card-border); border-bottom: 1px solid var(--card-border); }
+    .stats-inner { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+    .stat-item {
+      padding: 26px 20px;
+      border-right: 1px solid var(--card-border);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-value {
+      display: block;
+      font-family: 'Roboto Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--brand);
+      letter-spacing: .02em;
+      margin-bottom: 6px;
+    }
+    .stat-label {
+      font-size: .86rem;
+      color: rgba(255,255,255,.76);
+      line-height: 1.55;
+    }
+    @media (max-width: 600px) {
+      .stats-inner { grid-template-columns: 1fr 1fr; }
+      .stat-item { border-right: none; border-bottom: 1px solid var(--card-border); }
+      .stat-item:nth-child(odd) { border-right: 1px solid var(--card-border); }
+      .stat-item:nth-last-child(-n+2) { border-bottom: none; }
+    }
 
-        
-        
-        .about-section {
-            background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));
-            border: 1px solid rgba(255,255,255,0.04);
-            border-radius: 12px;
-            padding: 1.4rem 1.4rem;
-            margin: 1rem auto;
-            max-width: 980px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.28);
-            font-size: 0.98rem;
-            line-height: 1.5;
-        }
-        .about-section h2 { color: var(--brand); font-weight:700; margin-bottom:0.45rem; font-size:1.15rem; }
-        .about-section p { color: var(--text); line-height:1.5; margin-bottom:0.85rem; }
+    /* -- Sections -- */
+    .section { padding-block: clamp(60px, 9vw, 104px); }
+    .section-alt-light { background: #232328; border-top: 1px solid rgba(255,255,255,.05); border-bottom: 1px solid rgba(255,255,255,.05); }
+    .section-alt-dark { background: #17171b; border-top: 1px solid rgba(255,255,255,.04); border-bottom: 1px solid rgba(255,255,255,.04); }
+    .section-label { display: inline-block; font-size: .73rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--brand); margin-bottom: 10px; }
+    .section-title { font-family: 'Roboto Condensed', sans-serif; font-weight: 900; font-size: clamp(2.1rem, 4.5vw, 3.5rem); line-height: 1.04; letter-spacing: -.022em; margin-bottom: 16px; }
+    .section-body { font-size: 1.05rem; color: rgba(255,255,255,.68); max-width: 560px; line-height: 1.72; }
 
-        .about-grid { display:grid; grid-template-columns: 1fr 300px; gap:20px; align-items:start; }
-        @media (max-width:900px){ .about-grid{ grid-template-columns: 1fr; } }
+    /* -- Mission -- */
+    .mission-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(36px, 6vw, 80px); align-items: center; }
+    @media (max-width: 780px) { .mission-grid { grid-template-columns: 1fr; } }
+    .mission-body p { color: rgba(255,255,255,.7); line-height: 1.78; }
+    .mission-body p + p { margin-top: .9em; }
+    .mission-callout { background: linear-gradient(135deg, rgba(255,187,0,.08), rgba(255,187,0,.02)); border: 1px solid var(--brand-border); border-left: 4px solid var(--brand); border-radius: 0 var(--r-md) var(--r-md) 0; padding: 32px 32px 32px 36px; }
+    .mission-quote { font-family: 'Roboto Condensed', sans-serif; font-size: clamp(1.2rem, 2vw, 1.6rem); font-weight: 700; line-height: 1.35; color: rgba(255,255,255,.94); }
+    .mission-attr { margin-top: 14px; font-size: .84rem; color: var(--muted); font-weight: 500; }
 
-        .meta-card { background: rgba(255,255,255,0.01); border:1px solid rgba(255,255,255,0.03); border-radius:10px; padding:12px; color:var(--muted); font-size:0.95rem; }
-        @media (max-width:900px){ .meta-card .cta { text-align:center; } .meta-card .subtle-click-cta-btn { margin: 8px auto 0 auto; } }
+    /* -- Eligibility -- */
+    .elig-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 44px; }
+    @media (max-width: 780px) { .elig-grid { grid-template-columns: 1fr; } }
+    .elig-card { background: var(--card); border: 1px solid var(--card-border); border-radius: var(--r-md); padding: 28px 24px; display: flex; flex-direction: column; gap: 14px; transition: border-color .18s, box-shadow .18s, transform .18s; }
+    .elig-card:hover { border-color: var(--card-hover); box-shadow: 0 14px 44px rgba(255,187,0,.07); transform: translateY(-3px); }
+    .elig-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 13px;
+      background: rgba(255,187,0,.1);
+      border: 1px solid rgba(255,187,0,.26);
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,.22);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--brand);
+    }
+    .card-icon {
+      width: 21px;
+      height: 21px;
+      display: block;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.9;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .elig-title { font-weight: 700; font-size: 1rem; color: #fff; }
+    .elig-body { font-size: .9rem; color: var(--muted); line-height: 1.6; }
 
-        .section-compact { margin-top: 0.4rem; margin-bottom: 0.4rem; }
-        .small-list { margin: 0.4rem 0 0 0; padding-left: 18px; color: var(--muted); }
-        .small-list li { margin: 6px 0; }
+    /* -- Benefits -- */
+    .benefits-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 44px; }
+    @media (max-width: 640px) { .benefits-grid { grid-template-columns: 1fr; } }
+    .benefit-card { background: var(--card); border: 1px solid var(--card-border); border-radius: var(--r-md); padding: 24px; display: flex; gap: 18px; align-items: flex-start; transition: border-color .18s; }
+    .benefit-card:hover { border-color: var(--card-hover); }
+    .benefit-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 11px;
+      background: rgba(255,187,0,.1);
+      border: 1px solid rgba(255,187,0,.22);
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--brand);
+    }
+    .benefit-title { font-weight: 700; font-size: .97rem; margin-bottom: 5px; }
+    .benefit-body { font-size: .87rem; color: var(--muted); line-height: 1.57; }
 
-        .status-pill { display:inline-block; background: rgba(255,187,0,0.06); color:var(--brand); border:1px solid rgba(255,187,0,0.12); padding:4px 8px; border-radius:999px; font-weight:700; font-size:12px; }
+    /* -- Process -- */
+    .process-wrap { width: min(620px, 92vw); margin-inline: auto; }
+    .process-track { display: flex; flex-direction: column; position: relative; margin-top: 44px; }
+    .process-track::before { content: ''; position: absolute; left: 19px; top: 30px; bottom: 30px; width: 3px; background: linear-gradient(180deg, var(--brand) 0%, rgba(255,187,0,.15) 100%); border-radius: 9999px; }
+    .process-step { display: flex; gap: 24px; align-items: flex-start; padding: 14px 0; position: relative; }
+    .process-num { width: 40px; height: 40px; border-radius: 50%; background: var(--surface); border: 2.5px solid var(--brand); display: flex; align-items: center; justify-content: center; font-family: 'Roboto Condensed', sans-serif; font-weight: 900; font-size: .9rem; color: var(--brand); flex-shrink: 0; z-index: 1; position: relative; }
+    .process-content { padding-top: 8px; }
+    .process-title { font-weight: 700; font-size: 1rem; margin-bottom: 3px; }
+    .process-desc { font-size: .88rem; color: var(--muted); line-height: 1.55; }
 
-        
-        .timeline{
-            /* timeline geometry variables — keep alignment exact */
-            --tl-line-left: 32px;
-            --tl-line-width: 4px;   /* thinner line like the reference */
-            --tl-dot-size: 10px;    /* slightly larger dot */
-            --tl-content-offset: 64px; /* distance from timeline left to content start (matches padding-left) */
-            --tl-line-top: 38px; /* start of the visible line */
-            --tl-line-bottom-gap: 20px; /* distance from bottom edge */
+    /* -- Apply CTA -- */
+    .apply-section { background: var(--surface); border-top: 1px solid var(--card-border); border-bottom: 1px solid var(--card-border); }
+    .apply-inner { display: flex; align-items: center; justify-content: space-between; gap: 48px; padding-block: 68px; }
+    @media (max-width: 700px) { .apply-inner { flex-direction: column; align-items: flex-start; gap: 28px; } }
+    .apply-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,95,95,.08); border: 1px solid rgba(255,95,95,.18); border-radius: 999px; padding: 5px 14px; font-size: .75rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: #ff8a8a; margin-bottom: 16px; }
+    .apply-badge-dot { width: 7px; height: 7px; border-radius: 50%; background: #ff5f5f; animation: pulse-red 2.2s ease infinite; }
+    .apply-title { font-family: 'Roboto Condensed', sans-serif; font-weight: 900; font-size: clamp(1.8rem, 3.5vw, 2.6rem); line-height: 1.08; letter-spacing: -.022em; margin-bottom: 12px; }
+    .apply-sub { font-size: .95rem; color: var(--muted); max-width: 400px; line-height: 1.65; }
+    .apply-note { margin-top: 10px; font-size: .82rem; color: var(--muted-2); }
+    .apply-btn { display: inline-flex; align-items: center; gap: 10px; background: var(--brand); color: #000; font-weight: 800; font-size: 1rem; padding: .95rem 1.85rem; border-radius: 14px; border: none; cursor: not-allowed; opacity: .45; white-space: nowrap; flex-shrink: 0; }
 
-            position: relative;
-            padding-left: 64px; 
-            padding-top: 6px;
-            padding-bottom: 6px;
-            color: var(--muted);
-        }
-        .timeline > strong{ display:block; margin:0 0 8px 0; color:var(--text); font-weight:700; }
-
-        
-        .timeline::before{
-            content: "";
-            position: absolute;
-            left: var(--tl-line-left);
-            top: var(--tl-line-top);
-            bottom: var(--tl-line-bottom-gap);
-            width: var(--tl-line-width);
-            background: linear-gradient(180deg, rgba(255,187,0,0.98), rgba(255,187,0,0.85));
-            border-radius: 9999px; 
-            box-shadow: 0 6px 18px rgba(255,187,0,0.06), inset 0 1px 0 rgba(255,255,255,0.06);
-            z-index: 1; /* ensure the line stays beneath the dots */
-        }
-
-
-
-        
-        .timeline .step{
-            position: relative;
-            padding: 8px 0 8px 0;
-            margin: 0 0 6px 0;
-            font-size: 0.96rem;
-            color:var(--text);
-            line-height:1.4;
-        }
-        /* keep ::after hidden but use ::before for the timeline dot markers */
-        .timeline .step::after { display: none !important; }
-        .timeline .step::before{
-            /* center the dot exactly on the vertical line using the same variables
-               (compute left so the dot's left edge accounts for its width; use translateY only)
-            */
-            content: "";
-            position: absolute;
-            left: calc((var(--tl-line-left) + (var(--tl-line-width) / 2) - (var(--tl-dot-size) / 2)) - var(--tl-content-offset));
-            top: 50%;
-            transform: translateY(-50%);
-            width: var(--tl-dot-size);
-            height: var(--tl-dot-size);
-            box-sizing: border-box; /* include border in the width so centering math is exact */
-            border-radius: 9999px;
-            background: linear-gradient(180deg, rgba(255,187,0,0.98), rgba(255,187,0,0.85));
-            border: 2px solid rgba(11,11,12,0.9); /* black outline */
-            box-shadow: 0 0 6px rgba(255,187,0,0.06); /* subtle glow only */
-            z-index: 3;
-            display: block !important;
-        }
-
-        
-        /* hover effect removed so steps do not shift on hover */
-        .timeline .step:hover{ transform: none; color: inherit; }
-
-        @media (max-width:900px){
-            .timeline{ 
-                --tl-line-left: 22px; 
-                --tl-line-top: 42px;
-                --tl-content-offset: 56px;
-                padding-left: 56px; 
-            }
-            .timeline::before{ left: var(--tl-line-left); top: var(--tl-line-top); }
-        }
-
-        .cta { text-align: left; margin-top: 0.75rem; }
-        .cta p { color: var(--muted); margin-bottom: 0.4rem; font-size:0.95rem; }
-        .subtle-click-cta-btn { background: var(--brand); color: var(--bg); padding: 0.55rem 0.95rem; border-radius: 10px; font-weight: 800; transition: background 0.18s ease, transform .08s ease, box-shadow .12s ease; cursor: pointer; opacity: 1; box-shadow: 0 6px 18px rgba(0,0,0,0.3); display:inline-flex; align-items:center; gap:8px; }
-        .subtle-click-cta-btn:hover { background: var(--brand-900); transform: translateY(-2px); box-shadow: 0 12px 30px rgba(0,0,0,0.35); }
-
-        .dense-note { color: var(--muted); font-size: 0.92rem; margin-top:8px; }
-
-    </style>
+    #footer-container { margin-top: 0; }
+  </style>
 </head>
+<body>
 
-<body data-event-start-et="" data-event-timezone="America/New_York">
-    <nav id="primary-localnav" class="simple-localnav" aria-label="local" tabindex="-1" style="--progress:0;">
-        <div class="localnav-inner container">
-            <a href="/" class="brand"><img src="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png" alt="ACRP Logo"><span>Allegheny County Roleplay</span></a>
-            <div class="actions">
-                <a class="btn-outline" href="/">Home</a>
-                <a class="btn" href="https://portal.alleghenycountyroleplay.com">Login</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- secondary sticky navbar (appears after hero, collapses → expands vertically) -->
-    <nav id="secondary-localnav" class="simple-localnav secondary-localnav" aria-label="secondary local" tabindex="-1" aria-hidden="true" style="display:none;">
-        <div class="localnav-inner container">
-            <a href="/" class="brand"><img src="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png" alt="ACRP Logo"><span>Allegheny County Roleplay</span></a>
-            <div class="actions">
-                <a class="btn-outline" href="/">Home</a>
-                <a class="btn-outline" href="https://discord.gg/GS5Va3zEep">Join ACRP</a>
-                <a class="btn subtle-click-cta-btn in-sentence" id="apply-btn-2" title="Applications closed">Apply</a>
-            </div>
-        </div>
-    </nav>
-    <div class="localnav-overlay-background"></div>
-    <script src="/assets/sticky-fallback.js" defer></script>
-
-    <div class="event-hero" role="banner" aria-label="Event splash">
-        <h1 class="event-hero-tit">Safety Assurance Council</h1>
-<p class="event-hero-des">Soon, the applications to join the Safety Assurance Council will open. Stay tuned for more details!</p>
-        <div class="hero-bottom">
-            <div note="this is for the button"></div>
-        </div>
-
-
+  <nav id="secondary-localnav" class="simple-localnav" aria-label="primary navigation" tabindex="-1" aria-hidden="false">
+    <div class="localnav-inner container">
+      <a href="/" class="brand">
+        <img src="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png" alt="ACRP Logo" onerror="if(!this.dataset.cdnFb){this.dataset.cdnFb=1;this.src=this.src.replace('cdn.alleghenycountyroleplay.com','cdn.acrp.work');}">
+        <span>Allegheny County Roleplay</span>
+      </a>
+      <div class="actions">
+        <a class="btn-outline" href="/">Home</a>
+        <a class="btn-outline" href="#mission-title">Overview</a>
+      </div>
     </div>
-<div>
-    <div class="container about-section">
-        <h2>About the Safety Assurance Council</h2>
-        <div class="about-grid">
-            <div>
-                <p class="section-compact"><strong>Purpose:</strong> The Safety Assurance Council helps ACRP Directorship make decisions to assure user safety without infringing on users' privacy.</p>
+  </nav>
+  <div class="localnav-overlay-background"></div>
+  <script src="/assets/sticky-fallback.js" defer></script>
 
-                <h3 style="margin:0.5rem 0 0.25rem; font-size:1rem; color:var(--text)">Mission</h3>
-                <p class="section-compact">The Safety Assurance Council was created to help Allegheny County Roleplay Directorship make policies, rules, and systems to protect users and keep them safe while not infringing on user privacy and rights.</p>
-                <h4 style="margin:0.6rem 0 0.25rem; color:var(--brand); font-size:0.95rem">Eligibility</h4>
-                <ul class="small-list">
-                    <li>You must be at least 13 years of age and age-verified through our systems.</li>
-                    <li>You must be based in the US or UK and be willing to submit proof of region.</li>
-                    <li>You must be a member of the ACRP main Discord server for at least 1 month with a positive moderation history and reputation within the community.</li>
-                </ul>
 
-                <h4 style="margin:0.6rem 0 0.2rem; color:var(--brand); font-size:0.95rem">Applications</h4>
-                <p class="dense-note">Applications are currently <span class="status-pill">closed</span>.</p>
-
-                <div class="timeline" aria-hidden="true">
-                    <strong style="color:var(--text);font-size:0.95rem">Timeline</strong>
-                    <div class="step">You apply</div>
-                    <div class="step">Get a response</div>
-                    <div class="step">Get trained</div>
-                    <div class="step">You're in!</div>
-                </div>
-
-                <h4 style="margin:0.6rem 0 0.2rem; color:var(--brand); font-size:0.95rem">Benefits</h4>
-                <ul class="small-list">
-                    <li>VIP role in Discord along with booster perks permanently.</li>
-                    <li>The ability to influence decisions and make sure your voice is heard.</li>
-                    <li>The "Safety Assurance Council" role in Discord.</li>
-                    <li>The ability to fast-track to being an actual staff member.</li>
-                </ul>
-
-            </div>
-            <aside class="meta-card">
-                <strong>Does this interest you?</strong>
-              
-                <p class="dense-note" style="margin-top:6px">Applications are currently <span class="status-pill">closed</span>. When open, you'll be asked for basic details and a short statement of interest.</p>
-                <div class="cta" style="margin-top:8px">
-                    <p style="margin-bottom:6px">Ready to apply?</p>
-                    <a id="apply-btn" class="subtle-click-cta-btn in-sentence" title="Applications closed">Apply Now!</a>
-                </div>
-            </aside>
+  <!-- HERO -->
+  <section class="hero" role="banner" aria-labelledby="hero-title">
+    <div class="hero-inner">
+      <span class="hero-eyebrow" aria-label="Program overview">
+        <span class="eyebrow-dot" aria-hidden="true"></span>
+        Program Overview
+      </span>
+      <h1 class="hero-title" id="hero-title">
+        Safety <em>Assurance</em><br>Council
+      </h1>
+      <p class="hero-sub">
+        The Safety Assurance Council is an internal advisory program within ACRP.
+        It exists to review safety concerns, provide community perspective, and help
+        Directorship shape policy decisions without compromising privacy or user rights.
+      </p>
+      <div class="hero-status" aria-live="polite">
+        <span class="status-dot-red" aria-hidden="true"></span>
+        Applications are <strong>closed</strong> at this time
+      </div>
+      <div class="hero-summary" aria-label="Quick program summary">
+        <div class="hero-summary-item">
+          <span class="hero-summary-label">Primary purpose</span>
+          <p class="hero-summary-text">Advise on safety policy, escalation standards, and user-protection decisions.</p>
         </div>
+        <div class="hero-summary-item">
+          <span class="hero-summary-label">Program type</span>
+          <p class="hero-summary-text">Community advisory council with a structured review and onboarding process.</p>
+        </div>
+        <div class="hero-summary-item">
+          <span class="hero-summary-label">Current status</span>
+          <p class="hero-summary-text">Applications are closed. Eligibility and process details remain listed below for reference.</p>
+        </div>
+      </div>
+      <div class="hero-actions">
+        <a class="btn-secondary info-link" href="#elig-title" aria-label="Jump to eligibility requirements">
+          View Requirements
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+        </a>
+        <a class="btn-secondary info-link" href="#process-title" aria-label="Jump to application process">
+          Review Process
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+        </a>
+      </div>
     </div>
-</div>
-<div id="footer-container"></div>
-    <script>
-
-        window['--postermakinguishowingdevshouldithis is superlongbecauseiwantittobesoyeahweloveyou'] = true
-            window['--postermakinguishowingdevshouldithis is superlongbecauseiwantittobesoyeahweloveyou'] ?? false;
-
-        (function(){
-            const startEt = document.body?.dataset?.eventStartEt;
-            const timeZone = document.body?.dataset?.eventTimezone || 'America/New_York';
-
-            const POSTER_FLAG_NAME = "--postermakinguishowingdevshouldithis is superlongbecauseiwantittobesoyeahweloveyou";
-            const posterUiEnabled = (window[POSTER_FLAG_NAME] === true || window[POSTER_FLAG_NAME] === 'true');
-
-            function setPlaceholders(){
-                document.querySelectorAll('.event-date').forEach(el => { el.textContent = '-/-/--'; });
-                document.querySelectorAll('.event-time').forEach(el => { el.textContent = '--:--'; });
-            }
-
-            if(!startEt){
-                console.warn('Missing data-event-start-et on <body>.');
-                setPlaceholders();
-                return;
-            }
-
-            // Parse "YYYY-MM-DDTHH:mm:ss" (seconds optional)
-            const m = String(startEt).trim().match(/^([0-9]{4})-([0-9]{2})-([0-9]{2})T([0-9]{2}):([0-9]{2})(?::([0-9]{2}))?$/);
-            if(!m){
-                console.warn('Invalid data-event-start-et format. Use YYYY-MM-DDTHH:mm or YYYY-MM-DDTHH:mm:ss');
-                setPlaceholders();
-                return;
-            }
-            const year = Number(m[1]);
-            const month = Number(m[2]);
-            const day = Number(m[3]);
-            const hour = Number(m[4]);
-            const minute = Number(m[5]);
-            const second = m[6] ? Number(m[6]) : 0;
-
-            function getTimeZoneOffsetMinutes(date, tz){
-                
-                const dtf = new Intl.DateTimeFormat('en-US', {
-                    timeZone: tz,
-                    hour12: false,
-                    year: 'numeric',
-                    month: '2-digit',
-                    day: '2-digit',
-                    hour: '2-digit',
-                    minute: '2-digit',
-                    second: '2-digit'
-                });
-                const parts = dtf.formatToParts(date);
-                const values = Object.fromEntries(parts.filter(p => p.type !== 'literal').map(p => [p.type, p.value]));
-                const asUtcMs = Date.UTC(
-                    Number(values.year),
-                    Number(values.month) - 1,
-                    Number(values.day),
-                    Number(values.hour),
-                    Number(values.minute),
-                    Number(values.second)
-                );
-                return (asUtcMs - date.getTime()) / 60000;
-            }
-
-            function zonedTimeToUtc(y, mo, d, h, mi, s, tz){
-                
-                const utcGuess = Date.UTC(y, mo - 1, d, h, mi, s);
-                let date = new Date(utcGuess);
-                let offset = getTimeZoneOffsetMinutes(date, tz);
-                date = new Date(utcGuess - offset * 60000);
-                const offset2 = getTimeZoneOffsetMinutes(date, tz);
-                if(offset2 !== offset){
-                    date = new Date(utcGuess - offset2 * 60000);
-                }
-                return date;
-            }
-
-            const startInstant = zonedTimeToUtc(year, month, day, hour, minute, second, timeZone);
-            if(Number.isNaN(startInstant.getTime())){
-                console.warn('Could not compute event start instant.');
-                setPlaceholders();
-                return;
-            }
-
-            const dateLocalText = new Intl.DateTimeFormat(undefined, {
-                weekday: 'long',
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            }).format(startInstant);
-            const timeLocalText = new Intl.DateTimeFormat(undefined, {
-                hour: 'numeric',
-                minute: '2-digit'
-            }).format(startInstant);
-
-            function getUsTimeZoneSuffix(){
-                const viewerTz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-                if(!viewerTz) return '';
-                const tz = String(viewerTz);
-                if(tz === 'America/New_York' || tz === 'America/Detroit' || tz === 'America/Indiana/Indianapolis' || tz === 'America/Indiana/Marengo' || tz === 'America/Indiana/Vevay' || tz === 'America/Indiana/Vincennes' || tz === 'America/Indiana/Winamac' || tz === 'America/Kentucky/Louisville' || tz === 'America/Kentucky/Monticello') return 'ET';
-                if(tz === 'America/Chicago' || tz === 'America/Indiana/Knox' || tz === 'America/Indiana/Tell_City' || tz === 'America/Menominee' || tz === 'America/North_Dakota/Beulah' || tz === 'America/North_Dakota/Center' || tz === 'America/North_Dakota/New_Salem') return 'CT';
-                if(tz === 'America/Denver' || tz === 'America/Boise' || tz === 'America/Phoenix') return 'MT';
-                if(tz === 'America/Los_Angeles' || tz === 'America/Vancouver' || tz === 'America/Tijuana') return 'PT';
-                if(tz === 'Pacific/Honolulu' || tz === 'America/Honolulu') return 'HT';
-                return '';
-            }
-
-            // Tooltip includes the canonical schedule in Eastern Time (handles DST automatically).
-            const dateEtText = new Intl.DateTimeFormat(undefined, {
-                timeZone,
-                weekday: 'long',
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            }).format(startInstant);
-            const timeEtText = new Intl.DateTimeFormat(undefined, {
-                timeZone,
-                hour: 'numeric',
-                minute: '2-digit'
-            }).format(startInstant);
-
-            document.querySelectorAll('.event-date').forEach(el => { el.textContent = dateLocalText; });
-            const suffix = getUsTimeZoneSuffix();
-            document.querySelectorAll('.event-time').forEach(el => {
-                el.textContent = suffix ? `${timeLocalText} ${suffix}` : timeLocalText;
-            });
-            const holder = document.querySelector('.event-hero-dat-large-dat-tim-holder');
-            if(holder){ holder.title = `Scheduled (ET): ${dateEtText} at ${timeEtText}`; }
-
-            if(posterUiEnabled){
-                const heroBottom = document.querySelector('.hero-bottom');
-                if(heroBottom && !heroBottom.querySelector('[data-poster-button]')){
-                    const btn = document.createElement('button');
-                    btn.type = 'button';
-                    btn.setAttribute('data-poster-button', '1');
-                    btn.textContent = 'Download Poster';
-                    btn.className = 'btn';
-                    btn.style.marginTop = '12px';
-                    btn.style.padding = '.85rem 1.1rem';
-                    btn.style.borderRadius = '12px';
-                    btn.style.border = 'none';
-                    btn.style.cursor = 'pointer';
-                    btn.style.fontWeight = '800';
-                    btn.style.boxShadow = '0 10px 24px rgba(255,187,0,.22)';
-
-                    heroBottom.appendChild(btn);
-
-                    btn.addEventListener('click', async () => {
-                        btn.disabled = true;
-                        const originalText = btn.textContent;
-                        btn.textContent = 'Generating…';
-                        try{
-                            await generateAndDownloadPoster({
-                                title: 'Our First SSU',
-                                dateEtText,
-                                timeEtText,
-                                joinUrl: 'https://discord.gg/GS5Va3zEep'
-                            });
-                        }catch(err){
-                            console.error(err);
-                            alert('Poster generation failed. Check console for details.');
-                        }finally{
-                            btn.disabled = false;
-                            btn.textContent = originalText;
-                        }
-                    });
-                }
-            }
-
-            async function generateAndDownloadPoster(opts){
-                const width = 1080;
-                const height = 1350;
-                const canvas = document.createElement('canvas');
-                canvas.width = width;
-                canvas.height = height;
-                const ctx = canvas.getContext('2d');
-                if(!ctx) throw new Error('Canvas 2D context unavailable');
-
-                
-                if(document.fonts && document.fonts.ready){
-                    try{ await document.fonts.ready; }catch(e){}
-                }
-
-                function loadImage(src){
-                    return new Promise((resolve, reject) => {
-                        const img = new Image();
-                        img.onload = () => resolve(img);
-                        img.onerror = reject;
-                        img.src = src;
-                    });
-                }
-
-                function drawCover(img){
-                    const iw = img.naturalWidth || img.width;
-                    const ih = img.naturalHeight || img.height;
-                    const scale = Math.max(width / iw, height / ih);
-                    const dw = iw * scale;
-                    const dh = ih * scale;
-                    const dx = (width - dw) / 2;
-                    const dy = (height - dh) / 2;
-                    ctx.drawImage(img, dx, dy, dw, dh);
-                }
-
-                // Background (same-origin asset to avoid CORS-tainted canvas)
-                ctx.fillStyle = '#1D1D1D';
-                ctx.fillRect(0, 0, width, height);
-                try{
-                    const bg = await loadImage('/assets/ssu-hero.svg');
-                    drawCover(bg);
-                }catch(e){
-                    
-                    const g = ctx.createLinearGradient(0, 0, width, height);
-                    g.addColorStop(0, '#0d0d0d');
-                    g.addColorStop(0.7, '#141417');
-                    g.addColorStop(1, '#332500');
-                    ctx.fillStyle = g;
-                    ctx.fillRect(0, 0, width, height);
-                }
-
-                // Overlay for readability
-                ctx.fillStyle = 'rgba(0,0,0,0.55)';
-                ctx.fillRect(0, 0, width, height);
-                const vignette = ctx.createRadialGradient(width*0.5, height*0.25, 0, width*0.5, height*0.25, height*0.9);
-                vignette.addColorStop(0, 'rgba(255,187,0,0.10)');
-                vignette.addColorStop(0.45, 'rgba(0,0,0,0.25)');
-                vignette.addColorStop(1, 'rgba(0,0,0,0.75)');
-                ctx.fillStyle = vignette;
-                ctx.fillRect(0, 0, width, height);
-
-                function wrapText(text, x, y, maxWidth, lineHeight){
-                    const words = String(text).split(/\s+/);
-                    let line = '';
-                    for(const word of words){
-                        const test = line ? `${line} ${word}` : word;
-                        if(ctx.measureText(test).width > maxWidth && line){
-                            ctx.fillText(line, x, y);
-                            y += lineHeight;
-                            line = word;
-                        }else{
-                            line = test;
-                        }
-                    }
-                    if(line) ctx.fillText(line, x, y);
-                    return y;
-                }
-
-                const pad = 84;
-
-                
-                ctx.fillStyle = '#ffffff';
-                ctx.textAlign = 'left';
-                ctx.textBaseline = 'top';
-                ctx.font = '900 98px "Roboto Condensed", "Open Sans", sans-serif';
-                let y = pad;
-                y = wrapText(opts.title || 'Event', pad, y, width - pad*2, 102) + 26;
-
-                
-                const dateLine = (opts.dateEtText || '-/-/--');
-                const timeLine = (opts.timeEtText || '--:--') + ' ET';
-                ctx.font = '700 72px Oswald, "Open Sans", sans-serif';
-                ctx.fillStyle = 'rgba(255,255,255,0.95)';
-                ctx.fillText(dateLine, pad, y);
-                y += 88;
-                ctx.fillText(timeLine, pad, y);
-                y += 92;
-
-                
-                ctx.fillStyle = '#FFBB00';
-                ctx.fillRect(pad, y, 220, 10);
-                y += 44;
-
-                
-                ctx.fillStyle = 'rgba(255,255,255,0.9)';
-                ctx.font = '600 34px Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif';
-                wrapText(`Join: ${opts.joinUrl || 'discord.gg/GS5Va3zEep'}`, pad, y, width - pad*2, 44);
-
-                
-                ctx.textAlign = 'center';
-                ctx.fillStyle = 'rgba(255,255,255,0.75)';
-                ctx.font = '600 30px Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif';
-                ctx.fillText('Allegheny County Roleplay', width/2, height - 86);
-                ctx.fillText('alleghenycountyroleplay.com', width/2, height - 48);
-
-                const blob = await new Promise((resolve) => canvas.toBlob(resolve, 'image/png', 1));
-                if(!blob) throw new Error('Failed to export poster image');
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = `ACRP_SSU_Poster_${new Date().toISOString().slice(0,10)}.png`;
-                document.body.appendChild(a);
-                a.click();
-                a.remove();
-                setTimeout(() => URL.revokeObjectURL(url), 1500);
-            }
-        })();
-    </script>
-
-    <script src="/master.js"></script>
-    <script src="/toasts.js"></script>
-    <script>
-        (function(){
-            const primary = document.getElementById('primary-localnav');
-            const secondary = document.getElementById('secondary-localnav');
-            if(!primary || !secondary) return;
-
-            // choose a reference element to detect "scrolled past" (header → hero → body)
-            const ref = document.querySelector('.header') || document.querySelector('header') || document.querySelector('.event-hero') || document.body;
-
-            let placeholder = null;
-            let gsapTl = null; /* secondary nav timeline */
-            let threshold = 0;
-
-            function calcThreshold(){
-                const r = ref.getBoundingClientRect();
-                return r.bottom + window.pageYOffset - 4; // small buffer
-            }
+    <div class="hero-fade" aria-hidden="true"></div>
+  </section>
 
 
-
-            function ensureTimeline(){
-                if(gsapTl) return Promise.resolve(gsapTl);
-                if(window.__gsapReady) {
-                    return window.__gsapReady.then(() => {
-                        try{
-                            const inner = secondary.querySelector('.localnav-inner');
-                            const actions = secondary.querySelector('.actions');
-                            const brandSpan = secondary.querySelector('.brand span');
-
-                            // measure target widths so we can animate max-width for the brand text
-                            const brandTargetWidth = Math.min(brandSpan.scrollWidth || 220, 400);
-
-                            /* secondary nav timeline */
-                            gsapTl = gsap.timeline({ paused:true, reversed:true });
-                            gsapTl.to(brandSpan, { maxWidth: brandTargetWidth + 'px', opacity: 1, duration: .22, ease: 'power2.out' }, 0);
-                            gsapTl.fromTo(actions, { y: -6, opacity: 0 }, { y: 0, opacity: 1, duration: .28, ease: 'power2.out', onStart: () => { actions.style.pointerEvents = 'auto'; } }, 0.06);
-                            gsapTl.eventCallback('onReverseComplete', function(){ try{ actions.style.pointerEvents = 'none'; }catch(e){} });
-
-                            return gsapTl;
-                        }catch(err){ gsapTl = null; return null; }
-                    }).catch(()=>null);
-                }
-                return Promise.resolve(null);
-            }
+  <!-- PROGRAM AT A GLANCE -->
+  <div class="stats-bar" aria-label="Program at a glance">
+    <div class="container">
+      <div class="stats-inner">
+        <div class="stat-item"><span class="stat-value">Eligibility</span><span class="stat-label">Age verification, region check, and community standing are required before acceptance.</span></div>
+        <div class="stat-item"><span class="stat-value">Role Scope</span><span class="stat-label">Members provide advisory input on safety policy and escalation standards.</span></div>
+        <div class="stat-item"><span class="stat-value">Selection</span><span class="stat-label">Directorship reviews each application and issues a clear approve or deny decision.</span></div>
+        <div class="stat-item"><span class="stat-value">Status</span><span class="stat-label">Applications are currently closed; requirements and process are still listed for reference.</span></div>
+      </div>
+    </div>
+  </div>
 
 
-            function showCollapsedThenExpand(){
-                if(secondary.classList.contains('scrolled-past')) return;
+  <!-- MISSION -->
+  <section class="section section-alt-light" aria-labelledby="mission-title">
+    <div class="container">
+      <div class="mission-grid">
+        <div>
+          <span class="section-label">What we are</span>
+          <h2 class="section-title" id="mission-title">Built to protect.<br>Not to police.</h2>
+          <div class="mission-body">
+            <p>The Safety Assurance Council gives ACRP community members a real seat at the table when it comes to user-safety policy. Our role is advisory - we surface concerns, propose solutions, and act as a check on decisions that affect everyone.</p>
+            <p>We exist because safety and privacy are not opposites. Every policy we touch is examined through both lenses, and we push back when either one is sacrificed for the convenience of the other.</p>
+          </div>
+        </div>
+        <figure class="mission-callout">
+          <blockquote class="mission-quote">"Protecting users and protecting their privacy are the same job. We refuse to treat them as a trade-off."</blockquote>
+          <figcaption class="mission-attr">- Safety Assurance Council founding principle</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
 
-                // show secondary (collapsed), hide primary visually and remove primary sticky if present
-                secondary.style.display = '';
-                secondary.setAttribute('aria-hidden','false');
-                secondary.classList.remove('expanded');
-                secondary.classList.add('scrolled-past');
-                primary.classList.add('hidden-by-secondary');
 
-                // run GSAP expand (reversible) if available, otherwise fallback to CSS class toggle
-                ensureTimeline().then(tl => {
-                    if(tl){ tl.play(0); secondary.classList.add('expanded'); }
-                    else {
-                        // fallback: CSS class after a frame
-                        requestAnimationFrame(() => setTimeout(() => secondary.classList.add('expanded'), 60));
-                    }
-                });
-            }
+  <!-- ELIGIBILITY -->
+  <section class="section section-alt-dark" style="padding-top:0;" aria-labelledby="elig-title">
+    <div class="container">
+      <span class="section-label">Who qualifies</span>
+      <h2 class="section-title" id="elig-title">Eligibility requirements</h2>
+      <p class="section-body">Three requirements. All are firm. Meet them, and you have a place here.</p>
+      <div class="elig-grid" role="list">
+        <article class="elig-card" role="listitem">
+          <div class="elig-icon" aria-hidden="true">
+            <svg class="card-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v6c0 5-3.4 8.5-7 9-3.6-.5-7-4-7-9V6l7-3z"/></svg>
+          </div>
+          <div>
+            <div class="elig-title">Age &amp; Verification</div>
+            <p class="elig-body">You must be at least 13 years old and have completed age verification through ACRP's systems. No exceptions.</p>
+          </div>
+        </article>
+        <article class="elig-card" role="listitem">
+          <div class="elig-icon" aria-hidden="true">
+            <svg class="card-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18"/><path d="M12 3a14 14 0 0 0 0 18"/></svg>
+          </div>
+          <div>
+            <div class="elig-title">US or UK Region</div>
+            <p class="elig-body">You must be based in the United States or United Kingdom, and willing to submit proof of your region when requested.</p>
+          </div>
+        </article>
+        <article class="elig-card" role="listitem">
+          <div class="elig-icon" aria-hidden="true">
+            <svg class="card-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.4 12.3 2.4 2.4 4.8-5"/></svg>
+          </div>
+          <div>
+            <div class="elig-title">Community Standing</div>
+            <p class="elig-body">At least one month of membership in the ACRP Discord, with a clean moderation history and a positive reputation in the community.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
 
-            function hideSticky(){
-                if(!secondary.classList.contains('scrolled-past')) return;
 
-                // reverse GSAP timeline if present, otherwise CSS collapse then hide
-                if(gsapTl){
-                    gsapTl.reverse();
-                    // after collapse animation remove classes
-                    setTimeout(() => {
-                        secondary.classList.remove('scrolled-past','expanded');
-                        secondary.style.display = 'none';
-                        secondary.setAttribute('aria-hidden','true');
-                        primary.classList.remove('hidden-by-secondary');
-                    }, 300);
-                    return;
-                }
+  <!-- BENEFITS -->
+  <section class="section section-alt-light" style="padding-top:0;" aria-labelledby="benefits-title">
+    <div class="container">
+      <span class="section-label">What membership includes</span>
+      <h2 class="section-title" id="benefits-title">Council scope and responsibilities</h2>
+      <p class="section-body">Membership carries access, expectations, and formal recognition inside the program.</p>
+      <div class="benefits-grid" role="list">
+        <article class="benefit-card" role="listitem">
+          <div class="benefit-icon" aria-hidden="true">
+            <svg class="card-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.2"/><path d="M5 19a7 7 0 0 1 14 0"/></svg>
+          </div>
+          <div>
+            <div class="benefit-title">Protected discussion access</div>
+            <p class="benefit-body">Members are brought into internal conversations where safety concerns, policy drafts, and enforcement edge cases are reviewed.</p>
+          </div>
+        </article>
+        <article class="benefit-card" role="listitem">
+          <div class="benefit-icon" aria-hidden="true">
+            <svg class="card-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10l3 3v13H7z"/><path d="M17 4v4h4"/><path d="M10 12h7"/><path d="M10 16h5"/></svg>
+          </div>
+          <div>
+            <div class="benefit-title">Policy input responsibility</div>
+            <p class="benefit-body">Council members are expected to review proposals carefully and give clear, reasoned input before decisions are finalized.</p>
+          </div>
+        </article>
+        <article class="benefit-card" role="listitem">
+          <div class="benefit-icon" aria-hidden="true">
+            <svg class="card-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 7.5 5v5.8c0 4.1 2.6 6.9 4.5 7.8 1.9-.9 4.5-3.7 4.5-7.8V5z"/><path d="m10.2 12 1.3 1.3 2.4-2.6"/></svg>
+          </div>
+          <div>
+            <div class="benefit-title">Formal role recognition</div>
+            <p class="benefit-body">Accepted members receive the Safety Assurance Council designation so the program has visible accountability and clear ownership.</p>
+          </div>
+        </article>
+        <article class="benefit-card" role="listitem">
+          <div class="benefit-icon" aria-hidden="true">
+            <svg class="card-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="12" height="16" rx="2"/><rect x="9" y="3" width="6" height="4" rx="1.2"/><path d="M9.5 11.5h5"/><path d="M9.5 15.5h5"/></svg>
+          </div>
+          <div>
+            <div class="benefit-title">Structured onboarding</div>
+            <p class="benefit-body">New members complete a short onboarding so expectations, confidentiality, and review procedures are consistent from day one.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
 
-                secondary.classList.remove('expanded');
-                setTimeout(() => {
-                    secondary.classList.remove('scrolled-past');
-                    secondary.style.display = 'none';
-                    secondary.setAttribute('aria-hidden','true');
-                    primary.classList.remove('hidden-by-secondary');
-                }, 260);
-            }
 
-            function onScroll(){
-                const y = window.pageYOffset || document.documentElement.scrollTop;
-                if (y >= threshold){
-                    showCollapsedThenExpand();
-                } else {
-                    hideSticky();
-                }
-            }
+  <!-- PROCESS -->
+  <section class="section section-alt-dark" style="padding-top:0;" aria-labelledby="process-title">
+    <div class="process-wrap">
+      <span class="section-label">How it works</span>
+      <h2 class="section-title" id="process-title">The application process</h2>
+      <div class="process-track" role="list">
+        <div class="process-step" role="listitem">
+          <div class="process-num" aria-label="Step 1">1</div>
+          <div class="process-content">
+            <div class="process-title">Submit your application</div>
+            <p class="process-desc">When applications open, fill out a short form - basic details and a statement of interest. No essays required.</p>
+          </div>
+        </div>
+        <div class="process-step" role="listitem">
+          <div class="process-num" aria-label="Step 2">2</div>
+          <div class="process-content">
+            <div class="process-title">Review &amp; response</div>
+            <p class="process-desc">Directorship reviews every application. You'll receive a clear yes or no - within a reasonable timeframe, not silence.</p>
+          </div>
+        </div>
+        <div class="process-step" role="listitem">
+          <div class="process-num" aria-label="Step 3">3</div>
+          <div class="process-content">
+            <div class="process-title">Onboarding &amp; training</div>
+            <p class="process-desc">Accepted members go through a brief onboarding covering our processes, expectations, and how the Council operates day-to-day.</p>
+          </div>
+        </div>
+        <div class="process-step" role="listitem">
+          <div class="process-num" aria-label="Step 4">4</div>
+          <div class="process-content">
+            <div class="process-title">You're a Council member</div>
+            <p class="process-desc">Welcome in. Participate in discussions, review proposals, and make a real impact on how ACRP protects its community.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-            window.addEventListener('load', function(){
-                threshold = calcThreshold();
-                ensureTimeline();
-                onScroll();
-            });
-            window.addEventListener('resize', function(){ threshold = calcThreshold(); });
-            window.addEventListener('scroll', onScroll, {passive:true});
-        })();
 
-        // preserve original apply button handler
-        document.getElementById('apply-btn')?.addEventListener('click', function(e) {
-            e.preventDefault();
-            if (window.ACRP && typeof window.ACRP.showToast === 'function') {
-                window.ACRP.showToast("Applications currently aren't open yet", 'warn');
-            } else if (typeof showToast === 'function') {
-                showToast("Applications currently aren't open yet", 'warn');
-            } else {
-                alert("Applications currently aren't open yet");
-            }
-        });
-        // secondary nav apply (same behavior)
-        document.getElementById('apply-btn-2')?.addEventListener('click', function(e){ e.preventDefault(); document.getElementById('apply-btn')?.click(); });
-    </script>
+  <!-- APPLY CTA -->
+  <div class="apply-section section-alt-light" role="region" aria-labelledby="apply-title">
+    <div class="container">
+      <div class="apply-inner">
+        <div>
+          <div class="apply-badge">
+            <span class="apply-badge-dot" aria-hidden="true"></span>
+            Applications Closed
+          </div>
+          <h2 class="apply-title" id="apply-title">Interested in joining<br>the Council?</h2>
+          <p class="apply-sub">Applications aren't open right now. Stay active in the Discord - when they open, we'll announce it there first.</p>
+          <p class="apply-note">Questions? Reach out in the ACRP Discord server.</p>
+        </div>
+        <div style="flex-shrink:0; text-align:center;">
+          <button id="apply-btn-cta" class="apply-btn" disabled aria-disabled="true" title="Applications are currently closed">
+            Apply Now
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </button>
+          <p class="apply-note" style="margin-top:10px;">Currently unavailable</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="footer-container"></div>
+  <script src="/toasts.js"></script>
+  <script src="/notify.js"></script>
+  <script src="/snow.js"></script>
+  <script src="/master.js"></script>
+
+  <script>
+    /* Apply button toast */
+    (function () {
+      function showClosed(e) {
+        e.preventDefault();
+        var fn = (window.ACRP && typeof window.ACRP.showToast === 'function')
+          ? function (m, t) { window.ACRP.showToast(m, t); }
+          : (typeof showToast === 'function') ? showToast
+          : function (m) { alert(m); };
+        fn("Applications aren't open yet - stay tuned in Discord.", 'warn');
+      }
+      ['apply-btn-hero', 'apply-btn-cta'].forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) el.addEventListener('click', showClosed);
+      });
+    })();
+
+  </script>
+
 </body>
 </html>
