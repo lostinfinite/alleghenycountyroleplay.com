@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script src="/assets/cdn-fallback.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Allegheny County Roleplay</title>
+  <link rel="icon" type="image/png" href="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/site.css">
+  <script src="https://uptime.betterstack.com/widgets/announcement.js" data-id="227840" async type="text/javascript"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #1D1D1D;
+      color: #fff;
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .page-shell {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .text-block {
+      padding: 4rem 4.5rem 3rem;
+      max-width: 640px;
+    }
+
+    .logo {
+      width: 44px;
+      height: auto;
+      margin-bottom: 2.75rem;
+      opacity: 0.8;
+    }
+
+    h1 {
+      font-size: clamp(2.25rem, 5vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+      color: #fff;
+      margin: 0 0 1rem;
+    }
+
+    .sub {
+      font-size: 1.05rem;
+      color: #888;
+      margin: 0 0 1.75rem;
+      line-height: 1.5;
+    }
+
+    .links {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .links a {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #FFBB00;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: rgba(255,187,0,0.4);
+      transition: text-decoration-color 0.15s;
+    }
+
+    .links a:hover {
+      text-decoration-color: #FFBB00;
+    }
+
+    .links .sep {
+      color: #444;
+      user-select: none;
+    }
+
+    .scene {
+      width: 100%;
+      max-height: 52vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .scene::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, #1D1D1D 0%, transparent 30%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .scene img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+      display: block;
+    }
+
+    @media (max-width: 600px) {
+      .text-block {
+        padding: 3rem 1.75rem 2rem;
+      }
+
+      .scene {
+        max-height: 40vh;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-shell">
+    <div class="text-block">
+      <img
+        class="logo"
+        src="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png"
+        alt="ACRP"
+      >
+      <h1>Nothing to see here.</h1>
+      <p class="sub">Whatever you're looking for isn't at this address.</p>
+      <nav class="links" aria-label="Return links">
+        <a href="/index.html">Home</a>
+        <span class="sep" aria-hidden="true">·</span>
+        <a href="https://portal.alleghenycountyroleplay.com">Portal</a>
+        <span class="sep" aria-hidden="true">·</span>
+        <a href="/careers.html">Careers</a>
+      </nav>
+    </div>
+
+    <div class="scene">
+      <img
+        src="https://auxcdn.contentltd.xyz/ban2.png"
+        alt=""
+        role="presentation"
+      >
+    </div>
+  </div>
+
+  <div id="footer-container"></div>
+  <script src="toasts.js"></script>
+  <script src="notify.js"></script>
+  <script src="snow.js"></script>
+  <script src="master.js"></script>
+</body>
+</html>

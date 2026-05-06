@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script src="/assets/cdn-fallback.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ACRP — Renovation in Progress</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png" sizes="any">
+  <link rel="shortcut icon" href="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png" type="image/png">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #070707;
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 2rem;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: url('https://cdn.alleghenycountyroleplay.com/acrp_brandingworks/acrp_promoaa.png') center / cover no-repeat;
+      z-index: -1;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+      z-index: -1;
+    }
+
+    .container {
+      max-width: 720px;
+      text-align: center;
+    }
+
+    :root { --logo-size: 100px; }
+    @media (max-width: 768px) { :root { --logo-size: 72px; } }
+    @media (max-width: 600px) { :root { --logo-size: 56px; } }
+    @media (max-width: 400px) { :root { --logo-size: 100px; } }
+
+    .logo-cycle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0;
+      margin-bottom: 2.25rem;
+      animation: fadeIn 0.8s ease-out both;
+      transition: transform 400ms ease, gap 300ms ease;
+    }
+
+    .logo-cycle .acrp-logo {
+      height: var(--logo-size);
+      width: auto;
+      max-width: min(var(--logo-size), 30vw);
+      object-fit: contain;
+    }
+
+    .logo-cycle .x-sep {
+      display: inline-block;
+      font-size: calc(var(--logo-size) * 0.7);
+      line-height: 1;
+      font-weight: 700;
+      opacity: 0;
+      transform: translateX(-14px);
+      transition: opacity 300ms ease, transform 300ms ease;
+      user-select: none;
+      pointer-events: none;
+    }
+    .logo-cycle:not(.active) .x-sep { display: none; }
+
+    .logo-cycle .dept-slot {
+      position: relative;
+      width: 0;
+      height: var(--logo-size);
+      overflow: hidden;
+      opacity: 0;
+      transition: opacity 300ms ease, width 300ms ease;
+    }
+
+  .logo-cycle.active { transform: translateX(-20px); gap: 12px; }
+  .logo-cycle.active .x-sep { opacity: 1; transform: translateX(0); }
+  .logo-cycle.active .dept-slot { opacity: 1; width: var(--logo-size); }
+
+    .logo-cycle .dept-logo {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: contain;
+      transform: translateX(110%);
+      opacity: 0; 
+      transition: transform 500ms ease, opacity 400ms ease;
+    }
+    .logo-cycle .dept-logo.in { transform: translateX(0); opacity: 1; }
+    .logo-cycle .dept-logo.out { transform: translateX(-120%); opacity: 0; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .logo-cycle, h1, .subtitle {
+        opacity: 1 !important;
+        animation: none !important;
+      }
+    }
+
+    h1 {
+      font-size: clamp(1.5rem, 5vw, 3rem);
+      font-weight: 300;
+      letter-spacing: -0.5px;
+      margin-bottom: 1rem;
+      animation: fadeIn 0.8s ease-out 0.2s both;
+      line-height: 1.2;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+    #footer-container {
+      display: none !important;
+    }
+    .subtitle {
+      font-size: clamp(0.95rem, 2vw, 1.2rem);
+      font-weight: 300;
+      color: #898889;
+      margin-bottom: 4rem;
+      animation: fadeIn 0.8s ease-out 0.4s both;
+    }
+
+    .cursor {
+      display: inline-block;
+      margin-left: 2px;
+      width: 1ch;
+      color: #ffffff;
+      opacity: 0.9;
+      animation: blink 1s step-start infinite;
+      vertical-align: baseline;
+      flex-shrink: 0;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    @media (max-width: 768px) {
+      .subtitle {
+        margin-bottom: 3rem;
+      }
+
+      .logo-cycle.active {
+        transform: translateX(-10px);
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: clamp(1.75rem, 6vw, 2.5rem);
+      }
+
+      .subtitle {
+        font-size: clamp(0.9rem, 1.8vw, 1rem);
+      }
+
+      .logo-cycle.active {
+        transform: translateX(0);
+      }
+
+      /* Hide dept logo cycling on mobile */
+      .logo-cycle .x-sep,
+      .logo-cycle .dept-slot {
+        display: none !important;
+      }
+
+      .logo-cycle {
+        gap: 0 !important;
+        transform: none !important;
+      }
+
+      /* Override master.js max-width constraint for logo */
+      .logo-cycle .acrp-logo {
+        max-width: none !important;
+        width: 100px !important;
+        height: 100px !important;
+      }
+    }
+  </style>
+</head>
+<script src="https://uptime.betterstack.com/widgets/announcement.js" data-id="227840" async="async" type="text/javascript"></script>
+<body>
+  <div class="container">
+    <div class="logo-cycle" aria-label="ACRP and department logos">
+      <img class="acrp-logo" src="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png" alt="ACRP Logo">
+      <span class="x-sep" aria-hidden="true">×</span>
+      <div class="dept-slot" aria-hidden="true">
+        <img class="dept-logo" alt="Department logo" />
+      </div>
+    </div>
+  <h1><span id="typewriter" aria-live="polite"></span><span class="cursor" aria-hidden="true">|</span></h1>
+  <p class="subtitle">We are making renovations! Check back later</p>
+  
+  
+ 
+  <script>
+    (function () {
+      const el = document.getElementById('typewriter');
+      if (!el) return;
+
+      const phrases = [
+        "We'll be right back",
+        "Un momento",
+        "Change is in the works..."
+      ];
+
+      let i = 0;
+      let j = 0;
+      let deleting = false;
+
+      const typeSpeed = 70;
+      const deleteSpeed = 45;
+      const holdAtFull = 1100;
+      const holdAtEmpty = 300;
+
+      function tick() {
+        const current = phrases[i];
+
+        if (!deleting) {
+          el.textContent = current.slice(0, j + 1);
+          j++;
+          if (j === current.length) {
+            deleting = true;
+            return setTimeout(tick, holdAtFull);
+          }
+          return setTimeout(tick, typeSpeed);
+        } else {
+          el.textContent = current.slice(0, j - 1);
+          j--;
+          if (j === 0) {
+            deleting = false;
+            i = (i + 1) % phrases.length;
+            return setTimeout(tick, holdAtEmpty);
+          }
+          return setTimeout(tick, deleteSpeed);
+        }
+      }
+
+      setTimeout(tick, 300);
+    })();
+  </script>
+  <script>
+    (function() {
+      const cycle = document.querySelector('.logo-cycle');
+      const deptImg = document.querySelector('.dept-logo');
+      if (!cycle || !deptImg) return;
+
+      // Only run cycling on desktop
+      if (window.innerWidth <= 480) return;
+
+      const logos = [
+        'https://auxcdn.contentltd.xyz/dps/psp.png',
+        'https://auxcdn.contentltd.xyz/dps/ppd.png',
+        'https://auxcdn.contentltd.xyz/dps/pfd.png',
+        'https://auxcdn.contentltd.xyz/dps/penndot_emblem.svg',
+        'https://auxcdn.contentltd.xyz/dps/acso.png'
+      ];
+
+      const slideDuration = 500;
+      const showDuration = 1800;
+      const betweenDelay = 450;
+      const recenterDelay = 2500;
+
+      function runCycle() {
+        cycle.classList.add('active');
+        let i = 0;
+
+        function showNext() {
+          const url = logos[i];
+          deptImg.classList.remove('in', 'out');
+          deptImg.src = url;
+          void deptImg.offsetWidth;
+          deptImg.classList.add('in');
+
+          setTimeout(() => {
+            deptImg.classList.remove('in');
+            deptImg.classList.add('out');
+
+            setTimeout(() => {
+              i++;
+              if (i < logos.length) {
+                setTimeout(showNext, betweenDelay);
+              } else {
+                cycle.classList.remove('active');
+                deptImg.classList.remove('out');
+                setTimeout(() => {
+                  runCycle();
+                }, recenterDelay);
+              }
+            }, slideDuration);
+          }, showDuration);
+        }
+
+        setTimeout(showNext, 400);
+      }
+
+      setTimeout(runCycle, 1600);
+    })();
+  </script>
+  
+  
+  <script>
+    let logElement, statusElement, statusText;
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      logElement = document.getElementById('liveData');
+      statusElement = document.getElementById('apiStatus');
+      statusText = document.getElementById('statusText');
+      
+      
+      monitorTransitSystem();
+      setInterval(monitorTransitSystem, 3000);
+    });
+    
+    function log(message) {
+      if (!logElement) return;
+      const timestamp = new Date().toLocaleTimeString();
+      logElement.textContent += `[${timestamp}] ${message}\n`;
+      logElement.scrollTop = logElement.scrollHeight;
+    }
+    
+    function updateStatus(status, color) {
+      if (!statusElement || !statusText) return;
+      statusText.textContent = status;
+      statusElement.style.background = color;
+    }
+
+    function testAPI() {
+      log('🧪 Testing API integration...');
+      
+      
+      try {
+        const testData = { test: 'data', timestamp: Date.now() };
+        localStorage.setItem('PTA_TEST', JSON.stringify(testData));
+        const retrieved = localStorage.getItem('PTA_TEST');
+        localStorage.removeItem('PTA_TEST');
+        
+        if (retrieved) {
+          log('✅ localStorage API access working');
+        } else {
+          log('❌ localStorage API access failed');
+        }
+      } catch (e) {
+        log(`❌ localStorage error: ${e.message}`);
+      }
+      
+      // Test plan.html integration
+      if (typeof loadLiveTransitData === 'function') {
+        log('✅ plan.html API integration available');
+      } else {
+        log('⚠️  plan.html API integration not loaded');
+      }
+      
+      // Test current state
+      const driverState = localStorage.getItem('PTA_DRIVER_STATE');
+      if (driverState) {
+        try {
+          const parsed = JSON.parse(driverState);
+          log(`📊 Current state: ${Object.keys(parsed).join(', ')}`);
+        } catch (e) {
+          log(`❌ State parse error: ${e.message}`);
+        }
+      } else {
+        log('📭 No current driver state found');
+      }
+      
+      log('🧪 API test complete');
+    }
+    
+    function clearLog() {
+      if (logElement) logElement.textContent = '';
+      log('🗑️  Log cleared');
+    }
+  </script>
+  
+  <script src="toasts.js"></script>
+  <script src="notify.js"></script>
+  <script src="snow.js"></script>
+  <script src="master.js"></script>
+</body>
+</html>

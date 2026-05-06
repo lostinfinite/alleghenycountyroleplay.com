@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script src="/assets/cdn-fallback.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Terms of Service &mdash; Allegheny County Roleplay</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/legal-doc.css">
+</head>
+<body>
+
+  <nav class="top-nav">
+    <div class="nav-inner">
+      <div class="nav-brand">
+        <img src="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png" alt="ACRP" class="nav-logo">
+        <span class="nav-brand-name">Allegheny County Roleplay</span>
+      </div>
+      <div class="nav-right">
+        <div class="nav-search-wrap">
+          <svg class="nav-search-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M21.172 24l-7.387-7.387c-1.388.874-3.024 1.387-4.785 1.387-4.971 0-9-4.029-9-9s4.029-9 9-9 9 4.029 9 9c0 1.761-.514 3.398-1.387 4.785l7.387 7.387-2.828 2.828zm-12.172-8c3.859 0 7-3.14 7-7s-3.141-7-7-7-7 3.14-7 7 3.141 7 7 7z"/>
+          </svg>
+          <input id="mainSearch" class="nav-search" type="text" placeholder="Search document&hellip;" autocomplete="off">
+        </div>
+        <a href="/" class="btn-outline">Home</a>
+        <button class="btn-primary" onclick="window.print()">Print / PDF</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="page-layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-label">// Navigation</div>
+      <nav class="sidebar-nav" id="sidebarNav">
+        <a class="sidebar-link" data-section="overview" onclick="scrollToSection('overview')">Overview</a>
+        <div class="sidebar-divider"></div>
+        <a class="sidebar-link" data-section="section1" onclick="scrollToSection('section1')">1. Introduction</a>
+        <a class="sidebar-link" data-section="section2" onclick="scrollToSection('section2')">2. Third-Party Platforms</a>
+        <a class="sidebar-link" data-section="section3" onclick="scrollToSection('section3')">3. Dispute Resolution</a>
+        <a class="sidebar-link" data-section="section4" onclick="scrollToSection('section4')">4. Payments &amp; Refunds</a>
+        <a class="sidebar-link" data-section="section5" onclick="scrollToSection('section5')">5. Severability</a>
+        <a class="sidebar-link" data-section="section6" onclick="scrollToSection('section6')">6. Liability Disclaimer</a>
+        <a class="sidebar-link" data-section="section7" onclick="scrollToSection('section7')">7. Emergencies</a>
+        <a class="sidebar-link" data-section="section8" onclick="scrollToSection('section8')">8. UGC Rules</a>
+        <a class="sidebar-link" data-section="section9" onclick="scrollToSection('section9')">9. Intellectual Property</a>
+        <a class="sidebar-link" data-section="section10" onclick="scrollToSection('section10')">10. Age Verification</a>
+        <a class="sidebar-link" data-section="section11" onclick="scrollToSection('section11')">11. Blacklisting &amp; C&amp;D</a>
+        <div class="sidebar-divider"></div>
+        <a class="sidebar-link" style="font-size:0.76rem;color:#444e5c;" onclick="window.print()">&#x2191; Print / PDF</a>
+      </nav>
+    </aside>
+
+    <main class="main-content" id="mainContent">
+      <div class="search-banner" id="searchBanner">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M21.172 24l-7.387-7.387c-1.388.874-3.024 1.387-4.785 1.387-4.971 0-9-4.029-9-9s4.029-9 9-9 9 4.029 9 9c0 1.761-.514 3.398-1.387 4.785l7.387 7.387-2.828 2.828zm-12.172-8c3.859 0 7-3.14 7-7s-3.141-7-7-7-7 3.14-7 7 3.141 7 7 7z"/>
+        </svg>
+        <span id="searchBannerText">Showing results for ""</span>
+        <button class="search-clear" onclick="clearSearch()">&#x2715; Clear</button>
+      </div>
+
+      <div class="doc-header" id="section-overview">
+        <div class="doc-eyebrow">// ACRP Legal Document</div>
+        <h1 class="doc-title">Terms of Service</h1>
+        <p class="doc-intro">These Terms govern your access to and use of Allegheny County Roleplay&rsquo;s services, platforms, and servers. Please read them carefully &mdash; they contain a binding individual class-action waiver and other important provisions.</p>
+        <div class="doc-meta">
+          <div class="doc-meta-item"><span>Last Updated: April 27, 2026</span></div>
+          <div class="doc-meta-item"><span>Effective: December 16, 2025</span></div>
+          <div class="doc-meta-item"><span>Established: December 16, 2025</span></div>
+        </div>
+        <div class="doc-actions">
+          <button class="btn-outline" onclick="expandAll()">Expand All</button>
+          <button class="btn-outline" onclick="collapseAll()">Collapse All</button>
+          <button class="btn-primary" onclick="window.print()">Print / PDF</button>
+        </div>
+      </div>
+
+      <section class="doc-section" id="section-section1" data-section="section1">
+        <div class="section-header">
+          <div class="section-num">// 01</div>
+          <h2 class="section-heading">Introduction</h2>
+        </div>
+        <div class="accordion" id="accordion-section1">
+          <div class="accordion-item" id="accordion-section1-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section1-item1')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">Read Introduction &amp; Agreement</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>Allegheny County Roleplay and its designated departments and staff team (collectively, &ldquo;ACRP&rdquo;, &ldquo;Allegheny County Roleplay&rdquo;, &ldquo;we&rdquo;, or &ldquo;us&rdquo;) offer the Allegheny County Roleplay website (www.alleghenycountyroleplay.com and www.acrp.work) and its associated platform (collectively, the &ldquo;Platform&rdquo;), as well as various features, tools, bots, applications, content, in-game server, and custom functionalities (together with the Platform, the &ldquo;Services&rdquo;) to allow users (&ldquo;Users,&rdquo; &ldquo;you,&rdquo; or &ldquo;your&rdquo;) to participate in our Emergency Response; Liberty County (&ldquo;ER;LC&rdquo;) environment&rsquo;s and server(s).</p>
+              <p>These roleplay environments include servers directly created, maintained, or operated by Allegheny County Roleplay (collectively, the &ldquo;Servers,&rdquo; and also referred to as &ldquo;Private Servers,&rdquo; &ldquo;Server,&rdquo; or &ldquo;Our Private Servers&rdquo; where applicable).</p>
+              <p>These Terms of Service (&ldquo;Terms&rdquo;) govern your access to and use of the Services, including but not limited to our Website, Discord Bots, Custom Game Integrations, &ldquo;Departments&rdquo;, and Automated Custom Applications used for verification.</p>
+              <p>By accessing or using the Platform, Services, or Servers provided by us, you agree to the following:</p>
+              <p>These terms govern your use of Allegheny County Roleplay and its Platform, Services, and Servers. Allegheny County Roleplay Staff members may restrict your use of Allegheny County Roleplay&rsquo;s Platform, Services, and Servers at any time, even for infractions and or any rule listed here, in our Community Standards, and Privacy Policy.</p>
+              <p>You will follow all articles, clauses, and rules outlined in our Terms and our Community Standards as described and written.</p>
+              <p>For U.S. users, Allegheny County Roleplay&rsquo;s Dispute Resolution process (Section 3) outlines how disputes between you and Allegheny County Roleplay will be resolved. Specifically, these Allegheny County Roleplay Terms contain <strong>A BINDING, INDIVIDUAL, CLASS ACTION WAIVER. THIS MEANS THAT YOU GIVE UP THE RIGHT TO BRING A CLASS ACTION IN COURT.</strong></p>
+              <p><strong>PLEASE READ THE ALLEGHENY COUNTY ROLEPLAY TERMS CAREFULLY BEFORE BEGINNING TO USE THE SERVICES, PLATFORMS, AND SERVERS WE MANAGE, AS THEY SET FORTH A LEGALLY BINDING AGREEMENT BETWEEN YOU AND ALLEGHENY COUNTY ROLEPLAY. BY USING THE SERVICES, PLATFORM, AND SERVERS, YOU AFFIRM THAT YOU HAVE REACHED THE LEGAL AGE OF MAJORITY IN YOUR JURISDICTION AND STATE OF RESIDENCE, AND UNDERSTAND, ACCEPT, AND AGREE TO BE BOUND AND ABIDE BY THE ALLEGHENY COUNTY ROLEPLAY TERMS. IF YOU DO NOT AGREE TO THE ALLEGHENY COUNTY ROLEPLAY TERMS, YOU MUST NOT USE THE SERVICES, PLATFORM, OR SERVERS.</strong></p>
+              <p><strong>IF YOU ARE UNDER THE LEGAL AGE OF MAJORITY (A &ldquo;MINOR&rdquo;) IN YOUR JURISDICTION OR STATE OF RESIDENCE, BEFORE USING THE SERVICES OR SERVERS, YOUR PARENT OR LEGAL GUARDIAN MUST READ AND AGREE TO THE ALLEGHENY COUNTY ROLEPLAY TERMS. BY PERMITTING A MINOR TO USE THE SERVICES, A MINOR&rsquo;S PARENT BECOMES SUBJECT TO THE ALLEGHENY COUNTY ROLEPLAY TERMS AND AGREES TO BE RESPONSIBLE FOR ALL OF THE MINOR&rsquo;S ACTIVITIES ON THE SERVICES, PLATFORM, OR SERVERS, INCLUDING THE PURCHASE OF ANY VIRTUAL CONTENT FROM US.</strong></p>
+              <p>These Terms may be updated at any time. We reserve the right to modify these Terms, along with any other legal documentation, at our sole discretion and without prior notice, explanation, consent, or approval. Your continued use of our services constitutes acceptance of any such changes. Changes shall be effective as of the &ldquo;Last Updated&rdquo; date atop of this page.</p>
+            </div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section" id="section-section2" data-section="section2">
+        <div class="section-header">
+          <div class="section-num">// 02</div>
+          <h2 class="section-heading">The Third-Party Platforms We Utilize</h2>
+        </div>
+        <div class="accordion" id="accordion-section2">
+          <div class="accordion-item" id="accordion-section2-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section2-item1')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">Overview of Third-Party Platforms</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>At Allegheny County Roleplay, we utilize many third-party platforms. Within this section, we will explain your responsibilities within these platforms, as well as define what each platform is.</p>
+              <p>We ask that all users respect the Terms of Service, Community Standards, and Privacy Policy of each of the third-party platforms we utilize; failure to do so will result in a restriction from Allegheny County Roleplay, as those same Terms of Service, Community Standards, and Privacy Policies govern us.</p>
+            </div></div>
+          </div>
+          <div class="accordion-item" id="accordion-section2-item2">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section2-item2')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">2a. Discord Account</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>A &ldquo;Discord Account&rdquo; refers to any account registered with Discord, Inc. (&ldquo;Discord&rdquo;), used to access the Allegheny County Roleplay Discord server or any related bot services. Users are responsible for maintaining the security and privacy of their Discord account credentials. Allegheny County Roleplay is not responsible for Discord account compromise, suspension, or deletion by Discord.</p>
+            </div></div>
+          </div>
+          <div class="accordion-item" id="accordion-section2-item3">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section2-item3')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">2b. Roblox Account</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>A &ldquo;Roblox Account&rdquo; refers to any account registered with Roblox Corporation (&ldquo;Roblox&rdquo;), used to access the Allegheny County Roleplay in-game server or any Roblox-related services. Users are responsible for maintaining the security and privacy of their Roblox account credentials. Allegheny County Roleplay is not responsible for Roblox account compromise, suspension, or deletion by Roblox.</p>
+            </div></div>
+          </div>
+          <div class="accordion-item" id="accordion-section2-item4">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section2-item4')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">2c. No Affiliation</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>Allegheny County Roleplay is not affiliated with, endorsed by, or sponsored by Discord or Roblox. Use of these platforms is subject to their respective terms, and Allegheny County Roleplay disclaims any liability arising from their functionality or policies.</p>
+            </div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section" id="section-section3" data-section="section3">
+        <div class="section-header">
+          <div class="section-num">// 03</div>
+          <h2 class="section-heading">Dispute Resolution</h2>
+        </div>
+        <div class="accordion" id="accordion-section3">
+          <div class="accordion-item" id="accordion-section3-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section3-item1')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">Overview &amp; Commitment</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>Allegheny County Roleplay is committed to resolving disputes fairly and efficiently through an internal process before any formal legal proceedings are pursued. By using our services or accessing any Platform, Product, or Servers by Allegheny County Roleplay, you and Allegheny County Roleplay agree to follow the process outlined in this section before initiating any legal action.</p>
+            </div></div>
+          </div>
+          <div class="accordion-item" id="accordion-section3-item2">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section3-item2')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">3a. Informal Resolution</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>Before initiating any formal dispute process, you must first contact ACRP at <a href="mailto:legal@acrp.work">legal@acrp.work</a> and describe your dispute in reasonable detail. ACRP will acknowledge your submission within 10 business days and work with you in good faith to reach an informal resolution. Both parties agree to make a genuine effort to resolve the dispute at this stage before proceeding further. Most issues can and should be resolved here.</p>
+            </div></div>
+          </div>
+          <div class="accordion-item" id="accordion-section3-item3">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section3-item3')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">3b. Internal Review Panel</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>If informal resolution under &sect;3a does not produce an outcome acceptable to both parties within 30 days of your initial submission, either party may escalate the dispute to ACRP&rsquo;s Internal Review Panel. The Panel consists of no fewer than two senior ACRP staff members who were not directly involved in the underlying dispute. The Panel will review all relevant materials submitted by both parties and issue a written determination within 30 days of escalation.</p>
+              <p>ACRP will notify you of the Panel&rsquo;s composition before review begins. You may object to a specific Panel member if you have a reasonable basis to believe that member cannot review the dispute impartially. ACRP will consider that objection in good faith and, where warranted, substitute an alternative Panel member.</p>
+              <p>The Panel&rsquo;s determination is final and binding on both parties for disputes involving amounts under $10,000 USD, platform access decisions, enforcement actions, and policy interpretation questions. For disputes involving amounts at or above $10,000 USD, the Panel&rsquo;s determination constitutes a recommended resolution, and either party may pursue further legal remedies as described in &sect;3d if the recommended resolution is rejected.</p>
+              <p>Notwithstanding the foregoing, the Internal Review Panel process does not apply to, and no determination by the Panel shall affect, any decision made by ACRP under Section 11, including blacklisting decisions, cease and desist actions, and associated service restrictions. Those decisions are final and not subject to review under this section.</p>
+            </div></div>
+          </div>
+          <div class="accordion-item" id="accordion-section3-item4">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section3-item4')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">3c. Class Action Waiver</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>You and Allegheny County Roleplay agree that any dispute will be pursued only on an individual basis. You waive any right to participate in a class action, collective action, consolidated proceeding, or representative proceeding against ACRP.</p>
+            </div></div>
+          </div>
+          <div class="accordion-item" id="accordion-section3-item5">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section3-item5')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">3d. Governing Law and Venue</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>This section and all disputes arising under it are governed by the laws of the Commonwealth of Pennsylvania and applicable U.S. federal law. For any dispute that proceeds beyond the Internal Review Panel, the exclusive venue is the courts of Allegheny County, Pennsylvania, or the applicable federal courts sitting in the Western District of Pennsylvania. Both parties consent to personal jurisdiction in those courts.</p>
+            </div></div>
+          </div>
+          <div class="accordion-item" id="accordion-section3-item6">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section3-item6')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">3e. Exceptions</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>Nothing in this section prevents either party from seeking emergency injunctive or equitable relief in a court of competent jurisdiction to prevent actual or threatened misuse of intellectual property, confidential information, or to address an imminent safety concern. Pursuing emergency relief does not waive any obligations under this section.</p>
+            </div></div>
+          </div>
+          <div class="accordion-item" id="accordion-section3-item7">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section3-item7')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">3f. Opt-Out Right</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>If you are a new user of the Services, you may opt out of the binding Internal Review Panel process within 30 days of accepting these Terms by sending written notice to <a href="mailto:ownership@acrp.work">ownership@acrp.work</a>. Your notice must include your full name, Discord username, address, and a clear statement that you wish to opt out. If you opt out, disputes not resolved informally under &sect;3a will be subject to the courts described in &sect;3d without a prior Panel determination.</p>
+              <p>Opting out of the Internal Review Panel process does not affect, limit, or alter any enforcement action taken under Section 11. Decisions made under Section 11 remain final regardless of opt-out status.</p>
+            </div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section" id="section-section4" data-section="section4">
+        <div class="section-header">
+          <div class="section-num">// 04</div>
+          <h2 class="section-heading">Payments and Refunds</h2>
+        </div>
+        <div class="accordion" id="accordion-section4">
+          <div class="accordion-item" id="accordion-section4-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section4-item1')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">4a. General</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>Only Users who have reached the age of majority in their jurisdiction or state of residence may engage in financial transactions within Allegheny County Roleplay, such as donations or any other financial transaction(s).</p>
+            </div></div>
+          </div>
+          <div class="accordion-item" id="accordion-section4-item2">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section4-item2')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">4b. User Responsibilities</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>When purchasing anything from Allegheny County Roleplay, you (or your Guardian, as applicable) represent and warrant that you have the right to use your selected payment method and that your payment method has enough credit available to complete the applicable transaction. You further agree that you are bound by applicable terms, like our Payment Terms, and your local law(s).</p>
+            </div></div>
+          </div>
+          <div class="accordion-item" id="accordion-section4-item3">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section4-item3')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">4c. Unauthorized Transactions</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>If you notice charges on your credit/debit card, PayPal&reg;, or Google Play&reg; account relating to the Services or Servers that you did not authorize, please contact Allegheny County Roleplay Support immediately. Tell Allegheny County Roleplay AT ONCE if you believe that a charge has been made without your permission. Our goal is to learn about and promptly address your concerns. If you dispute any charges directly with your payment processor, Allegheny County Roleplay may be restricted in the assistance, including any refund, that Allegheny County Roleplay can provide due to prohibitions under the payment provider&rsquo;s dispute process. To protect Allegheny County Roleplay and Users from fraud and other harm, Allegheny County Roleplay reserves the right to restrict your access to Allegheny County Roleplay.</p>
+            </div></div>
+          </div>
+          <div class="accordion-item" id="accordion-section4-item4">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section4-item4')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">4d. Pricing and Tax</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>When you purchase anything from Allegheny County Roleplay, the price payable is the price indicated at the time of purchase, plus all applicable sales and/or use taxes, value-added tax (&ldquo;VAT&rdquo;), or goods and services tax (&ldquo;GST&rdquo;) that Allegheny County Roleplay assesses on your purchase (the &ldquo;Purchase Price&rdquo;). For U.S. and Canadian purchasers, applicable sales tax may be added to the price displayed; for purchasers in other countries where Allegheny County Roleplay is registered for VAT or GST, the Purchase Price will include applicable VAT or GST, at the rate applicable in the territory, unless otherwise indicated at the time of purchase.</p>
+            </div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section" id="section-section5" data-section="section5">
+        <div class="section-header">
+          <div class="section-num">// 05</div>
+          <h2 class="section-heading">Severability and Entire Agreement</h2>
+        </div>
+        <div class="accordion" id="accordion-section5">
+          <div class="accordion-item" id="accordion-section5-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section5-item1')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">Severability &amp; Entire Agreement</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>If any provision of these Terms is found to be unlawful, void, or unenforceable for any reason, that provision shall be deemed severable from the Terms and shall not affect the validity and enforceability of any remaining provisions.</p>
+              <p>These Terms, along with the Privacy Policy, Payment Terms, Community Standards, and any other Legal Documentation referenced or incorporated by link or contract, constitute the entire agreement between you and Allegheny County Roleplay regarding your use of the Services and supersede any prior or contemporaneous understandings or agreements, whether oral or written.</p>
+              <p>No waiver by Allegheny County Roleplay of any provision or right shall be deemed a further or continuing waiver of such provision or any other provision.</p>
+            </div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section" id="section-section6" data-section="section6">
+        <div class="section-header">
+          <div class="section-num">// 06</div>
+          <h2 class="section-heading">Universal Liability Disclaimer</h2>
+        </div>
+        <div class="accordion" id="accordion-section6">
+          <div class="accordion-item" id="accordion-section6-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section6-item1')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">6a. General Limitation of Liability</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>This section defines the extent to which Allegheny County Roleplay assumes or disclaims responsibility for the actions, conduct, and content of Users, Creators, and third parties. By accessing or using the Services, you acknowledge and accept that your use is entirely at your own risk and that Allegheny County Roleplay&rsquo;s liability is limited as set forth below.</p>
+              <p>To the fullest extent permitted by applicable law, Allegheny County Roleplay, including its designated subsidiaries, affiliates, personnel, moderators, contributors, and developers, shall not be liable for any direct, indirect, incidental, special, consequential, punitive, or exemplary damages arising out of or in connection with your use of the Platform, Services, or Private Servers. This includes, without limitation, any damages relating to personal injury, financial loss, emotional harm, reputational damage, account loss, lost data, inaccessibility, service interruption, or technical failure.</p>
+              <p>All Services and related features are provided &ldquo;as-is&rdquo; and &ldquo;as available&rdquo; with no express or implied warranties of any kind.</p>
+            </div></div>
+          </div>
+          <div class="accordion-item" id="accordion-section6-item2">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section6-item2')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">6b. User-Generated Content (UGC)</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>Allegheny County Roleplay does not pre-approve, monitor, or endorse any User-Generated Content (UGC), including Experiences, communications, or media created or shared by Users or Creators. All content created or uploaded by Users or Creators is the sole responsibility of the originating party.</p>
+              <p>Allegheny County Roleplay expressly disclaims liability for any offensive, infringing, inaccurate, misleading, defamatory, or otherwise unlawful content transmitted or made available via the Services.</p>
+            </div></div>
+          </div>
+          <div class="accordion-item" id="accordion-section6-item3">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section6-item3')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">6c. Intellectual Property and Copyright</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>Allegheny County Roleplay complies with applicable intellectual property laws, including the Digital Millennium Copyright Act (DMCA) as outlined in Section 9 of these Terms. Allegheny County Roleplay shall only be held responsible for responding to valid claims of copyright or trademark infringement when the allegedly infringing material is hosted directly on Allegheny County Roleplay-operated infrastructure (e.g., www.alleghenycountyroleplay.net or related domains/subdomains).</p>
+              <p>Allegheny County Roleplay bears no responsibility for content hosted externally, including on platforms such as Roblox&reg;, Discord&reg;, or YouTube&reg;, even if such content is referenced, linked, or promoted through the Services. If the infringing content resides on an external platform, Users and rights holders must pursue resolution through that respective platform&rsquo;s legal reporting process.</p>
+              <p>Allegheny County Roleplay is not required to take action on intellectual property complaints unless the reported material is both hosted by us and falls within our legal jurisdiction.</p>
+            </div></div>
+          </div>
+          <div class="accordion-item" id="accordion-section6-item4">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section6-item4')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">6d. Indemnification</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>You agree to indemnify, defend, and hold harmless Allegheny County Roleplay, its affiliates, subsidiaries, officers, agents, partners, and employees from and against any and all claims, demands, liabilities, losses, damages, costs, and expenses (including reasonable attorneys&rsquo; fees) arising from or related to:</p>
+              <ol>
+                <li>your use of the Services;</li>
+                <li>your violation of these Terms or any applicable Legal Documentation;</li>
+                <li>your infringement of intellectual property or other proprietary rights; or</li>
+                <li>any harmful or unlawful conduct carried out through your account or Experience.</li>
+              </ol>
+            </div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section" id="section-section7" data-section="section7">
+        <div class="section-header">
+          <div class="section-num">// 07</div>
+          <h2 class="section-heading">Emergencies</h2>
+        </div>
+        <div class="accordion" id="accordion-section7">
+          <div class="accordion-item" id="accordion-section7-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section7-item1')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">7a. Immediate Action Required</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>Allegheny County Roleplay prioritizes the protection and welfare of all individuals using the Platform, Services, and Private Servers. Emergencies, whether related to mental health, criminal activity, or physical safety, require prompt, real-world response.</p>
+              <p>If you witness or reasonably believe that a User is in imminent danger, due to a mental health crisis, unlawful conduct, or any other life-threatening event, you are required to immediately contact appropriate emergency services. This may include dialing 911, 988, or any other jurisdictionally relevant emergency number. The use of our Services or reporting mechanisms must not be treated as a substitute for emergency intervention.</p>
+            </div></div>
+          </div>
+          <div class="accordion-item" id="accordion-section7-item2">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section7-item2')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">7b. Duty to Seek Help</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>By using our Services, you accept responsibility for initiating real-world assistance if someone is at risk. This includes, but is not limited to, calling emergency responders, utilizing mental health hotlines, contacting Discord Trust &amp; Safety, or notifying us directly if the individual is active on our Platforms or Servers. Prompt action may be essential to ensuring the safety of another User.</p>
+            </div></div>
+          </div>
+          <div class="accordion-item" id="accordion-section7-item3">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section7-item3')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">7c. Cooperation with Authorities</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>In circumstances involving threats to life, illegal activity, or credible risk to personal safety, Allegheny County Roleplay reserves the right to fully cooperate with law enforcement, emergency services, or platform security teams (e.g., Discord Trust &amp; Safety). This includes, but is not limited to, providing relevant logs, identifiers, and any data necessary and legally permissible to assist in emergency response or criminal investigation efforts.</p>
+            </div></div>
+          </div>
+          <div class="accordion-item" id="accordion-section7-item4">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section7-item4')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">7d. Automated Public Safety Detection</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>ACRP&rsquo;s safety systems include a rule-based detection layer that scans for message content indicating potential imminent physical harm, including but not limited to language referencing mass shootings, bomb threats, active shooter situations, or explicit threats to kill or attack a named or general group of individuals. This layer operates independently of, and with higher priority than, the general content classifier described in Section 8.</p>
+              <p>When this layer detects content of this nature, an escalated internal review workflow is triggered automatically. That workflow may result in the content being preserved, compiled into an evidence dossier, and referred to law enforcement or the National Center for Missing &amp; Exploited Children (NCMEC) following review by designated ACRP staff. No external submission occurs automatically; all referrals are subject to human review prior to any transmission.</p>
+            </div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section" id="section-section8" data-section="section8">
+        <div class="section-header">
+          <div class="section-num">// 08</div>
+          <h2 class="section-heading">UGC Rules</h2>
+        </div>
+        <div class="accordion" id="accordion-section8">
+          <div class="accordion-item" id="accordion-section8-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section8-item1')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">UGC Rules &amp; License</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>This section governs all User Generated Content (&ldquo;UGC&rdquo;) created, submitted, or shared using the Services or Servers. UGC includes, but is not limited to, text, messages, usernames, bots, files, scripts, designs, assets, experiences, ranking systems, logos, game elements, or any other material created or provided by Users or Creators.</p>
+              <p>All UGC must follow the rules listed below at all times while using any part of the Services or affiliated Servers. Any UGC found to violate these rules may be removed without notice. The User who submitted the violating UGC may be restricted, warned, suspended, or permanently removed, depending on the severity of the violation.</p>
+              <p>Content is prohibited if it: includes or promotes hate speech, racism, harassment, threats, sexual content, or any form of illegal activity; violates intellectual property laws or uses copyrighted or trademarked material without permission; contains malware, exploits, unauthorized scripts, or links to dangerous content; shares private or identifying information about another person without consent; is spam, scam-related, deceptive, or purely commercial without written approval; misrepresents your identity or impersonates another User, Creator, or Staff member; or attempts to bypass bans, moderation actions, or automation systems.</p>
+              <p>You must either own or have full rights to all content you submit. By publishing UGC to any Services, you agree that: you are responsible for the accuracy and legality of the content; you grant Allegheny County Roleplay a royalty-free, non-exclusive, irrevocable, perpetual, and sublicensable license to host, use, publish, archive, adapt, modify, translate, and distribute the content across any media for purposes related to operation, safety, marketing, improvement, or training; you understand that UGC may be stored, shared, reposted, or copied by others both inside and outside of Allegheny County Roleplay&rsquo;s Services; and you understand Allegheny County Roleplay is not liable for misuse of UGC by third parties or for any content moderation decision made in good faith.</p>
+              <p>Allegheny County Roleplay has the right, but not the obligation, to monitor, review, restrict, or remove any UGC at any time. We may also respond to legal takedown notices or safety reports in accordance with Section 9.</p>
+            </div></div>
+          </div>
+          <div class="accordion-item" id="accordion-section8-item2">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section8-item2')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">8a. Automated Content Classification</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>ACRP operates an automated content classification system that scans messages posted in monitored Discord channels in real time. This system is hosted and operated entirely on ACRP&rsquo;s own infrastructure; message content is not transmitted to any third-party AI provider.</p>
+              <p>The classifier evaluates each message across eight content categories: self-harm, directed harm, hate speech, harassment, sexual content, drugs, weapons, and violence. It uses a combination of a machine-learning classifier and a deterministic rule engine. The rule engine runs first and applies a hard floor for the most severe content patterns regardless of any threshold configuration. The classifier also applies normalization techniques, including detection of leetspeak, homoglyphs, and phonetic substitutions, to prevent bypass attempts.</p>
+              <p>When a message meets the threshold for a violation, or when a hard-rule pattern fires, the message is deleted and an automated Warning is issued to the user. These actions may occur without prior review by a human moderator. Users who believe an automated action was applied in error may appeal at <a href="https://portal.alleghenycountyroleplay.com">portal.alleghenycountyroleplay.com</a>.</p>
+              <p>Every automated enforcement action generates a public notice in the channel where the content was posted. That notice cites the applicable sections of these Terms and our Privacy Policy, includes links to all relevant legal documents, and provides a direct link to the appeals portal. The notice is removed automatically after 15 seconds. The user also receives a private direct message with the enforcement details.</p>
+              <p>Automated content classification is also disclosed in the /info command footer in our Discord server, which references this section and Privacy Policy &sect;4.</p>
+            </div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section" id="section-section9" data-section="section9">
+        <div class="section-header">
+          <div class="section-num">// 09</div>
+          <h2 class="section-heading">Intellectual Property and UGC</h2>
+        </div>
+        <div class="accordion" id="accordion-section9">
+          <div class="accordion-item" id="accordion-section9-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section9-item1')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">9a. ACRP&rsquo;s Intellectual Property</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>The interfaces, graphics, logos, websites, domain names, icons, bots, bot logos, bot names, product names, data, code, artwork, products, software, and all other elements of the Services and Servers (&ldquo;Allegheny County Roleplay Intellectual Property,&rdquo; &ldquo;ACRP IP,&rdquo; or &ldquo;Allegheny County Roleplay IP&rdquo;) we manage are protected by law and the Allegheny County Roleplay Terms. All Allegheny County Roleplay IP is the property of ACRP and ACRP&rsquo;s licensors. Allegheny County Roleplay IP includes all UGC licensed to Allegheny County Roleplay by Server Owners under the IP Licensing Agreement. Except as allowed in the Allegheny County Roleplay Terms and any applicable Additional Terms, you may not use any Allegheny County Roleplay IP contained in the services or servers unless you obtain separate permission in each instance from the owner. Allegheny County Roleplay reserves all rights in and to the Allegheny County Roleplay IP not granted in these terms or elsewhere in additional terms.</p>
+            </div></div>
+          </div>
+          <div class="accordion-item" id="accordion-section9-item2">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section9-item2')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">9b. UGC</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>The services and servers may contain various forums, functionality, logos, channel structures, ranking structures, and other interactive features that allow you to create, upload, submit, publish, display, generate, transmit, or otherwise make available (&ldquo;Publish&rdquo;) UGC on the Services. For more information, please read section 8 and our policies on UGC. Any UGC Published on the services must comply with Allegheny County Roleplay Terms, including the rules described in section 8 regarding UGC, and must not be illegal, fraudulent, deceptive, obscene, threatening, defamatory, invasive of privacy, infringing of intellectual property rights or otherwise injurious to third parties or objectionable and must not consist of or contain software viruses, commercial solicitation, chain letters, mass mailings, or any form of spam.</p>
+              <p>Except as otherwise described in Allegheny County Roleplay&rsquo;s Privacy Policy or any applicable additional terms: (i) you agree any UGC that you Publish to Allegheny County Roleplay or any Allegheny County Roleplay affiliated servers or services will be considered non-confidential and non-proprietary, and (ii) you grant Allegheny County Roleplay a nonexclusive, royalty-free, perpetual, irrevocable, and fully sublicensable right to host, use, copy, reproduce, modify, adapt, publish, translate, run, create derivative works of, distribute, communicate to the public, and publicly perform or display such UGC and any related interaction data on the Services and Servers, throughout the world in any media for any business purpose in connection with operating, providing, publicizing, or improving the services or servers, including without limitation in connection with the training of machine learning and related models; however Allegheny County Roleplay will only share personal information that you provide in accordance with Allegheny County Roleplay&rsquo;s Privacy Policy.</p>
+              <p>You represent and warrant that, at the time of Publishing UGC: (i) you own or otherwise control all the rights in and to the UGC; (ii) the UGC is accurate and not fraudulent or deceptive; and (iii) the UGC does not violate these Terms, applicable laws, or the rights of any third party including intellectual property, privacy, and publicity, and will not cause injury to any person or entity. You understand that Allegheny County Roleplay cannot guarantee that UGC you publish or make available on or through the services will not be copied or used by other users. If you do not have the right to submit UGC for such use, publishing such material may subject you to liability. Allegheny County Roleplay takes no responsibility and assumes no liability for any UGC published by you or any third party. Allegheny County Roleplay has the right but not the obligation to monitor, modify, disable access to, or remove any UGC on its Services or servers, and it may exercise these rights at any time, without notice or liability to you or any third party.</p>
+            </div></div>
+          </div>
+          <div class="accordion-item" id="accordion-section9-item3">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section9-item3')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">9c. Copyright Infringement / DMCA</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p><strong>i. Notice</strong></p>
+              <p>We respect the intellectual property rights of others, and we ask you to do the same. If you are a copyright owner or an agent of a copyright owner and believe that any content on the Servers and/or Services infringes on your copyrights, you may submit a notice pursuant to the DMCA by contacting our copyright team at <a href="mailto:legal@acrp.work">legal@acrp.work</a>. In your email, be sure to include: an electronic or physical signature of the person authorized to act on behalf of the owner; a description of the copyrighted work you claim has been infringed; a description of the material that you claim is infringing and where it is located; your address, telephone number, and email address; a statement that you have a good faith belief that the use of those materials is not authorized; and a statement, under penalty of perjury, that the above information is accurate and that you are authorized to act on the copyright owner&rsquo;s behalf.</p>
+              <p>You acknowledge that if you fail to comply with all of the requirements of this section, your DMCA notice may not be valid. See 17 U.S.C. &sect; 512(c)(3) for further details. We may send a copy of your DMCA notice, including any contact information you provide, to the individual responsible for the reported content.</p>
+              <p><strong>ii. Counter-Notice</strong></p>
+              <p>If your server was affected as a result of a DMCA notice, and you believe that your content is not infringing or that you have proper authorization to publish and use the material, you may send a counter-notice to our Copyright Team at <a href="mailto:legal@acrp.work">legal@acrp.work</a>. Any counter-notice submitted on behalf of a User under the age of 18 must be submitted by a parent, Guardian, or other adult representative. When our copyright team receives a counter-notice, we may send a copy to the original complaining party, informing them that we may, in 10 business days, restore the affected content. Unless the copyright owner files an action seeking a court order, the removed content may be replaced in our sole discretion within 10 to 14 business days or more after our receipt of the counter-notice.</p>
+              <p><strong>iii. Repeat Infringer Policy</strong></p>
+              <p>Allegheny County Roleplay&rsquo;s Intellectual Property Policy is to: (i) remove or disable access to content that Allegheny County Roleplay knows to be infringing on intellectual property rights of third parties or that has been identified in a valid DMCA notice; and (ii) in appropriate circumstances, suspend or terminate the accounts of and block access to the services or servers by any user who repeatedly or egregiously infringes the copyrights or other intellectual property rights of third parties.</p>
+              <p><strong>iv. Feedback</strong></p>
+              <p>Any feedback, comments, or suggestions (collectively &ldquo;Feedback&rdquo;) you may provide regarding the Services is entirely voluntary. You hereby grant us a perpetual, irrevocable, royalty-free, fully paid, worldwide license to such Feedback, and we will be free to use such Feedback as we see fit and without any obligation to you.</p>
+            </div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section" id="section-section10" data-section="section10">
+        <div class="section-header">
+          <div class="section-num">// 10</div>
+          <h2 class="section-heading">Age Verification</h2>
+        </div>
+        <div class="accordion" id="accordion-section10">
+          <div class="accordion-item" id="accordion-section10-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section10-item1')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">10a. Our Age Verification Systems</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>Allegheny County Roleplay requires age verification and age assurance checks as a condition of access to and continued use of our services. We use a combination of in-house and third-party systems to determine whether users meet minimum age requirements under applicable law, including COPPA, and applicable platform policies, including Discord&rsquo;s Terms of Service.</p>
+              <p>Verification and assurance measures may include, without limitation: screening forms, where you may be required to provide your Date of Birth, country of residence, grade level, and related eligibility information; AI-based facial age estimation and liveness checks, where we may require a live facial scan processed using biometric analysis to estimate age and detect spoofing or impersonation attempts, performed by our verification provider, Didit.me, acting as a data processor; and behavioral and message-based age assurance signals, where we may use automated systems to analyze account activity and message patterns for age risk indicators.</p>
+              <p>By submitting verification data, including facial scans, you expressly consent to biometric and eligibility processing for age screening, fraud prevention, safety enforcement, and compliance purposes.</p>
+              <p>Verification providers may process facial images, biometric features, liveness data, similarity scores, device and session metadata, and related technical logs as part of the verification workflow. ACRP receives verification results and related metadata and may retain verification status, scores, flags, and audit logs.</p>
+              <p>Completion of required age verification is mandatory. Refusal or failure to complete required checks will result in denied or removed access to ACRP systems.</p>
+              <p>For additional details on how verification data is handled, processed, and retained, see our <a href="/privacy.html">Privacy Policy</a>.</p>
+            </div></div>
+          </div>
+          <div class="accordion-item" id="accordion-section10-item2">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section10-item2')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">10b. Age Check Results and Enforcement</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>You must be at least 13 years old to access or use ACRP services. If our systems determine, or reasonably indicate, that you are under the minimum required age, your access will be denied or revoked.</p>
+              <p>ACRP reserves the right to suspend, remove, or permanently ban accounts that fail age verification, trigger underage risk signals, submit false information, or attempt to bypass verification controls. Access restrictions may include removal from our Discord server and any connected ACRP systems.</p>
+              <p>Verification determinations and risk decisions are made at ACRP&rsquo;s discretion and are final unless re-verification is expressly approved by us.</p>
+            </div></div>
+          </div>
+          <div class="accordion-item" id="accordion-section10-item3">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section10-item3')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">10c. Retention and Re-Verification</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>Verification results, scores, flags, and related audit data may be retained for compliance, safety, fraud prevention, and repeat offender detection purposes. We may retain this data for 30 days unless a valid deletion request is received and approved where legally permitted, or a manual review is requested.</p>
+              <p>If verification records are deleted, prior verification status is void. Users must complete verification again before regaining access. Deletion of verification data does not reverse or invalidate enforcement actions already taken.</p>
+            </div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section" id="section-section11" data-section="section11">
+        <div class="section-header">
+          <div class="section-num">// 11</div>
+          <h2 class="section-heading">Server Blacklisting, Cease and Desist Authority, and Associated Restrictions</h2>
+        </div>
+        <div class="accordion" id="accordion-section11">
+          <div class="accordion-item" id="accordion-section11-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section11-item1')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">11a. Blacklisting of External Servers</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>Allegheny County Roleplay reserves the right to blacklist any external ER:LC server, community, or associated operator from our Services, Platforms, and affiliated networks at any time, for any reason, at our sole discretion. This includes, but is not limited to, servers or operators that ACRP determines to be engaged in conduct harmful to our community, users, or operations; servers that violate ACRP&rsquo;s Terms, Community Standards, or any applicable legal or platform policies; servers that misuse ACRP&rsquo;s intellectual property, branding, or reputation; and servers or operators that ACRP reasonably believes pose a risk to the safety, integrity, or reputation of our community.</p>
+              <p>A blacklisted server or operator may be denied access to any ACRP-operated infrastructure, partnerships, integrations, or community resources without prior notice, explanation, or appeal.</p>
+            </div></div>
+          </div>
+          <div class="accordion-item" id="accordion-section11-item2">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section11-item2')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">11b. Cease and Desist Authority</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>ACRP reserves the right to issue formal cease and desist notices to any individual, server, organization, or entity that ACRP determines, in its sole discretion, is infringing on ACRP&rsquo;s intellectual property; misrepresenting an affiliation with ACRP; engaging in conduct detrimental to ACRP&rsquo;s operations or reputation; reflecting negatively on the ER:LC community or on ACRP&rsquo;s standing within it; or otherwise acting in a manner that ACRP has a legal, organizational, or community-based basis to address.</p>
+              <p>Receipt of a cease and desist notice from ACRP does not constitute the initiation of formal legal proceedings. However, failure to comply with the demands set forth in any such notice may result in further legal action, enforcement measures within ACRP&rsquo;s platforms, or referral to relevant legal authorities.</p>
+            </div></div>
+          </div>
+          <div class="accordion-item" id="accordion-section11-item3">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section11-item3')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">11c. Service Restriction Upon Cease and Desist</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>Any individual, server, operator, or entity that receives a cease and desist notice issued by ACRP is immediately and automatically restricted from accessing or using any ACRP Services, Platforms, Servers, or affiliated systems for the duration specified in that notice. Where no duration or expiration is stated in the notice, the restriction is permanent.</p>
+              <p>This restriction applies regardless of the basis for the cease and desist, whether the recipient disputes its validity, and whether any formal legal proceedings are initiated or resolved. The restriction takes effect upon issuance of the notice, not upon the recipient&rsquo;s acknowledgment or acceptance of it.</p>
+              <p>Circumvention of a restriction imposed under this section, including through alternate accounts, proxies, affiliated individuals, or any other method, constitutes a separate and independent violation of these Terms and may result in additional enforcement action.</p>
+            </div></div>
+          </div>
+          <div class="accordion-item" id="accordion-section11-item4">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section11-item4')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">11d. No Obligation to Justify; Miscellaneous Enforcement</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>ACRP is under no obligation to provide a reason, explanation, or advance notice for any action taken under this section. ACRP reserves the right to characterize the basis for any enforcement action, including blacklisting, cease and desist issuance, or service restriction, as &ldquo;Miscellaneous&rdquo; or otherwise decline to specify a precise reason where ACRP determines disclosure is not warranted or appropriate. Such characterization does not affect the validity or enforceability of the action taken.</p>
+              <p>All decisions made under this section are final and are expressly excluded from the dispute resolution process described in Section 3.</p>
+            </div></div>
+          </div>
+          <div class="accordion-item" id="accordion-section11-item5">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section11-item5')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">11e. Reputation-Based Access Denial</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>ACRP reserves the right to deny, revoke, or restrict any individual&rsquo;s access to the Services, Platforms, or Servers based on that individual&rsquo;s reputation or conduct within the ER:LC community, the broader Roblox community, or any public-facing social media space, regardless of whether that conduct occurred on ACRP-operated infrastructure.</p>
+              <p>Factors ACRP may consider include, but are not limited to: a pattern of harmful, deceptive, or bad-faith conduct in other communities; public statements or behavior that ACRP determines to be incompatible with its Community Standards or values; association with servers, individuals, or organizations that ACRP has blacklisted or issued cease and desist notices to; and any other information that ACRP, in its sole discretion, determines to be relevant to the safety, integrity, or reputation of the ACRP community.</p>
+              <p>ACRP reserves the right to conduct its own due diligence, including reviewing publicly available social media profiles, community records, and third-party reports, when evaluating whether to admit or retain a user. ACRP is under no obligation to disclose the specific findings of any such review, the sources consulted, or the criteria applied in reaching its determination.</p>
+              <p>Access denials made under this section are not subject to the dispute resolution process in Section 3 and are final unless ACRP expressly agrees in writing to reconsider.</p>
+            </div></div>
+          </div>
+        </div>
+      </section>
+
+      <div class="doc-footer">
+        <div class="footer-links">
+          <a class="footer-link" href="/privacy.html">Privacy Policy</a>
+          <a class="footer-link" href="/community-standards.html">Community Standards</a>
+          <a class="footer-link" href="/legal/biometric-data-statement.html">Biometric Data Statement</a>
+          <a class="footer-link" href="mailto:legal@acrp.work">Contact Legal</a>
+        </div>
+        <div class="footer-fine">
+          ACRP &mdash; Allegheny County Roleplay &nbsp;&middot;&nbsp; Allegheny County, Pennsylvania (fictional) &nbsp;&middot;&nbsp; Not affiliated with Roblox Corporation<br>
+          These Terms of Service are subject to change. Continued use constitutes acceptance of the current version.
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="footer-container"></div>
+  <script src="/assets/legal-doc.js"></script>
+  <script src="/master.js"></script>
+</body>
+</html>
