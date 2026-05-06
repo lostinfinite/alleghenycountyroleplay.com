@@ -1,0 +1,220 @@
+<html><head><style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;1,400&display=swap');
+
+/* ── ACRP Footer ── */
+.acrp-footer { background:#000; color:#f0f0f0; font-family:'Inter',system-ui,-apple-system,sans-serif; font-size:.9rem; position:relative; }
+.acrp-footer *{ box-sizing:border-box; font-family:inherit; }
+
+/* Top area: logo+lang+social on left, link columns on right */
+.acrp-footer-top { max-width:1200px; margin:0 auto; padding:3rem 1.5rem 2rem; display:flex; gap:3rem; }
+.acrp-footer-left { flex:0 0 210px; }
+
+/* Logo */
+.acrp-footer-logo { width:80px; height:auto; margin-bottom:1.25rem; display:block; }
+
+/* Language section */
+.acrp-footer-lang-label { font-size:.95rem; font-weight:600; margin-bottom:.15rem; }
+.acrp-footer-lang-powered { font-size:.7rem; color:#777; margin-bottom:.5rem; }
+.acrp-footer-lang-powered a { color:#777; text-decoration:underline; }
+
+/* Language selector */
+.acrp-lang-selector { position:relative; width:190px; user-select:none; }
+.acrp-lang-trigger {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:.5rem .85rem; background:#FFBB00; color:#000;
+  border:none; border-radius:14px; font-size:.95rem; font-weight:600;
+  cursor:pointer; width:100%; font-family:'Inter',sans-serif;
+}
+.acrp-lang-trigger:hover { background:#ffcc33; }
+.acrp-lang-trigger svg { transition:transform .25s ease; }
+.acrp-lang-trigger.open svg { transform:rotate(180deg); }
+
+.acrp-lang-dropdown {
+  position:absolute; top:100%; left:0; width:210px;
+  max-height:0; overflow:hidden;
+  background:#ffbb00; border-radius:16px;
+  border:2.5px solid #FFBB00;
+  transition:max-height .3s ease, opacity .2s ease, padding .2s ease;
+  opacity:0; z-index:1000; padding:0;
+  margin-top:4px;
+  visibility:hidden;
+}
+.acrp-lang-dropdown.open { max-height:380px; opacity:1; padding:.35rem 0; visibility:visible; }
+
+.acrp-lang-list { list-style:none; margin:0; padding:0; max-height:280px; overflow-y:auto; }
+.acrp-lang-list li {
+  padding:.45rem .85rem; color:#000; cursor:pointer;
+  font-size:.92rem; font-weight:600; transition:background .15s;
+  font-family:'Inter',sans-serif;
+}
+.acrp-lang-list li:hover { background:rgba(255,187,0,.18); }
+.acrp-lang-list li.active { font-weight:700; }
+
+.acrp-lang-scroll-hint {
+  text-align:center; font-size:.7rem; color:#888; padding:.3rem 0 .1rem;
+  display:flex; align-items:center; justify-content:center; gap:.4rem;
+}
+.acrp-lang-scroll-hint svg { width:12px; height:12px; fill:#888; }
+.acrp-lang-arrow-row { display:flex; align-items:center; justify-content:center; padding:.2rem 0; }
+.acrp-lang-arrow-row svg { width:14px; height:14px; fill:#000; }
+
+/* Social section */
+.acrp-footer-social-label { font-size:.95rem; font-weight:600; margin-top:1.5rem; margin-bottom:.45rem; }
+.acrp-footer-social-icons { display:flex; gap:.75rem; align-items:center; }
+.acrp-footer-social-icons a { color:#f0f0f0; display:inline-flex; text-decoration:none; }
+.acrp-footer-social-icons svg { width:26px; height:26px; }
+
+/* Link columns */
+.acrp-footer-links { flex:1; display:flex; justify-content:space-between; gap:2rem; flex-wrap:wrap; }
+.acrp-footer-col h3 { color:#FFBB00; font-size:1.1rem; font-weight:700; margin:0 0 .7rem; font-family:'Open Sans','Inter',sans-serif; }
+.acrp-footer-col ul { list-style:none; margin:0; padding:0; }
+.acrp-footer-col li { margin-bottom:.35rem; }
+.acrp-footer-col a { color:#FFBB00; text-decoration:none; font-size:.88rem; }
+.acrp-footer-col a:hover { text-decoration:underline; }
+
+/* Tagline */
+.acrp-footer-tagline {
+  text-align:center; padding:3rem 1rem 2rem;
+  font-family:'Instrument Serif','Georgia','Times New Roman',serif;
+  font-style:italic; font-size:clamp(2.5rem,6vw,5rem);
+  color:#FFBB00; opacity:.85;
+  letter-spacing:.02em;
+}
+
+/* Bottom / copyright */
+.acrp-footer-bottom { text-align:center; padding:.5rem 1rem 1.5rem; font-size:.82rem; color:#999; }
+.acrp-footer-bottom .acrp-translate-note { display:block; font-size:.72rem; color:#666; margin-bottom:.3rem; }
+
+/* ── Responsive ── */
+@media(max-width:860px){
+  .acrp-footer-top { flex-direction:column; gap:2rem; }
+  .acrp-footer-left { flex:none; width:100%; }
+  .acrp-footer-links { gap:1.5rem; }
+}
+@media(max-width:560px){
+  .acrp-footer-links { flex-direction:column; gap:1.5rem; }
+  .acrp-footer-tagline { font-size:2rem; padding:2rem .5rem 1.5rem; }
+}
+
+/* Hide Google Translate widget bar */
+.skiptranslate, #google_translate_element { display:none !important; }
+body { top:0 !important; }
+</style>
+
+</head><body><footer class="acrp-footer">
+  <div class="acrp-footer-top">
+    <!-- Left column: logo, language, social -->
+    <div class="acrp-footer-left">
+      <img class="acrp-footer-logo" src="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png" alt="ACRP Logo">
+
+      <div class="acrp-footer-lang-label">Language</div>
+      <div class="acrp-footer-lang-powered">Powered by <a href="https://translate.google.com" target="_blank" rel="noopener">Google Translate®</a></div>
+
+      <div class="acrp-lang-selector" id="acrpLangSelector">
+        <button class="acrp-lang-trigger" id="acrpLangTrigger" type="button" aria-expanded="false" aria-haspopup="listbox">
+          <span id="acrpLangCurrent">English</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="acrp-lang-dropdown" id="acrpLangDropdown" role="listbox">
+          <ul class="acrp-lang-list" id="acrpLangList">
+            <li data-lang="en" class="active" role="option" aria-selected="true">English</li>
+            <li data-lang="es" role="option">Spanish (Spain)</li>
+            <li data-lang="es-419" role="option"><small>Spanish (Latin America)</small></li>
+            <li data-lang="ru" role="option">Russian</li>
+            <li data-lang="fr" role="option">French</li>
+            <li data-lang="zh-CN" role="option"><small>Mandarin (Simplified)</small></li>
+            <li data-lang="zh-TW" role="option"><small>Mandarin (Traditional)</small></li>
+            <li data-lang="nl" role="option">Dutch</li>
+            <li data-lang="hi" role="option">Hindi</li>
+            <li data-lang="pl" role="option">Polish</li>
+            <li data-lang="de" role="option">German</li>
+            <li data-lang="ja" role="option">Japanese</li>
+            <li data-lang="ko" role="option">Korean</li>
+            <li data-lang="pt" role="option">Portuguese</li>
+            <li data-lang="ar" role="option">Arabic</li>
+            <li data-lang="it" role="option">Italian</li>
+            <li data-lang="tr" role="option">Turkish</li>
+            <li data-lang="vi" role="option">Vietnamese</li>
+          </ul>
+          <div class="acrp-lang-scroll-hint">
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9" fill="none" stroke="#888" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></polyline></svg>
+            <span>Scroll for More</span>
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9" fill="none" stroke="#888" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></polyline></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="acrp-footer-social-label">Social</div>
+      <div class="acrp-footer-social-icons">
+        <!-- Discord -->
+        <a href="https://discord.gg/GS5Va3zEep" target="_blank" rel="noopener" aria-label="Discord">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"></path></svg>
+        </a>
+        <!-- X / Twitter -->
+        <a href="https://x.com/alleghenyco_rp" target="_blank" rel="noopener" aria-label="X">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+        </a>
+        
+      </div>
+    </div>
+
+    <!-- Link columns -->
+    <div class="acrp-footer-links">
+      <div class="acrp-footer-col">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="https://portal.alleghenycountyroleplay.com" target="_blank" rel="noopener">Portal</a></li>
+          <li><a href="https://accounts.alleghenycountyroleplay.com" target="_blank" rel="noopener">My Account</a></li>
+        </ul>
+      </div>
+      <div class="acrp-footer-col">
+        <h3>Community</h3>
+        <ul>
+          <li><a href="https://discord.gg/GS5Va3zEep" target="_blank" rel="noopener">See us on Discord®</a></li>
+          <li><a href="https://x.com/alleghenyco_rp" target="_blank" rel="noopener">See us on X®</a></li>
+          <li><a href="/careers.html">Careers</a></li>
+        </ul>
+      </div>
+      <div class="acrp-footer-col">
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="/terms.html">Terms</a></li>
+          <li><a href="/privacy.html">Privacy</a></li>
+          <li><a href="/community-standards.html">Community Standards</a></li>
+          <li><a href="/legal/biometric-data-statement.html">Biometric Statement</a></li>
+        </ul>
+      </div>
+      <div class="acrp-footer-col">
+        <h3>Resources</h3>
+        <ul>
+          <li><a href="/articles/">Help Center</a></li>
+          <li><a href="/articles/10187-mental-health.html">Mental Health Resources</a></li>
+          <li><a href="/articles/10201-age-verification-disclosure.html">Age Verification FAQ</a></li>
+        </ul>
+      </div>
+      <div class="acrp-footer-col">
+        <h3>Contact</h3>
+        <ul>
+          <li><a href="mailto:ownership@acrp.work">Email Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tagline -->
+  <div class="acrp-footer-tagline">Honesty. Integrity. Respect</div>
+
+  <!-- Copyright -->
+  <div class="acrp-footer-bottom">
+    <span class="acrp-translate-note">Translations are provided by Google® and may be inaccurate.</span>
+    <span class="acrp-translate-note">ACRP is not affiliated with, endorsed by, or connected to any government agency, including but not limited to the Allegheny County Sheriff's Office, Pittsburgh Police Department, Pennsylvania State Police, or PennDOT. All roleplay content is fictional.</span>
+    <span class="acrp-translate-note">We are not affiliated with or endorsed by Pittsburgh Regional Transit (formerly Port Authority of Allegheny County) in any way. Any reference to transit services, routes, or operations is a fictionalization created solely for roleplay purposes within the ER:LC platform.</span>
+    © 2026 Allegheny County Roleplay. All Rights Reserved
+  </div>
+</footer>
+
+<!-- Google Translate Element (hidden) -->
+<div id="google_translate_element" style="display:none"></div>
+<script defer="" src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;77465a894e5e43cda965d04bcfab1c3c&quot;,&quot;r&quot;:1,&quot;server_timing&quot;:{&quot;name&quot;:{&quot;cfCacheStatus&quot;:true,&quot;cfEdge&quot;:true,&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfSpeedBrain&quot;:true},&quot;location_startswith&quot;:null}}" crossorigin="anonymous"></script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9f4cb70d9f64c968',t:'MTc3NzYxNjc5MA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border-width: medium; border-style: none; border-color: currentcolor; border-image: initial; visibility: hidden;"></iframe></body></html>

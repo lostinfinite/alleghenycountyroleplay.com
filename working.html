@@ -6,8 +6,8 @@
   <title>ACRP — Renovation in Progress</title>
   <meta name="robots" content="noindex, nofollow">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" href="https://cdn2.contentltd.net/acrp%20(2).png" sizes="any">
-  <link rel="shortcut icon" href="https://cdn2.contentltd.net/acrp%20(2).png" type="image/png">
+  <link rel="icon" type="image/png" href="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png" sizes="any">
+  <link rel="shortcut icon" href="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png" type="image/png">
   <style>
     * {
       margin: 0;
@@ -17,15 +17,30 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: url('https://cdn2.contentltd.net/banner9327.jpg') center/cover no-repeat fixed;
-      background-color: rgba(0, 0, 0, 0.8);
-      background-blend-mode: overlay;
+      background-color: #070707;
       color: #ffffff;
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
       padding: 2rem;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: url('https://cdn.alleghenycountyroleplay.com/acrp_brandingworks/acrp_promoaa.png') center / cover no-repeat;
+      z-index: -1;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+      z-index: -1;
     }
 
     .container {
@@ -33,22 +48,25 @@
       text-align: center;
     }
 
-    :root { --logo-size: 120px; }
-    @media (max-width: 600px) { :root { --logo-size: 90px; } }
+    :root { --logo-size: 100px; }
+    @media (max-width: 768px) { :root { --logo-size: 72px; } }
+    @media (max-width: 600px) { :root { --logo-size: 56px; } }
+    @media (max-width: 400px) { :root { --logo-size: 100px; } }
 
     .logo-cycle {
       display: inline-flex;
       align-items: center;
       gap: 0;
       margin-bottom: 2.25rem;
-      opacity: 0;
-      animation: fadeIn 0.8s ease-out forwards;
+      animation: fadeIn 0.8s ease-out both;
       transition: transform 400ms ease, gap 300ms ease;
     }
 
     .logo-cycle .acrp-logo {
       height: var(--logo-size);
       width: auto;
+      max-width: min(var(--logo-size), 30vw);
+      object-fit: contain;
     }
 
     .logo-cycle .x-sep {
@@ -90,25 +108,36 @@
     .logo-cycle .dept-logo.out { transform: translateX(-120%); opacity: 0; }
 
     @keyframes fadeIn {
-      to { opacity: 1; }
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .logo-cycle, h1, .subtitle {
+        opacity: 1 !important;
+        animation: none !important;
+      }
     }
 
     h1 {
-      font-size: clamp(2rem, 5vw, 3rem);
+      font-size: clamp(1.5rem, 5vw, 3rem);
       font-weight: 300;
       letter-spacing: -0.5px;
       margin-bottom: 1rem;
-      opacity: 0;
-      animation: fadeIn 0.8s ease-out 0.2s forwards;
+      animation: fadeIn 0.8s ease-out 0.2s both;
+      line-height: 1.2;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
     }
-
+    #footer-container {
+      display: none !important;
+    }
     .subtitle {
-      font-size: clamp(1rem, 2vw, 1.2rem);
+      font-size: clamp(0.95rem, 2vw, 1.2rem);
       font-weight: 300;
-      color: #a0a0a0;
+      color: #898889;
       margin-bottom: 4rem;
-      opacity: 0;
-      animation: fadeIn 0.8s ease-out 0.4s forwards;
+      animation: fadeIn 0.8s ease-out 0.4s both;
     }
 
     .cursor {
@@ -118,6 +147,8 @@
       color: #ffffff;
       opacity: 0.9;
       animation: blink 1s step-start infinite;
+      vertical-align: baseline;
+      flex-shrink: 0;
     }
 
     @keyframes blink {
@@ -125,13 +156,44 @@
     }
 
     @media (max-width: 768px) {
-      .logo {
-        width: 100px;
-        margin-bottom: 2rem;
+      .subtitle {
+        margin-bottom: 3rem;
+      }
+
+      .logo-cycle.active {
+        transform: translateX(-10px);
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: clamp(1.75rem, 6vw, 2.5rem);
       }
 
       .subtitle {
-        margin-bottom: 3rem;
+        font-size: clamp(0.9rem, 1.8vw, 1rem);
+      }
+
+      .logo-cycle.active {
+        transform: translateX(0);
+      }
+
+      /* Hide dept logo cycling on mobile */
+      .logo-cycle .x-sep,
+      .logo-cycle .dept-slot {
+        display: none !important;
+      }
+
+      .logo-cycle {
+        gap: 0 !important;
+        transform: none !important;
+      }
+
+      /* Override master.js max-width constraint for logo */
+      .logo-cycle .acrp-logo {
+        max-width: none !important;
+        width: 100px !important;
+        height: 100px !important;
       }
     }
   </style>
@@ -140,7 +202,7 @@
 <body>
   <div class="container">
     <div class="logo-cycle" aria-label="ACRP and department logos">
-      <img class="acrp-logo" src="https://cdn2.contentltd.net/acrp%20(2).png" alt="ACRP Logo">
+      <img class="acrp-logo" src="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png" alt="ACRP Logo">
       <span class="x-sep" aria-hidden="true">×</span>
       <div class="dept-slot" aria-hidden="true">
         <img class="dept-logo" alt="Department logo" />
@@ -148,7 +210,9 @@
     </div>
   <h1><span id="typewriter" aria-live="polite"></span><span class="cursor" aria-hidden="true">|</span></h1>
   <p class="subtitle">We are making renovations! Check back later</p>
-  </div>
+  
+  
+ 
   <script>
     (function () {
       const el = document.getElementById('typewriter');
@@ -201,12 +265,15 @@
       const deptImg = document.querySelector('.dept-logo');
       if (!cycle || !deptImg) return;
 
+      // Only run cycling on desktop
+      if (window.innerWidth <= 480) return;
+
       const logos = [
-        'https://cdn2.contentltd.net/dps/psp.png',
-        'https://cdn2.contentltd.net/dps/ppd.png',
-        'https://cdn2.contentltd.net/dps/pfd.png',
-        'https://cdn2.contentltd.net/dps/penndot_emblem.svg',
-        'https://cdn2.contentltd.net/dps/acso.png'
+        'https://auxcdn.contentltd.xyz/dps/psp.png',
+        'https://auxcdn.contentltd.xyz/dps/ppd.png',
+        'https://auxcdn.contentltd.xyz/dps/pfd.png',
+        'https://auxcdn.contentltd.xyz/dps/penndot_emblem.svg',
+        'https://auxcdn.contentltd.xyz/dps/acso.png'
       ];
 
       const slideDuration = 500;
@@ -250,5 +317,85 @@
       setTimeout(runCycle, 1600);
     })();
   </script>
+  
+  
+  <script>
+    let logElement, statusElement, statusText;
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      logElement = document.getElementById('liveData');
+      statusElement = document.getElementById('apiStatus');
+      statusText = document.getElementById('statusText');
+      
+      
+      monitorTransitSystem();
+      setInterval(monitorTransitSystem, 3000);
+    });
+    
+    function log(message) {
+      if (!logElement) return;
+      const timestamp = new Date().toLocaleTimeString();
+      logElement.textContent += `[${timestamp}] ${message}\n`;
+      logElement.scrollTop = logElement.scrollHeight;
+    }
+    
+    function updateStatus(status, color) {
+      if (!statusElement || !statusText) return;
+      statusText.textContent = status;
+      statusElement.style.background = color;
+    }
+
+    function testAPI() {
+      log('🧪 Testing API integration...');
+      
+      
+      try {
+        const testData = { test: 'data', timestamp: Date.now() };
+        localStorage.setItem('PTA_TEST', JSON.stringify(testData));
+        const retrieved = localStorage.getItem('PTA_TEST');
+        localStorage.removeItem('PTA_TEST');
+        
+        if (retrieved) {
+          log('✅ localStorage API access working');
+        } else {
+          log('❌ localStorage API access failed');
+        }
+      } catch (e) {
+        log(`❌ localStorage error: ${e.message}`);
+      }
+      
+      // Test plan.html integration
+      if (typeof loadLiveTransitData === 'function') {
+        log('✅ plan.html API integration available');
+      } else {
+        log('⚠️  plan.html API integration not loaded');
+      }
+      
+      // Test current state
+      const driverState = localStorage.getItem('PTA_DRIVER_STATE');
+      if (driverState) {
+        try {
+          const parsed = JSON.parse(driverState);
+          log(`📊 Current state: ${Object.keys(parsed).join(', ')}`);
+        } catch (e) {
+          log(`❌ State parse error: ${e.message}`);
+        }
+      } else {
+        log('📭 No current driver state found');
+      }
+      
+      log('🧪 API test complete');
+    }
+    
+    function clearLog() {
+      if (logElement) logElement.textContent = '';
+      log('🗑️  Log cleared');
+    }
+  </script>
+  
+  <script src="toasts.js"></script>
+  <script src="notify.js"></script>
+  <script src="snow.js"></script>
+  <script src="master.js"></script>
 </body>
 </html>
