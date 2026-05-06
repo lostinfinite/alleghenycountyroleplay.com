@@ -14,8 +14,5 @@
 /cs              /community-standards.html 301
 /legal/cs        /community-standards.html 301
 
-# 404 catch-all � must be last
-# Serves /404.html with a real HTTP 404 status for any unmatched route.
-# Cloudflare Pages also auto-serves 404.html natively, but this rule
-# makes the 404 status explicit and works for all path patterns.
-/*               /404.html                 404
+# 404 handling is native on Cloudflare Pages.
+# Unmatched routes automatically serve /404.html with HTTP 404.
