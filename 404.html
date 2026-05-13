@@ -8,7 +8,7 @@
   <link rel="icon" type="image/png" href="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/site.css">
   <script src="https://uptime.betterstack.com/widgets/announcement.js" data-id="227840" async type="text/javascript"></script>
   <style>
@@ -20,7 +20,7 @@
     }
 
     body {
-      font-family: 'Inter', system-ui, sans-serif;
+      font-family: 'Inter Tight', system-ui, sans-serif, sans-serif;
       background: #1D1D1D;
       color: #fff;
       -webkit-font-smoothing: antialiased;
@@ -73,7 +73,7 @@
     .links a {
       font-size: 0.9rem;
       font-weight: 500;
-      color: #FFBB00;
+      color: var(--brand, oklch(0.78 0.165 75));
       text-decoration: underline;
       text-underline-offset: 3px;
       text-decoration-color: rgba(255,187,0,0.4);
@@ -81,7 +81,7 @@
     }
 
     .links a:hover {
-      text-decoration-color: #FFBB00;
+      text-decoration-color: var(--brand, oklch(0.78 0.165 75));
     }
 
     .links .sep {

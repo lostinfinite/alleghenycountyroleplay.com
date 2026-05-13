@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -9,33 +9,67 @@
   <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/legal-doc.css">
+  <script src="/assets/acrp-localnav.js" defer></script>
 </head>
-<body>
+<body data-acrp-nav="legal" data-acrp-nav-name="Community Standards">
 
-  <nav class="top-nav">
-    <div class="nav-inner">
-      <div class="nav-brand">
-        <img src="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png" alt="ACRP" class="nav-logo">
-        <span class="nav-brand-name">Allegheny County Roleplay</span>
-      </div>
-      <div class="nav-right">
-        <div class="nav-search-wrap">
-          <svg class="nav-search-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M21.172 24l-7.387-7.387c-1.388.874-3.024 1.387-4.785 1.387-4.971 0-9-4.029-9-9s4.029-9 9-9 9 4.029 9 9c0 1.761-.514 3.398-1.387 4.785l7.387 7.387-2.828 2.828zm-12.172-8c3.859 0 7-3.14 7-7s-3.141-7-7-7-7 3.14-7 7 3.141 7 7 7z"/>
-          </svg>
-          <input id="mainSearch" class="nav-search" type="text" placeholder="Search document&hellip;" autocomplete="off">
-        </div>
-        <a href="/" class="btn-outline">Home</a>
-        <button class="btn-primary" onclick="window.print()">Print / PDF</button>
-      </div>
-    </div>
-  </nav>
+    <!-- Navigation injected by /assets/acrp-localnav.js -->
+  <!-- Hidden container preserves elements legal-doc.js depends on; askMenu is relocated by acrp-localnav.js -->
+  <div id="acrp-legal-detached" style="position:absolute;left:-9999px;top:0;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
+    <input id="mainSearch" class="nav-search" type="text" placeholder="Search document" autocomplete="off">
+  </div>
+  <div class="ask-menu" id="askMenu" role="menu" aria-labelledby="askBtn" hidden>
+            <button class="ask-item" type="button" role="menuitem" onclick="copyMarkdown()">
+              <span class="ask-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span>
+              <span class="ask-item-text">
+                <span class="ask-item-title">Copy page</span>
+                <span class="ask-item-sub">Copy page as Markdown for LLMs</span>
+              </span>
+            </button>
+            <div class="ask-divider" role="separator"></div>
+            <button class="ask-item" type="button" role="menuitem" onclick="discussWith('chatgpt')">
+              <span class="ask-item-icon"><img src="/assets/openai.svg" alt="ChatGPT icon"></span>
+              <span class="ask-item-text">
+                <span class="ask-item-title">Open in ChatGPT <span class="ext">&#8599;</span></span>
+                <span class="ask-item-sub">Discuss this page with ChatGPT</span>
+              </span>
+            </button>
+            <button class="ask-item" type="button" role="menuitem" onclick="discussWith('claude')">
+              <span class="ask-item-icon"><img src="/assets/claude%20(1).svg" alt="Claude icon"></span>
+              <span class="ask-item-text">
+                <span class="ask-item-title">Open in Claude <span class="ext">&#8599;</span></span>
+                <span class="ask-item-sub">Discuss this page with Claude</span>
+              </span>
+            </button>
+            <button class="ask-item" type="button" role="menuitem" onclick="discussWith('perplexity')">
+              <span class="ask-item-icon"><img src="/assets/perplexity.svg" alt="Perplexity icon"></span>
+              <span class="ask-item-text">
+                <span class="ask-item-title">Open in Perplexity <span class="ext">&#8599;</span></span>
+                <span class="ask-item-sub">Discuss this page with Perplexity</span>
+              </span>
+            </button>
+            <button class="ask-item" type="button" role="menuitem" onclick="discussWith('deepseek')">
+              <span class="ask-item-icon"><img src="/assets/deepseek%20(1).svg" alt="DeepSeek icon"></span>
+              <span class="ask-item-text">
+                <span class="ask-item-title">Open in DeepSeek <span class="ext">&#8599;</span></span>
+                <span class="ask-item-sub">Copies Markdown, opens DeepSeek chat</span>
+              </span>
+            </button>
+            <div class="ask-divider" role="separator"></div>
+            <button class="ask-item" type="button" role="menuitem" onclick="printMarkdownPdf()">
+              <span class="ask-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg></span>
+              <span class="ask-item-text">
+                <span class="ask-item-title">Print / PDF</span>
+                <span class="ask-item-sub">Print or save this page as PDF</span>
+              </span>
+            </button>
+          </div>
 
   <div class="page-layout">
     <aside class="sidebar" id="sidebar">
-      <div class="sidebar-label">// Navigation</div>
+      <div class="sidebar-label">Navigation</div>
       <nav class="sidebar-nav" id="sidebarNav">
         <a class="sidebar-link" data-section="overview" onclick="scrollToSection('overview')">Overview</a>
         <div class="sidebar-divider"></div>
@@ -51,8 +85,6 @@
         <a class="sidebar-link" data-section="part8" onclick="scrollToSection('part8')">Part VIII &mdash; Age Requirements</a>
         <a class="sidebar-link" data-section="part9" onclick="scrollToSection('part9')">Part IX &mdash; Amendments</a>
         <a class="sidebar-link" data-section="contact" onclick="scrollToSection('contact')">Contact &amp; Reporting</a>
-        <div class="sidebar-divider"></div>
-        <a class="sidebar-link" style="font-size:0.76rem;color:#444e5c;" onclick="window.print()">&#x2191; Print / PDF</a>
       </nav>
     </aside>
 
@@ -66,7 +98,6 @@
       </div>
 
       <div class="doc-header" id="section-overview">
-        <div class="doc-eyebrow">// ACRP Legal Document</div>
         <h1 class="doc-title">Community Standards</h1>
         <p class="doc-intro">These Community Standards govern the conduct of every individual who participates in ACRP in any capacity, across every platform and system we operate. They are a component of ACRP&rsquo;s broader legal framework and are expressly incorporated into the Terms of Service.</p>
         <div class="doc-meta">
@@ -77,7 +108,6 @@
         <div class="doc-actions">
           <button class="btn-outline" onclick="expandAll()">Expand All</button>
           <button class="btn-outline" onclick="collapseAll()">Collapse All</button>
-          <button class="btn-primary" onclick="window.print()">Print / PDF</button>
         </div>
       </div>
 
@@ -547,22 +577,22 @@
             </button>
             <div class="accordion-body"><div class="accordion-body-inner">
               <p>The following enforcement actions are available to ACRP staff and management. This list is not exhaustive. Actions may be applied individually or in combination, and may escalate or de-escalate based on a member&rsquo;s history and the circumstances of each violation. ACRP does not guarantee that enforcement will follow any particular sequence.</p>
-              <table style="width:100%;border-collapse:collapse;font-size:0.9em;">
+              <table class="legal-table">
                 <thead>
-                  <tr style="border-bottom:1px solid #2a3240;">
-                    <th style="text-align:left;padding:8px 12px;color:#8b949e;font-weight:600;font-family:'Share Tech Mono',monospace;">Action</th>
-                    <th style="text-align:left;padding:8px 12px;color:#8b949e;font-weight:600;font-family:'Share Tech Mono',monospace;">Description</th>
+                  <tr>
+                    <th>Action</th>
+                    <th>Description</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr style="border-bottom:1px solid #1c2230;"><td style="padding:8px 12px;color:#c9d1d9;">Verbal Warning</td><td style="padding:8px 12px;color:#8b949e;">An informal correction issued during an active session. Not formally logged.</td></tr>
-                  <tr style="border-bottom:1px solid #1c2230;"><td style="padding:8px 12px;color:#c9d1d9;">Formal Warning</td><td style="padding:8px 12px;color:#8b949e;">A logged warning applied to the member&rsquo;s account record. Formal warnings accumulate and inform future enforcement decisions.</td></tr>
-                  <tr style="border-bottom:1px solid #1c2230;"><td style="padding:8px 12px;color:#c9d1d9;">Temporary Mute</td><td style="padding:8px 12px;color:#8b949e;">Restriction of a member&rsquo;s ability to send messages in Discord channels for a specified duration.</td></tr>
-                  <tr style="border-bottom:1px solid #1c2230;"><td style="padding:8px 12px;color:#c9d1d9;">Server Kick</td><td style="padding:8px 12px;color:#8b949e;">Removal from the Roblox private server for the current session. Does not affect Discord access unless separately actioned.</td></tr>
-                  <tr style="border-bottom:1px solid #1c2230;"><td style="padding:8px 12px;color:#c9d1d9;">Temporary Suspension</td><td style="padding:8px 12px;color:#8b949e;">Temporary removal from the Discord server, Roblox server, or both, for a defined period.</td></tr>
-                  <tr style="border-bottom:1px solid #1c2230;"><td style="padding:8px 12px;color:#c9d1d9;">Permanent Ban</td><td style="padding:8px 12px;color:#8b949e;">Permanent removal from all ACRP platforms, systems, and affiliated networks.</td></tr>
-                  <tr style="border-bottom:1px solid #1c2230;"><td style="padding:8px 12px;color:#c9d1d9;">Blacklisting</td><td style="padding:8px 12px;color:#8b949e;">Applied to external servers, communities, or operators under Terms &sect;11a. Denies access to all ACRP-operated infrastructure, partnerships, and community resources.</td></tr>
-                  <tr><td style="padding:8px 12px;color:#c9d1d9;">Cease and Desist</td><td style="padding:8px 12px;color:#8b949e;">Issued under Terms &sect;11b. Upon issuance, the recipient is immediately and automatically restricted from all ACRP Services, Platforms, and Servers for the duration specified, or permanently if no duration is stated.</td></tr>
+                  <tr><td>Verbal Warning</td><td>An informal correction issued during an active session. Not formally logged.</td></tr>
+                  <tr><td>Formal Warning</td><td>A logged warning applied to the member&rsquo;s account record. Formal warnings accumulate and inform future enforcement decisions.</td></tr>
+                  <tr><td>Temporary Mute</td><td>Restriction of a member&rsquo;s ability to send messages in Discord channels for a specified duration.</td></tr>
+                  <tr><td>Server Kick</td><td>Removal from the Roblox private server for the current session. Does not affect Discord access unless separately actioned.</td></tr>
+                  <tr><td>Temporary Suspension</td><td>Temporary removal from the Discord server, Roblox server, or both, for a defined period.</td></tr>
+                  <tr><td>Permanent Ban</td><td>Permanent removal from all ACRP platforms, systems, and affiliated networks.</td></tr>
+                  <tr><td>Blacklisting</td><td>Applied to external servers, communities, or operators under Terms &sect;11a. Denies access to all ACRP-operated infrastructure, partnerships, and community resources.</td></tr>
+                  <tr><td>Cease and Desist</td><td>Issued under Terms &sect;11b. Upon issuance, the recipient is immediately and automatically restricted from all ACRP Services, Platforms, and Servers for the duration specified, or permanently if no duration is stated.</td></tr>
                 </tbody>
               </table>
               <p style="margin-top:1em;">A first-time violation may result in a permanent ban if the circumstances warrant it. No prior warning is guaranteed.</p>
@@ -980,18 +1010,18 @@
             </button>
             <div class="accordion-body"><div class="accordion-body-inner">
               <p>If you observe a violation of these Standards, use the reporting tools available in the ACRP Discord server or the ACRP Portal. Do not attempt to enforce these Standards yourself. Self-enforcement, including public callouts, confrontational direct messages, or attempts to pressure another member into compliance, may itself result in enforcement action.</p>
-              <table style="width:100%;border-collapse:collapse;font-size:0.9em;margin-top:0.75em;">
+              <table class="legal-table" style="margin-top:0.75em;">
                 <thead>
-                  <tr style="border-bottom:1px solid #2a3240;">
-                    <th style="text-align:left;padding:8px 12px;color:#8b949e;font-weight:600;font-family:'Share Tech Mono',monospace;">Purpose</th>
-                    <th style="text-align:left;padding:8px 12px;color:#8b949e;font-weight:600;font-family:'Share Tech Mono',monospace;">Contact</th>
+                  <tr>
+                    <th>Purpose</th>
+                    <th>Contact</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr style="border-bottom:1px solid #1c2230;"><td style="padding:8px 12px;color:#c9d1d9;">Legal, compliance, and DMCA</td><td style="padding:8px 12px;"><a href="mailto:legal@acrp.work">legal@acrp.work</a></td></tr>
-                  <tr style="border-bottom:1px solid #1c2230;"><td style="padding:8px 12px;color:#c9d1d9;">Management and ownership</td><td style="padding:8px 12px;"><a href="mailto:ownership@acrp.work">ownership@acrp.work</a></td></tr>
-                  <tr style="border-bottom:1px solid #1c2230;"><td style="padding:8px 12px;color:#c9d1d9;">Appeals</td><td style="padding:8px 12px;"><a href="https://portal.alleghenycountyroleplay.com" target="_blank" rel="noopener">portal.alleghenycountyroleplay.com</a></td></tr>
-                  <tr><td style="padding:8px 12px;color:#c9d1d9;">Priority requests</td><td style="padding:8px 12px;"><a href="https://discord.com/channels/1365054426724827267/1365314515180458034" target="_blank" rel="noopener">#Priority Request</a></td></tr>
+                  <tr><td>Legal, compliance, and DMCA</td><td><a href="mailto:legal@acrp.work">legal@acrp.work</a></td></tr>
+                  <tr><td>Management and ownership</td><td><a href="mailto:ownership@acrp.work">ownership@acrp.work</a></td></tr>
+                  <tr><td>Appeals</td><td><a href="https://portal.alleghenycountyroleplay.com" target="_blank" rel="noopener">portal.alleghenycountyroleplay.com</a></td></tr>
+                  <tr><td>Priority requests</td><td><a href="https://discord.com/channels/1365054426724827267/1365314515180458034" target="_blank" rel="noopener">#Priority Request</a></td></tr>
                 </tbody>
               </table>
             </div></div>
@@ -1006,10 +1036,6 @@
           <a class="footer-link" href="/legal/biometric-data-statement.html">Biometric Data Statement</a>
           <a class="footer-link" href="mailto:legal@acrp.work">Contact Legal</a>
         </div>
-        <div class="footer-fine">
-          ACRP &mdash; Allegheny County Roleplay &nbsp;&middot;&nbsp; Allegheny County, Pennsylvania (fictional) &nbsp;&middot;&nbsp; Not affiliated with Roblox Corporation<br>
-          These Community Standards are subject to change. Continued participation constitutes acceptance of the current version.
-        </div>
       </div>
     </main>
   </div>
@@ -1019,3 +1045,6 @@
   <script src="/master.js"></script>
 </body>
 </html>
+
+
+

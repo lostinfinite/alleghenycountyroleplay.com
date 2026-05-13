@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="../assets/site.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -19,7 +19,7 @@
         }
 
         :root {
-            --brand: #FFBB00;
+            --brand: var(--brand, oklch(0.78 0.165 75));
             --brand-900: #d69a00;
             --bg: #1D1D1D;
             --surface: #121214;
@@ -31,7 +31,7 @@
         }
 
         body {
-            font-family:'Inter', sans-serif;
+            font-family:'Inter Tight', system-ui, sans-serif;
             background: var(--bg);
             color: var(--text);
             line-height: 1.6;
@@ -52,8 +52,7 @@
             position: sticky;
             top: 0;
             z-index: 50;
-            background: rgba(10, 10, 10, 0.6);
-            backdrop-filter: blur(8px);
+            background: #0e0e10;
             border-bottom: 1px solid var(--border);
         }
 
@@ -113,10 +112,7 @@
             font-size: 26px;
             font-weight: 600;
             margin-bottom: 20px;
-            background: linear-gradient(135deg, var(--brand) 0%, #FFA500 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--brand);
         }
 
         .dates {
@@ -249,20 +245,10 @@
             }
         }
     </style>
+    <script src="/assets/acrp-localnav.js" defer></script>
 </head>
-<body>
-    <nav class="simple-localnav" aria-label="local" tabindex="-1" style="--progress:0;">
-        <div class="localnav-inner container">
-            <a href="/" class="brand"><img src="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png" alt="ACRP Logo"><span>Allegheny County Roleplay</span></a>
-            <div class="actions">
-                <a class="btn-outline" href="/">Home</a>
-                <a class="btn" href="https://portal.alleghenycountyroleplay.com">Login</a>
-            </div>
-        </div>
-    </nav>
-        <div class="localnav-overlay-background"></div>
-
-    <script src="/assets/sticky-fallback.js" defer></script>
+<body data-acrp-nav="default" data-acrp-nav-name="Credits">
+    <!-- Navigation injected by /assets/acrp-localnav.js -->
 
     <section class="hero">
         <div class="hero-content">

@@ -9,11 +9,11 @@
   <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;700;800&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/site.css">
   <style>
     :root {
-      --brand:#FFBB00;
+      --brand:var(--brand, oklch(0.78 0.165 75));
       --brand-900:#d69a00;
       --text:#fff;
       --muted:#bdbdbd;
@@ -38,7 +38,7 @@
     }
 
     body {
-      font-family:'Inter', sans-serif;
+      font-family:'Inter Tight', system-ui, sans-serif;
       color: var(--text);
       background: #1d1d1d;
       line-height: 1.6;
@@ -59,8 +59,7 @@
       position: sticky; 
       top: 0; 
       z-index: 50; 
-      background: rgba(10,10,10,.6); 
-      backdrop-filter: blur(8px); 
+      background: #0e0e10; 
       border-bottom: 1px solid var(--border); 
     }
 
@@ -167,17 +166,13 @@
     .hero-logo {
       width: 88px;
       height: 88px;
-      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
-      border: 1px solid rgba(255,255,255,.14);
-      border-radius: 22px;
+      background: #18181c;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      box-shadow:
-        0 12px 40px rgba(0,0,0,.5),
-        inset 0 1px 0 rgba(255,255,255,.1);
+      box-shadow: 0 1px 0 rgba(255,255,255,.04) inset;
     }
 
     .hero-logo img { width: 56px; height: 56px; object-fit: contain; }
@@ -223,10 +218,7 @@
     }
 
     .hero-content h1 .accent {
-      background: linear-gradient(180deg, var(--brand) 0%, #ff9d00 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: var(--brand);
     }
 
     .hero-content > p {
@@ -362,10 +354,12 @@
       gap: 1rem;
       height: 100%;
       padding: 1.75rem;
-      background: linear-gradient(180deg, var(--card) 0%, #0f0f12 100%);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      box-shadow: 0 4px 16px rgba(0,0,0,.25);
+      background:
+        radial-gradient(140% 120% at 0% 0%, rgba(255,187,0,.12) 0%, rgba(255,187,0,0) 48%),
+        linear-gradient(180deg, #1b1b22 0%, #101116 100%);
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 18px;
+      box-shadow: 0 12px 34px rgba(0,0,0,.4);
       text-decoration: none;
       color: var(--text);
       transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
@@ -380,6 +374,7 @@
       padding: 1px;
       background: linear-gradient(135deg, rgba(255,187,0,.0) 0%, rgba(255,187,0,.0) 60%, rgba(255,187,0,.35) 100%);
       -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+              mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
       -webkit-mask-composite: xor;
               mask-composite: exclude;
       opacity: 0;
@@ -389,8 +384,8 @@
 
     .bzOpening > a:hover {
       transform: translateY(-4px);
-      border-color: rgba(255,187,0,.35);
-      box-shadow: 0 18px 48px rgba(0,0,0,.45), 0 0 0 1px rgba(255,187,0,.15);
+      border-color: rgba(255,187,0,.55);
+      box-shadow: 0 20px 52px rgba(0,0,0,.48), 0 0 0 1px rgba(255,187,0,.22);
     }
 
     .bzOpening > a:hover::before {
@@ -400,10 +395,11 @@
     .bzOpening h2 {
       order: 1;
       font-size: 1.35rem;
-      font-weight: 700;
+      font-family: 'DM Sans', 'Inter Tight', system-ui, sans-serif;
+      font-weight: 800;
       letter-spacing: -0.01em;
       line-height: 1.25;
-      color: var(--text);
+      color: #f9fafb;
       margin: 0;
       padding-right: 2.5rem;
     }
@@ -419,9 +415,9 @@
       align-items: center;
       justify-content: center;
       border-radius: 999px;
-      background: rgba(255,255,255,.04);
-      border: 1px solid var(--border);
-      color: var(--muted);
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.22);
+      color: #f4f4f5;
       font-size: 1rem;
       font-weight: 700;
       transition: transform .25s ease, background .25s ease, color .25s ease, border-color .25s ease;
@@ -429,7 +425,7 @@
 
     .bzOpening > a:hover h2::after {
       background: var(--brand);
-      color: #000;
+      color: #FFF;
       border-color: var(--brand);
       transform: translateX(3px);
     }
@@ -449,12 +445,13 @@
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      padding: 0.35rem 0.75rem;
-      font-size: 0.8rem;
-      font-weight: 500;
-      color: var(--muted);
-      background: rgba(255,255,255,.03);
-      border: 1px solid var(--border);
+      padding: 0.4rem 0.82rem;
+      font-size: 0.82rem;
+      font-family: 'DM Sans', 'Inter Tight', system-ui, sans-serif;
+      font-weight: 600;
+      color: #f3f4f6;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.16);
       border-radius: 999px;
       line-height: 1;
     }
@@ -471,12 +468,6 @@
     .bzMeta .bzLocation::before { background: #4a9eff; }
     .bzMeta .bzRemote::before { background: #4ade80; }
     .bzMeta .bzType::before { background: #f472b6; }
-    .bzMeta .bzDepartment {
-      color: var(--brand);
-      background: rgba(255,187,0,.08);
-      border-color: rgba(255,187,0,.25);
-    }
-    .bzMeta .bzDepartment::before { background: var(--brand); }
     .bzMeta .bzSalary {
       color: #4ade80;
       background: rgba(74,222,128,.08);
@@ -488,23 +479,26 @@
       order: 3;
       align-self: flex-start;
       margin-top: auto;
-      padding: 0.65rem 1.4rem;
-      background: transparent;
-      color: var(--brand);
-      border: 1px solid rgba(255,187,0,.35);
+      padding: 0.68rem 1.4rem;
+      background: var(--brand);
+      color: #FFF;
+      border: 1px solid rgba(255,187,0,.9);
       border-radius: 10px;
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       font-weight: 700;
-      font-family: inherit;
+      font-family: 'DM Sans', 'Inter Tight', system-ui, sans-serif;
       cursor: pointer;
       letter-spacing: 0.02em;
-      transition: background .2s ease, color .2s ease, border-color .2s ease;
+      box-shadow: 0 8px 18px rgba(255,187,0,.22);
+      transition: transform .2s ease, background .2s ease, color .2s ease, border-color .2s ease, box-shadow .2s ease;
     }
 
     .bzOpening > a:hover .bzButtonApply {
-      background: var(--brand);
+      transform: translateY(-1px);
+      background: #ffd35b;
       color: #000;
-      border-color: var(--brand);
+      border-color: #ffd35b;
+      box-shadow: 0 10px 20px rgba(255,187,0,.3);
     }
 
     /* Empty state */
@@ -837,6 +831,26 @@
       font-size: 1.2rem;
     }
 
+    .callout-required {
+      margin-top: 1.5rem;
+    }
+    .callout-required .callout-eyebrow {
+      display: block;
+      color: var(--brand);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+    .callout-required p {
+      margin: 0;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--muted-bright, var(--text));
+      max-width: 64ch;
+    }
+
     .apply-footer {
       margin-top: 3rem;
       padding-top: 2rem;
@@ -892,19 +906,11 @@
       .job-section h3 { font-size: 1.1rem; }
     }
   </style>
+  <script src="/assets/acrp-localnav.js" defer></script>
 </head>
-<body>
+<body data-acrp-nav="default" data-acrp-nav-name="Careers">
   
-  <nav class="simple-localnav" aria-label="local" tabindex="-1" style="--progress:0;">
-    <div class="localnav-inner container">
-      <a href="/" class="brand"><img src="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png" alt="ACRP Logo"><span>Allegheny County Roleplay</span></a>
-      <div class="actions">
-        <a class="btn-outline" href="/">Home</a>
-        <a class="btn" href="https://portal.alleghenycountyroleplay.com">Login</a>
-      </div>
-    </div>
-  </nav>
-  <script src="/assets/sticky-fallback.js" defer></script>
+  <!-- Navigation injected by /assets/acrp-localnav.js -->
 
   <div class="hero-banner">
     <div class="hero-bg"></div>
@@ -929,11 +935,7 @@
       </div>
     </div>
 
-    <div style="text-align:center;padding:4rem 1rem;color:var(--muted);font-size:1rem;border:1px solid var(--border);border-radius:16px;background:var(--card);">
-      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;margin:0 auto 1rem;opacity:.35;"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
-      <p style="font-weight:600;color:#fff;margin-bottom:.4rem;">No open positions currently</p>
-      <p style="font-size:.9rem;">Check back later — new roles are posted when they become available.</p>
-    </div>
+    <div id="bzOpeningsContainer" aria-live="polite"></div>
 
     <div class="process-strip">
       <div class="process-step">
@@ -959,424 +961,145 @@
     </div>
   </div>
 
+  <script>
+    (function loadJobsEmbed() {
+      const JOBS_ENDPOINT = 'https://careers.alleghenycountyroleplay.com/api/public/jobs/embed';
+      const openingsCountEl = document.querySelector('#openings-count span');
+      const openingsContainer = document.getElementById('bzOpeningsContainer');
 
-  <script type="text/plain" data-removed="true">
-    function getDaysAgo_unused() {
-      const postDate = new Date('2024-03-11');
-      const today = new Date();
-      const diffTime = Math.abs(today - postDate);
-      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-      return `${diffDays} Days Ago`;
-    }
-
-    // Job data
-    const jobData = {
-      moderator: {
-        title: 'Moderator',
-        location: 'Remote',
-        timeType: 'Part-time',
-        jobId: 'JR-037059',
-        posted: getDaysAgo(),
-        description: 'Manage and ensure members follow rules In-Game and within the Discord',
-        responsibilities: [
-          'Moderate and Enforce all rules in the Discord and In-Game'
-        ],
-        qualifications: [
-          'Minimum age: 14 years old',
-          'At least 4 weeks of prior moderation or staff experience in ER:LC-related communities',
-          'Proficient in English (spoken and written)',
-          'Familiar with ER:LC mechanics and gameplay',
-          'Must hold the in-game rank of Corporal or higher on the Police or Sheriff team',
-          'Strong communication and problem-solving skills',
-          'Ability to remain calm under pressure'
-        ],
-        applyLink: 'https://forms.gle/EEq9zsrnH1P2VoRUA'
-      },
-      administrator: {
-        title: 'Administrator',
-        location: 'Remote',
-        timeType: 'Part-time',
-        jobId: 'JR-038461',
-        posted: getDaysAgo(),
-        description: 'Help fellow Co-Workers with complex inquiries, and help ensure users are following rules In-Game and in the Discord',
-        responsibilities: [
-          'Moderate and enforce all rules In-Game and in the Discord',
-          'Help fellow staff members with moderation decisions'
-        ],
-        qualifications: [
-          'Minimum age: 14 years old',
-          'At least 8 weeks of prior moderation or staff experience in ER:LC-related communities',
-          'Proficient in English (spoken and written)',
-          'Familiar with ER:LC mechanics and gameplay',
-          'Must hold the in-game rank of Corporal or higher on the Police or Sheriff team',
-          'Strong communication and problem-solving skills',
-          'Ability to remain calm under pressure'
-        ],
-        applyLink: 'https://forms.gle/EEq9zsrnH1P2VoRUA'
-      },
-      hr: {
-        title: 'Human Resources',
-        location: 'Remote',
-        timeType: 'Part-time',
-        jobId: 'JR-039182',
-        posted: getDaysAgo(),
-        description: 'Handle reports against staff member\'s and help the Administration and Moderation Team\'s moderate in the Discord and In-Game.',
-        responsibilities: [
-          'Moderate and enforce all rules In-Game and in the Discord',
-          'Help fellow staff members with moderation decisions',
-          'Process and handle investigations against other staff members'
-        ],
-        qualifications: [
-          'Minimum age: 14 years old',
-          'At least 10 weeks of prior moderation or staff experience in ER:LC-related communities (as Internal Affairs, Human Resources, or any other positions comparable or higher)',
-          'Proficient in English (spoken and written)',
-          'Familiar with ER:LC mechanics and gameplay',
-          'Must hold the in-game rank of Corporal or higher on the Police or Sheriff team',
-          'Strong communication and problem-solving skills',
-          'Ability to remain calm under pressure'
-        ],
-        requiresInterview: true,
-        applyLink: 'https://forms.gle/EEq9zsrnH1P2VoRUA'
-      },
-      'hr-specialist': {
-        title: 'Human Resources Specialist',
-        location: 'Remote',
-        timeType: 'Part-time',
-        jobId: 'JR-039183',
-        posted: getDaysAgo(),
-        description: 'Handle high-attention or otherwise complex staff reports or related situations.',
-        responsibilities: [
-          'Moderate and enforce all rules In-Game and in the Discord',
-          'Help fellow staff members with moderation decisions',
-          'Process and handle complex investigations against other staff members'
-        ],
-        qualifications: [
-          'Minimum age: 14 years old',
-          'At least 300 Hours of prior moderation or staff experience in ER:LC-related communities (as Head of/Chief of/Director of Internal Affairs, Head of/Chief of/Director of Human Resources, or any other positions comparable or higher)',
-          'Proficient in English (spoken and written)',
-          'Familiar with ER:LC mechanics and gameplay',
-          'Must hold the in-game rank of Corporal or higher on the Police or Sheriff team',
-          'Strong communication and problem-solving skills',
-          'Ability to remain calm under pressure'
-        ],
-        requiresInterview: true,
-        applyLink: 'https://forms.gle/EEq9zsrnH1P2VoRUA'
-      },
-      management: {
-        title: 'Management',
-        location: 'Remote',
-        timeType: 'Part-time',
-        jobId: 'JR-039467',
-        posted: getDaysAgo(),
-        description: 'Manage the Moderation, Administration, and Human Resources Team\'s and ensure members are following all policies/rules, obtain partnerships, and handle tickets.',
-        responsibilities: [
-          'Moderate and enforce all rules In-Game and in the Discord',
-          'Help fellow staff members with moderation decisions',
-          'Process and handle complex investigations against other staff members',
-          'Obtain partnerships and other forms of external relations to advertise ACRP',
-          'Punish and manage Staff Members below you',
-          'Handle tickets and other member inquiries'
-        ],
-        qualifications: [
-          'Minimum age: 15 years old',
-          'At least 21 weeks of prior moderation or staff experience in ER:LC-related communities (as Management, Trainee Management, or any other positions comparable or higher)',
-          'Proficient in English (spoken and written)',
-          'Familiar with ER:LC mechanics and gameplay',
-          'Must hold the in-game rank of Corporal or higher on the Police or Sheriff team',
-          'Strong communication and problem-solving skills',
-          'Ability to remain calm under pressure'
-        ],
-        requiresInterview: true,
-        applyLink: 'https://forms.gle/EEq9zsrnH1P2VoRUA'
-      },
-      directorship: {
-        title: 'Directorship Team',
-        location: 'Remote',
-        timeType: 'Part-time',
-        jobId: 'JR-040001',
-        posted: getDaysAgo(),
-        description: 'Manage the rest of the staff team and help manage and make decisions at ACRP at a higher level.',
-        responsibilities: [
-          'Moderate and enforce all rules In-Game and in the Discord',
-          'Help fellow staff members with moderation decisions',
-          'Process and handle complex investigations against other staff members',
-          'Handle tickets and other member inquiries',
-          'Punish and manage Staff Members below you',
-          'Obtain partnerships and other forms of external relations to advertise ACRP',
-          'Assist the Director in managing the Public relations and overall public image of ACRP',
-          'Assist in higher level decision making',
-          'Assist in enforcing staff policies within the management team',
-          'And More'
-        ],
-        qualifications: [
-          'Minimum age: 15 years old',
-          'At least 52 weeks of prior moderation or staff experience in ER:LC-related communities (as Director, Founder, Co-Founder/Deputy Director, Assistant Director/Founder, or any other positions comparable or higher)',
-          'Proficient in English (spoken and written)',
-          'Familiar with ER:LC mechanics and gameplay',
-          'Must hold the in-game rank of Corporal or higher on the Police or Sheriff team',
-          'Strong communication and problem-solving skills',
-          'Ability to remain calm under pressure'
-        ],
-        requiresInterview: true,
-        applyLink: 'https://forms.gle/EEq9zsrnH1P2VoRUA'
-      },
-      ciso: {
-        title: 'Chief Information Security Officer (CISO)',
-        location: 'Remote',
-        timeType: 'Volunteer',
-        jobId: 'JR-040002',
-        posted: 'Today',
-        description: 'ACRP is looking for a Chief Information Security Officer to lead the security posture of the organization. You\'ll be responsible for identifying and managing risk across ACRP\'s technical infrastructure, advising leadership on security decisions, and ensuring the platform and its data are protected against threats. This is a hands-on senior role with direct influence over how ACRP handles security at every level.',
-        responsibilities: [
-          'Assess and manage security risks across ACRP\'s infrastructure and member-facing systems',
-          'Advise leadership on security incidents, vulnerabilities, and remediation',
-          'Develop and maintain internal security policies and response procedures',
-          'Coordinate with technical staff on secure development and deployment practices'
-        ],
-        qualifications: [
-          '18 years of age or older',
-          'Demonstrated experience in information security, cybersecurity, or a closely related technical field; formal credentials (certifications such as CompTIA Security+, CISSP, CEH, or equivalent) are preferred but not required if experience is verifiable',
-          'Minimum 180 days of active experience within ER:LC servers',
-          'Prior experience leading, auditing, or advising on security operations, vulnerability management, or incident response within an organization or community',
-          'Familiarity with common attack vectors, security frameworks, and data protection best practices',
-          'Available Monday through Friday, 8 AM to 7 PM ET for contact and correspondence',
-          'Strong written and verbal communication in English; able to translate technical findings into clear guidance for non-technical leadership',
-          'Able to work independently and under pressure while maintaining professionalism'
-        ],
-        disqualifyingFactors: [
-          'Unauthorized access, exploitation, or compromise of systems, networks, or accounts belonging to any individual, organization, or community',
-          'Fraud, deception, or bad-faith conduct toward any individual, organization, or community',
-          'Any criminal activity in any U.S. state or territory',
-          'Any form of sexual misconduct involving minors, including grooming, solicitation, inappropriate communication, or production or distribution of CSAM, regardless of claimed future circumstances'
-        ],
-        requiresInterview: true,
-        usePortal: true
-      },
-      cdo: {
-        title: 'Chief Data Officer (CDO)',
-        location: 'Remote',
-        timeType: 'Volunteer',
-        jobId: 'JR-040003',
-        posted: 'Today',
-        description: 'ACRP is looking for a Chief Data Officer to oversee how the organization collects, manages, stores, and governs member data. You\'ll work closely with legal and technical leadership to ensure ACRP\'s data practices are compliant, transparent, and defensible. Given ACRP\'s verification systems and the sensitivity of some of the data we handle, this role carries real regulatory weight.',
-        responsibilities: [
-          'Oversee ACRP\'s data governance framework, including collection, retention, and deletion practices',
-          'Advise leadership on privacy compliance and data-related regulatory obligations',
-          'Maintain and update internal data policies as requirements evolve',
-          'Coordinate with legal and technical teams to ensure data handling aligns with ACRP\'s privacy commitments to members'
-        ],
-        qualifications: [
-          '18 years of age or older',
-          'Experience in data governance, data management, privacy compliance, or a closely related field; familiarity with U.S. privacy frameworks (CCPA, COPPA, BIPA, or similar) is strongly preferred',
-          'Minimum 180 days of active experience within ER:LC servers',
-          'Prior experience managing or advising on data systems, retention policies, or compliance programs within an organization or community',
-          'Understanding of how personal and sensitive data should be classified, stored, and handled in a platform context',
-          'Available Monday through Friday, 8 AM to 7 PM ET for contact and correspondence',
-          'Strong written and verbal communication in English; able to document policies clearly and communicate data practices to non-technical stakeholders',
-          'Able to work independently and under pressure while maintaining professionalism'
-        ],
-        disqualifyingFactors: [
-          'Unauthorized collection, sale, misuse, or exposure of personal data belonging to any individual, organization, or community',
-          'Fraud, deception, or bad-faith conduct toward any individual, organization, or community',
-          'Any criminal activity in any U.S. state or territory',
-          'Any form of sexual misconduct involving minors, including grooming, solicitation, inappropriate communication, or production or distribution of CSAM, regardless of claimed future circumstances'
-        ],
-        requiresInterview: true,
-        usePortal: true
-      },
-      clo: {
-        title: 'Chief Legal Officer',
-        location: 'Remote',
-        timeType: 'Volunteer',
-        jobId: 'JR-040004',
-        posted: 'Today',
-        description: 'ACRP is looking for a Chief Legal Officer to own the legal function of the organization. This is a senior volunteer position with real responsibility: you\'ll handle incoming and outgoing legal requests, advise on compliance matters, and help ensure ACRP operates within applicable legal and regulatory frameworks. This role reports directly to senior leadership.',
-        responsibilities: [
-          'Manage all legal correspondence directed to or from ACRP',
-          'Advise leadership on legal compliance, risk, and policy matters',
-          'Review and respond to legal requests as they arise'
-        ],
-        qualifications: [
-          '18 years of age or older',
-          'Background in consumer law, preferably through a law firm; candidates currently pursuing a law degree or with other verifiable legal experience will also be considered',
-          'Minimum 180 days of active experience within ER:LC servers',
-          'Prior experience leading, organizing, or advising a legal, compliance, or regulatory function within a company, organization, or community',
-          'Available Monday through Friday, 8 AM to 7 PM ET for contact and correspondence',
-          'Strong written and verbal communication in English; able to convey complex information clearly and quickly',
-          'Able to work independently and under pressure while maintaining professionalism'
-        ],
-        disqualifyingFactors: [
-          'Fraud, deception, or bad-faith conduct toward any individual, organization, or community',
-          'Any criminal activity in any U.S. state or territory',
-          'Any form of sexual misconduct involving minors, including grooming, solicitation, inappropriate communication, or production or distribution of CSAM, regardless of claimed future circumstances'
-        ],
-        requiresInterview: true,
-        usePortal: true
+      if (!openingsContainer || !openingsCountEl) {
+        return;
       }
-    };
 
-
-    function selectJob(jobId) {
-
-      document.querySelectorAll('.job-item').forEach(item => {
-        item.classList.remove('active');
-      });
-
-
-      event.currentTarget.classList.add('active');
-
-      const job = jobData[jobId];
-      const detailsContainer = document.getElementById('jobDetailsContent');
-
-      detailsContainer.innerHTML = `
-        <div class="job-details-header">
-          <h2>${job.title}</h2>
-          <button class="btn-apply-main" onclick="applyForJob('${job.title}')">Apply</button>
-        </div>
-        
-        <div class="job-info-grid">
-          <div class="info-item">
-            <strong>Location:</strong> ${job.location}
-          </div>
-          <div class="info-item">
-            <strong>Time Type:</strong> ${job.timeType}
-          </div>
-          <div class="info-item">
-            <strong>Job ID:</strong> ${job.jobId}
-          </div>
-          <div class="info-item">
-            <strong>Posted:</strong> ${job.posted}
-          </div>
-        </div>
-
-        <div class="job-section">
-          <h3>Job Description</h3>
-          <p>${job.description}</p>
-        </div>
-
-        <div class="job-section">
-          <h3>Roles & Responsibilities</h3>
-          <ul>
-            ${job.responsibilities.map(item => `<li>${item}</li>`).join('')}
-          </ul>
-        </div>
-
-        <div class="job-section">
-          <h3>Required Qualifications</h3>
-          <ul>
-            ${job.qualifications.map(item => `<li>${item}</li>`).join('')}
-          </ul>
-        </div>
-
-        ${job.disqualifyingFactors ? `
-        <div class="job-section">
-          <h3>Disqualifying Factors</h3>
-          <p style="font-size:0.9rem;color:var(--muted);margin-bottom:0.75rem;">Candidates will not be considered if they have any history of the following:</p>
-          <ul>
-            ${job.disqualifyingFactors.map(item => `<li>${item}</li>`).join('')}
-          </ul>
-          <p style="font-size:0.85rem;color:var(--muted);margin-top:0.75rem;font-style:italic;">These are absolute disqualifiers. No exceptions.</p>
-        </div>
-        ` : ''}
-
-        ${job.requiresInterview ? `
-        <div class="job-section" style="background: linear-gradient(135deg, rgba(255,187,0,0.1), rgba(255,187,0,0.05)); border-left: 4px solid var(--brand); padding: 1.5rem; border-radius: 8px; margin-top: 1.5rem;">
-          <h3 style="color: var(--brand); margin-top: 0;">📋 Interview Required</h3>
-          <p style="margin: 0.5rem 0 0 0; font-size: 0.95rem; line-height: 1.6;">
-            Applications for <strong>${job.title}</strong> positions will be followed up with an interview. Please ensure you are available for an interview after submitting your application.
-          </p>
-        </div>
-        ` : ''}
-
-        <div class="apply-footer">
-          <button class="btn-apply-footer" onclick="applyForJob('${job.title}')">Apply</button>
-        </div>
-      `;
-
-
-      document.querySelector('.job-details').scrollTop = 0;
-    }
-
-
-    function generateApplicationUID(jobId) {
-      const timestamp = Date.now();
-      const inquiryId = Array.from(crypto.getRandomValues(new Uint8Array(4)))
-        .map(b => b.toString(16).padStart(2, '0')).join('').toUpperCase();
-      const jobSlug = jobId.replace(/[^A-Z0-9]/gi, '').toUpperCase();
-      return `${timestamp}-${inquiryId}-${jobSlug}`;
-    }
-
-    function applyForJob(position) {
-      const jobId = position.toLowerCase()
-        .replace(/ /g, '-')
-        .replace('human-resources-specialist', 'hr-specialist')
-        .replace('human-resources', 'hr')
-        .replace('chief-information-security-officer-(ciso)', 'ciso')
-        .replace('chief-data-officer-(cdo)', 'cdo')
-        .replace('chief-legal-officer', 'clo');
-      const job = jobData[jobId];
-      if (!job) return;
-      if (job.usePortal) {
-        const uid = generateApplicationUID(job.jobId);
-        window.location.href = `https://portal.alleghenycountyroleplay.com/applications-callback=${uid}`;
-      } else {
-        window.location.href = job.applyLink;
+      function escapeHtml(value) {
+        return String(value ?? '')
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
       }
-    }
 
-
-    document.getElementById('searchInput').addEventListener('input', function(e) {
-      const searchTerm = e.target.value.toLowerCase();
-      let visibleCount = 0;
-      
-      document.querySelectorAll('.job-item').forEach(item => {
-        const title = item.querySelector('.job-item-title').textContent.toLowerCase();
-        const isControlled = item.hasAttribute('data-directorship');
-
-        if (title.includes(searchTerm)) {
-
-          if (!isControlled || SHOW_DIRECTORSHIP) {
-            item.style.display = 'block';
-            visibleCount++;
-          } else {
-            item.style.display = 'none';
+      function normalizeUrl(url) {
+        try {
+          const parsed = new URL(String(url || ''), window.location.origin);
+          if (parsed.protocol === 'http:' || parsed.protocol === 'https:') {
+            return parsed.href;
           }
-        } else {
-          item.style.display = 'none';
+        } catch (err) {
+          console.warn('Invalid job URL received:', url, err);
         }
-      });
-      
-      
-      document.querySelector('.jobs-count').textContent = `${visibleCount} JOBS FOUND`;
-    });
 
+        return '';
+      }
 
-    document.getElementById('jobFamilyFilter').addEventListener('change', function(e) {
-      const selectedFamily = e.target.value;
-      let visibleCount = 0;
-      
-      document.querySelectorAll('.job-item').forEach(item => {
-        const itemFamily = item.getAttribute('data-family');
-        const isControlled = item.hasAttribute('data-directorship');
-
-        if (selectedFamily === 'All' || itemFamily === selectedFamily) {
-
-          if (!isControlled || SHOW_DIRECTORSHIP) {
-            item.style.display = 'block';
-            visibleCount++;
-          } else {
-            item.style.display = 'none';
-          }
-        } else {
-          item.style.display = 'none';
+      function formatCategory(value) {
+        const raw = String(value || '').trim();
+        if (!raw) {
+          return 'Uncategorized';
         }
-      });
 
-      
-      document.querySelector('.jobs-count').textContent = `${visibleCount} JOBS FOUND`;
-    });
+        return raw
+          .split(/[-_\s]+/g)
+          .filter(Boolean)
+          .map(function(part) {
+            return part.charAt(0).toUpperCase() + part.slice(1).toLowerCase();
+          })
+          .join(' ');
+      }
 
-    
+      function formatLastUpdated(generatedAt) {
+        if (!generatedAt) {
+          return '';
+        }
+
+        const dt = new Date(generatedAt);
+        if (Number.isNaN(dt.getTime())) {
+          return '';
+        }
+
+        return 'Updated ' + dt.toLocaleString();
+      }
+
+      function renderEmptyState(message) {
+        openingsContainer.innerHTML =
+          '<div style="text-align:center;padding:4rem 1rem;color:var(--muted);font-size:1rem;border:1px solid var(--border);border-radius:16px;background:var(--card);">' +
+            '<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;margin:0 auto 1rem;opacity:.35;"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>' +
+            '<p style="font-weight:600;color:#fff;margin-bottom:.4rem;">' + escapeHtml(message) + '</p>' +
+            '<p style="font-size:.9rem;margin-bottom:1.25rem;">We post new roles as the community grows. Get a heads-up the moment one opens.</p>' +
+            '<div style="display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap;">' +
+              '<a href="https://discord.gg/contentltd" class="btn-primary" style="display:inline-flex;align-items:center;gap:.4rem;padding:.55rem 1rem;background:var(--brand);color:#000;border-radius:8px;font-weight:600;text-decoration:none;font-size:.85rem;">Get notified in Discord</a>' +
+              '<a href="mailto:careers@alleghenycountyroleplay.com" style="display:inline-flex;align-items:center;gap:.4rem;padding:.55rem 1rem;background:transparent;color:var(--text);border:1px solid var(--border);border-radius:8px;font-weight:500;text-decoration:none;font-size:.85rem;">Email careers@</a>' +
+            '</div>' +
+          '</div>';
+      }
+
+      function renderJobs(payload) {
+        const jobs = Array.isArray(payload && payload.jobs) ? payload.jobs : [];
+        const totalJobs = Number.isFinite(payload && payload.totalJobs)
+          ? payload.totalJobs
+          : jobs.length;
+        const updatedAtText = formatLastUpdated(payload && payload.generatedAt);
+
+        openingsCountEl.textContent = totalJobs + ' open role' + (totalJobs === 1 ? '' : 's');
+        openingsCountEl.setAttribute('title', updatedAtText);
+
+        if (!jobs.length) {
+          renderEmptyState('No open positions right now');
+          return;
+        }
+
+        const markup = jobs.map(function(job) {
+          const safeTitle = escapeHtml(job && job.name ? job.name : 'Untitled Role');
+          const safeCategory = escapeHtml(formatCategory(job && job.category));
+          const safeLocation = escapeHtml(job && job.location ? job.location : 'Location unavailable');
+          const safeLink = normalizeUrl(job && job.link);
+
+          return (
+            '<li class="bzOpening" data-category="' + safeCategory.toLowerCase() + '">' +
+              '<a href="' + (safeLink || '#') + '"' + (safeLink ? ' target="_blank" rel="noopener noreferrer"' : ' aria-disabled="true"') + '>' +
+                '<h2>' + safeTitle + '</h2>' +
+                '<ul class="bzMeta">' +
+                  '<li class="bzType">' + safeCategory + '</li>' +
+                  '<li class="bzLocation">' + safeLocation + '</li>' +
+                '</ul>' +
+                '<span class="bzButtonApply">Apply</span>' +
+              '</a>' +
+            '</li>'
+          );
+        }).join('');
+
+        openingsContainer.innerHTML = '<ul class="bzOpeningsList">' + markup + '</ul>';
+      }
+
+      function loadJobs() {
+        fetch(JOBS_ENDPOINT, {
+          method: 'GET',
+          headers: {
+            Accept: 'application/json'
+          },
+          cache: 'no-store'
+        })
+          .then(function(response) {
+            if (!response.ok) {
+              throw new Error('Jobs API failed with status ' + response.status);
+            }
+
+            return response.json();
+          })
+          .then(function(payload) {
+            renderJobs(payload || {});
+          })
+          .catch(function(error) {
+            console.error('Failed to load careers jobs embed:', error);
+            openingsCountEl.textContent = 'Open roles unavailable';
+            openingsCountEl.removeAttribute('title');
+            renderEmptyState('No open positions right now');
+          });
+      }
+
+      loadJobs();
+    })();
   </script>
 
   <div id="footer-container"></div>

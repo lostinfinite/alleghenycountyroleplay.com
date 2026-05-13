@@ -14,5 +14,7 @@
 /cs              /community-standards.html 301
 /legal/cs        /community-standards.html 301
 
-# 404 handling is native on Cloudflare Pages.
-# Unmatched routes automatically serve /404.html with HTTP 404.
+# Catch-all fallback for unmatched routes.
+# Cloudflare _redirects validation does not allow status 404 here,
+# so this uses a rewrite (200) to always render /404.html.
+/*               /404.html                 200

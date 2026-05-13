@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -26,22 +26,12 @@
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="/assets/site.css">
 	<link rel="stylesheet" href="/articles/article.css">
+	<script src="/assets/acrp-localnav.js" defer></script>
 </head>
 
-<body>
+<body data-acrp-nav="articles" data-acrp-nav-name="Articles" data-acrp-nav-name-href="/articles/">
 
-	<nav class="simple-localnav" aria-label="Site navigation">
-		<div class="localnav-inner">
-			<a href="/" class="brand">
-				<img src="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png" alt="ACRP Logo">
-				<span>Allegheny County Roleplay</span>
-			</a>
-			<div class="actions">
-				<a href="/articles/">Articles</a>
-				<a class="btn" href="https://portal.alleghenycountyroleplay.com">Login</a>
-			</div>
-		</div>
-	</nav>
+	<!-- Navigation injected by /assets/acrp-localnav.js -->
 
 	<main class="page">
 
@@ -57,7 +47,7 @@
 			<div class="article-byline">
 				<img src="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png" alt="ACRP">
 				<span class="byline-name">The ACRP Team</span>
-				<span>·</span>
+				<span>Â·</span>
 				<time datetime="2026-02-10">February 10, 2026</time>
 			</div>
 		</div>
@@ -75,7 +65,7 @@
 			<h3>What is in the works?</h3>
 			<ul>
 				<li><strong>Age Assurance</strong><br>
-				We are developing additional technologies to help ensure that a user is at least the age of 13. It will work by analyzing the messages a user sends and putting them against previous messages that they have sent (specifically within the past month of the message we are looking at), and training data, and we will use this to generate a confidence score on whether we think you are 13 or older. If we find that messages within a certain time span have a low confidence score, then we will prompt an age verification via Didit ®. If you pass the checks, then your messages (specifically the ones that triggered the check) will be analyzed, and we will remember that this is how you talk.</li>
+				We are developing additional technologies to help ensure that a user is at least the age of 13. It will work by analyzing the messages a user sends and putting them against previous messages that they have sent (specifically within the past month of the message we are looking at), and training data, and we will use this to generate a confidence score on whether we think you are 13 or older. If we find that messages within a certain time span have a low confidence score, then we will prompt an age verification via Didit Â®. If you pass the checks, then your messages (specifically the ones that triggered the check) will be analyzed, and we will remember that this is how you talk.</li>
 
 				<li><strong>A Safety Assurance Council</strong><br>
 				We are working on a Safety Assurance Council to help us respect users' privacy while helping maintain a safer community for all. Members of this council will give us ideas and feedback on ideas for AI safety systems. Are you interested in being a member? Stay tuned for the application.</li>
@@ -83,8 +73,8 @@
 				<li><strong>An Appeal System For Those Who Were Flagged For Being Under 13 Falsely</strong><br>
 				Currently, when users are flagged as under 13, they will be automatically banned. We are developing an appeal system where users who were falsely banned can provide their ID, and they can challenge the determination.</li>
 
-				<li><strong>A way for users to verify their age without having to provide a facial scan (Via Didit ®)</strong><br>
-				So… Actually.. Thats it. Its self explanatory… Anyway.</li>
+				<li><strong>A way for users to verify their age without having to provide a facial scan (Via Didit Â®)</strong><br>
+				Soâ€¦ Actually.. Thats it. Its self explanatoryâ€¦ Anyway.</li>
 			</ul>
 
 			<h3>What's the plan now?</h3>
@@ -114,9 +104,9 @@
 			<p>Thank you for your continued support.</p>
 
 			<p>Thanks,<br>
-			ContentLTD — Director<br>
-			Bigalb — Deputy Director<br>
-			Devin — Assistant Director</p>
+			ContentLTD â€” Director<br>
+			Bigalb â€” Deputy Director<br>
+			Devin â€” Assistant Director</p>
 		</div>
 
 		<div class="tags-section">
@@ -169,7 +159,7 @@
 		window.addEventListener('load', function () {
 			if (window.location.hash === '#faq') {
 				const el = document.getElementById('faq');
-				const nav = document.querySelector('.simple-localnav');
+				const nav = document.querySelector('#acrp-localnav, .simple-localnav');
 				if (el && nav) {
 					const top = el.getBoundingClientRect().top + window.scrollY - nav.offsetHeight - 30;
 					window.scrollTo({ top, behavior: 'smooth' });

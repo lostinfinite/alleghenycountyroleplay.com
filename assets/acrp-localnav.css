@@ -1,0 +1,308 @@
+/* ──────────────────────────────────────────────────────────
+   ACRP — Universal Apple-style local nav (pill)
+   Loaded site-wide. Renders into <body> via acrp-localnav.js
+   and reads config from <body data-acrp-nav="..."> attrs.
+   ────────────────────────────────────────────────────────── */
+
+:root {
+  --acrp-localnav-spacing: 20px;
+  --acrp-localnav-max-width: 1024px;
+  --acrp-localnav-min-height: 52px;
+  --acrp-localnav-offset-top: 6px;
+  --acrp-localnav-radius: 18px;
+  --acrp-localnav-bg: rgba(232, 232, 237, 0.72);
+  --acrp-localnav-bg-solid: rgb(244, 244, 247);
+  --acrp-localnav-blur: 18px;
+  --acrp-localnav-text: rgb(29, 29, 31);
+  --acrp-localnav-text-muted: rgb(66, 66, 69);
+  --acrp-localnav-cta-bg: rgb(0, 113, 227);
+  --acrp-localnav-cta-bg-hover: rgb(0, 100, 204);
+  --acrp-localnav-cta-text: rgb(255, 255, 255);
+  --acrp-localnav-muted-bg: transparent;
+  --acrp-localnav-muted-border: rgba(0, 0, 0, 0.18);
+  --acrp-localnav-muted-bg-hover: rgba(0, 0, 0, 0.06);
+  --acrp-localnav-inner-glow: rgba(0, 0, 0, 0.08);
+}
+
+#acrp-localnav {
+  position: fixed;
+  top: var(--acrp-localnav-offset-top);
+  left: 0;
+  right: 0;
+  z-index: 9998;
+  margin: 0 auto;
+  padding-inline: max(var(--acrp-localnav-spacing), env(safe-area-inset-left));
+  width: 100%;
+  max-width: calc(var(--acrp-localnav-max-width) + var(--acrp-localnav-spacing) * 2);
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  box-sizing: border-box;
+  font-family: 'Inter Tight', 'SF Pro Text', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Reserve room at the top of the page so content does not slide under
+   the fixed pill. acrp-localnav.js measures the real height and sets
+   --acrp-localnav-total-height; this fallback covers FOUC. */
+body[data-acrp-nav] {
+  padding-top: var(--acrp-localnav-total-height, 66px);
+}
+
+#acrp-localnav .acrp-localnav-pill {
+  pointer-events: auto;
+  width: 100%;
+  max-width: var(--acrp-localnav-max-width);
+  min-height: var(--acrp-localnav-min-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 7px 10px 7px 22px;
+  background: var(--acrp-localnav-bg);
+  -webkit-backdrop-filter: saturate(180%) blur(var(--acrp-localnav-blur));
+  backdrop-filter: saturate(180%) blur(var(--acrp-localnav-blur));
+  border-radius: var(--acrp-localnav-radius);
+  box-shadow:
+    inset 0 0 0 1px var(--acrp-localnav-inner-glow),
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    0 12px 32px rgba(0, 0, 0, 0.10);
+  color: var(--acrp-localnav-text);
+  transition: background 220ms ease, box-shadow 220ms ease, transform 220ms ease, width 320ms cubic-bezier(0.22, 1, 0.36, 1), max-width 320ms cubic-bezier(0.22, 1, 0.36, 1), padding 320ms cubic-bezier(0.22, 1, 0.36, 1);
+  box-sizing: border-box;
+}
+
+/* Boot state: render pill first, then expand outward to full target width. */
+#acrp-localnav.is-booting .acrp-localnav-pill {
+  width: min(460px, calc(100vw - (var(--acrp-localnav-spacing) * 2)));
+  max-width: min(460px, calc(100vw - (var(--acrp-localnav-spacing) * 2)));
+  padding-inline: 16px;
+}
+
+#acrp-localnav .acrp-localnav-ctas {
+  transition: opacity 220ms ease, transform 220ms ease;
+}
+
+#acrp-localnav.is-booting .acrp-localnav-ctas {
+  opacity: 0;
+  transform: translateY(-2px);
+}
+
+#acrp-localnav.is-springing .acrp-localnav-pill {
+  animation: acrp-localnav-spring-in 520ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes acrp-localnav-spring-in {
+  0% {
+    transform: translateY(-1px) scale(0.992);
+  }
+  45% {
+    transform: translateY(0) scale(1.006);
+  }
+  72% {
+    transform: translateY(0) scale(0.998);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+@supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  #acrp-localnav .acrp-localnav-pill { background: var(--acrp-localnav-bg-solid); }
+}
+
+#acrp-localnav .acrp-localnav-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  line-height: 1.1;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: var(--acrp-localnav-text);
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  flex: 1 1 auto;
+  min-width: 0;
+  padding-block: 4px;
+}
+#acrp-localnav .acrp-localnav-name:hover { text-decoration: none; color: var(--acrp-localnav-text); }
+
+#acrp-localnav .acrp-localnav-logo {
+  width: 28px;
+  height: 28px;
+  display: block;
+  object-fit: contain;
+  border-radius: 7px;
+  filter: brightness(0) saturate(100%);
+  transform-origin: 50% 50%;
+  transition: transform 340ms cubic-bezier(0.22, 1, 0.36, 1), filter 220ms ease;
+}
+
+#acrp-localnav .acrp-localnav-textswap {
+  position: relative;
+  display: inline-block;
+  width: 4.9ch;
+  height: 1.2em;
+  overflow: hidden;
+  transition: width 420ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+#acrp-localnav .acrp-localnav-label {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  display: block;
+  transform-origin: 0 50%;
+  will-change: transform, opacity, filter;
+}
+
+#acrp-localnav .acrp-localnav-label-short {
+  font-size: 17px;
+  transform: translateY(-50%) translateX(0) scale(1);
+  opacity: 1;
+  filter: blur(0);
+  transition:
+    transform 350ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 260ms ease,
+    filter 260ms ease;
+}
+
+#acrp-localnav .acrp-localnav-label-long {
+  font-size: 16px;
+  transform: translateY(85%) translateX(-8px) scale(0.985);
+  opacity: 0;
+  filter: blur(4px);
+  transition:
+    transform 430ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 290ms ease,
+    filter 290ms ease;
+}
+
+#acrp-localnav .acrp-localnav-name:hover .acrp-localnav-logo,
+#acrp-localnav .acrp-localnav-name:focus-visible .acrp-localnav-logo {
+  transform: rotate(-4deg) scale(1.06);
+}
+
+#acrp-localnav .acrp-localnav-name:hover .acrp-localnav-textswap,
+#acrp-localnav .acrp-localnav-name:focus-visible .acrp-localnav-textswap {
+  width: 25.8ch;
+}
+
+#acrp-localnav .acrp-localnav-name:hover .acrp-localnav-label-short,
+#acrp-localnav .acrp-localnav-name:focus-visible .acrp-localnav-label-short {
+  transform: translateY(-185%) translateX(8px) scale(0.96);
+  opacity: 0;
+  filter: blur(4px);
+}
+
+#acrp-localnav .acrp-localnav-name:hover .acrp-localnav-label-long,
+#acrp-localnav .acrp-localnav-name:focus-visible .acrp-localnav-label-long {
+  transform: translateY(-50%) translateX(0) scale(1);
+  opacity: 1;
+  filter: blur(0);
+}
+
+#acrp-localnav .acrp-localnav-ctas {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 0 0 auto;
+}
+#acrp-localnav .acrp-localnav-ctas li { display: flex; }
+
+#acrp-localnav .acrp-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 7px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: 0;
+  border-radius: 980px;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  border: 1px solid transparent;
+  background: var(--acrp-localnav-muted-bg);
+  color: var(--acrp-localnav-text);
+  transition: background 140ms ease, color 140ms ease, border-color 140ms ease, transform 140ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+#acrp-localnav .acrp-cta:focus-visible {
+  outline: 2px solid var(--acrp-localnav-cta-bg);
+  outline-offset: 2px;
+}
+
+/* Muted (secondary) variant */
+#acrp-localnav .acrp-cta.muted {
+  background: var(--acrp-localnav-muted-bg);
+  border-color: var(--acrp-localnav-muted-border);
+  color: var(--acrp-localnav-text);
+}
+#acrp-localnav .acrp-cta.muted:hover {
+  background: var(--acrp-localnav-muted-bg-hover);
+  text-decoration: none;
+}
+
+/* Filled CTA variant */
+#acrp-localnav .acrp-cta.cta {
+  background: var(--acrp-localnav-cta-bg);
+  border-color: var(--acrp-localnav-cta-bg);
+  color: var(--acrp-localnav-cta-text);
+  font-weight: 500;
+}
+#acrp-localnav .acrp-cta.cta:hover {
+  background: var(--acrp-localnav-cta-bg-hover);
+  border-color: var(--acrp-localnav-cta-bg-hover);
+  color: var(--acrp-localnav-cta-text);
+  text-decoration: none;
+}
+
+/* Disabled / current-page indicator */
+#acrp-localnav .acrp-cta[aria-current="page"] {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* Ask dropdown wrapper (legal pages) */
+#acrp-localnav .acrp-ask-wrap { position: relative; display: flex; }
+
+/* Mobile */
+@media (max-width: 600px) {
+  #acrp-localnav { padding-inline: 10px; }
+  #acrp-localnav .acrp-localnav-pill {
+    padding: 6px 8px 6px 16px;
+    gap: 10px;
+    border-radius: 16px;
+  }
+  #acrp-localnav .acrp-localnav-logo { width: 24px; height: 24px; }
+  #acrp-localnav .acrp-localnav-label-short { font-size: 15px; }
+  #acrp-localnav .acrp-localnav-label-long { font-size: 14px; }
+  #acrp-localnav .acrp-localnav-name:hover .acrp-localnav-textswap,
+  #acrp-localnav .acrp-localnav-name:focus-visible .acrp-localnav-textswap { width: 21.8ch; }
+  #acrp-localnav .acrp-cta { padding: 6px 12px; font-size: 12px; }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  #acrp-localnav .acrp-localnav-pill,
+  #acrp-localnav .acrp-cta,
+  #acrp-localnav .acrp-localnav-logo,
+  #acrp-localnav .acrp-localnav-textswap,
+  #acrp-localnav .acrp-localnav-label-short,
+  #acrp-localnav .acrp-localnav-label-long { transition: none; }
+  #acrp-localnav.is-springing .acrp-localnav-pill { animation: none; }
+}
+
+/* Body padding offset so the fixed pill never overlaps page chrome.
+   Pages can opt-out with body[data-acrp-nav-no-offset]. */
+body[data-acrp-nav][data-acrp-nav-no-offset] {
+  padding-top: 0 !important;
+}

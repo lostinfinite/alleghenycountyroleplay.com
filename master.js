@@ -357,12 +357,11 @@ if (document.readyState === 'loading') {
   (function consoleSafetyWarning(){
     try{
       const STORAGE_KEY = 'acrp_console_warning_last_shown';
-      const SHOWN_SESSION_KEY = 'acrp_console_warning_modal_shown';
-      const MS_BETWEEN = 1000 * 60 * 0.5; 
+      const MS_BETWEEN = 1000 * 60 * 60 * 24; // once per day
 
       function consoleMessage(){
-        console.log('%cHold Up', 'font-size:16px; font-weight:800; color:#ffbb00;');
-        console.log('%cIf you were told to paste something here then 11/10 it\'s a scam. Don\'t paste things unless you know what they do. If you do, consider joining us at https://alleghenycountyroleplay.com/careers', 'font-size:12px; color:#bdbdbd;');
+        console.log('%cHeads up', 'font-size:14px; font-weight:700; color:#ffbb00;');
+        console.log('%cIf someone told you to paste something into this console, it is almost certainly a scam. Don\'t paste anything you don\'t fully understand.', 'font-size:12px; color:#bdbdbd;');
       }
 
       (function maybeLogOccasional(){
@@ -376,107 +375,10 @@ if (document.readyState === 'loading') {
         }catch(e){}
       })();
 
-      let modalEl = null;
-      function createModal(){
-        if (modalEl) return modalEl;
-        const style = document.createElement('style');
-        style.textContent = `
-          .acrp-console-modal-backdrop{position:fixed;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.45),rgba(0,0,0,0.6));display:flex;align-items:center;justify-content:center;z-index:2147483646}
-          .acrp-console-modal{background:linear-gradient(180deg,#0d0d0d,#111);border:1px solid rgba(255,255,255,0.04);padding:22px;border-radius:12px;max-width:520px;width:min(94vw,520px);box-shadow:0 20px 60px rgba(0,0,0,0.6);color:var(--text, #fff);font-family:Inter,system-ui,Arial,sans-serif}
-          .acrp-console-modal h1{margin:0 0 8px 0;font-size:20px;color:#fff}
-          .acrp-console-modal p{margin:0 0 18px 0;color:var(--muted,#bdbdbd);line-height:1.4}
-          .acrp-console-modal .acrp-actions{display:flex;gap:10px;justify-content:flex-end}
-          .acrp-console-modal .acrp-btn{background:var(--brand,#FFBB00);color:#000;border-radius:8px;padding:8px 12px;border:none;font-weight:700;cursor:pointer}
-          .acrp-console-modal .acrp-close{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted,#bdbdbd);padding:8px 10px;border-radius:8px;cursor:pointer}
-        `;
-        document.head.appendChild(style);
-
-        const backdrop = document.createElement('div'); backdrop.className = 'acrp-console-modal-backdrop';
-        backdrop.setAttribute('role','dialog');
-        backdrop.setAttribute('aria-modal','true');
-        backdrop.style.display = 'none';
-
-        const dialog = document.createElement('div'); dialog.className = 'acrp-console-modal';
-        dialog.setAttribute('role','document');
-        dialog.setAttribute('aria-labelledby','acrp-console-modal-title');
-        dialog.setAttribute('aria-describedby','acrp-console-modal-desc');
-        dialog.tabIndex = -1;
-        dialog.innerHTML = `<h1 id="acrp-console-modal-title">Hold Up…</h1>
-          <p id="acrp-console-modal-desc">If you were told to paste something in the console then 11/10 it's a scam. Don't paste things unless you know what they do.</p>
-          <div class="acrp-actions"><button class="acrp-close">Okay, I understand</button></div>`; 
-
-        backdrop.appendChild(dialog);
-        document.body.appendChild(backdrop);
-
-        const closeBtn = dialog.querySelector('.acrp-close');
-        closeBtn.addEventListener('click', function onClose(){ try{ trackEvent('console_warning_dismissed'); }catch(e){} hideModal(); });
-        // Require explicit button click to dismiss — ignore backdrop clicks and Escape.
-        backdrop.addEventListener('click', (e)=>{
-          if (e.target === backdrop) {
-            // keep focus on the action button so user must click it to dismiss
-            const btn = dialog.querySelector('.acrp-close'); if (btn) btn.focus();
-          }
-        });
-
-        modalEl = backdrop;
-        return modalEl;
-      }
-
-      let __prevActive = null;
-      let __focusTrapHandler = null;
-      function trapFocus(modal){
-        try{
-          const focusable = modal.querySelectorAll('a[href], area[href], input:not([disabled]):not([type="hidden"]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), [tabindex]:not([tabindex="-1"])');
-          if (!focusable || focusable.length === 0) return;
-          const first = focusable[0];
-          const last = focusable[focusable.length-1];
-          __focusTrapHandler = function(e){
-            if (e.key === 'Tab'){
-              if (e.shiftKey){ if (document.activeElement === first){ e.preventDefault(); last.focus(); } }
-              else { if (document.activeElement === last){ e.preventDefault(); first.focus(); } }
-            } else if (e.key === 'Escape'){
-              // explicitly ignored to require explicit button click
-              e.preventDefault();
-            }
-          };
-          document.addEventListener('keydown', __focusTrapHandler, true);
-        }catch(e){}
-      }
-      function releaseFocusTrap(){ try{ if (__focusTrapHandler) { document.removeEventListener('keydown', __focusTrapHandler, true); __focusTrapHandler = null; } }catch(e){} }
-
-      function setBackgroundInert(inert){
-        try{ Array.from(document.body.children).forEach(n => { if (n === modalEl) return; if (inert) n.setAttribute('aria-hidden','true'); else n.removeAttribute('aria-hidden'); }); }catch(e){}
-      }
-
       function trackEvent(name, props){
         try{
           if (window.gtag) { window.gtag('event', name, props || {}); return; }
           if (window.dataLayer && typeof window.dataLayer.push === 'function') { window.dataLayer.push(Object.assign({ event: name }, props || {})); return; }
-          console.info('trackEvent', name, props || {});
-          if (window.__TELEMETRY_ENDPOINT) { try{ navigator.sendBeacon(window.__TELEMETRY_ENDPOINT, JSON.stringify({ event: name, props: props || {}, url: location.href, ts: Date.now() })); }catch(e){} }
-        }catch(e){}
-      }
-
-      function showModal(){
-        try{
-          const m = createModal();
-          __prevActive = document.activeElement;
-          setBackgroundInert(true);
-          m.style.display = '';
-          const btn = m.querySelector('.acrp-close'); if (btn) { btn.focus(); trapFocus(m); }
-          trackEvent('console_warning_shown');
-        }catch(e){console.error(e)}
-      }
-      function hideModal(){
-        try{
-          if (!modalEl) modalEl = document.querySelector('.acrp-console-modal-backdrop');
-          if (modalEl){
-            modalEl.style.display = 'none';
-            releaseFocusTrap();
-            setBackgroundInert(false);
-            if (__prevActive && typeof __prevActive.focus === 'function'){ try{ __prevActive.focus(); }catch(e){} }
-            __prevActive = null;
-          }
         }catch(e){}
       }
 
@@ -496,40 +398,15 @@ if (document.readyState === 'loading') {
         }catch(err){}
       }, true);
 
-      function logAndMaybeModal(){ try{ consoleMessage(); showModal(); }catch(e){} }
-
-      let lastDevtoolsState = false;
-      function isDevToolsOpen(){
-        if ('ontouchstart' in window || navigator.maxTouchPoints > 0) return false;
-        const threshold = 160;
-        const widthDiff = Math.abs(window.outerWidth - window.innerWidth);
-        const heightDiff = Math.abs(window.outerHeight - window.innerHeight);
-        return widthDiff > threshold || heightDiff > threshold;
-      }
-
-      window.addEventListener('keydown', function(e){
-        try{
-          if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i')) || (e.metaKey && e.altKey && (e.key === 'I' || e.key === 'i'))){
-            setTimeout(logAndMaybeModal, 50);
-          }
-        }catch(err){}
-      });
-
-      function checkDevtoolsLoop(){
-        try{
-          const open = isDevToolsOpen();
-          if (open && !lastDevtoolsState){
-            logAndMaybeModal();
-          }
-          lastDevtoolsState = open;
-        }catch(e){}
-      }
-      window.addEventListener('resize', function(){ setTimeout(checkDevtoolsLoop, 200); });
-      const iv = setInterval(checkDevtoolsLoop, 1000);
-      setTimeout(checkDevtoolsLoop, 1000);
-
-    }catch(e){ console.error('consoleSafetyWarning init failed', e); }
+    }catch(e){ /* silent */ }
   })();
+
+  // Legacy "Hold Up" modal block removed.
+  // Previously: full-screen modal triggered by devtools-open detection,
+  // F12 / Ctrl+Shift+I keydown, window resize, and a 1-second polling interval.
+  // It was hostile to legitimate visitors and developers, ignored Escape and
+  // backdrop clicks, and produced false positives on docked devtools / window resize.
+  // Replaced with the lightweight console.log + paste-guard above.
 
 (function forceMobileUI(){
   try{
