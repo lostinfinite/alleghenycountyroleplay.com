@@ -551,6 +551,39 @@ mark { background: oklch(0.78 0.165 75 / 0.3); color: var(--text); border-radius
   margin: 14px 0 6px;
 }
 
+/* ── Legal utility text blocks ── */
+.meta {
+  margin-top: 12px;
+  margin-bottom: 8px;
+  font-family: var(--fm);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.warning-block {
+  margin: 14px 0;
+  padding: 12px 14px;
+  border: 1px solid var(--border-amber);
+  border-left: 2px solid var(--brand);
+  background: oklch(0.78 0.165 75 / 0.08);
+  color: var(--text);
+  font-family: var(--fb);
+  font-size: 0.82rem;
+  line-height: 1.6;
+  font-weight: 600;
+}
+
+.footer-line {
+  margin-top: 16px;
+  font-family: var(--fm);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
 /* ── FOOTER ── */
 .doc-footer { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--border); }
 .footer-links { display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 20px; }

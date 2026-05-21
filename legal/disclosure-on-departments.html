@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script src="/assets/cdn-fallback.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Disclosure on Departments &mdash; Allegheny County Roleplay</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/legal-doc.css">
+  <script src="/assets/acrp-localnav.js" defer></script>
+</head>
+<body data-acrp-nav="legal" data-acrp-nav-name="Disclosure on Departments">
+
+  <!-- Navigation injected by /assets/acrp-localnav.js -->
+  <!-- Hidden container preserves elements legal-doc.js depends on; askMenu is relocated by acrp-localnav.js -->
+  <div id="acrp-legal-detached" style="position:absolute;left:-9999px;top:0;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
+    <input id="mainSearch" class="nav-search" type="text" placeholder="Search document" autocomplete="off">
+  </div>
+  <div class="ask-menu" id="askMenu" role="menu" aria-labelledby="askBtn" hidden>
+    <button class="ask-item" type="button" role="menuitem" onclick="copyMarkdown()">
+      <span class="ask-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span>
+      <span class="ask-item-text">
+        <span class="ask-item-title">Copy page</span>
+        <span class="ask-item-sub">Copy page as Markdown for LLMs</span>
+      </span>
+    </button>
+    <div class="ask-divider" role="separator"></div>
+    <button class="ask-item" type="button" role="menuitem" onclick="discussWith('chatgpt')">
+      <span class="ask-item-icon"><img src="/assets/openai.svg" alt="ChatGPT icon"></span>
+      <span class="ask-item-text">
+        <span class="ask-item-title">Open in ChatGPT <span class="ext">&#8599;</span></span>
+        <span class="ask-item-sub">Discuss this page with ChatGPT</span>
+      </span>
+    </button>
+    <button class="ask-item" type="button" role="menuitem" onclick="discussWith('claude')">
+      <span class="ask-item-icon"><img src="/assets/claude%20(1).svg" alt="Claude icon"></span>
+      <span class="ask-item-text">
+        <span class="ask-item-title">Open in Claude <span class="ext">&#8599;</span></span>
+        <span class="ask-item-sub">Discuss this page with Claude</span>
+      </span>
+    </button>
+    <button class="ask-item" type="button" role="menuitem" onclick="discussWith('perplexity')">
+      <span class="ask-item-icon"><img src="/assets/perplexity.svg" alt="Perplexity icon"></span>
+      <span class="ask-item-text">
+        <span class="ask-item-title">Open in Perplexity <span class="ext">&#8599;</span></span>
+        <span class="ask-item-sub">Discuss this page with Perplexity</span>
+      </span>
+    </button>
+    <button class="ask-item" type="button" role="menuitem" onclick="discussWith('deepseek')">
+      <span class="ask-item-icon"><img src="/assets/deepseek%20(1).svg" alt="DeepSeek icon"></span>
+      <span class="ask-item-text">
+        <span class="ask-item-title">Open in DeepSeek <span class="ext">&#8599;</span></span>
+        <span class="ask-item-sub">Copies Markdown, opens DeepSeek chat</span>
+      </span>
+    </button>
+    <div class="ask-divider" role="separator"></div>
+    <button class="ask-item" type="button" role="menuitem" onclick="printMarkdownPdf()">
+      <span class="ask-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg></span>
+      <span class="ask-item-text">
+        <span class="ask-item-title">Print / PDF</span>
+        <span class="ask-item-sub">Print or save this page as PDF</span>
+      </span>
+    </button>
+  </div>
+
+  <div class="page-layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-label">Navigation</div>
+      <nav class="sidebar-nav" id="sidebarNav">
+        <a class="sidebar-link" data-section="overview" onclick="scrollToSection('overview')">Overview</a>
+        <div class="sidebar-divider"></div>
+        <a class="sidebar-link" data-section="section1" onclick="scrollToSection('section1')">1. Purpose and Scope</a>
+        <a class="sidebar-link" data-section="section2" onclick="scrollToSection('section2')">2. Two-Tier Membership Structure</a>
+        <a class="sidebar-link" data-section="section3" onclick="scrollToSection('section3')">3. Nature of Member Participation</a>
+        <a class="sidebar-link" data-section="section4" onclick="scrollToSection('section4')">4. Activity Tracking: Melonly</a>
+        <a class="sidebar-link" data-section="section5" onclick="scrollToSection('section5')">5. Department Heads: Clarification</a>
+        <a class="sidebar-link" data-section="section6" onclick="scrollToSection('section6')">6. Regulatory Notice</a>
+        <a class="sidebar-link" data-section="section7" onclick="scrollToSection('section7')">7. Member Acknowledgment</a>
+        <a class="sidebar-link" data-section="section8" onclick="scrollToSection('section8')">8. Amendments and Contact</a>
+      </nav>
+    </aside>
+
+    <main class="main-content" id="mainContent">
+      <div class="search-banner" id="searchBanner">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M21.172 24l-7.387-7.387c-1.388.874-3.024 1.387-4.785 1.387-4.971 0-9-4.029-9-9s4.029-9 9-9 9 4.029 9 9c0 1.761-.514 3.398-1.387 4.785l7.387 7.387-2.828 2.828zm-12.172-8c3.859 0 7-3.14 7-7s-3.141-7-7-7-7 3.14-7 7 3.141 7 7 7z"/>
+        </svg>
+        <span id="searchBannerText">Showing results for ""</span>
+        <button class="search-clear" onclick="clearSearch()">&#x2715; Clear</button>
+      </div>
+
+      <div class="doc-header" id="section-overview">
+        <h1 class="doc-title">Disclosure on Departments</h1>
+        <p class="doc-intro">This disclosure explains the legal framework for department participation in ACRP, including member status, volunteer structure, and non-employment classification under Pennsylvania and U.S. law.</p>
+        <div class="doc-meta">
+          <div class="doc-meta-item"><span>Last Updated: 5/21/26</span></div>
+          <div class="doc-meta-item"><span>Effective: 5/21/26</span></div>
+          <div class="doc-meta-item"><span>Name: Disclosure on Departments</span></div>
+        </div>
+        <div class="doc-actions">
+          <button class="btn-outline" onclick="expandAll()">Expand All</button>
+          <button class="btn-outline" onclick="collapseAll()">Collapse All</button>
+        </div>
+ <br>
+        <p>This document applies uniformly to all Members of Allegheny County Roleplay LLC, including civilians, roleplay department personnel, and Department Heads. It does not apply to Employees, defined as individuals holding moderation authority or management power over other Employees.</p>
+      </div>
+
+      <section class="doc-section" id="section-section1" data-section="section1">
+        <div class="section-header">
+          <div class="section-num">// 01</div>
+          <h2 class="section-heading">Purpose and Scope</h2>
+        </div>
+        <div class="accordion" id="accordion-section1">
+          <div class="accordion-item" id="accordion-section1-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section1-item1')">
+              <div class="accordion-trigger-left">
+                <div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div>
+                <span class="accordion-title">Read Purpose and Scope</span>
+              </div>
+              <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg>
+            </button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>Allegheny County Roleplay LLC (&#8220;ACRP&#8221;, &#8220;the Company&#8221;, &#8220;we&#8221;, or &#8220;us&#8221;) operates an online roleplay community on the Roblox platform using the Emergency Response: Liberty County game framework. ACRP provides a structured, recreational environment in which members of the public participate voluntarily in emergency services roleplay scenarios.</p>
+              <p>This disclosure establishes the legal and structural framework governing participation in ACRP&#8217;s departments and roleplay positions. It is intended to make clear, without ambiguity, the nature of that participation and the absence of any employment relationship between ACRP and those who participate as Members.</p>
+              <p>This document is issued pursuant to and consistent with:</p>
+              <ul>
+                <li>The Pennsylvania Minimum Wage Act of 1968, 43 P.S. &#167;&#167; 333.101&#8211;333.115</li>
+                <li>The Pennsylvania Wage Payment and Collection Law, 43 P.S. &#167;&#167; 260.1&#8211;260.45</li>
+                <li>The federal Fair Labor Standards Act, 29 U.S.C. &#167;&#167; 201 et seq.</li>
+                <li>29 C.F.R. &#167; 553.101 (volunteer defined)</li>
+                <li>U.S. DOL Opinion Letter FLSA2019-2 (March 14, 2019)</li>
+                <li>The economic-reality doctrine established in <em>Tony and Susan Alamo Foundation v. Secretary of Labor</em>, 471 U.S. 290 (1985)</li>
+              </ul>
+            </div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section" id="section-section2" data-section="section2">
+        <div class="section-header"><div class="section-num">// 02</div><h2 class="section-heading">The Two-Tier Membership Structure</h2></div>
+        <div class="accordion" id="accordion-section2">
+          <div class="accordion-item" id="accordion-section2-item1">
+            <button class="accordion-trigger" type="button" onclick="toggleAccordion('section2-item1')"><div class="accordion-trigger-left"><div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div><span class="accordion-title">Read Two-Tier Structure</span></div><svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg></button>
+            <div class="accordion-body"><div class="accordion-body-inner">
+              <p>ACRP operates a two-tier participation structure. These tiers are mutually exclusive and have clearly distinct legal implications. They are not job grades, seniority levels, or rungs on a single ladder. They are fundamentally different categories of relationship with ACRP.</p>
+              <h3>2.1 &#8212; Members</h3>
+              <p>A Member is any individual who participates in ACRP&#8217;s community in a recreational capacity. Membership covers all of the following:</p>
+              <ul>
+                <li>Civilians: individuals participating in the general roleplay environment</li>
+                <li>Roleplay department personnel: individuals participating in any of ACRP&#8217;s in-game departments, including but not limited to PSP, PBP, ACSO, PennDOT, and PBF/EMS</li>
+                <li>Department Heads: individuals serving as lead organizers of a department within ACRP</li>
+              </ul>
+              <p>Being a Department Head does not elevate an individual&#8217;s status from Member to Employee. A Department Head is an organizer within the recreational community. The application process for a Department Head role is an entry process for community membership at a leadership tier. It is not a hiring process, an employment interview, or the formation of an employment relationship.</p>
+              <p><strong>Completing an application, being selected, and holding a department leadership title does not, under any circumstances, create an employment relationship between the individual and Allegheny County Roleplay LLC.</strong></p>
+              <h3>2.2 &#8212; Employees</h3>
+              <p>An Employee is any individual who holds formal authority to moderate the community or to take binding administrative action against other Employees or Members. This includes, but is not limited to:</p>
+              <ul>
+                <li>Community moderators with active moderation powers (banning, muting, sanctioning members)</li>
+                <li>Management personnel with authority over other staff members</li>
+                <li>C-Suite officers (e.g., CLO, CISO, CDO) who hold formal organizational authority</li>
+                <li>HR personnel with the power to issue formal disciplinary action to other Employees</li>
+              </ul>
+              <p>Only Employees hold formal power within ACRP&#8217;s administrative structure. Only Employees may be subject to ACRP&#8217;s employment frameworks, HR policies, activity standards, and disciplinary procedures as they relate to their employment relationship with ACRP.</p>
+              <p><strong>The distinction is simple: if an individual can moderate the community or take binding action against other Employees, they are an Employee. Everyone else is a Member.</strong></p>
+            </div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section" id="section-section3" data-section="section3">
+        <div class="section-header"><div class="section-num">// 03</div><h2 class="section-heading">Nature of Member Participation</h2></div>
+        <div class="accordion" id="accordion-section3"><div class="accordion-item" id="accordion-section3-item1"><button class="accordion-trigger" type="button" onclick="toggleAccordion('section3-item1')"><div class="accordion-trigger-left"><div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div><span class="accordion-title">Read Participation Terms</span></div><svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg></button><div class="accordion-body"><div class="accordion-body-inner">
+          <h3>3.1 &#8212; Voluntary and Recreational</h3>
+          <p>All Member participation in ACRP&#8217;s departments, roleplay positions, and civilian activities is:</p>
+          <ul>
+            <li>Entirely voluntary: no individual is required, coerced, or pressured to participate</li>
+            <li>Recreational in nature: participation is a shared hobbyist activity, analogous to participation in a gaming club, a sports league, or an online fan community</li>
+            <li>Offered freely without any expectation of compensation, current or future</li>
+            <li>Terminable at will: any Member may stop participating at any time, for any reason, without notice and without consequence outside the community itself</li>
+          </ul>
+
+          <h3>3.2 &#8212; No Employment Relationship</h3>
+          <p>No Member of ACRP, regardless of role, title, department, tenure, or level of contribution, is an employee of Allegheny County Roleplay LLC under any applicable law, including:</p>
+          <ul>
+            <li>The federal Fair Labor Standards Act, 29 U.S.C. &#167; 201 et seq.</li>
+            <li>The Pennsylvania Minimum Wage Act, 43 P.S. &#167;&#167; 333.101&#8211;333.115</li>
+            <li>The Pennsylvania Wage Payment and Collection Law, 43 P.S. &#167;&#167; 260.1&#8211;260.45</li>
+            <li>Any other federal, state, or local labor statute or regulation</li>
+          </ul>
+          <p>No employment contract, offer letter, wage agreement, compensation arrangement, or employment promise, written or oral, express or implied, is created by participating in ACRP as a Member, completing a Member application, or holding any Member-tier role including Department Head.</p>
+
+          <h3>3.3 &#8212; No Compensation</h3>
+          <p>Members do not receive and are not entitled to receive any form of compensation for their participation, including:</p>
+          <ul>
+            <li>Wages, salary, or stipend of any kind</li>
+            <li>Robux, in-game currency, or any digital asset with monetary or exchange value</li>
+            <li>Gift cards, merchandise, or physical goods</li>
+            <li>Revenue sharing or profit participation</li>
+            <li>Any economic benefit that could substitute for wages</li>
+          </ul>
+          <p>In-character ranks, titles, badges, and promotions within any ACRP department carry no monetary value. They are intangible markers of roleplay status within the community and are not transferable, sellable, or redeemable for anything of economic value. They are not compensation.</p>
+
+          <h3>3.4 &#8212; No Mandatory Hours or Schedule</h3>
+          <p>ACRP does not impose minimum participation hours, mandatory shift requirements, or minimum attendance obligations on any Member in any role, including Department Heads. There is no required number of hours per day, week, or month. Participation levels are entirely at the discretion of the Member.</p>
+          <p>This is legally significant. It distinguishes ACRP&#8217;s community participation from arrangements that courts have found to resemble employment, such as the AOL Community Leader program, in which unpaid online moderators were required to work a minimum of four hours per week, submit timecards, and complete mandatory training. ACRP, as an organization, imposes none of these requirements.</p>
+
+          <h3>3.5 &#8212; Department-Internal Activity Standards</h3>
+          <p>Individual departments within ACRP may establish internal activity standards, such as minimum in-game session counts or participation thresholds, as conditions for retaining a department role or qualifying for in-character promotions and recognition. These standards are set and enforced exclusively by department leadership: the Department Head and any individuals that department leadership designates. They are not set, mandated, enforced, or influenced by ACRP leadership or ACRP staff in their capacity as employees of ACRP.</p>
+          <p>Where an individual holds both an ACRP staff role (Employee tier) and a department leadership position (Member tier), those two roles are formally separate. ACRP instructs all such individuals to keep their staff duties and their department activities distinct. Any activity standard set by that individual in their department capacity is set in their capacity as a community Member, not as an agent or representative of ACRP as an employer. ACRP, as an organization, is not the source of that standard and does not enforce it through its employment or management structure.</p>
+          <p>The consequences of not meeting a department-internal activity standard are limited entirely to the recreational community context: a Member may lose their department role or become ineligible for an in-character promotion. These are not employment consequences. They carry no financial penalty, no legal liability, and no effect outside the community. Removal from a department role for not meeting an internal activity standard is not termination of employment and creates no employment-law claim of any kind.</p>
+          <p><strong>Activity standards that exist within a department are a feature of the recreational community&#8217;s internal structure, equivalent to the rules of a hobby club or sports league. They do not originate from ACRP as an employer, and they do not transform Member participation into employment.</strong></p>
+        </div></div></div></div>
+      </section>
+
+      <section class="doc-section" id="section-section4" data-section="section4">
+        <div class="section-header"><div class="section-num">// 04</div><h2 class="section-heading">Activity Tracking: Melonly</h2></div>
+        <div class="accordion" id="accordion-section4"><div class="accordion-item" id="accordion-section4-item1"><button class="accordion-trigger" type="button" onclick="toggleAccordion('section4-item1')"><div class="accordion-trigger-left"><div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div><span class="accordion-title">Read Tracking Terms</span></div><svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg></button><div class="accordion-body"><div class="accordion-body-inner">
+          <p>ACRP uses a third-party platform, Melonly, to log in-character patrol and roleplay session activity across its departments. The purpose of Melonly is strictly limited to roleplay continuity and in-character community engagement. The following terms govern its use and interpretation:</p>
+          <ol>
+            <li>Melonly is not a time clock. It records in-game activity, not real-world time worked.</li>
+            <li>Melonly data is not used to calculate, determine, or approximate compensation of any kind.</li>
+            <li>Melonly data is not used to schedule, direct, control, or instruct any Member&#8217;s real-world time, availability, or activities.</li>
+            <li>Time logged in Melonly does not constitute &#8220;hours worked&#8221; under the FLSA, the PMWA, or any other labor statute.</li>
+            <li>Melonly activity records are used solely for the following in-community purposes: in-character rank progression, department engagement recognition, and roleplay continuity within the community.</li>
+            <li>Melonly imposes no minimum-session or minimum-hour requirements. There is no threshold a Member must meet.</li>
+            <li>Failure to log any Melonly activity has no legal consequence and creates no liability for the Member or ACRP.</li>
+          </ol>
+          <p><em>This use of Melonly is consistent with U.S. Department of Labor Opinion Letter FLSA2019-2 (March 14, 2019), which expressly permits activity-tracking tools used for non-compensatory purposes, provided the tool is not used to direct or control the participant&#8217;s activities. ACRP&#8217;s use of Melonly satisfies this standard.</em></p>
+        </div></div></div></div>
+      </section>
+
+      <section class="doc-section" id="section-section5" data-section="section5">
+        <div class="section-header"><div class="section-num">// 05</div><h2 class="section-heading">Department Heads: Clarification of Status</h2></div>
+        <div class="accordion" id="accordion-section5"><div class="accordion-item" id="accordion-section5-item1"><button class="accordion-trigger" type="button" onclick="toggleAccordion('section5-item1')"><div class="accordion-trigger-left"><div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div><span class="accordion-title">Read Status Clarification</span></div><svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg></button><div class="accordion-body"><div class="accordion-body-inner">
+          <p>Because Department Heads complete an application process and hold a named leadership title, the status of this role warrants explicit clarification.</p>
+          <h3>5.1 &#8212; Application Process</h3>
+          <p>The application process for a Department Head position is a selection process for community leadership within a hobbyist recreational community. It exists to ensure that individuals in visible roles are a good fit for the community, not to screen employment candidates. Completing and submitting an application, being selected, and accepting a Department Head title creates no employment relationship with ACRP.</p>
+          <h3>5.2 &#8212; Contribution to ACRP</h3>
+          <p>Department Heads contribute to ACRP&#8217;s community in a meaningful way, as do many Members, including civilians who participate in roleplay scenarios and help create the environment others enjoy. The value of a contribution to a recreational community does not determine employment status. Under the economic-reality test applied by federal courts and PA L&amp;I, the relevant question is not whether the individual&#8217;s activity benefits the organization, but whether the individual is economically dependent on the organization and subject to its direction and control as an employer. Department Heads are neither.</p>
+          <h3>5.3 &#8212; At-Will Participation</h3>
+          <p>Department Heads participate on an at-will basis. Either the Department Head or ACRP may end the arrangement at any time. This at-will character is consistent with, and reinforces, the non-employment nature of the role. It does not create a termination-of-employment claim, a wrongful-discharge claim, or any other employment-law remedy.</p>
+        </div></div></div></div>
+      </section>
+
+      <section class="doc-section" id="section-section6" data-section="section6">
+        <div class="section-header"><div class="section-num">// 06</div><h2 class="section-heading">Regulatory and Legal Notice</h2></div>
+        <div class="accordion" id="accordion-section6"><div class="accordion-item" id="accordion-section6-item1"><button class="accordion-trigger" type="button" onclick="toggleAccordion('section6-item1')"><div class="accordion-trigger-left"><div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div><span class="accordion-title">Read Legal Notice</span></div><svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg></button><div class="accordion-body"><div class="accordion-body-inner">
+          <p>This disclosure is made in good faith for the benefit of any regulatory body, government agency, or legal authority that may review ACRP&#8217;s operations, role postings, or community practices.</p>
+          <h3>6.1 &#8212; Pennsylvania Minimum Wage Act</h3>
+          <p>The Pennsylvania Minimum Wage Act, 43 P.S. &#167;&#167; 333.101&#8211;333.115, provides at &#167; 333.105(a)(6) an exemption for services rendered gratuitously to educational, charitable, religious, or nonprofit organizations. ACRP is a Pennsylvania LLC and does not claim this exemption. Instead, ACRP&#8217;s position is that no employer-employee relationship exists with its Members in the first instance. There is no wage obligation to enforce because there is no employment relationship from which a wage obligation could arise.</p>
+          <h3>6.2 &#8212; Fair Labor Standards Act</h3>
+          <p>The FLSA, 29 U.S.C. &#167;&#167; 201 et seq., does not recognize a volunteer relationship between a for-profit private employer and its workers. ACRP&#8217;s position is that its Members are not workers performing services for ACRP as an employer. They are participants in a shared recreational activity, a hobbyist online roleplay community, who choose to engage voluntarily, without compensation, without mandatory hours, and without economic dependence on ACRP. Under the economic-reality test of <em>Alamo Foundation v. Secretary of Labor</em>, 471 U.S. 290 (1985), and <em>Donovan v. DialAmerica Marketing, Inc.</em>, 757 F.2d 1376 (3d Cir. 1985), as applied to ACRP&#8217;s specific facts:</p>
+          <ul>
+            <li>ACRP does not control the manner or method of Member participation</li>
+            <li>Members have no economic dependence on ACRP</li>
+            <li>No compensation is promised, paid, or implied</li>
+            <li>No minimum hours are set or enforced by ACRP as an organization; any activity standards within individual departments are set by department leadership acting in a Member capacity, not by ACRP as an employer</li>
+            <li>No employment contract exists</li>
+            <li>Participation is entirely at-will and freely terminable</li>
+          </ul>
+          <h3>6.3 &#8212; Pennsylvania Misclassification Enforcement Context</h3>
+          <p>ACRP is aware that Pennsylvania has actively pursued worker misclassification enforcement in recent years, including through the Joint Task Force on Misclassification of Employees and the 2023 interstate enforcement partnership with New Jersey. This disclosure is issued proactively and transparently to make ACRP&#8217;s position clear: Members are not employees, and ACRP has structured its community participation framework to reflect that fact in practice, not merely in labeling.</p>
+          <h3>6.4 &#8212; Wage Payment and Collection Law</h3>
+          <p>The Pennsylvania Wage Payment and Collection Law, 43 P.S. &#167;&#167; 260.1&#8211;260.45, is a remedial statute that enforces existing wage agreements. Because no wage agreement, express or implied, exists between ACRP and any Member, the WPCL has no application to Member participation. There is no agreement to enforce.</p>
+        </div></div></div></div>
+      </section>
+
+      <section class="doc-section" id="section-section7" data-section="section7">
+        <div class="section-header"><div class="section-num">// 07</div><h2 class="section-heading">Member Acknowledgment</h2></div>
+        <div class="accordion" id="accordion-section7"><div class="accordion-item" id="accordion-section7-item1"><button class="accordion-trigger" type="button" onclick="toggleAccordion('section7-item1')"><div class="accordion-trigger-left"><div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div><span class="accordion-title">Read Acknowledgment</span></div><svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg></button><div class="accordion-body"><div class="accordion-body-inner">
+          <p>By participating in any ACRP department, roleplay position, or community role as a Member, the participant acknowledges and affirms the following:</p>
+          <ol>
+            <li>I am participating in ACRP&#8217;s community voluntarily, freely, and without coercion.</li>
+            <li>I am not an employee, independent contractor, or agent of Allegheny County Roleplay LLC.</li>
+            <li>I am not entitled to wages, compensation, benefits, or any economic consideration for my participation.</li>
+            <li>No employment contract, offer of employment, or wage agreement has been made to me, and I do not expect one.</li>
+            <li>My participation is recreational in nature. I participate for personal enjoyment and as part of a shared hobbyist community.</li>
+            <li>I understand that Melonly logs in-game activity only, for roleplay and in-community recognition purposes, and that this logging does not constitute time-clock tracking, wage calculation, or any measurement of compensable work.</li>
+            <li>I understand that in-character ranks, titles, and promotions have no monetary value and do not constitute compensation.</li>
+            <li>I may stop participating at any time, for any reason, without consequence outside the community.</li>
+            <li>I have read and understood this disclosure in full.</li>
+          </ol>
+        </div></div></div></div>
+      </section>
+
+      <section class="doc-section" id="section-section8" data-section="section8">
+        <div class="section-header"><div class="section-num">// 08</div><h2 class="section-heading">Amendments and Contact</h2></div>
+        <div class="accordion" id="accordion-section8"><div class="accordion-item" id="accordion-section8-item1"><button class="accordion-trigger" type="button" onclick="toggleAccordion('section8-item1')"><div class="accordion-trigger-left"><div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div><span class="accordion-title">Read Final Provisions</span></div><svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg></button><div class="accordion-body"><div class="accordion-body-inner">
+          <p>ACRP reserves the right to amend this disclosure at any time. Continued participation following any amendment constitutes acceptance of the revised terms. The current version of this disclosure is available through ACRP&#8217;s official community channels.</p>
+          <p>Questions regarding this disclosure may be directed to ACRP&#8217;s legal department or executive leadership through official ACRP contact channels.</p>
+          <p><strong>Allegheny County Roleplay LLC</strong><br>530 Allegheny River Blvd, Suite 415, Oakmont, PA 15139<br>Commonwealth of Pennsylvania</p>
+          <p><em>This document is issued in good faith and constitutes ACRP&#8217;s formal public disclosure regarding the nature of Member participation.</em></p>
+        </div></div></div></div>
+      </section>
+
+      <div class="doc-footer">
+        <div class="footer-links">
+          <a class="footer-link" href="/terms.html">Terms of Service</a>
+          <a class="footer-link" href="/privacy.html">Privacy Policy</a>
+          <a class="footer-link" href="/community-standards.html">Community Standards</a>
+          <a class="footer-link" href="/legal/biometric-data-statement.html">Biometric Data Statement</a>
+          <a class="footer-link" href="mailto:legal@acrp.work">Contact Legal</a>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="footer-container"></div>
+  <script src="/assets/legal-doc.js"></script>
+  <script src="/master.js"></script>
+</body>
+</html>

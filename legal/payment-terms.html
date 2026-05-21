@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script src="/assets/cdn-fallback.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Payment Terms of Service &mdash; Allegheny County Roleplay</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.alleghenycountyroleplay.com/branding/acrp-wite.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/legal-doc.css">
+  <script src="/assets/acrp-localnav.js" defer></script>
+</head>
+<body data-acrp-nav="legal" data-acrp-nav-name="Payment Terms">
+
+  <div id="acrp-legal-detached" style="position:absolute;left:-9999px;top:0;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
+    <input id="mainSearch" class="nav-search" type="text" placeholder="Search document" autocomplete="off">
+  </div>
+  <div class="ask-menu" id="askMenu" role="menu" aria-labelledby="askBtn" hidden>
+    <button class="ask-item" type="button" role="menuitem" onclick="copyMarkdown()">
+      <span class="ask-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></span>
+      <span class="ask-item-text">
+        <span class="ask-item-title">Copy page</span>
+        <span class="ask-item-sub">Copy page as Markdown for LLMs</span>
+      </span>
+    </button>
+    <div class="ask-divider" role="separator"></div>
+    <button class="ask-item" type="button" role="menuitem" onclick="discussWith('chatgpt')">
+      <span class="ask-item-icon"><img src="/assets/openai.svg" alt="ChatGPT icon"></span>
+      <span class="ask-item-text">
+        <span class="ask-item-title">Open in ChatGPT <span class="ext">&#8599;</span></span>
+        <span class="ask-item-sub">Discuss this page with ChatGPT</span>
+      </span>
+    </button>
+    <button class="ask-item" type="button" role="menuitem" onclick="discussWith('claude')">
+      <span class="ask-item-icon"><img src="/assets/claude%20(1).svg" alt="Claude icon"></span>
+      <span class="ask-item-text">
+        <span class="ask-item-title">Open in Claude <span class="ext">&#8599;</span></span>
+        <span class="ask-item-sub">Discuss this page with Claude</span>
+      </span>
+    </button>
+    <button class="ask-item" type="button" role="menuitem" onclick="discussWith('perplexity')">
+      <span class="ask-item-icon"><img src="/assets/perplexity.svg" alt="Perplexity icon"></span>
+      <span class="ask-item-text">
+        <span class="ask-item-title">Open in Perplexity <span class="ext">&#8599;</span></span>
+        <span class="ask-item-sub">Discuss this page with Perplexity</span>
+      </span>
+    </button>
+    <button class="ask-item" type="button" role="menuitem" onclick="discussWith('deepseek')">
+      <span class="ask-item-icon"><img src="/assets/deepseek%20(1).svg" alt="DeepSeek icon"></span>
+      <span class="ask-item-text">
+        <span class="ask-item-title">Open in DeepSeek <span class="ext">&#8599;</span></span>
+        <span class="ask-item-sub">Copies Markdown, opens DeepSeek chat</span>
+      </span>
+    </button>
+    <div class="ask-divider" role="separator"></div>
+    <button class="ask-item" type="button" role="menuitem" onclick="printMarkdownPdf()">
+      <span class="ask-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg></span>
+      <span class="ask-item-text">
+        <span class="ask-item-title">Print / PDF</span>
+        <span class="ask-item-sub">Print or save this page as PDF</span>
+      </span>
+    </button>
+  </div>
+
+  <div class="page-layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-label">Navigation</div>
+      <nav class="sidebar-nav" id="sidebarNav">
+        <a class="sidebar-link" data-section="overview" onclick="scrollToSection('overview')">Overview</a>
+        <div class="sidebar-divider"></div>
+        <a class="sidebar-link" data-section="sectionintro" onclick="scrollToSection('sectionintro')">a. Introduction</a>
+        <a class="sidebar-link" data-section="section1" onclick="scrollToSection('section1')">1. Scope and Application</a>
+        <a class="sidebar-link" data-section="section2" onclick="scrollToSection('section2')">2. Payment Processing</a>
+        <a class="sidebar-link" data-section="section3" onclick="scrollToSection('section3')">3. Purchase Types</a>
+        <a class="sidebar-link" data-section="section4" onclick="scrollToSection('section4')">4. Federal Credit Disclosures</a>
+        <a class="sidebar-link" data-section="section5" onclick="scrollToSection('section5')">5. Affirm Financing</a>
+        <a class="sidebar-link" data-section="section6" onclick="scrollToSection('section6')">6. Refunds</a>
+        <a class="sidebar-link" data-section="section7" onclick="scrollToSection('section7')">7. Cancellation</a>
+        <a class="sidebar-link" data-section="section8" onclick="scrollToSection('section8')">8. Chargebacks and Disputes</a>
+        <a class="sidebar-link" data-section="section9" onclick="scrollToSection('section9')">9. Outstanding Balances</a>
+        <a class="sidebar-link" data-section="section10" onclick="scrollToSection('section10')">10. Default and Collections</a>
+        <a class="sidebar-link" data-section="section11" onclick="scrollToSection('section11')">11. Auto-Renewal Compliance</a>
+        <a class="sidebar-link" data-section="section12" onclick="scrollToSection('section12')">12. Pennsylvania Consumer Protection</a>
+        <a class="sidebar-link" data-section="section13" onclick="scrollToSection('section13')">13. Third-Party Platform Transactions</a>
+        <a class="sidebar-link" data-section="section14" onclick="scrollToSection('section14')">14. Modifications</a>
+        <a class="sidebar-link" data-section="section15" onclick="scrollToSection('section15')">15. Governing Law</a>
+        <a class="sidebar-link" data-section="section16" onclick="scrollToSection('section16')">16. Contact</a>
+      </nav>
+    </aside>
+
+    <main class="main-content" id="mainContent">
+      <div class="search-banner" id="searchBanner">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M21.172 24l-7.387-7.387c-1.388.874-3.024 1.387-4.785 1.387-4.971 0-9-4.029-9-9s4.029-9 9-9 9 4.029 9 9c0 1.761-.514 3.398-1.387 4.785l7.387 7.387-2.828 2.828zm-12.172-8c3.859 0 7-3.14 7-7s-3.141-7-7-7-7 3.14-7 7 3.141 7 7 7z"/>
+        </svg>
+        <span id="searchBannerText">Showing results for ""</span>
+        <button class="search-clear" onclick="clearSearch()">&#x2715; Clear</button>
+      </div>
+
+      <div class="doc-header" id="section-overview">
+        <h1 class="doc-title">Payment Terms of Service</h1>
+        <p class="doc-intro">These Payment Terms govern purchases, billing, commitment plans, deferred payments, and refund handling for ACRP-operated channels.</p>
+        <div class="doc-meta">
+          <div class="doc-meta-item"><span>Last Updated: May 21, 2026</span></div>
+          <div class="doc-meta-item"><span>Effective: May 21, 2026</span></div>
+        </div>
+        <div class="doc-actions">
+          <button class="btn-outline" onclick="expandAll()">Expand All</button>
+          <button class="btn-outline" onclick="collapseAll()">Collapse All</button>
+        </div>
+      </div>
+
+      <section class="doc-section" id="section-sectionintro" data-section="sectionintro">
+        <div class="section-header"><div class="section-num">// a</div><h2 class="section-heading">Introduction</h2></div>
+        <div class="accordion" id="accordion-sectionintro"><div class="accordion-item" id="accordion-sectionintro-item1"><button class="accordion-trigger" type="button" onclick="toggleAccordion('sectionintro-item1')"><div class="accordion-trigger-left"><div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div><span class="accordion-title">Read Introduction</span></div><svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg></button><div class="accordion-body"><div class="accordion-body-inner">
+          <p class="warning-block">BY INITIATING OR COMPLETING ANY TRANSACTION THROUGH ANY ACRP-OPERATED CHANNEL, YOU (OR YOUR GUARDIAN, AS APPLICABLE) ACKNOWLEDGE THAT YOU HAVE READ, UNDERSTOOD, AND AGREE TO BE LEGALLY BOUND BY THESE PAYMENT TERMS IN THEIR ENTIRETY.</p>
+          <p>These Payment Terms of Service (&quot;Payment Terms&quot;) constitute a legally binding agreement between you and Allegheny County Roleplay LLC, a Pennsylvania limited liability company (&quot;ACRP,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;). They govern all purchases, billing arrangements, deferred payment plans, commitment periods, and refund requests made through ACRP-operated services, platforms, and channels.</p>
+          <p>If you are under eighteen (18) years of age (a &quot;Minor&quot;), your parent or legal guardian (&quot;Guardian&quot;) must read and agree to these Payment Terms before any transaction is initiated. All references to &quot;you&quot; apply to the Guardian where the User is a Minor. By completing a purchase on behalf of a Minor, the Guardian accepts full legal and financial responsibility for all transactions made under or in connection with the Minor's account, regardless of whether those transactions were expressly authorized by the Guardian.</p>
+          <p>These Payment Terms are incorporated by reference into and form part of the ACRP Terms of Service, available at acrp.work/tos (the &quot;Terms of Service&quot;). Capitalized terms not defined here carry the meanings given to them in the Terms of Service. Where these Payment Terms conflict with the Terms of Service on payment or refund matters, these Payment Terms control.</p>
+        </div></div></div></div>
+      </section>
+
+      <section class="doc-section" id="section-section1" data-section="section1">
+        <div class="section-header"><div class="section-num">// 01</div><h2 class="section-heading">Scope and Application</h2></div>
+        <div class="accordion" id="accordion-section1"><div class="accordion-item" id="accordion-section1-item1"><button class="accordion-trigger" type="button" onclick="toggleAccordion('section1-item1')"><div class="accordion-trigger-left"><div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div><span class="accordion-title">Read Scope and Application</span></div><svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg></button><div class="accordion-body"><div class="accordion-body-inner">
+          <p>These Payment Terms apply to all transactions initiated or completed through ACRP-operated payment infrastructure, including without limitation:</p>
+          <ul>
+            <li>Membership subscriptions of any tier</li>
+            <li>One-time support contributions and purchases</li>
+            <li>Preorders for upcoming products or membership tiers</li>
+            <li>Commitment-based subscription plans of any duration</li>
+            <li>Deferred payment and installment plans, including those processed through Affirm</li>
+            <li>Any purchase of premium access, digital content, or other goods made through ACRP-operated channels</li>
+          </ul>
+          <p>These Payment Terms do not apply to transactions processed directly through third-party platforms operating independently of ACRP, including Roblox Corporation and its Robux virtual currency system, Discord Inc., or any other platform maintaining its own payment infrastructure. Those transactions are governed exclusively by the applicable platform's own terms. ACRP has no ability to issue refunds for purchases made through Roblox and expressly disclaims any obligation to do so.</p>
+        </div></div></div></div>
+      </section>
+
+      <section class="doc-section" id="section-section2" data-section="section2">
+        <div class="section-header"><div class="section-num">// 02</div><h2 class="section-heading">Payment Processing</h2></div>
+        <div class="accordion" id="accordion-section2"><div class="accordion-item" id="accordion-section2-item1"><button class="accordion-trigger" type="button" onclick="toggleAccordion('section2-item1')"><div class="accordion-trigger-left"><div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div><span class="accordion-title">Read Payment Processing Terms</span></div><svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg></button><div class="accordion-body"><div class="accordion-body-inner">
+          <h3>2a. Payment Processor</h3>
+          <p>ACRP processes payments through Stripe, Inc. (&quot;Stripe&quot;). All transactions are subject to Stripe's terms of service and privacy policy in addition to these Payment Terms. By completing a purchase, you authorize ACRP and Stripe to charge your selected payment method for the amount displayed at checkout.</p>
+          <h3>2b. Accepted Payment Methods</h3>
+          <p>Accepted payment methods are those made available through Stripe's payment infrastructure at the time of purchase. ACRP does not store full payment method details on its own systems. All payment data is handled by Stripe in accordance with PCI-DSS standards.</p>
+          <h3>2c. Pricing and Currency</h3>
+          <p>All prices are listed and charged in United States Dollars (USD) unless otherwise stated at the point of purchase. ACRP reserves the right to adjust pricing at any time. Price changes do not apply retroactively to active subscriptions until the next renewal cycle, except where required by applicable law.</p>
+          <h3>2d. Taxes</h3>
+          <p>You are responsible for all applicable taxes, including sales tax, VAT, or GST, where applicable. ACRP reserves the right to collect and remit taxes where required by law. The applicable tax amount, if any, will be displayed at checkout before you complete your purchase.</p>
+          <h3>2e. Electronic Fund Transfer Disclosure (Regulation E)</h3>
+          <p>For any subscription or recurring charge processed through a debit card or bank account, ACRP is required under the Electronic Fund Transfer Act (15 U.S.C. &#167; 1693 et seq.) and Regulation E to provide advance written disclosure of: the amount of the recurring transfer or a description of how the amount will be determined, the timing and frequency of the transfer, the account to be debited, and how to cancel or modify the authorization. This disclosure is provided at checkout before you authorize the recurring charge. By completing a recurring purchase, you confirm that you have received and reviewed the applicable Regulation E disclosure. You may cancel or revoke authorization for future recurring charges at any time in accordance with Section 7 of these Payment Terms.</p>
+        </div></div></div></div>
+      </section>
+
+      <section class="doc-section" id="section-section3" data-section="section3">
+        <div class="section-header"><div class="section-num">// 03</div><h2 class="section-heading">Purchase Types</h2></div>
+        <div class="accordion" id="accordion-section3"><div class="accordion-item" id="accordion-section3-item1"><button class="accordion-trigger" type="button" onclick="toggleAccordion('section3-item1')"><div class="accordion-trigger-left"><div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div><span class="accordion-title">Read Purchase Types</span></div><svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg></button><div class="accordion-body"><div class="accordion-body-inner">
+          <h3>3a. One-Time Payments</h3>
+          <p>A one-time payment is a single, non-recurring charge for a specific product, benefit, or piece of content. Payment is due in full at the time of purchase. One-time payments do not create any ongoing billing obligation. Unless otherwise stated at the point of purchase, all one-time payments are final and non-refundable.</p>
+          <h3>3b. Preorders</h3>
+          <p>A preorder is a purchase made in advance of a product, membership tier, or service that is not yet available. By completing a preorder, you authorize ACRP to charge the full purchase price at the time of the transaction, unless the product page expressly states that billing will occur at a later date.</p>
+          <p>Preorder delivery timelines are estimates and are not guaranteed. ACRP reserves the right to delay, modify, or cancel a preordered product at any time. If ACRP cancels a preorder before fulfillment, a full refund will be issued to your original payment method. If you request cancellation of a preorder before fulfillment, a refund may be issued at ACRP's discretion. Once a preordered product has been fulfilled and access or delivery has occurred, the standard no-refund policy applies.</p>
+          <h3>3c. Monthly Subscriptions</h3>
+          <p>A monthly subscription is a recurring billing arrangement charged once per calendar month. Your billing date is established at the time of your initial purchase and recurs on or around the same date each month. Monthly subscriptions automatically renew unless cancelled before the renewal date in accordance with Section 7 of these Payment Terms.</p>
+          <p>You are responsible for ensuring your payment method remains valid throughout any active subscription period. If a renewal charge fails, ACRP may retry the charge, suspend your access, or terminate your subscription in accordance with Section 10 of these Payment Terms.</p>
+          <h3>3d. Yearly Subscriptions</h3>
+          <p>A yearly subscription is a recurring billing arrangement charged once per calendar year at a single lump sum covering the full twelve-month period. The annual rate, which may reflect a discount compared to the equivalent monthly rate, is displayed at the point of purchase. Yearly subscriptions automatically renew at the end of each annual term unless cancelled before the renewal date in accordance with Section 7 of these Payment Terms.</p>
+          <p>Yearly subscriptions are paid in advance for the full term. No prorated refund is available for unused months within a paid annual period, except as required by applicable law or as described in Section 6 of these Payment Terms.</p>
+          <h3>3e. Monthly Subscription with Annual Commitment</h3>
+          <p>A monthly subscription with an annual commitment is billed on a monthly basis and carries a minimum commitment period of twelve (12) months. You will be charged each month at the stated commitment rate for the duration of the commitment period. The commitment rate may differ from the standard month-to-month rate.</p>
+          <p>Payments made under this plan type are treated as installments on a deferred payment obligation. By purchasing this plan, you acknowledge that ACRP is extending access to its services on the basis of your agreement to complete the full commitment period, and that the structure of this plan constitutes a deferred payment financing arrangement as described in Section 3h and Section 4.</p>
+          <p>End-of-Commitment Notice. Twenty (20) days before the commitment period ends, ACRP will send you an email advising that the commitment is approaching completion and outlining your three available options: (1) renewing for another annual commitment term, (2) converting to a standard month-to-month subscription, or (3) cancelling at the end of the commitment period. A follow-up reminder will be sent seven (7) days before the commitment ends. If you do not respond to either notice, ACRP will renew your subscription under an annual commitment at the then-current commitment rate, except where the original plan was offered as part of a temporary or seasonal discount, in which case ACRP reserves the right to cancel the subscription at the end of the commitment period with same-day notice rather than auto-renew at a rate that no longer applies.</p>
+          <p>Early Cancellation. If you wish to cancel before the commitment period ends, two options are available. First, you may continue paying your existing commitment installment schedule through the end of the commitment period, after which the subscription automatically cancels and access is revoked. Second, you may pay off the remaining months at the full standard month-to-month rate rather than the discounted commitment rate. The payoff calculation under this option excludes all discounts, promotional pricing, and offers that applied to the commitment plan. Access is revoked immediately upon completion of the payoff. ACRP will calculate and provide the payoff amount upon request to legal@acrp.work.</p>
+          <p>Payoff Financing. If the remaining payoff balance under the early cancellation option exceeds five hundred dollars ($500.00), ACRP will offer you the option to finance the payoff through Affirm. If the payoff balance is three thousand dollars ($3,000.00) or more, you may contact ACRP at legal@acrp.work to request a one-time good-faith balance reduction of fifty percent (50%) of the outstanding payoff amount. This reduction is not guaranteed, is granted at ACRP's sole discretion, may only be applied once per account across all commitment plans, and is forfeited if you initiate a chargeback or fail to make scheduled payments on any outstanding balance.</p>
+          <h3>3f. Monthly Subscription with a Custom Commitment Period</h3>
+          <p>A monthly subscription with a custom commitment period operates on the same billing structure and terms as Section 3e, except that the minimum commitment period is not fixed at twelve months. The specific commitment duration is stated on the product page at the time of purchase and governs in place of the twelve-month default.</p>
+          <p>All end-of-commitment notice procedures, early cancellation options, payoff calculations, and payoff financing thresholds described in Section 3e apply equally to plans under this section. All references to &quot;annual commitment&quot; in Section 3e apply to the custom period stated on the product page for plans governed by this section.</p>
+          <h3>3g. Custom Installment Period on a Custom Commitment Basis</h3>
+          <p>Some products may be offered on a fully custom installment schedule with a custom commitment period. The number of installments, the amount of each installment, the installment interval, and the total commitment period are all stated on the product page. By completing the purchase, you agree to pay all installments through the full commitment period.</p>
+          <p>The same end-of-commitment notice procedures, early cancellation options, and payoff financing thresholds described in Section 3e apply to plans under this section, adapted proportionally to the custom installment schedule and commitment period stated on the product page. Early payoff under this plan type is calculated at the full non-discounted rate for remaining installments, excluding all promotional pricing and offers.</p>
+          <h3>3h. Nature of Commitment-Based Plans: Deferred Payment Arrangement</h3>
+          <p>Payments made under any commitment-based plan governed by Section 3e, 3f, or 3g constitute installments on a deferred payment obligation. ACRP is extending access to its services or goods in exchange for your agreement to complete the full payment schedule. ACRP is not a licensed lender and does not perform credit checks. The financing extended through commitment plans is a deferred payment accommodation for access to a gaming community service, not a consumer financial product offered by a regulated lending institution. By entering into a commitment plan, you acknowledge and accept this characterization.</p>
+          <p>The access granted under a commitment plan functions as a conditional lease on the applicable service or good, contingent on continued compliance with your payment obligations, until the commitment has been either (a) completed according to the original schedule or (b) resolved through early cancellation in accordance with Section 3e.</p>
+          <p>Subscription-Based Products. Access to any subscription-based product under a commitment plan is revoked upon cancellation or completion of payoff, regardless of which early cancellation option you select. There is no ongoing access after the commitment is resolved through cancellation.</p>
+          <p>One-Time or Installment-Based Products (Non-Subscription). If the product is structured as a one-time purchase fulfilled through installments rather than an ongoing subscription, access will not be revoked solely because the commitment period has ended. However, if you default on your installment obligations and fail to cure the default in accordance with Section 10, ACRP reserves the right to suspend or revoke access to the applicable service or good until the outstanding balance is paid in full.</p>
+        </div></div></div></div>
+      </section>
+
+      <section class="doc-section" id="section-section4" data-section="section4">
+        <div class="section-header"><div class="section-num">// 04</div><h2 class="section-heading">Federal Consumer Credit Disclosures</h2></div>
+        <div class="accordion" id="accordion-section4"><div class="accordion-item" id="accordion-section4-item1"><button class="accordion-trigger" type="button" onclick="toggleAccordion('section4-item1')"><div class="accordion-trigger-left"><div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div><span class="accordion-title">Read Federal Credit Disclosures</span></div><svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg></button><div class="accordion-body"><div class="accordion-body-inner">
+          <p>ACRP's commitment-based payment plans involve the extension of deferred access to services in exchange for a scheduled payment obligation, and may constitute a consumer credit arrangement subject to the Truth in Lending Act, 15 U.S.C. &#167; 1601 et seq. (&quot;TILA&quot;), and its implementing regulation, Regulation Z, 12 C.F.R. Part 1026. The following disclosures are provided in accordance with TILA and Regulation Z. These disclosures apply to all commitment plans governed by Section 3e, 3f, and 3g.</p>
+          <p class="warning-block">TILA / REGULATION Z DISCLOSURE — DEFERRED PAYMENT ARRANGEMENT. THE TERMS BELOW REPRESENT STANDARD DISCLOSURE FIELDS REQUIRED BY FEDERAL LAW. ACTUAL FIGURES FOR YOUR SPECIFIC PLAN WILL BE DISPLAYED ON THE PRODUCT PAGE BEFORE YOU COMPLETE YOUR PURCHASE.</p>
+          <table class="legal-table">
+            <tr><th>Disclosure Field</th><th>Description / Value</th></tr>
+            <tr><td>Annual Percentage Rate (APR)</td><td>The cost of your deferred payment arrangement as a yearly rate. The APR applicable to unpaid balances that go into default is 15.99% per annum, equivalent to a periodic rate of approximately 1.3325% per month.</td></tr>
+            <tr><td>Finance Charge</td><td>The dollar amount the deferred payment arrangement will cost you if a balance goes unpaid and interest accrues. Finance charges accrue only on overdue, unpaid balances at the rate stated above. No finance charge applies if you make all scheduled payments on time.</td></tr>
+            <tr><td>Amount Financed</td><td>The total value of access extended to you under the commitment plan, equal to the total commitment amount stated on the product page.</td></tr>
+            <tr><td>Total of Payments</td><td>The total amount you will pay over the full commitment period if all scheduled payments are made on time and no default occurs. This figure is stated on the product page before purchase.</td></tr>
+            <tr><td>Payment Schedule</td><td>The number, amount, and due dates of scheduled payments are stated on the product page for your specific plan.</td></tr>
+            <tr><td>Late / Returned Payment Fee</td><td>$35.00 per failed charge attempt.</td></tr>
+            <tr><td>Default Interest Rate</td><td>15.99% APR (1.3325% per month), applied to accumulated unpaid balances after a missed payment. Interest compounds on the outstanding balance monthly.</td></tr>
+            <tr><td>Prepayment</td><td>You may pay off your commitment balance early at any time. Prepayment using the standard schedule incurs no additional fee. Prepayment at the full month-to-month rate (early cancellation Option 2) excludes all commitment discounts. See Section 3e for details.</td></tr>
+            <tr><td>Security Interest</td><td>ACRP retains a conditional interest in continued access to the service or good purchased under the commitment plan until all payment obligations are fulfilled. This does not constitute a security interest in tangible property.</td></tr>
+            <tr><td>No Credit Check</td><td>ACRP does not perform a credit inquiry or report payment history to consumer credit bureaus in connection with commitment plans. ACRP is not a licensed lender or credit reporting agency.</td></tr>
+          </table>
+          <p>Product-Specific Disclosures. The disclosures above state standard rates and terms. The specific figures that apply to your plan, including the exact amount financed, total of payments, and payment schedule, will be displayed on the product page after the product description and before any suggested products, in a format consistent with the table above. You must review those figures before completing your purchase. Completing the purchase constitutes your acknowledgment that you have reviewed and understood the product-specific disclosure.</p>
+          <h3>4a. Right to Itemization</h3>
+          <p>You have the right to receive an itemization of the amount financed for your specific commitment plan. To request an itemization, contact legal@acrp.work at any time before or after completing your purchase. ACRP will provide the itemization within a reasonable time.</p>
+          <h3>4b. No Right of Rescission Under These Terms</h3>
+          <p>Regulation Z provides a right of rescission for certain credit transactions secured by a principal dwelling. Because ACRP's commitment plans are not secured by real property and do not involve a dwelling, the statutory right of rescission under 15 U.S.C. &#167; 1635 does not apply. However, ACRP's standard cancellation options described in Section 3e remain available at all times.</p>
+          <h3>4c. Limitation on ACRP's Status</h3>
+          <p>ACRP is not a bank, credit union, licensed lender, or consumer financial services provider. The deferred payment arrangements offered through commitment plans are accommodations provided in connection with access to a gaming community platform. ACRP does not report to consumer credit bureaus, does not perform credit checks, and does not issue consumer credit in the regulated financial sense. The federal disclosure framework applied here is adopted voluntarily and as a matter of good-faith compliance, to the extent TILA applies to ACRP's commitment plan structures.</p>
+        </div></div></div></div>
+      </section>
+
+      <section class="doc-section" id="section-section5" data-section="section5">
+        <div class="section-header"><div class="section-num">// 05</div><h2 class="section-heading">Affirm Installment Financing</h2></div>
+        <div class="accordion" id="accordion-section5"><div class="accordion-item" id="accordion-section5-item1"><button class="accordion-trigger" type="button" onclick="toggleAccordion('section5-item1')"><div class="accordion-trigger-left"><div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div><span class="accordion-title">Read Affirm Terms</span></div><svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg></button><div class="accordion-body"><div class="accordion-body-inner">
+          <h3>5a. Overview</h3>
+          <p>ACRP may offer Affirm as a payment option for eligible purchases. Affirm is a third-party buy-now-pay-later service operated by Affirm, Inc. (&quot;Affirm&quot;). When you select Affirm at checkout, you are entering into a separate loan or credit agreement directly with Affirm, not with ACRP. Your use of Affirm is subject to Affirm's own terms of service, privacy policy, and loan agreement, which you must read and accept separately. Affirm is a licensed lender and its credit products are governed by applicable federal and state lending laws independently of these Payment Terms.</p>
+          <h3>5b. ACRP's Role</h3>
+          <p>ACRP receives payment from Affirm at the time of purchase and is not responsible for the terms, interest rates, fees, or repayment schedule of your Affirm agreement. Disputes about the Affirm financing arrangement must be directed to Affirm and are outside ACRP's control.</p>
+          <h3>5c. Eligibility and Approval</h3>
+          <p>Affirm determines eligibility and credit approval independently. ACRP does not guarantee that Affirm financing will be available for any specific purchase or user, and is not responsible for Affirm's eligibility or credit decisions.</p>
+          <h3>5d. Refunds on Affirm Purchases</h3>
+          <p>If a refund is issued for a purchase completed through Affirm, the refund will be applied to your Affirm loan balance in accordance with Affirm's refund procedures. ACRP cannot issue refunds directly to your bank account or card for purchases made through Affirm. Refund processing times are subject to Affirm's timeline and policies.</p>
+          <h3>5e. Commitment-Based Plans via Affirm</h3>
+          <p>If you use Affirm to finance a commitment-based plan under Section 3e, 3f, or 3g, your commitment obligation to ACRP remains in full force regardless of your repayment status with Affirm. Your obligation to ACRP is separate from and independent of your repayment obligation to Affirm. Failure to make payments to Affirm does not cancel your ACRP commitment, and cancellation of your ACRP subscription does not cancel your Affirm loan.</p>
+        </div></div></div></div>
+      </section>
+
+      <section class="doc-section" id="section-section6" data-section="section6">
+        <div class="section-header"><div class="section-num">// 06</div><h2 class="section-heading">Refunds</h2></div>
+        <div class="accordion" id="accordion-section6"><div class="accordion-item" id="accordion-section6-item1"><button class="accordion-trigger" type="button" onclick="toggleAccordion('section6-item1')"><div class="accordion-trigger-left"><div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div><span class="accordion-title">Read Refund Terms</span></div><svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg></button><div class="accordion-body"><div class="accordion-body-inner">
+          <h3>6a. General Policy</h3>
+          <p>All purchases made through ACRP are final and non-refundable unless otherwise stated at the point of purchase or described in this Section 6. ACRP does not offer refunds based on dissatisfaction, inactivity, or failure to use purchased benefits.</p>
+          <h3>6b. Exceptions</h3>
+          <p>Refunds may be issued at ACRP's sole discretion under the following circumstances:</p>
+          <ul>
+            <li>A billing error resulted in an incorrect charge that ACRP can verify</li>
+            <li>A product was not delivered or access was not granted due to a verified technical failure on ACRP's part</li>
+            <li>A preorder was cancelled by ACRP before fulfillment, as described in Section 3b</li>
+          </ul>
+          <p>Refund requests must be submitted to legal@acrp.work within thirty (30) days of the charge in question. Requests submitted after the thirty-day window will not be considered.</p>
+          <h3>6c. No Refund on Enforcement Actions</h3>
+          <p>If access to ACRP services is removed or restricted as a result of an enforcement action under the Terms of Service, no refund will be issued for any unused portion of a subscription or purchase. Enforcement actions are final and do not qualify for review under the refund process described here or the dispute resolution process in the Terms of Service.</p>
+        </div></div></div></div>
+      </section>
+
+      <section class="doc-section" id="section-section7" data-section="section7">
+        <div class="section-header"><div class="section-num">// 07</div><h2 class="section-heading">Cancellation</h2></div>
+        <div class="accordion" id="accordion-section7"><div class="accordion-item" id="accordion-section7-item1"><button class="accordion-trigger" type="button" onclick="toggleAccordion('section7-item1')"><div class="accordion-trigger-left"><div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div><span class="accordion-title">Read Cancellation Terms</span></div><svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg></button><div class="accordion-body"><div class="accordion-body-inner">
+          <h3>7a. How to Cancel</h3>
+          <p>Active subscriptions may be cancelled at any time through the ACRP member portal at portal.alleghenycountyroleplay.com, or by contacting legal@acrp.work. For standard subscriptions without a commitment period, cancellation takes effect at the end of the current paid billing period. Access continues through the end of the period already paid.</p>
+          <h3>7b. Effect of Cancellation (Non-Commitment Plans)</h3>
+          <p>Cancellation of a subscription without a commitment period does not trigger a refund of any amount already charged. Cancelling mid-period does not result in a prorated refund. Once the paid period ends, access terminates.</p>
+          <h3>7c. Cancellation of Commitment-Based Plans</h3>
+          <p>Commitment plans may be cancelled at any time, subject to the early cancellation options in Section 3e. To initiate early cancellation, contact legal@acrp.work. ACRP will calculate and confirm the applicable payment schedule or payoff amount and provide written confirmation before processing the cancellation.</p>
+          <p>Access to membership benefits is revoked upon cancellation regardless of whether remaining payment obligations are outstanding. Payment obligations survive the cancellation of access and remain enforceable.</p>
+        </div></div></div></div>
+      </section>
+
+      <section class="doc-section" id="section-section8" data-section="section8">
+        <div class="section-header"><div class="section-num">// 08</div><h2 class="section-heading">Chargebacks and Disputes</h2></div>
+        <div class="accordion" id="accordion-section8"><div class="accordion-item" id="accordion-section8-item1"><button class="accordion-trigger" type="button" onclick="toggleAccordion('section8-item1')"><div class="accordion-trigger-left"><div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div><span class="accordion-title">Read Chargeback Terms</span></div><svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg></button><div class="accordion-body"><div class="accordion-body-inner">
+          <h3>8a. Contact ACRP First</h3>
+          <p>If you believe a charge was made in error or without authorization, contact ACRP at legal@acrp.work before filing a dispute with your bank, card issuer, or payment provider. ACRP will make every reasonable effort to resolve billing issues directly. Once a charge has been formally disputed through a financial institution, ACRP's ability to issue a direct refund for that transaction is removed.</p>
+          <h3>8b. Consequence of Unauthorized Chargebacks</h3>
+          <p>If you initiate a chargeback or payment dispute without first contacting ACRP in accordance with these Payment Terms, ACRP reserves the right to immediately and permanently suspend or terminate your access to all ACRP services. This applies regardless of whether the dispute is ultimately resolved in your favor. Fraudulent chargebacks or misuse of the dispute process may be reported to relevant parties and pursued through the dispute resolution process in Section 3 of the Terms of Service.</p>
+          <h3>8c. Fraud Chargebacks and Account Reactivation</h3>
+          <p>If a chargeback was filed on your account as a result of unauthorized fraud by a third party, and you can demonstrate that you did not initiate the dispute, you may request account reactivation within thirty (30) days of the chargeback by emailing legal@acrp.work with:</p>
+          <ul>
+            <li>Your full name and the email address associated with your ACRP account</li>
+            <li>A description of the fraudulent activity</li>
+            <li>Documentation from your bank or card issuer confirming the chargeback resulted from unauthorized fraud</li>
+          </ul>
+          <p>ACRP may remove the restriction once as a good-faith accommodation, at its sole discretion, and only once per account. Requests outside the thirty-day window will not be considered.</p>
+          <h3>8d. Commitment Plan Chargebacks</h3>
+          <p>Initiating a chargeback on a charge related to a commitment plan does not cancel or reduce your payment obligation under that plan. Any good-faith payoff balance reduction available under Section 3e is forfeited upon initiation of a chargeback. ACRP reserves the right to pursue the remaining commitment balance through the dispute resolution process in the Terms of Service.</p>
+        </div></div></div></div>
+      </section>
+
+      <section class="doc-section" id="section-section9" data-section="section9">
+        <div class="section-header"><div class="section-num">// 09</div><h2 class="section-heading">Outstanding Balances and Purchase Restrictions</h2></div>
+        <div class="accordion" id="accordion-section9"><div class="accordion-item" id="accordion-section9-item1"><button class="accordion-trigger" type="button" onclick="toggleAccordion('section9-item1')"><div class="accordion-trigger-left"><div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div><span class="accordion-title">Read Purchase Restriction Terms</span></div><svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg></button><div class="accordion-body"><div class="accordion-body-inner">
+          <p>If you carry an outstanding balance on any commitment plan or payment obligation with ACRP, whether from a cancelled commitment, a default, or an unpaid installment, ACRP will block you from completing new purchases through its systems until the outstanding balance is paid in full. This restriction applies to all ACRP-operated payment channels and cannot be bypassed by creating a new account or using a different payment method. Any payment received while a block is in effect will be applied first to the outstanding balance before being applied to any new purchase.</p>
+        </div></div></div></div>
+      </section>
+
+      <section class="doc-section" id="section-section10" data-section="section10">
+        <div class="section-header"><div class="section-num">// 10</div><h2 class="section-heading">Default, Late Fees, Interest, and Collections</h2></div>
+        <div class="accordion" id="accordion-section10"><div class="accordion-item" id="accordion-section10-item1"><button class="accordion-trigger" type="button" onclick="toggleAccordion('section10-item1')"><div class="accordion-trigger-left"><div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div><span class="accordion-title">Read Default and Collections Terms</span></div><svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg></button><div class="accordion-body"><div class="accordion-body-inner">
+          <h3>10a. Minimum Payment</h3>
+          <p>For any subscription or commitment plan billed on a recurring basis, your minimum payment due for each billing period is your standard scheduled payment for that period. For example, if your commitment plan is priced at twenty dollars ($20.00) per month, your minimum due each month is twenty dollars ($20.00). The first minimum following a default may be adjusted upward to include any accumulated fees and interest charges in accordance with this Section 10.</p>
+          <h3>10b. Late Fee</h3>
+          <p>A late fee of thirty-five dollars ($35.00) is charged each time ACRP or its payment processor attempts to charge your payment method and the charge fails to process for any reason attributable to the cardholder or the payment method, including insufficient funds, an expired card, or a frozen account. This fee applies to every failed charge attempt, including retry attempts on the same balance. Late fees are not waived for consecutive failed attempts within a single billing cycle.</p>
+          <h3>10c. Default Interest</h3>
+          <p>If you fail to pay the minimum amount due for any billing period and the balance remains unpaid, interest will accrue on the outstanding balance at an Annual Percentage Rate (APR) of 15.99%, equivalent to a periodic rate of approximately 1.3325% per month. Interest compounds monthly on the accumulated unpaid balance, beginning on the date the payment became due. Interest continues to accrue until the full outstanding balance, including principal, fees, and prior accrued interest, is paid in full.</p>
+          <p>A one-time discounted late processing fee of twenty-five dollars ($25.00) will be applied to the defaulted balance in lieu of the standard per-attempt fee described in Section 10b, provided the default is cured within the same billing cycle in which it occurred. If the default is not cured within that billing cycle, the per-attempt fee structure in Section 10b applies to all subsequent charge attempts on that balance.</p>
+          <h3>10d. Collections and Access Termination</h3>
+          <p>If you fail to pay the minimum balance due for three (3) consecutive months and the accumulated unpaid balance for those three months remains outstanding, ACRP will cancel your subscription, immediately revoke your access to all ACRP services, and refer the outstanding balance to a third-party collections agency. ACRP will provide written notice to the email address on file before referring the balance to collections.</p>
+          <p>Third-party collections agencies engaged by ACRP operate independently and are required to comply with the Fair Debt Collection Practices Act, 15 U.S.C. &#167; 1692 et seq. (&quot;FDCPA&quot;). ACRP is not responsible for the conduct of any collections agency acting on its behalf, but ACRP will only engage agencies that represent they are FDCPA-compliant. Referral to collections does not extinguish or reduce your payment obligation to ACRP.</p>
+          <h3>10e. FDCPA Notice</h3>
+          <p>The following notice is provided as required by and in the spirit of the Fair Debt Collection Practices Act, to the extent applicable. If your account is referred to a third-party collections agency, that agency is required by law to provide you with a written validation notice within five (5) days of first contact, stating: the amount of the debt, the name of the creditor to whom the debt is owed (Allegheny County Roleplay LLC), and your right to dispute the debt within thirty (30) days. If you dispute the debt in writing within thirty (30) days of receiving that notice, the agency must stop collection activity until it provides verification of the debt. You have the right to request the name and address of the original creditor if different from the current creditor. These rights belong to you under federal law and are independent of anything stated in these Payment Terms.</p>
+          <h3>10f. Credit Reporting</h3>
+          <p>ACRP does not report payment history, delinquencies, or account status to any consumer credit reporting agency, including Equifax, Experian, or TransUnion. ACRP is not a furnisher of consumer information under the Fair Credit Reporting Act, 15 U.S.C. &#167; 1681 et seq. (&quot;FCRA&quot;). Third-party collections agencies to which ACRP refers delinquent balances may independently report those balances to credit bureaus in accordance with their own FCRA obligations. ACRP has no control over and bears no responsibility for any such reporting by a collections agency.</p>
+          <h3>10g. Return to ACRP After Default</h3>
+          <p>If you attempt to make a new purchase through ACRP while a referred collections balance remains outstanding, ACRP will block that transaction. You must resolve the outstanding balance with the collections agency or directly with ACRP before any new purchase is permitted, regardless of whether the new purchase involves the same product as the defaulted balance.</p>
+          <h3>10h. Bankruptcy</h3>
+          <p>If you are a party to an active bankruptcy proceeding and you email ACRP at legal@acrp.work with sufficient information to identify your account and outstanding obligations, along with documentation verifying the bankruptcy filing, ACRP will forgive all debts owed to ACRP as of the date of the verified filing. This forgiveness applies only to balances that are part of the bankruptcy estate as of the filing date and does not extend to charges incurred after the filing date. ACRP will confirm the forgiveness in writing within a reasonable time. Forgiven balances will not be reinstated and will not be referred to collections. ACRP will notify any collections agency already holding your referred balance of the forgiveness upon confirmation.</p>
+        </div></div></div></div>
+      </section>
+
+      <section class="doc-section" id="section-section11" data-section="section11">
+        <div class="section-header"><div class="section-num">// 11</div><h2 class="section-heading">FTC Negative Option and Auto-Renewal Compliance</h2></div>
+        <div class="accordion" id="accordion-section11"><div class="accordion-item" id="accordion-section11-item1"><button class="accordion-trigger" type="button" onclick="toggleAccordion('section11-item1')"><div class="accordion-trigger-left"><div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div><span class="accordion-title">Read Auto-Renewal Compliance</span></div><svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg></button><div class="accordion-body"><div class="accordion-body-inner">
+          <p>ACRP's recurring subscription products are subject to the Federal Trade Commission's regulations governing negative option marketing and automatic renewal offers, including the FTC's Negative Option Rule, 16 C.F.R. Part 425, and applicable state automatic renewal laws. In compliance with these requirements, ACRP will:</p>
+          <ul>
+            <li>Clearly and conspicuously disclose all material terms of any subscription or recurring charge before you complete a purchase, including the amount to be charged, the frequency of billing, and the date the first charge will occur</li>
+            <li>Obtain your express affirmative consent to the recurring charge before initiating any subscription billing</li>
+            <li>Send a confirmation of your subscription to the email address on file, including the recurring charge terms and instructions for cancellation</li>
+            <li>Provide a simple, accessible cancellation mechanism through the member portal at portal.alleghenycountyroleplay.com or by email to legal@acrp.work</li>
+            <li>Provide advance notice of any material change to your recurring charge amount or billing frequency before the change takes effect</li>
+          </ul>
+          <p>For commitment-based subscriptions subject to auto-renewal at the end of the commitment period, the end-of-commitment notices described in Section 3e satisfy ACRP's advance disclosure obligation for the renewal charge. If you do not wish to renew, you must respond to either notice or cancel before the commitment end date in accordance with Section 7.</p>
+        </div></div></div></div>
+      </section>
+
+      <section class="doc-section" id="section-section12" data-section="section12">
+        <div class="section-header"><div class="section-num">// 12</div><h2 class="section-heading">Pennsylvania Consumer Protection</h2></div>
+        <div class="accordion" id="accordion-section12"><div class="accordion-item" id="accordion-section12-item1"><button class="accordion-trigger" type="button" onclick="toggleAccordion('section12-item1')"><div class="accordion-trigger-left"><div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div><span class="accordion-title">Read Pennsylvania Consumer Terms</span></div><svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg></button><div class="accordion-body"><div class="accordion-body-inner">
+          <p>These Payment Terms are subject to the Pennsylvania Unfair Trade Practices and Consumer Protection Law, 73 P.S. &#167; 201-1 et seq. (&quot;UTPCPL&quot;). Nothing in these Payment Terms limits or waives any rights you may have under the UTPCPL or any other applicable Pennsylvania consumer protection statute. ACRP's billing practices, fee structures, and interest charges are designed to reflect reasonable estimates of ACRP's actual costs and losses arising from non-payment, and are not intended to operate as penalties. If any fee or charge in these Payment Terms is determined by a court of competent jurisdiction to constitute an unenforceable penalty under Pennsylvania law, that provision will be modified to the minimum extent necessary to make it enforceable, and the remaining terms will continue in full force.</p>
+          <p>Pennsylvania residents who believe ACRP has engaged in unfair or deceptive trade practices may file a complaint with the Pennsylvania Office of Attorney General, Bureau of Consumer Protection, at 1-800-441-2555 or online at attorneygeneral.gov. Filing a complaint with the Attorney General does not limit your right to pursue any other legal remedy.</p>
+        </div></div></div></div>
+      </section>
+
+      <section class="doc-section" id="section-section13" data-section="section13">
+        <div class="section-header"><div class="section-num">// 13</div><h2 class="section-heading">Third-Party Platform Transactions</h2></div>
+        <div class="accordion" id="accordion-section13"><div class="accordion-item" id="accordion-section13-item1"><button class="accordion-trigger" type="button" onclick="toggleAccordion('section13-item1')"><div class="accordion-trigger-left"><div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div><span class="accordion-title">Read Platform Transaction Terms</span></div><svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg></button><div class="accordion-body"><div class="accordion-body-inner">
+          <p>ACRP operates within the Roblox platform via Emergency Response: Liberty County (&quot;ER:LC&quot;), developed and operated by Police Roleplay Community (&quot;PRC&quot;), a separate entity. ACRP does not control ER:LC's in-game economy, access systems, or pricing, and is not responsible for any charges imposed by PRC or Roblox Corporation.</p>
+          <p>Where ACRP publishes items to the Roblox Marketplace, those transactions are governed by Roblox Corporation's own terms and refund policies. ACRP has no ability to issue refunds for Roblox Marketplace purchases and expressly disclaims any obligation to do so.</p>
+        </div></div></div></div>
+      </section>
+
+      <section class="doc-section" id="section-section14" data-section="section14">
+        <div class="section-header"><div class="section-num">// 14</div><h2 class="section-heading">Modifications to These Payment Terms</h2></div>
+        <div class="accordion" id="accordion-section14"><div class="accordion-item" id="accordion-section14-item1"><button class="accordion-trigger" type="button" onclick="toggleAccordion('section14-item1')"><div class="accordion-trigger-left"><div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div><span class="accordion-title">Read Modification Terms</span></div><svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg></button><div class="accordion-body"><div class="accordion-body-inner">
+          <p>ACRP reserves the right to modify these Payment Terms at any time. Changes will be posted to acrp.work/payment-terms and the effective date will be updated. Your continued use of any ACRP service or your failure to cancel an active subscription within thirty (30) days of a posted change constitutes acceptance of the updated Payment Terms. ACRP will make reasonable efforts to notify active subscribers of material changes by email or through the member portal.</p>
+        </div></div></div></div>
+      </section>
+
+      <section class="doc-section" id="section-section15" data-section="section15">
+        <div class="section-header"><div class="section-num">// 15</div><h2 class="section-heading">Governing Law and Dispute Resolution</h2></div>
+        <div class="accordion" id="accordion-section15"><div class="accordion-item" id="accordion-section15-item1"><button class="accordion-trigger" type="button" onclick="toggleAccordion('section15-item1')"><div class="accordion-trigger-left"><div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div><span class="accordion-title">Read Governing Law Terms</span></div><svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg></button><div class="accordion-body"><div class="accordion-body-inner">
+          <p>These Payment Terms are governed by the laws of the Commonwealth of Pennsylvania, without regard to conflict of law principles. Any dispute arising under these Payment Terms is subject to the dispute resolution process outlined in Section 3 of the Terms of Service, including the Conditions Precedent and internal resolution tiers described therein. Nothing in these Payment Terms limits any right you may have under applicable federal consumer protection law, including TILA, EFTA, FDCPA, or FCRA, to the extent those statutes apply.</p>
+        </div></div></div></div>
+      </section>
+
+      <section class="doc-section" id="section-section16" data-section="section16">
+        <div class="section-header"><div class="section-num">// 16</div><h2 class="section-heading">Contact</h2></div>
+        <div class="accordion" id="accordion-section16"><div class="accordion-item" id="accordion-section16-item1"><button class="accordion-trigger" type="button" onclick="toggleAccordion('section16-item1')"><div class="accordion-trigger-left"><div class="accordion-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 19c-.828 0-1.5-.672-1.5-1.5s.672-1.5 1.5-1.5 1.5.672 1.5 1.5-.672 1.5-1.5 1.5zm1.5-4.5h-3v-9h3v9z"/></svg></div><span class="accordion-title">Read Contact Information</span></div><svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.939 7.939l-4.939 4.939-4.939-4.939-2.122 2.122 7.061 7.061 7.061-7.061z"/></svg></button><div class="accordion-body"><div class="accordion-body-inner">
+          <p>For billing questions, refund requests, chargeback concerns, payoff calculations, itemization requests, or collections inquiries, contact ACRP at legal@acrp.work. For general support, visit portal.alleghenycountyroleplay.com or acrp.work.</p>
+          <p class="footer-line">Allegheny County Roleplay LLC | acrp.work | legal@acrp.work</p>
+        </div></div></div></div>
+      </section>
+
+      <div class="doc-footer">
+        <div class="footer-links">
+          <a class="footer-link" href="/terms.html">Terms of Service</a>
+          <a class="footer-link" href="/privacy.html">Privacy Policy</a>
+          <a class="footer-link" href="/community-standards.html">Community Standards</a>
+          <a class="footer-link" href="/legal/biometric-data-statement.html">Biometric Data Statement</a>
+          <a class="footer-link" href="mailto:legal@acrp.work">Contact Legal</a>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="footer-container"></div>
+  <script src="/assets/legal-doc.js"></script>
+  <script src="/master.js"></script>
+</body>
+</html>
