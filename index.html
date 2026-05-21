@@ -733,14 +733,29 @@
       border-top: 1px solid var(--rule);
       overflow: hidden;
     }
+    .closing-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      opacity: 0.4;
+      pointer-events: none;
+      z-index: 0;
+    }
     .closing::before {
       content: '';
       position: absolute; inset: 0;
-      background: radial-gradient(ellipse 60% 60% at 50% 50%,
-        oklch(0.78 0.165 75 / 0.04) 0%, transparent 65%);
+      background:
+        linear-gradient(180deg, oklch(0.148 0.016 70 / 0.5), oklch(0.148 0.016 70 / 0.86)),
+        linear-gradient(90deg, oklch(0.148 0.016 70 / 0.62), oklch(0.148 0.016 70 / 0.18) 48%, oklch(0.148 0.016 70 / 0.68)),
+        radial-gradient(ellipse 60% 60% at 50% 50%,
+          oklch(0.78 0.165 75 / 0.05) 0%, transparent 65%);
       pointer-events: none;
+      z-index: 1;
     }
-    .closing > .container { position: relative; }
+    .closing > .container { position: relative; z-index: 2; }
     .closing-headline {
       font-family: var(--display);
       font-size: clamp(2.2rem, 5vw, 3rem);
@@ -765,6 +780,44 @@
       max-width: 48ch;
       margin: 0 0 var(--space-xl);
     }
+    .closing-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      margin: 0;
+      z-index: 3;
+    }
+    .closing-control {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      min-height: 40px;
+      padding: 0;
+      border: 1px solid oklch(0.95 0.012 80 / 0.18);
+      background: oklch(0.232 0.02 70 / 0.45);
+      color: var(--ink-dim);
+      border-radius: 999px;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+      transition: color 0.18s ease, border-color 0.18s ease, background 0.18s ease, transform 0.18s ease;
+    }
+    .closing-control:hover {
+      color: var(--ink);
+      border-color: oklch(0.78 0.165 75 / 0.5);
+      background: oklch(0.232 0.02 70 / 0.62);
+    }
+    .closing-control:active { transform: translateY(1px); }
+    .closing-control svg {
+      width: 14px;
+      height: 14px;
+      flex: 0 0 auto;
+    }
+    .closing-control span { display: none; }
     .closing-actions {
       display: flex; align-items: center; gap: var(--space-lg);
       flex-wrap: wrap;
@@ -794,6 +847,16 @@
     .closing-actions .btn:active,
     .closing-actions .btn-secondary:active { transform: translateY(1px); }
     @media (max-width: 720px) {
+      .closing-controls {
+        right: 0;
+        bottom: 0;
+        gap: 8px;
+      }
+      .closing-control {
+        width: 38px;
+        height: 38px;
+        min-height: 38px;
+      }
       .closing-actions { gap: var(--space-md); }
       .closing-actions .btn,
       .closing-actions .btn-secondary {
@@ -943,7 +1006,7 @@
         <div class="dept-head">
           <p class="ed-kicker"><span class="num">ii.</span><span>The agencies</span></p>
           <h2>Five agencies. One county.</h2>
-          <p>Pick where you fit. Each agency has its own command structure, training pipeline, and call types &mdash; but they all share the same radio frequency.</p>
+          <p>Pick where you fit. Each agency has its own command structure, training pipeline, call types, and endless roleplay opportunities.</p>
         </div>
         <div class="dept-row" id="dept-row">
           <div class="dept" data-id="acso" data-title="Allegheny County Sheriff's Office" data-description="The Sheriff's Office handles court security, civil process, warrants service, and primary patrol coverage in unincorporated areas of the county. Deputies are typically among the first to arrive on rural calls.">
@@ -953,7 +1016,7 @@
               <div class="dept-cap">Patrol, courts, civil process</div>
             </div>
           </div>
-          <div class="dept" data-id="ppd" data-title="Pittsburgh Police Department" data-description="The Pittsburgh Bureau of Police covers the city itself &mdash; primary response, traffic enforcement, investigations, and tactical units across nine zones.">
+          <div class="dept" data-id="ppd" data-title="Pittsburgh Police Department" data-description="The Pittsburgh Bureau of Police covers the city.">
             <div class="dept-img-wrap"><img src="https://auxcdn.contentltd.xyz/dps/ppd.png" alt="Pittsburgh Police emblem" /></div>
             <div>
               <div class="dept-name">Pittsburgh Police</div>
@@ -967,7 +1030,7 @@
               <div class="dept-cap">Interstate, major incidents</div>
             </div>
           </div>
-          <div class="dept" data-id="fire" data-title="Pittsburgh Fire &amp; EMS" data-description="Fire and EMS run combined response &mdash; engine, medic, and rescue. They handle structural fires, medical calls, and extrications across the city and county.">
+          <div class="dept" data-id="fire" data-title="Pittsburgh Fire &amp; EMS" data-description="Fire and EMS run combined response. Engine, medic, and rescue. They handle structural fires, medical calls, and extrications across the city and county.">
             <div class="dept-img-wrap"><img src="https://auxcdn.contentltd.xyz/dps/pfd.png" alt="Pittsburgh Fire emblem" /></div>
             <div>
               <div class="dept-name">Fire &amp; EMS</div>
@@ -999,7 +1062,7 @@
         <ol class="ed-list">
           <li class="ed-item wide">
             <h3>The radio works like a real radio.</h3>
-            <p>Melonly CAD and Melonly Radio are wired into our patrols when staffing allows. Units check in by call sign. Dispatch holds the board. Calls get pended when nobody&rsquo;s free &mdash; same as the real thing.</p>
+            <p>Melonly CAD and Melonly Radio are wired into our patrols when staffing allows. Units check in by call sign, dispatch holds the board, and calls get pended when nobody's free.</p>
           </li>
           <li class="ed-item narrow">
             <h3>Command structures are real.</h3>
@@ -1040,7 +1103,7 @@
           </div>
           <div class="faq-row">
             <h3 class="q">Is the community still active?</h3>
-            <p class="a">Yes &mdash; actively building. We&rsquo;re seeking experienced department heads to help shape it.</p>
+            <p class="a">Yes, and we're actively building. We&rsquo;re seeking experienced department heads to help shape it.</p>
           </div>
           <div class="faq-row">
             <h3 class="q">Do I need experience?</h3>
@@ -1054,9 +1117,20 @@
 
   <!-- Closing CTA -->
   <section class="closing">
+    <video id="closing-video" class="closing-video" autoplay muted playsinline preload="metadata" aria-hidden="true">
+      <source src="https://cdn.acrp.work/loop.mp4" type="video/mp4">
+    </video>
     <div class="container">
       <h2 class="closing-headline">Your county <em>needs</em> you on the radio.</h2>
       <p class="closing-sub">Pick an agency, pick up the mic, and answer the next call. Most applications are reviewed within a few days.</p>
+      <div class="closing-controls" aria-label="Video controls">
+        <button id="closing-video-toggle" class="closing-control" type="button" aria-pressed="false" aria-label="Pause background video">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="10" y1="5" x2="10" y2="19"></line><line x1="14" y1="5" x2="14" y2="19"></line></svg>
+        </button>
+        <button id="closing-video-replay" class="closing-control" type="button" aria-label="Replay background video">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 .49-9.36L1 10"></path></svg>
+        </button>
+      </div>
       <div class="closing-actions">
         <a class="btn" href="https://discord.gg/fKrrT7Djgr">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057.1 18.083.115 18.108.131 18.12a19.888 19.888 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.993.021-.041.001-.09-.041-.104a13.201 13.201 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
@@ -1096,6 +1170,139 @@
 
     document.addEventListener('DOMContentLoaded', () => {
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      const closingVideo = document.getElementById('closing-video');
+      const closingVideoToggle = document.getElementById('closing-video-toggle');
+      const closingVideoReplay = document.getElementById('closing-video-replay');
+
+      function setupClosingVideo(video) {
+        if (!video) return;
+
+        let frozenOnLastFrame = false;
+        let userPaused = false;
+
+        function setToggleButtonState(isPaused) {
+          if (!closingVideoToggle) return;
+          closingVideoToggle.setAttribute('aria-pressed', isPaused ? 'true' : 'false');
+          closingVideoToggle.setAttribute('aria-label', isPaused ? 'Play background video' : 'Pause background video');
+          closingVideoToggle.innerHTML = isPaused
+            ? '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="8 5 19 12 8 19 8 5"></polygon></svg>'
+            : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="10" y1="5" x2="10" y2="19"></line><line x1="14" y1="5" x2="14" y2="19"></line></svg>';
+        }
+
+        function getFreezeTime() {
+          if (!video.duration || !Number.isFinite(video.duration)) {
+            return 0;
+          }
+          return Math.max(0, video.duration - 0.04);
+        }
+
+        function freezeOnLastFrame() {
+          frozenOnLastFrame = true;
+          userPaused = false;
+          video.pause();
+          setToggleButtonState(true);
+          try {
+            video.currentTime = getFreezeTime();
+          } catch (_error) {
+            // Ignore seek failures on partially loaded media.
+          }
+        }
+
+        function playForward() {
+          frozenOnLastFrame = false;
+          userPaused = false;
+          video.playbackRate = 1;
+          setToggleButtonState(false);
+          const playPromise = video.play();
+          if (playPromise && typeof playPromise.catch === 'function') {
+            playPromise.catch(() => {});
+          }
+        }
+
+        function pauseVideo(isUserAction) {
+          if (isUserAction) userPaused = true;
+          video.pause();
+          setToggleButtonState(true);
+        }
+
+        function replayVideo() {
+          frozenOnLastFrame = false;
+          userPaused = false;
+          try {
+            video.currentTime = 0;
+          } catch (_error) {
+            // Ignore seek failures if metadata is not ready yet.
+          }
+          playForward();
+        }
+
+        video.addEventListener('loadedmetadata', () => {
+          video.currentTime = 0;
+          if (!prefersReducedMotion) {
+            playForward();
+          } else {
+            pauseVideo(false);
+          }
+        }, { once: true });
+
+        video.addEventListener('ended', () => {
+          freezeOnLastFrame();
+        });
+
+        // Some browsers do not visibly hold the final frame on `ended`, so
+        // pin it just before the end once playback reaches the tail.
+        video.addEventListener('timeupdate', () => {
+          if (!frozenOnLastFrame && video.duration && video.currentTime >= video.duration - 0.05) {
+            freezeOnLastFrame();
+          }
+        });
+
+        document.addEventListener('visibilitychange', () => {
+          if (document.hidden) {
+            video.pause();
+            return;
+          }
+
+          if (!frozenOnLastFrame && !userPaused) {
+            playForward();
+          }
+        });
+
+        closingVideoToggle?.addEventListener('click', () => {
+          if (video.paused || frozenOnLastFrame) {
+            if (frozenOnLastFrame) {
+              replayVideo();
+            } else {
+              userPaused = false;
+              playForward();
+            }
+            return;
+          }
+
+          pauseVideo(true);
+        });
+
+        closingVideoReplay?.addEventListener('click', () => {
+          replayVideo();
+        });
+
+        if (video.readyState >= 1) {
+          if (!prefersReducedMotion) {
+            playForward();
+          } else {
+            pauseVideo(false);
+          }
+        }
+
+        setToggleButtonState(prefersReducedMotion || video.paused);
+      }
+
+      if (!prefersReducedMotion) {
+        setupClosingVideo(closingVideo);
+      } else if (closingVideo) {
+        closingVideo.pause();
+      }
 
       // Scroll reveal choreography for key editorial blocks.
       if (!prefersReducedMotion) {

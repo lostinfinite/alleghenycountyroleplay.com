@@ -1,20 +1,7 @@
-# =============================================================
-# ACRP Cloudflare Pages Redirects
-# =============================================================
-
-# Terms of Service aliases
 /tos             /terms.html               301
 /legal/tos       /terms.html               301
 /legal/terms     /terms.html               301
-
-# Privacy Policy aliases
 /legal/privacy   /privacy.html             301
-
-# Community Standards aliases
 /cs              /community-standards.html 301
 /legal/cs        /community-standards.html 301
-
-# Catch-all fallback for unmatched routes.
-# Cloudflare _redirects validation does not allow status 404 here,
-# so this uses a rewrite (200) to always render /404.html.
 /*               /404.html                 200

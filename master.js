@@ -4,6 +4,7 @@
 
 
 (function(){
+  const ACRP_DEBUG = window.__acrpDebug === true;
   function isBlockedResourceError(ev) {
 
     if (!ev) return false;
@@ -13,7 +14,9 @@
 
     const tag = (t.tagName || '').toLowerCase();
     if (tag === 'script' || tag === 'img' || tag === 'link' || tag === 'iframe') {
-      console.warn('Ignoring blocked resource:', t.src || t.href);
+      if (ACRP_DEBUG) {
+        console.warn('Ignoring blocked resource:', t.src || t.href);
+      }
       return true;
     }
 
@@ -21,13 +24,12 @@
   }
 
   window.addEventListener('error', function(ev){
-    console.error('Global error caught:', ev);
-
-
     if (isBlockedResourceError(ev)) return;
 
 
     if (!ev.message && !ev.filename) return;
+
+    console.error('Global error caught:', ev);
 
 
   }, true);
@@ -54,6 +56,14 @@
 
 (function loadTestConsoleModule(){
   try {
+    // Load testconsole only when explicitly enabled.
+    const queryEnabled = /[?&]testconsole=1(?:&|$)/.test(window.location.search || '');
+    const storageEnabled = (function () {
+      try { return window.localStorage.getItem('acrp:testconsole') === '1'; }
+      catch (_e) { return false; }
+    })();
+    if (!queryEnabled && !storageEnabled) return;
+
     if (document.querySelector('script[data-acrp-testconsole="1"]')) return;
     const s = document.createElement('script');
     s.src = '/testconsole.js';
@@ -138,7 +148,7 @@
 function loadFooter() {
 
   const path = window.location.pathname;
-  if (/\/?(404|rejected)(\.html)?$/.test(path)) {
+  if (/\/?rejected(\.html)?$/.test(path)) {
     return;
   }
   
@@ -455,8 +465,13 @@ if (document.readyState === 'loading') {
   button, .btn, .acrp-btn, .acrp-close { padding: 12px 16px !important; min-height: 44px !important; min-width: 44px !important; font-size: 15px !important; border-radius: 10px !important; }
   input, textarea, select { font-size: 16px !important; }
   img, picture, video, iframe { max-width: 100% !important; height: auto !important; display: block !important; }
-  /* reduce heavy visuals/animations on small screens */
-  * { transition: none !important; animation: none !important; }
+  /* keep motion on mobile; only disable when user requests reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      transition: none !important;
+      animation: none !important;
+    }
+  }
   a, button { -webkit-tap-highlight-color: rgba(0,0,0,0.05); touch-action: manipulation; }
   .mobile-menu-toggle { display: inline-flex; align-items: center; justify-content: center; width:44px; height:44px; border-radius: 10px; border: none; background: transparent; color: inherit; margin-right: 8px; }
   .mobile-menu-open nav { display: block !important; }
@@ -533,14 +548,10 @@ if (document.readyState === 'loading') {
 
 // Footer Language Selector functionality
 function initFooterLanguageSelector() {
-  console.log('Initializing footer language selector...');
-  
   var trigger = document.getElementById('acrpLangTrigger');
   var dropdown = document.getElementById('acrpLangDropdown');
   var items = document.querySelectorAll('#acrpLangList li');
   var currentLabel = document.getElementById('acrpLangCurrent');
-
-  console.log('Elements found:', { trigger: !!trigger, dropdown: !!dropdown, items: items.length });
 
   if (!trigger || !dropdown) {
     console.error('Missing required elements for language selector');
@@ -548,24 +559,20 @@ function initFooterLanguageSelector() {
   }
 
   trigger.addEventListener('click', function(e){
-    console.log('Trigger clicked');
     e.preventDefault();
     e.stopPropagation();
     e.stopImmediatePropagation();
     
     var isOpen = dropdown.classList.contains('open');
-    console.log('Current state:', { isOpen: isOpen });
     
     if (isOpen) {
       dropdown.classList.remove('open');
       trigger.classList.remove('open');
       trigger.setAttribute('aria-expanded', 'false');
-      console.log('Dropdown closed');
     } else {
       dropdown.classList.add('open');
       trigger.classList.add('open');
       trigger.setAttribute('aria-expanded', 'true');
-      console.log('Dropdown opened');
     }
   });
 
@@ -591,13 +598,10 @@ function initFooterLanguageSelector() {
       dropdown.classList.remove('open');
       trigger.classList.remove('open');
       trigger.setAttribute('aria-expanded','false');
-
-      console.log('Language selected:', lang);
       doGTranslate(lang);
     });
   });
-  
-  console.log('Footer language selector initialized successfully');
+
   return true;
 }
 
@@ -645,7 +649,7 @@ if (!window.googleTranslateElementInit) {
 
   if (!document.querySelector('script[src*="translate.google.com"]')) {
     var s = document.createElement('script');
-    s.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+    s.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
     s.async = true;
     document.body.appendChild(s);
   }

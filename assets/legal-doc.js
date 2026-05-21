@@ -1,7 +1,3 @@
-/* =============================================================
-   ACRP Legal Document Behavior
-   Accordion, search, scroll-spy, scroll-reveal
-   ============================================================= */
 (function () {
   'use strict';
 

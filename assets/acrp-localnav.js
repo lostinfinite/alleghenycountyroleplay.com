@@ -1,33 +1,3 @@
-/* ──────────────────────────────────────────────────────────
-   ACRP — Universal Apple-style local nav (pill) injector
-   ──────────────────────────────────────────────────────────
-   Configure per page via <body> data attributes:
-
-     data-acrp-nav            (required) one of:
-                              "home"        → Why Us (muted) + Login (CTA)
-                              "default"     → Why Us (muted) + Home (muted) + Login (CTA)
-                              "home-cta"    → Why Us (muted) + Home (CTA)
-                              "articles"    → Home (muted)
-                              "legal"       → Home (muted) + Ask (CTA, dropdown)
-
-    data-acrp-nav-short      Short brand label shown by default.
-              Defaults to "ACRP".
-
-    data-acrp-nav-logo-src   Optional logo source URL.
-              Defaults to the ACRP logo.
-
-     data-acrp-nav-name-href  Link target for the name. Default "/".
-
-     data-acrp-nav-login-href Override Login destination.
-                              Default https://portal.alleghenycountyroleplay.com
-
-     data-acrp-nav-why-href   Override Why Us anchor. Default "/#why".
-
-     data-acrp-nav-home-href  Override Home destination. Default "/".
-
-   The script is idempotent: it removes any existing #acrp-localnav
-   before injecting, and inserts the nav as the first child of <body>.
-   ────────────────────────────────────────────────────────── */
 
 (function () {
   'use strict';

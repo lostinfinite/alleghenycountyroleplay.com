@@ -83,12 +83,15 @@
       from { opacity: 0; transform: translateY(14px); }
       to   { opacity: 1; transform: translateY(0); }
     }
-    .pe { opacity: 0; animation: pageRise 0.85s cubic-bezier(0.2, 0.7, 0.1, 1) forwards; }
-    .pe-1 { animation-delay: 0.20s; }
-    .pe-2 { animation-delay: 0.35s; }
-    .pe-3 { animation-delay: 0.50s; }
-    .pe-4 { animation-delay: 0.65s; }
-    .pe-5 { animation-delay: 0.80s; }
+    .pe { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: no-preference) {
+      .pe { opacity: 0; animation: pageRise 0.85s cubic-bezier(0.2, 0.7, 0.1, 1) forwards; }
+      .pe-1 { animation-delay: 0.20s; }
+      .pe-2 { animation-delay: 0.35s; }
+      .pe-3 { animation-delay: 0.50s; }
+      .pe-4 { animation-delay: 0.65s; }
+      .pe-5 { animation-delay: 0.80s; }
+    }
 
     body.motion-ok .reveal {
       opacity: 0;
@@ -592,6 +595,30 @@
       margin: 0;
       max-width: 60ch;
     }
+    note {
+      display: block;
+      margin: 0 0 18px;
+      max-width: 880px;
+      padding: 14px 16px 14px 18px;
+      background: oklch(0.95 0.012 80 / 0.02);
+      border: 1px solid oklch(0.95 0.012 80 / 0.07);
+      border-left: 2px solid oklch(0.78 0.165 75 / 0.45);
+      border-radius: 2px;
+      color: var(--ink-dim);
+      font-family: var(--body);
+      font-size: 0.94rem;
+      line-height: 1.6;
+    }
+    note a {
+      color: var(--ink);
+      border-bottom: 1px solid var(--rule);
+      text-decoration: none;
+      transition: border-color 0.16s ease, color 0.16s ease;
+    }
+    note a:hover {
+      color: var(--amber);
+      border-bottom-color: var(--amber);
+    }
     .notice-body p em { font-family: var(--display); font-style: italic; color: var(--ink); }
     @media (max-width: 600px) {
       .notice { flex-direction: column; gap: 12px; padding: 22px 20px 22px 22px; }
@@ -916,9 +943,9 @@
 </head>
 <body data-acrp-nav="default" data-acrp-nav-name="Entry Process">
 
-  <!-- Navigation injected by /assets/acrp-localnav.js -->
+  
 
-  <!-- Hero -->
+  
   <header class="hero">
     <div class="hero-bg"></div>
     <div class="container hero-inner">
@@ -928,32 +955,14 @@
         <span>Entry Process · ACRP Dispatch</span>
       </div>
       <h1 class="pe pe-2">Your path<br>into the <em>County.</em></h1>
-      <p class="hero-sub pe pe-3">A complete guide to joining Allegheny County Roleplay — the requirements, the five-step entry process, and what to expect from your first shift on patrol.</p>
-      <div class="hero-figures pe pe-4">
-        <div class="hero-fig">
-          <span class="v">04</span>
-          <span class="k">Pathways</span>
-        </div>
-        <div class="hero-fig">
-          <span class="v"><em>~</em>3–5</span>
-          <span class="k">Days end-to-end</span>
-        </div>
-        <div class="hero-fig">
-          <span class="v">07</span>
-          <span class="k">Departments</span>
-        </div>
-        <div class="hero-fig">
-          <span class="v"><em>$</em>0</span>
-          <span class="k">Cost to join</span>
-        </div>
-      </div>
+      <p class="hero-sub pe pe-3">A complete guide to joining Allegheny County Roleplay. From Applying to Hitting the road.</p>
     </div>
     <div class="hero-rule" aria-hidden="true"></div>
   </header>
 
   <main>
 
-    <!-- Statement / About -->
+    
     <section class="ed-section">
       <div class="container">
         <div class="ed-kicker"><span class="num">i.</span><span>About the Community</span></div>
@@ -961,205 +970,209 @@
           <strong>Allegheny County Roleplay</strong> is a whitelisted ER:LC community built around <em>realism, professionalism,</em> and a genuine passion for emergency-services roleplay.
         </p>
         <p class="ed-aside reveal">
-          We don't just hand out whitelists — we build trained, organized departments that operate like real agencies. Whether you want to patrol with Pittsburgh PD, respond as Fire &amp; EMS, enforce highway law as PSP, or keep traffic moving with PennDOT, there is a seat for you here.
+          We build trained, organized departments that operate like real agencies. Whether you want to patrol with Pittsburgh PD, respond as Fire &amp; EMS, enforce highway law as PSP, or keep traffic moving with PennDOT, there is a seat for you here, unless you're here to stir up trouble.
         </p>
       </div>
     </section>
 
-    <!-- Process Steps — Pathway Picker -->
+    
     <section class="ed-section alt" id="process">
       <div class="container">
         <div class="ed-kicker"><span class="num">ii.</span><span>The Entry Process</span></div>
         <div class="ed-head">
-          <h2>Four pathways, one <em>community.</em></h2>
-          <p>The entry process depends on what you want to do in the County. Pick your pathway below — civilians have the shortest path; sworn departments add training and a department-specific Discord.</p>
+          <h2>Four pathways, Infinite <em> roleplay opportunities.</em></h2>
+          <p>The entry process depends on what you want to do in the County. Pick your pathway below and get started today!</p>
         </div>
 
         <div class="pathway-picker" role="tablist" aria-label="Entry pathway">
           <button class="pathway-tab" role="tab" id="tab-civ" aria-controls="panel-civ" aria-selected="true" data-path="civ">
             <span class="pt-idx">i.</span>
             <span class="pt-name">Civilian</span>
-            <span class="pt-meta">3 Steps</span>
+ 
           </button>
           <button class="pathway-tab" role="tab" id="tab-leo" aria-controls="panel-leo" aria-selected="false" data-path="leo">
             <span class="pt-idx">ii.</span>
             <span class="pt-name">Law Enforcement</span>
-            <span class="pt-meta">PBP · ACSO · PSP</span>
+
           </button>
           <button class="pathway-tab" role="tab" id="tab-fe" aria-controls="panel-fe" aria-selected="false" data-path="fe">
             <span class="pt-idx">iii.</span>
             <span class="pt-name">Fire &amp; EMS</span>
-            <span class="pt-meta">6 Steps</span>
+
           </button>
           <button class="pathway-tab" role="tab" id="tab-dot" aria-controls="panel-dot" aria-selected="false" data-path="dot">
             <span class="pt-idx">iv.</span>
             <span class="pt-name">PennDOT</span>
-            <span class="pt-meta">6 Steps</span>
+
           </button>
         </div>
 
-        <!-- LEO sub-tabs -->
+        
         <div class="pathway-subtabs" id="leo-subtabs" role="tablist" aria-label="Law enforcement department">
-          <button class="pathway-subtab" role="tab" id="sub-pbp" aria-controls="panel-leo" aria-selected="true" data-sub="pbp">PBP<span class="ss-full">Pittsburgh Police</span></button>
-          <button class="pathway-subtab" role="tab" id="sub-acso" aria-controls="panel-leo" aria-selected="false" data-sub="acso">ACSO<span class="ss-full">Allegheny Sheriff</span></button>
-          <button class="pathway-subtab" role="tab" id="sub-psp" aria-controls="panel-leo" aria-selected="false" data-sub="psp">PSP<span class="ss-full">PA State Police</span></button>
+          <button class="pathway-subtab" role="tab" id="sub-pbp" aria-controls="panel-leo" aria-selected="true" data-sub="pbp">PBP<span class="ss-full">Pittsburgh Police Department</span></button>
+          <button class="pathway-subtab" role="tab" id="sub-acso" aria-controls="panel-leo" aria-selected="false" data-sub="acso">ACSO<span class="ss-full">Allegheny County Sheriff's Office</span></button>
+          <button class="pathway-subtab" role="tab" id="sub-psp" aria-controls="panel-leo" aria-selected="false" data-sub="psp">PSP<span class="ss-full">Pennsylvania State Police</span></button>
         </div>
 
-        <!-- Civilian Panel -->
+        
         <div class="pathway-panel active" id="panel-civ" role="tabpanel" aria-labelledby="tab-civ">
-          <p class="pathway-summary"><span>Civilian Pathway</span><span class="sep">·</span><span>3 steps</span><span class="sep">·</span><em>~</em>&nbsp;1–3 days</p>
+          <p class="pathway-summary"><span>Civilian</span><span class="sep">·</span><span>3 steps</span><span class="sep">·</span><em>Get approved in as little as</em>&nbsp;1–3 days.</p>
           <ol class="ed-list">
             <li class="ed-item">
-              <h3>Submit your application</h3>
-              <p>Fill out the civilian application on the ACRP Portal. We ask the basics — your age, your experience, and how you plan to roleplay. Civilians get the simplest entry path in the County.</p>
-              <span class="eta"><em>~</em>10 min</span>
-            </li>
-            <li class="ed-item">
               <h3>Join the Discord</h3>
-              <p>Hop into our main Discord server. Announcements, session pings, and community chat all live there. You will not complete onboarding without it.</p>
+              <p>Hop into our main Discord server for communications, announcements, and to apply. This is a must to onboard and apply.</p>
               <span class="eta">Required</span>
             </li>
+            <li class="ed-item">
+              <h3>Submit your application</h3>
+              <p>Fill out the civilian application on the ACRP Portal. We ask the basics. Your character's age, your experience, and how you plan to roleplay. Civilians get the simplest entry path in the County.</p>
+              <span class="eta"><em>~</em>10 min</span>
+            </li>
+
             <li class="ed-item">
               <h3>Wait and get approved</h3>
               <p>Staff reviews civilian applications in the order received. Most decisions land within a few days. Once you are approved, you are clear to roleplay as a civilian in any active session.</p>
-              <span class="eta"><em>~</em>1–3 days</span>
+              <span class="eta"><em>Get approved in as little as</em>1–3 days</span>
             </li>
           </ol>
         </div>
 
-        <!-- LEO Panel (shared markup for PBP / ACSO / PSP; department name swapped by JS) -->
         <div class="pathway-panel" id="panel-leo" role="tabpanel" aria-labelledby="tab-leo">
+          <note>This department needs to be formed or strengthened. We are actively looking for department heads. Think you can do it? Apply at <a href="https://careers.alleghenycountyroleplay.com/jobs">our careers page</a>.</note>
           <p class="pathway-summary">
-            <span>Law Enforcement Pathway</span>
+            <span>Law Enforcement</span>
             <span class="sep">·</span>
             <span data-leo-dept>Pittsburgh Police Department</span>
             <span class="sep">·</span>
-            <span>6 steps</span>
+
           </p>
           <ol class="ed-list">
             <li class="ed-item">
-              <h3>Submit your application</h3>
-              <p>Fill out the main ACRP application and select <strong data-leo-dept-short>PBP</strong> as your intended department. Be thorough — sworn applications get a closer read than civ.</p>
-              <span class="eta"><em>~</em>15 min</span>
-            </li>
-            <li class="ed-item">
               <h3>Join the Discord</h3>
-              <p>Join our main ACRP Discord server. This is where staff coordinate the rest of your onboarding — keep your DMs open.</p>
+              <p>Hop into our main Discord server for communications, announcements, and to apply. This is a must to onboard and apply.</p>
               <span class="eta">Required</span>
             </li>
+            <li class="ed-item">
+              <h3>Submit your application</h3>
+              <p>Fill out the main ACRP application and select <strong data-leo-dept-short>PBP</strong> as your intended department. Be thorough, sworn applications get a closer read than civ.</p>
+              <span class="eta"><em>~</em>15 min</span>
+            </li>
+
             <li class="ed-item">
               <h3>Wait and get approved</h3>
               <p>Staff reviews your community-level application. Once you are cleared at the community level, you move to the department side of the process.</p>
-              <span class="eta"><em>~</em>1–3 days</span>
+              <span class="eta"><em>Get approved in as little as</em>1–3 days</span>
             </li>
             <li class="ed-item">
               <h3>Join the department's Discord</h3>
-              <p>After community approval, you will be invited to the <strong data-leo-dept>Pittsburgh Police Department</strong> Discord. Department-specific announcements, training schedules, and the chain of command live there.</p>
-              <span class="eta">Same day</span>
+              <p>After community approval, you will be invited to the <strong data-leo-dept>Pittsburgh Police Department</strong> Discord. Everything you need will be coordinated there.</p>
+              <span class="eta"><em>Join the department's Discord on the same day as getting approved.</em></span>
             </li>
             <li class="ed-item">
               <h3>Apply &amp; train</h3>
-              <p>Submit the department application inside the <strong data-leo-dept-short>PBP</strong> Discord, then sit your training session with a Field Training Officer. Expect radio protocol, traffic stops, use-of-force policy, and a ride-along checkout.</p>
-              <span class="eta"><em>~</em>1–2 hours</span>
+              <p>Submit the department application inside the <strong data-leo-dept-short>PBP</strong> Discord, then sit your training session with a Field Training Officer.</p>
+              <span class="eta"><em>Get trained in as little as</em>1–2 hours</span>
             </li>
             <li class="ed-item">
               <h3>Hit the streets</h3>
-              <p>You are sworn in. Suit up, check in on Discord, and run a shift. Your FTO or a supervisor will ride with you on your first patrol to answer questions.</p>
-              <span class="eta">Go time</span>
+              <p>You're clear for duty! A T.O. will ride along with you on your first few shifts and help you in the field!</p>
+              <span class="eta"></span>
             </li>
           </ol>
         </div>
 
-        <!-- Fire & EMS Panel -->
+        
         <div class="pathway-panel" id="panel-fe" role="tabpanel" aria-labelledby="tab-fe">
-          <p class="pathway-summary"><span>Fire &amp; EMS Pathway</span><span class="sep">·</span><span>Pittsburgh Fire / EMS</span><span class="sep">·</span><span>6 steps</span></p>
+          <note>This department needs to be formed or strengthened. We are actively looking for department heads. Think you can do it? Apply at <a href="https://careers.alleghenycountyroleplay.com/jobs">our careers page</a>.</note>
+          <p class="pathway-summary"><span>Fire &amp; EMS</span><span class="sep">·</span><span>Pittsburgh Fire / EMS</span><span class="sep">·</span><span>6 steps</span></p>
           <ol class="ed-list">
             <li class="ed-item">
-              <h3>Submit your application</h3>
-              <p>Fill out the main ACRP application and select <strong>Fire &amp; EMS</strong> as your intended department. Tell us whether you are leaning fire suppression, medical, or both.</p>
-              <span class="eta"><em>~</em>15 min</span>
-            </li>
-            <li class="ed-item">
               <h3>Join the Discord</h3>
-              <p>Join our main ACRP Discord server. Staff coordinate the rest of your onboarding from there.</p>
+              <p>Hop into our main Discord server for communications, announcements, and to apply. This is a must to onboard and apply.</p>
               <span class="eta">Required</span>
+                          </li>
+                                      <li class="ed-item">
+              <h3>Submit your application</h3>
+              <p>Fill out the main ACRP application and select <strong>Fire &amp; EMS</strong> as your intended department. </p>
+              <span class="eta"><em>~</em>15 min</span>
             </li>
             <li class="ed-item">
               <h3>Wait and get approved</h3>
               <p>Staff reviews your community-level application. Once cleared, you move to the department side of the process.</p>
-              <span class="eta"><em>~</em>1–3 days</span>
+              <span class="eta"><em>Get approved in as little as</em>1–3 days</span>
             </li>
             <li class="ed-item">
               <h3>Join the department's Discord</h3>
-              <p>After community approval, you will be invited to the <strong>Pittsburgh Fire &amp; EMS</strong> Discord. Apparatus assignments, training schedules, and shift rotations live there.</p>
-              <span class="eta">Same day</span>
+              <p>After community approval, you will be invited to the <strong>Pittsburgh Fire &amp; EMS</strong> Discord. Everything you need will be coordinated there.</p>
+              <span class="eta"><em>Join the department's Discord on the same day as getting approved.</em></span>
             </li>
             <li class="ed-item">
               <h3>Apply &amp; train</h3>
-              <p>Submit the department application inside the F&amp;EMS Discord, then sit your training session. Expect dispatch handling, scene safety, patient assessment, and an apparatus checkout.</p>
-              <span class="eta"><em>~</em>1–2 hours</span>
+              <p>Submit the department application inside the F&amp;EMS Discord, then sit your training session.</p>
+              <span class="eta"><em>Get trained and approved in as little as</em>1–8 hours</span>
             </li>
             <li class="ed-item">
               <h3>Hit the streets</h3>
-              <p>You are on the roster. Hop on an apparatus, take a call, and respond. A senior medic or officer will run with you on your first response.</p>
-              <span class="eta">Go time</span>
+              <p>You're clear for duty! A Higher-Up will ride along with you on your first few shifts and help you in the field!</p>
+              <span class="eta"></span>
             </li>
           </ol>
         </div>
 
-        <!-- PennDOT Panel -->
+        
         <div class="pathway-panel" id="panel-dot" role="tabpanel" aria-labelledby="tab-dot">
-          <p class="pathway-summary"><span>PennDOT Pathway</span><span class="sep">·</span><span>Roadway operations</span><span class="sep">·</span><span>6 steps</span></p>
+          <note>This department needs to be formed or strengthened. We are actively looking for department heads. Think you can do it? Apply at <a href="https://careers.alleghenycountyroleplay.com/jobs">our careers page</a>.</note>
+          <p class="pathway-summary"><span>PennDOT</span><span class="sep">·</span><span>Roadway operations</span><span class="sep">·</span><span>6 steps</span></p>
           <ol class="ed-list">
-            <li class="ed-item">
-              <h3>Submit your application</h3>
-              <p>Fill out the main ACRP application and select <strong>PennDOT</strong> as your intended department. Roadway ops is its own world — make sure that is what you want.</p>
-              <span class="eta"><em>~</em>15 min</span>
-            </li>
-            <li class="ed-item">
+ 
+                          <li class="ed-item">
               <h3>Join the Discord</h3>
-              <p>Join our main ACRP Discord server. Staff coordinate the rest of your onboarding from there.</p>
+              <p>Hop into our main Discord server for communications, announcements, and to apply. This is a must to onboard and apply.</p>
               <span class="eta">Required</span>
+                          </li>
+                          <li class="ed-item">
+              <h3>Submit your application</h3>
+              <p>Fill out the main ACRP application and select <strong>PennDOT</strong> as your intended department. PennDOT and PTA Operations are stressful. Ensure this is what you want.</p>
+              <span class="eta"><em>Submit your application in as little as</em>15 min</span>
             </li>
             <li class="ed-item">
               <h3>Wait and get approved</h3>
               <p>Staff reviews your community-level application. Once cleared, you move to the department side of the process.</p>
-              <span class="eta"><em>~</em>1–3 days</span>
+              <span class="eta"><em>Get approved in as little as</em>1–3 days</span>
             </li>
             <li class="ed-item">
               <h3>Join the department's Discord</h3>
-              <p>After community approval, you will be invited to the <strong>PennDOT</strong> Discord. Scene callouts, equipment assignments, and shift rotations are coordinated there.</p>
-              <span class="eta">Same day</span>
+              <p>After community approval, you will be invited to the <strong>PennDOT</strong> Discord. Everything you need will be coordinated there.</p>
+              <span class="eta"><em>Join the department's Discord on the same day as being approved.</em></span>
             </li>
             <li class="ed-item">
               <h3>Apply &amp; train</h3>
-              <p>Submit the department application inside the PennDOT Discord, then complete your training. Expect scene control, traffic management, road-closure procedure, and an equipment checkout.</p>
-              <span class="eta"><em>~</em>1–2 hours</span>
+              <p>Submit the department application inside the PennDOT Discord, then complete your training.</p>
+              <span class="eta"><em>Get trained in as little as</em>1–2 hours</span>
             </li>
             <li class="ed-item">
               <h3>Hit the streets</h3>
-              <p>You are cleared for roadway ops. Roll out, set up your scene, and keep traffic moving. A senior operator will run with you on your first deployment.</p>
-              <span class="eta">Go time</span>
+              <p>You're clear for duty! A senior operator will ride along with you your first few shifts and help you in the field!</p>
             </li>
           </ol>
         </div>
       </div>
     </section>
 
-    <!-- Requirements -->
+    
     <section class="ed-section">
       <div class="container">
         <div class="ed-kicker"><span class="num">iii.</span><span>Whitelist Requirements</span></div>
         <div class="ed-head">
           <h2>What you <em>need.</em></h2>
-          <p>Meet these four and you are eligible to apply. No prior roleplay experience is necessary — we train you.</p>
+          <p>Meet these four and you are eligible to apply. No prior roleplay experience is necessary. It's easy to get started, you'll get the hang of it quickly.</p>
         </div>
         <div class="req-grid reveal">
           <div class="req-cell">
             <div class="req-mark"><em>14+</em></div>
             <div class="req-body">
               <h4>Age requirement</h4>
-              <p>You must be <strong>14 years or older</strong> to join. Exceptions may be made case-by-case — reach out to staff if you are close.</p>
+              <p>You must be <strong>14 years or older</strong> to join. Exceptions may be made depending on your maturity level and how close you actually are to the age requirement. When in doubt, reach out!</p>
             </div>
           </div>
           <div class="req-cell">
@@ -1168,7 +1181,7 @@
             </div>
             <div class="req-body">
               <h4>Computer required</h4>
-              <p>You must play ER:LC on a <strong>PC or laptop</strong> with at least 15 FPS. Mobile devices are not supported.</p>
+              <p>You must play ER:LC on a <strong>PC or laptop</strong> with at least 15 FPS. Mobile devices, Tablets, Chromebook's (R), School or Organization managed devices, and Consoles are not supported.</p>
             </div>
           </div>
           <div class="req-cell">
@@ -1184,14 +1197,15 @@
             </div>
             <div class="req-body">
               <h4>Working microphone</h4>
-              <p>A working microphone is required. You will be on <strong>Melonly Radio</strong> and Discord voice during active sessions.</p>
+              <p>A working microphone is required. You will be on <strong>Melonly Radio</strong> and Discord voice during active sessions. Exceptions are not available unless you are in a staff rank and deemed by Directorial or higher to be required in the community.</p>
             </div>
+            
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Departments -->
+    
     <section class="ed-section alt">
       <div class="container">
         <div class="ed-kicker"><span class="num">iv.</span><span>Choose Your Lane</span></div>
@@ -1202,44 +1216,49 @@
         <div class="dept-list reveal">
           <div class="dept-row-item">
             <span class="idx">i.</span>
-            <span class="nm">Pittsburgh Police Department<small>Patrol · Investigations</small></span>
-            <span class="badge">Active</span>
+            <span class="nm">Pittsburgh Police Department  </span>
+     
           </div>
           <div class="dept-row-item">
             <span class="idx">ii.</span>
-            <span class="nm">Allegheny County Sheriff<small>Court services · Warrants</small></span>
-            <span class="badge">Active</span>
+            <span class="nm">Allegheny County Sheriff  </span>
+     
           </div>
           <div class="dept-row-item">
             <span class="idx">iii.</span>
-            <span class="nm">Pennsylvania State Police<small>Highway · Statewide</small></span>
-            <span class="badge">Active</span>
+            <span class="nm">Pennsylvania State Police  </span>
+     
           </div>
           <div class="dept-row-item">
             <span class="idx">iv.</span>
-            <span class="nm">PennDOT<small>Traffic · Roadway</small></span>
-            <span class="badge">Active</span>
+            <span class="nm">PennDOT  </span>
+     
           </div>
           <div class="dept-row-item">
             <span class="idx">v.</span>
-            <span class="nm">Emergency Medical Services<small>EMS · Response</small></span>
-            <span class="badge">Active</span>
+            <span class="nm">Emergency Medical Services  </span>
+     
           </div>
           <div class="dept-row-item">
             <span class="idx">vi.</span>
-            <span class="nm">Pittsburgh Fire Department<small>Fire · Rescue</small></span>
-            <span class="badge">Active</span>
+            <span class="nm">Pittsburgh Fire Department  </span>
+     
           </div>
           <div class="dept-row-item">
             <span class="idx">vii.</span>
-            <span class="nm">Civilian Operations<small>Civ · Roleplay</small></span>
-            <span class="badge">Active</span>
+            <span class="nm">Civilian Operations  </span>
+     
+          </div>
+          <div class="dept-row-item">
+            <span class="idx"> </span>
+            <span class="nm">And more coming soon.  </span>
+     
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Notice -->
+    
     <section class="ed-section tight">
       <div class="container">
         <div class="notice reveal">
@@ -1252,7 +1271,7 @@
       </div>
     </section>
 
-    <!-- FAQ -->
+    
     <section class="ed-section">
       <div class="container">
         <div class="ed-kicker"><span class="num">v.</span><span>Common Questions</span></div>
@@ -1266,30 +1285,30 @@
           </div>
           <div class="faq-row">
             <p class="q">Do I need prior roleplay experience?</p>
-            <p class="a">No. We train you. As long as you meet the four requirements and bring the right attitude, we will get you up to speed during onboarding.</p>
+            <p class="a">No, but you will get the hang of it really quickly if it is your first time. As long as you meet the requirements, follow the rules, and come with a good attitude, you'll nail it!</p>
           </div>
           <div class="faq-row">
             <p class="q">What if I'm under 14?</p>
-            <p class="a">Exceptions are handled case-by-case. Reach out to staff in our <a href="https://discord.gg/fKrrT7Djgr">Discord</a> — maturity and communication weigh more than the number alone.</p>
+            <p class="a">Exceptions are handled case-by-case. Reach out to staff in our <a href="https://discord.gg/fKrrT7Djgr">Discord</a>. We'll review your case, current age, and maturity level. With that, we will determine if an exception can be made.</p>
           </div>
           <div class="faq-row">
             <p class="q">Can I switch departments later?</p>
-            <p class="a">Yes. Once you have put in some time at your starting department, you can apply for transfers or hold dual roles depending on staffing needs.</p>
+            <p class="a">Yes. Once you have put in some time at your starting department, you can apply for transfers or quit a department entirely. The choice is yours!</p>
           </div>
           <div class="faq-row">
             <p class="q">Is there a cost to join?</p>
-            <p class="a">No. Joining ACRP is free. You will need ER:LC on PC, a microphone, and Discord — that is it.</p>
+            <p class="a">No. Joining ACRP is free. You will need ER:LC on PC, a microphone, and Discord. That is it. We'll handle any software or equipment that require costs if you join a department or what not.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Closing CTA -->
+    
     <section class="closing">
       <div class="container">
-        <div class="ed-kicker"><span class="num">vi.</span><span>Ready to Apply</span></div>
-        <h2 class="closing-headline">Submit, sign in, <em>start patrol.</em></h2>
-        <p class="closing-sub">Submit your application online, then join our Discord to finish the process. Applications are reviewed in the order received — no shortcuts, no favorites, no cost.</p>
+        <div class="ed-kicker"><span class="num">vi.</span><span>Ready to Apply?</span></div>
+        <h2 class="closing-headline">Join, submit, sign in, then <em>start your journey.</em></h2>
+        <p class="closing-sub">Join the Discord, then apply. Applications are reviewed in the order received.</p>
         <div class="closing-actions">
           <a class="btn" href="https://portal.alleghenycountyroleplay.com/invoke/applications/applicationtojoin12934" target="_blank" rel="noopener">
             Apply now
@@ -1300,7 +1319,7 @@
             Join Discord
           </a>
         </div>
-        <p class="closing-fine">Processing times vary by volume. Free to join — always.</p>
+        <p class="closing-fine">Processing times vary by volume. Free to join. Always.</p>
       </div>
     </section>
 
